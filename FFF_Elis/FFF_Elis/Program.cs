@@ -1,5 +1,7 @@
 using FFF_Elis.Components;
 using MudBlazor.Services;
+using ELIS.ELISWCF;
+using FFF_Elis.ELIS_Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +10,11 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 builder.Services.AddMudServices();
+
+var tmp = new ElisClient();
+var client = tmp.Client;
+
+var einsatzData = client.EinsatzDataGetAll(tmp.Ticket);
 
 var app = builder.Build();
 
