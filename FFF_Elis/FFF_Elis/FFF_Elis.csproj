@@ -11,4 +11,14 @@
         <PackageReference Include="MudBlazor" Version="6.*"/>
     </ItemGroup>
 
+
+    <ItemGroup>
+      <Reference Include="ELISConfigBase">
+        <HintPath>..\libs\ELISConfigBase.dll</HintPath>
+      </Reference>
+      <Reference Include="ELISWCFClient">
+        <HintPath>..\libs\ELISWCFClient.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
 </Project>
