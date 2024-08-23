@@ -1,4 +1,4 @@
-﻿using ELIS.ELISWCF;
+﻿/*using ELIS.ELISWCF;
 using ELIS.ELISWCFClient;
 
 namespace FFF_Elis.ELIS_Services;
@@ -35,4 +35,4 @@ public class ElisClient
         }
     }
 
-}
+}*/

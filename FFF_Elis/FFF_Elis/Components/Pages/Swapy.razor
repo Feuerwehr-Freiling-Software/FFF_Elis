@@ -1,0 +1,92 @@
+﻿@page "/Swapy"
+<script src="https://unpkg.com/swapy/dist/swapy.min.js"></script>
+
+<div class="enable-input">
+    <label for="enable">Enable</label> <input id="enable" type="checkbox" />
+</div>
+<div class="swap-container container-1" id="container-1">
+    <div class="slot a" data-swapy-slot="1">
+        <div class="item a" data-swapy-item="a">
+            <div class="handle" data-swapy-handle></div>
+            <div>A</div>
+        </div>
+    </div>
+    <div class="second-row">
+        <div class="slot b" data-swapy-slot="2">
+            <!-- <div class="item b" data-swapy-item="b">
+              <div>B</div>
+            </div> -->
+        </div>
+        <div class="slot c" data-swapy-slot="3">
+            <div class="item c" data-swapy-item="c">
+                <div>C</div>
+            </div>
+        </div>
+    </div>
+    <div class="slot d" data-swapy-slot="4">
+        <div class="item d" data-swapy-item="d">
+            <div>D</div>
+        </div>
+    </div>
+</div>
+<div class="swap-container container-2" id="container-2">
+    <div class="slot a" data-swapy-slot="1">
+        <div class="item a" data-swapy-item="a">
+            <div class="handle" data-swapy-handle></div>
+            <div>A</div>
+        </div>
+    </div>
+    <div class="second-row">
+        <div class="slot b" data-swapy-slot="2">
+            <!-- <div class="item b" data-swapy-item="b">
+              <div>B</div>
+            </div> -->
+        </div>
+        <div class="slot c" data-swapy-slot="3">
+            <div class="item c" data-swapy-item="c">
+                <div>C</div>
+            </div>
+        </div>
+    </div>
+<div class="slot d" data-swapy-slot="4">
+    <div class="item d" data-swapy-item="d">
+        <div>D</div>
+    </div>
+</div>
+</div>
+
+<script>
+    const container = document.getElementById('.container-1')
+    const container2 = document.getElementById('.container-2')
+    const enableInput = document.getElementById('#enable')
+
+    const swapy = swapy.createSwapy(container, {
+        animation: 'dynamic',
+        continuousMode: false
+    })
+
+    const swapy2 = Swapy.createSwapy(container2, {
+        animation: 'spring',
+        continuousMode: true
+    })
+
+    swapy2.onSwap((event) => {
+        console.log('swapy2 event', event.data)
+    })
+
+    swapy.enable(false)
+    swapy.onSwap((event) => {
+        console.log('event.map', event.data.map)
+        console.log('event.object', event.data.object)
+        console.log('event.array', event.data.array)
+    })
+
+    enableInput.addEventListener('input', () => {
+        swapy.enable(enableInput.checked);
+        console.log('swapy enabled', enableInput.checked)
+    })
+</script>
+
+@code {
+    
+}
