@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <ApplicationVersion>3.3.7468.42109</ApplicationVersion>
+    <RootNamespace>ELIS.ELISConfiguration</RootNamespace>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AssemblyTitle>ELISConfigBase</AssemblyTitle>
+    <Company>Steinbichl EDV</Company>
+    <Product>ELISConfigBase</Product>
+    <Copyright>Copyright Steinbichl EDV © 2020</Copyright>
+    <AssemblyVersion>3.3.7468.42109</AssemblyVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.0" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,15964 @@
+﻿// Decompiled with JetBrains decompiler
+// Type: ELISWCFServiceClient
+// Assembly: ELISWCFClient, Version=3.3.7468.42015, Culture=neutral, PublicKeyToken=null
+// MVID: 932EE77D-FA6F-4D6F-BCDB-361823ADB197
+// Assembly location: C:\Users\Haunschmied.Bastian\Documents\GitHub\Feuerwehr-Tools\FFF_Elis\FFF_Elis\libs\ELISWCFClient.dll
+
+using ELIS.ELISWCF;
+using ELIS.ELISWCF.ApDataContracts;
+using ELIS.ServiceConfigBase;
+using System;
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
+using System.ServiceModel;
+using System.ServiceModel.Channels;
+using System.Threading;
+
+#nullable disable
+[DebuggerStepThrough]
+[GeneratedCode("System.ServiceModel", "3.0.0.0")]
+public class ELISWCFServiceClient : ClientBase<IELISWCFService>, IELISWCFService
+{
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginNewWASNrGetDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndNewWASNrGetDelegate;
+  private SendOrPostCallback onNewWASNrGetCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginNewEinsatzGuidGetDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndNewEinsatzGuidGetDelegate;
+  private SendOrPostCallback onNewEinsatzGuidGetCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginEinsatzPersonenStatusAktiviertDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndEinsatzPersonenStatusAktiviertDelegate;
+  private SendOrPostCallback onEinsatzPersonenStatusAktiviertCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginEinsatzPersonPersistDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndEinsatzPersonPersistDelegate;
+  private SendOrPostCallback onEinsatzPersonPersistCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginEinsatzPersonGetByEinsatzDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndEinsatzPersonGetByEinsatzDelegate;
+  private SendOrPostCallback onEinsatzPersonGetByEinsatzCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginFileDownloadDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndFileDownloadDelegate;
+  private SendOrPostCallback onFileDownloadCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginFileUploadDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndFileUploadDelegate;
+  private SendOrPostCallback onFileUploadCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginFileCheckExistsDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndFileCheckExistsDelegate;
+  private SendOrPostCallback onFileCheckExistsCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginFileGetLastModificationDateDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndFileGetLastModificationDateDelegate;
+  private SendOrPostCallback onFileGetLastModificationDateCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginWCFTicketGetAllDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndWCFTicketGetAllDelegate;
+  private SendOrPostCallback onWCFTicketGetAllCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginWCFTicketGetFilteredDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndWCFTicketGetFilteredDelegate;
+  private SendOrPostCallback onWCFTicketGetFilteredCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginWCFLogGetAllDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndWCFLogGetAllDelegate;
+  private SendOrPostCallback onWCFLogGetAllCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginWCFLogGetbyNrDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndWCFLogGetbyNrDelegate;
+  private SendOrPostCallback onWCFLogGetbyNrCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginWCFLogGetCountDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndWCFLogGetCountDelegate;
+  private SendOrPostCallback onWCFLogGetCountCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginWCFLogGetByTicketDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndWCFLogGetByTicketDelegate;
+  private SendOrPostCallback onWCFLogGetByTicketCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginWCFLogDeleteAllDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndWCFLogDeleteAllDelegate;
+  private SendOrPostCallback onWCFLogDeleteAllCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginWCFLogDeleteTicketDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndWCFLogDeleteTicketDelegate;
+  private SendOrPostCallback onWCFLogDeleteTicketCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginSystemLogGetAllDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndSystemLogGetAllDelegate;
+  private SendOrPostCallback onSystemLogGetAllCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginSystemLogWriteDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndSystemLogWriteDelegate;
+  private SendOrPostCallback onSystemLogWriteCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginAppLogWriteDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndAppLogWriteDelegate;
+  private SendOrPostCallback onAppLogWriteCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginSystemLogGetAllModuleNamesDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndSystemLogGetAllModuleNamesDelegate;
+  private SendOrPostCallback onSystemLogGetAllModuleNamesCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginSystemLogGetRowCountDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndSystemLogGetRowCountDelegate;
+  private SendOrPostCallback onSystemLogGetRowCountCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginSystemLogGetFilteredRangeDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndSystemLogGetFilteredRangeDelegate;
+  private SendOrPostCallback onSystemLogGetFilteredRangeCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginTimerServiceLogGetAllDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndTimerServiceLogGetAllDelegate;
+  private SendOrPostCallback onTimerServiceLogGetAllCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginTimerServiceLogGetAllTimerServiceNamesDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndTimerServiceLogGetAllTimerServiceNamesDelegate;
+  private SendOrPostCallback onTimerServiceLogGetAllTimerServiceNamesCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginTimerServiceLogGetRowCountDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndTimerServiceLogGetRowCountDelegate;
+  private SendOrPostCallback onTimerServiceLogGetRowCountCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginTimerServiceLogGetFilteredRangeDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndTimerServiceLogGetFilteredRangeDelegate;
+  private SendOrPostCallback onTimerServiceLogGetFilteredRangeCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginPrintKarteiDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndPrintKarteiDelegate;
+  private SendOrPostCallback onPrintKarteiCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginPrintWASEinsatzberichtDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndPrintWASEinsatzberichtDelegate;
+  private SendOrPostCallback onPrintWASEinsatzberichtCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginPrintLFKEinsatzmeldungDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndPrintLFKEinsatzmeldungDelegate;
+  private SendOrPostCallback onPrintLFKEinsatzmeldungCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginPrintChecklisteDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndPrintChecklisteDelegate;
+  private SendOrPostCallback onPrintChecklisteCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginPrintEinsatzprotokollDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndPrintEinsatzprotokollDelegate;
+  private SendOrPostCallback onPrintEinsatzprotokollCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginPrintAnfahrtEinsatzortübersichtDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndPrintAnfahrtEinsatzortübersichtDelegate;
+  private SendOrPostCallback onPrintAnfahrtEinsatzortübersichtCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginPrintGetPrintersDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndPrintGetPrintersDelegate;
+  private SendOrPostCallback onPrintGetPrintersCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginAusfahrtsrichtungenGetAllDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndAusfahrtsrichtungenGetAllDelegate;
+  private SendOrPostCallback onAusfahrtsrichtungenGetAllCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginAusfahrtsrichtungPersistDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndAusfahrtsrichtungPersistDelegate;
+  private SendOrPostCallback onAusfahrtsrichtungPersistCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginAusfahrtsrichtungDeleteDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndAusfahrtsrichtungDeleteDelegate;
+  private SendOrPostCallback onAusfahrtsrichtungDeleteCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginSystemTestStartDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndSystemTestStartDelegate;
+  private SendOrPostCallback onSystemTestStartCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginEinsatzTyp_GruppePersistDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndEinsatzTyp_GruppePersistDelegate;
+  private SendOrPostCallback onEinsatzTyp_GruppePersistCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginEinsatzTyp_GruppeRemoveDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndEinsatzTyp_GruppeRemoveDelegate;
+  private SendOrPostCallback onEinsatzTyp_GruppeRemoveCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginBenutzerGruppeGetByEinsatzTypDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndBenutzerGruppeGetByEinsatzTypDelegate;
+  private SendOrPostCallback onBenutzerGruppeGetByEinsatzTypCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginBenutzerGruppenGetAllDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndBenutzerGruppenGetAllDelegate;
+  private SendOrPostCallback onBenutzerGruppenGetAllCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginBenutzerGruppenGetByBenutzerDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndBenutzerGruppenGetByBenutzerDelegate;
+  private SendOrPostCallback onBenutzerGruppenGetByBenutzerCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginEinsatzTyp_GruppenGetAllDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndEinsatzTyp_GruppenGetAllDelegate;
+  private SendOrPostCallback onEinsatzTyp_GruppenGetAllCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginEinsatzTyp_GruppenGetByGruppeDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndEinsatzTyp_GruppenGetByGruppeDelegate;
+  private SendOrPostCallback onEinsatzTyp_GruppenGetByGruppeCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginBenutzerGetByBenutzerGruppenIdDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndBenutzerGetByBenutzerGruppenIdDelegate;
+  private SendOrPostCallback onBenutzerGetByBenutzerGruppenIdCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginBenutzerResetPasswordEnabledDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndBenutzerResetPasswordEnabledDelegate;
+  private SendOrPostCallback onBenutzerResetPasswordEnabledCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginBenutzerResetPasswordDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndBenutzerResetPasswordDelegate;
+  private SendOrPostCallback onBenutzerResetPasswordCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginBenutzerSendPINDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndBenutzerSendPINDelegate;
+  private SendOrPostCallback onBenutzerSendPINCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginBenutzerGetDeviceRegistrationDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndBenutzerGetDeviceRegistrationDelegate;
+  private SendOrPostCallback onBenutzerGetDeviceRegistrationCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginGCalenderGetListDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndGCalenderGetListDelegate;
+  private SendOrPostCallback onGCalenderGetListCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginInfoGetFeuerwehrNameDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndInfoGetFeuerwehrNameDelegate;
+  private SendOrPostCallback onInfoGetFeuerwehrNameCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginInfoGetFeuerwehrAdresseDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndInfoGetFeuerwehrAdresseDelegate;
+  private SendOrPostCallback onInfoGetFeuerwehrAdresseCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginInfoGetFeuerwehrAdressePLZGemeindeDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndInfoGetFeuerwehrAdressePLZGemeindeDelegate;
+  private SendOrPostCallback onInfoGetFeuerwehrAdressePLZGemeindeCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginInfoGetFeuerwehrAdresseGPSLatitudeDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndInfoGetFeuerwehrAdresseGPSLatitudeDelegate;
+  private SendOrPostCallback onInfoGetFeuerwehrAdresseGPSLatitudeCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginInfoGetFeuerwehrAdresseGPSLongitudeDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndInfoGetFeuerwehrAdresseGPSLongitudeDelegate;
+  private SendOrPostCallback onInfoGetFeuerwehrAdresseGPSLongitudeCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginInfoGetFeuerwehrAdresseGPSKoordinatenStringDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndInfoGetFeuerwehrAdresseGPSKoordinatenStringDelegate;
+  private SendOrPostCallback onInfoGetFeuerwehrAdresseGPSKoordinatenStringCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginInfoGetPLZDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndInfoGetPLZDelegate;
+  private SendOrPostCallback onInfoGetPLZCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginInfoGetGemeindeKennzahlDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndInfoGetGemeindeKennzahlDelegate;
+  private SendOrPostCallback onInfoGetGemeindeKennzahlCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginInfoGetGemeindeKennzahlRegionDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndInfoGetGemeindeKennzahlRegionDelegate;
+  private SendOrPostCallback onInfoGetGemeindeKennzahlRegionCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginInfoGetGemeindeDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndInfoGetGemeindeDelegate;
+  private SendOrPostCallback onInfoGetGemeindeCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginInfoGetBezirkDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndInfoGetBezirkDelegate;
+  private SendOrPostCallback onInfoGetBezirkCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginInfoGetLandDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndInfoGetLandDelegate;
+  private SendOrPostCallback onInfoGetLandCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginInfoGetWetterDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndInfoGetWetterDelegate;
+  private SendOrPostCallback onInfoGetWetterCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginInfoGetObjDBVersionDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndInfoGetObjDBVersionDelegate;
+  private SendOrPostCallback onInfoGetObjDBVersionCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginInfoGetSysDBVersionDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndInfoGetSysDBVersionDelegate;
+  private SendOrPostCallback onInfoGetSysDBVersionCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginInfoGetAPDBVersionDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndInfoGetAPDBVersionDelegate;
+  private SendOrPostCallback onInfoGetAPDBVersionCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginInfoGetWCFVersionDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndInfoGetWCFVersionDelegate;
+  private SendOrPostCallback onInfoGetWCFVersionCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginInfoGetWCFEinsatzOptionKonfigDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndInfoGetWCFEinsatzOptionKonfigDelegate;
+  private SendOrPostCallback onInfoGetWCFEinsatzOptionKonfigCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginInfoGetELISBenutzerverwaltungsSystemDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndInfoGetELISBenutzerverwaltungsSystemDelegate;
+  private SendOrPostCallback onInfoGetELISBenutzerverwaltungsSystemCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginInfoGetSystemBuildDateDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndInfoGetSystemBuildDateDelegate;
+  private SendOrPostCallback onInfoGetSystemBuildDateCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginInfoGetELISSystemIDDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndInfoGetELISSystemIDDelegate;
+  private SendOrPostCallback onInfoGetELISSystemIDCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginInfoGetELISPublicURLDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndInfoGetELISPublicURLDelegate;
+  private SendOrPostCallback onInfoGetELISPublicURLCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginInfoGetEinsatzZonenDetailsDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndInfoGetEinsatzZonenDetailsDelegate;
+  private SendOrPostCallback onInfoGetEinsatzZonenDetailsCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginInfoGetGMapLadezeitDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndInfoGetGMapLadezeitDelegate;
+  private SendOrPostCallback onInfoGetGMapLadezeitCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginInfoGetGAPIClientKeyDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndInfoGetGAPIClientKeyDelegate;
+  private SendOrPostCallback onInfoGetGAPIClientKeyCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginInfoGetGAPIServerKeyDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndInfoGetGAPIServerKeyDelegate;
+  private SendOrPostCallback onInfoGetGAPIServerKeyCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginProtocolWriteDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndProtocolWriteDelegate;
+  private SendOrPostCallback onProtocolWriteCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginProtocolDeleteEntryDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndProtocolDeleteEntryDelegate;
+  private SendOrPostCallback onProtocolDeleteEntryCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginProtocolGetFilteredCountDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndProtocolGetFilteredCountDelegate;
+  private SendOrPostCallback onProtocolGetFilteredCountCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginProtocolGetFilteredRangeDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndProtocolGetFilteredRangeDelegate;
+  private SendOrPostCallback onProtocolGetFilteredRangeCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginProtocolGetArtListDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndProtocolGetArtListDelegate;
+  private SendOrPostCallback onProtocolGetArtListCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginJournalFzInfoGetAllDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndJournalFzInfoGetAllDelegate;
+  private SendOrPostCallback onJournalFzInfoGetAllCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginJournalFzInfoPersistDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndJournalFzInfoPersistDelegate;
+  private SendOrPostCallback onJournalFzInfoPersistCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginJournalFzInfoDeleteDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndJournalFzInfoDeleteDelegate;
+  private SendOrPostCallback onJournalFzInfoDeleteCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginSMSSendNEWDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndSMSSendNEWDelegate;
+  private SendOrPostCallback onSMSSendNEWCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginSMSSendWithSenderDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndSMSSendWithSenderDelegate;
+  private SendOrPostCallback onSMSSendWithSenderCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginEmailSendDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndEmailSendDelegate;
+  private SendOrPostCallback onEmailSendCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginEmailSend2Delegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndEmailSend2Delegate;
+  private SendOrPostCallback onEmailSend2CompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginEmailSendAttachmentsDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndEmailSendAttachmentsDelegate;
+  private SendOrPostCallback onEmailSendAttachmentsCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginConnectedWASDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndConnectedWASDelegate;
+  private SendOrPostCallback onConnectedWASCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginConnectedELISDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndConnectedELISDelegate;
+  private SendOrPostCallback onConnectedELISCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginEinsatzDataGetAllDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndEinsatzDataGetAllDelegate;
+  private SendOrPostCallback onEinsatzDataGetAllCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginEinsatzHistoryDataGetCountDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndEinsatzHistoryDataGetCountDelegate;
+  private SendOrPostCallback onEinsatzHistoryDataGetCountCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginEinsatzHistoryDataGetCountTimeSpanDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndEinsatzHistoryDataGetCountTimeSpanDelegate;
+  private SendOrPostCallback onEinsatzHistoryDataGetCountTimeSpanCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginEinsatzHistoryDataGetRangeDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndEinsatzHistoryDataGetRangeDelegate;
+  private SendOrPostCallback onEinsatzHistoryDataGetRangeCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginEinsatzHistoryDataGetRangeTimeSpanDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndEinsatzHistoryDataGetRangeTimeSpanDelegate;
+  private SendOrPostCallback onEinsatzHistoryDataGetRangeTimeSpanCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginEinsatzHistoryDataGetbyIdDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndEinsatzHistoryDataGetbyIdDelegate;
+  private SendOrPostCallback onEinsatzHistoryDataGetbyIdCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginEinsatzHistoryDataDeletebyIdDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndEinsatzHistoryDataDeletebyIdDelegate;
+  private SendOrPostCallback onEinsatzHistoryDataDeletebyIdCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginEinsatzDataPersistDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndEinsatzDataPersistDelegate;
+  private SendOrPostCallback onEinsatzDataPersistCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginEinsatzHistoryDataPersistDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndEinsatzHistoryDataPersistDelegate;
+  private SendOrPostCallback onEinsatzHistoryDataPersistCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginEinsatzGetFahrzeugeDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndEinsatzGetFahrzeugeDelegate;
+  private SendOrPostCallback onEinsatzGetFahrzeugeCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginFremdSystemDeleteDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndFremdSystemDeleteDelegate;
+  private SendOrPostCallback onFremdSystemDeleteCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginFremdSystemDeleteSyncDataDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndFremdSystemDeleteSyncDataDelegate;
+  private SendOrPostCallback onFremdSystemDeleteSyncDataCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginEigeneFeuerwehrSetDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndEigeneFeuerwehrSetDelegate;
+  private SendOrPostCallback onEigeneFeuerwehrSetCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginKontaktObjDeleteDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndKontaktObjDeleteDelegate;
+  private SendOrPostCallback onKontaktObjDeleteCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginKontaktGetAllDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndKontaktGetAllDelegate;
+  private SendOrPostCallback onKontaktGetAllCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginFeuerwehrenGetAllDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndFeuerwehrenGetAllDelegate;
+  private SendOrPostCallback onFeuerwehrenGetAllCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginFeuerwehrGetEigeneDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndFeuerwehrGetEigeneDelegate;
+  private SendOrPostCallback onFeuerwehrGetEigeneCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginFeuerwehrPersistDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndFeuerwehrPersistDelegate;
+  private SendOrPostCallback onFeuerwehrPersistCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginFeuerwehrDeleteDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndFeuerwehrDeleteDelegate;
+  private SendOrPostCallback onFeuerwehrDeleteCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginFahrzeugeGetAllDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndFahrzeugeGetAllDelegate;
+  private SendOrPostCallback onFahrzeugeGetAllCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginFahrzeugeGetByFeuerwehrDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndFahrzeugeGetByFeuerwehrDelegate;
+  private SendOrPostCallback onFahrzeugeGetByFeuerwehrCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginFahrzeugeGetByEigenerFeuerwehrDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndFahrzeugeGetByEigenerFeuerwehrDelegate;
+  private SendOrPostCallback onFahrzeugeGetByEigenerFeuerwehrCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginFahrzeugeGetAllVerfuegbarDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndFahrzeugeGetAllVerfuegbarDelegate;
+  private SendOrPostCallback onFahrzeugeGetAllVerfuegbarCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginFahrzeugeGetAllDisponierbarDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndFahrzeugeGetAllDisponierbarDelegate;
+  private SendOrPostCallback onFahrzeugeGetAllDisponierbarCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginFahrzeugPersistDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndFahrzeugPersistDelegate;
+  private SendOrPostCallback onFahrzeugPersistCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginFahrzeugDeleteDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndFahrzeugDeleteDelegate;
+  private SendOrPostCallback onFahrzeugDeleteCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginFahrzeugChangeImDienstDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndFahrzeugChangeImDienstDelegate;
+  private SendOrPostCallback onFahrzeugChangeImDienstCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginFahrzeugSetStatusInfoDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndFahrzeugSetStatusInfoDelegate;
+  private SendOrPostCallback onFahrzeugSetStatusInfoCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginAlarmplanKategorieGetAllDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndAlarmplanKategorieGetAllDelegate;
+  private SendOrPostCallback onAlarmplanKategorieGetAllCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginAlarmplanKategoriePersistDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndAlarmplanKategoriePersistDelegate;
+  private SendOrPostCallback onAlarmplanKategoriePersistCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginAlarmplanKategorieDeleteDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndAlarmplanKategorieDeleteDelegate;
+  private SendOrPostCallback onAlarmplanKategorieDeleteCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginAlarmplanGetAllDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndAlarmplanGetAllDelegate;
+  private SendOrPostCallback onAlarmplanGetAllCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginAlarmplanPersistDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndAlarmplanPersistDelegate;
+  private SendOrPostCallback onAlarmplanPersistCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginAlarmplanDeleteDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndAlarmplanDeleteDelegate;
+  private SendOrPostCallback onAlarmplanDeleteCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginAlarmplanGeneratorStartDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndAlarmplanGeneratorStartDelegate;
+  private SendOrPostCallback onAlarmplanGeneratorStartCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginAlarmplanGetCountDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndAlarmplanGetCountDelegate;
+  private SendOrPostCallback onAlarmplanGetCountCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginAlarmplanGetRangeDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndAlarmplanGetRangeDelegate;
+  private SendOrPostCallback onAlarmplanGetRangeCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginAlarmplanObjGetAllDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndAlarmplanObjGetAllDelegate;
+  private SendOrPostCallback onAlarmplanObjGetAllCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginAlarmplanObjPersistDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndAlarmplanObjPersistDelegate;
+  private SendOrPostCallback onAlarmplanObjPersistCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginAlarmplanObjDeleteDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndAlarmplanObjDeleteDelegate;
+  private SendOrPostCallback onAlarmplanObjDeleteCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginEinsatzTypObjGetAllDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndEinsatzTypObjGetAllDelegate;
+  private SendOrPostCallback onEinsatzTypObjGetAllCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginEinsatzTypObjPersistDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndEinsatzTypObjPersistDelegate;
+  private SendOrPostCallback onEinsatzTypObjPersistCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginEinsatzTypObjDeleteDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndEinsatzTypObjDeleteDelegate;
+  private SendOrPostCallback onEinsatzTypObjDeleteCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginAusrueckeOrdnungGetAllDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndAusrueckeOrdnungGetAllDelegate;
+  private SendOrPostCallback onAusrueckeOrdnungGetAllCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginAusrueckeOrdnungGetByEinsatzTypDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndAusrueckeOrdnungGetByEinsatzTypDelegate;
+  private SendOrPostCallback onAusrueckeOrdnungGetByEinsatzTypCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginAusrueckeOrdnungPersistDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndAusrueckeOrdnungPersistDelegate;
+  private SendOrPostCallback onAusrueckeOrdnungPersistCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginAusrueckeOrdnungDeleteDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndAusrueckeOrdnungDeleteDelegate;
+  private SendOrPostCallback onAusrueckeOrdnungDeleteCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginSondergeraeteGetAllDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndSondergeraeteGetAllDelegate;
+  private SendOrPostCallback onSondergeraeteGetAllCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginSondergeraeteGetByFeuerwehrDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndSondergeraeteGetByFeuerwehrDelegate;
+  private SendOrPostCallback onSondergeraeteGetByFeuerwehrCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginSondergeraetPersistDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndSondergeraetPersistDelegate;
+  private SendOrPostCallback onSondergeraetPersistCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginSondergeraetDeleteDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndSondergeraetDeleteDelegate;
+  private SendOrPostCallback onSondergeraetDeleteCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginFremdhilfeArtenGetAllDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndFremdhilfeArtenGetAllDelegate;
+  private SendOrPostCallback onFremdhilfeArtenGetAllCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginFremdhilfeArtPersistDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndFremdhilfeArtPersistDelegate;
+  private SendOrPostCallback onFremdhilfeArtPersistCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginFremdhilfeArtDeleteDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndFremdhilfeArtDeleteDelegate;
+  private SendOrPostCallback onFremdhilfeArtDeleteCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginFremdhilfeLeisterGetAllDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndFremdhilfeLeisterGetAllDelegate;
+  private SendOrPostCallback onFremdhilfeLeisterGetAllCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginFremdhilfeLeisterGetByArtDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndFremdhilfeLeisterGetByArtDelegate;
+  private SendOrPostCallback onFremdhilfeLeisterGetByArtCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginFremdhilfeLeisterPersistDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndFremdhilfeLeisterPersistDelegate;
+  private SendOrPostCallback onFremdhilfeLeisterPersistCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginFremdhilfeLeisterDeleteDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndFremdhilfeLeisterDeleteDelegate;
+  private SendOrPostCallback onFremdhilfeLeisterDeleteCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginCreateTicketDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndCreateTicketDelegate;
+  private SendOrPostCallback onCreateTicketCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginCheckTicketDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndCheckTicketDelegate;
+  private SendOrPostCallback onCheckTicketCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginCloseTicketDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndCloseTicketDelegate;
+  private SendOrPostCallback onCloseTicketCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginLogELISProgramUseDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndLogELISProgramUseDelegate;
+  private SendOrPostCallback onLogELISProgramUseCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginCheckELISClientVersionValidDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndCheckELISClientVersionValidDelegate;
+  private SendOrPostCallback onCheckELISClientVersionValidCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginUserGetAllDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndUserGetAllDelegate;
+  private SendOrPostCallback onUserGetAllCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginUserGetByLoginAndPwDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndUserGetByLoginAndPwDelegate;
+  private SendOrPostCallback onUserGetByLoginAndPwCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginUserGetActiveDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndUserGetActiveDelegate;
+  private SendOrPostCallback onUserGetActiveCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginUserPersistDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndUserPersistDelegate;
+  private SendOrPostCallback onUserPersistCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginUserDeleteDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndUserDeleteDelegate;
+  private SendOrPostCallback onUserDeleteCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginUserSendEMailLoginDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndUserSendEMailLoginDelegate;
+  private SendOrPostCallback onUserSendEMailLoginCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginEmailSMSGetActiveDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndEmailSMSGetActiveDelegate;
+  private SendOrPostCallback onEmailSMSGetActiveCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginBenutzerGruppePersistDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndBenutzerGruppePersistDelegate;
+  private SendOrPostCallback onBenutzerGruppePersistCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginBenutzerGruppeDeleteDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndBenutzerGruppeDeleteDelegate;
+  private SendOrPostCallback onBenutzerGruppeDeleteCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginBenutzerGruppeAddBenutzerDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndBenutzerGruppeAddBenutzerDelegate;
+  private SendOrPostCallback onBenutzerGruppeAddBenutzerCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginBenutzerGruppeRemoveBenutzerDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndBenutzerGruppeRemoveBenutzerDelegate;
+  private SendOrPostCallback onBenutzerGruppeRemoveBenutzerCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginAppLogLastGPSDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndAppLogLastGPSDelegate;
+  private SendOrPostCallback onAppLogLastGPSCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginAppLogLastMonthGPSDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndAppLogLastMonthGPSDelegate;
+  private SendOrPostCallback onAppLogLastMonthGPSCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginSucheDatenDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndSucheDatenDelegate;
+  private SendOrPostCallback onSucheDatenCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginWasserentnahmestelleSaveDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndWasserentnahmestelleSaveDelegate;
+  private SendOrPostCallback onWasserentnahmestelleSaveCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginWasserentnahmestellenGetCountDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndWasserentnahmestellenGetCountDelegate;
+  private SendOrPostCallback onWasserentnahmestellenGetCountCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginWasserentnahmestellenGetRangeDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndWasserentnahmestellenGetRangeDelegate;
+  private SendOrPostCallback onWasserentnahmestellenGetRangeCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginWasserentnahmestelleSearchDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndWasserentnahmestelleSearchDelegate;
+  private SendOrPostCallback onWasserentnahmestelleSearchCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginWasserentnahmestelleGetByNumberDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndWasserentnahmestelleGetByNumberDelegate;
+  private SendOrPostCallback onWasserentnahmestelleGetByNumberCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginWasserentnahmestelleDeleteDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndWasserentnahmestelleDeleteDelegate;
+  private SendOrPostCallback onWasserentnahmestelleDeleteCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginWasserentnahmestelleIconRefreshDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndWasserentnahmestelleIconRefreshDelegate;
+  private SendOrPostCallback onWasserentnahmestelleIconRefreshCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginWasserentnahmestellenBilderGetAllDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndWasserentnahmestellenBilderGetAllDelegate;
+  private SendOrPostCallback onWasserentnahmestellenBilderGetAllCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginWasserentnahmestellenBilderGetByWasserentnahmestelleDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndWasserentnahmestellenBilderGetByWasserentnahmestelleDelegate;
+  private SendOrPostCallback onWasserentnahmestellenBilderGetByWasserentnahmestelleCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginWasserentnahmestellenBildPersistDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndWasserentnahmestellenBildPersistDelegate;
+  private SendOrPostCallback onWasserentnahmestellenBildPersistCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginWasserentnahmestellenBildDeleteDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndWasserentnahmestellenBildDeleteDelegate;
+  private SendOrPostCallback onWasserentnahmestellenBildDeleteCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginWasserentnahmestellenGMLAttributUpdateDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndWasserentnahmestellenGMLAttributUpdateDelegate;
+  private SendOrPostCallback onWasserentnahmestellenGMLAttributUpdateCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginConfigNeuEinlesenDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndConfigNeuEinlesenDelegate;
+  private SendOrPostCallback onConfigNeuEinlesenCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginFeuerwehrhausKoordinatenSetDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndFeuerwehrhausKoordinatenSetDelegate;
+  private SendOrPostCallback onFeuerwehrhausKoordinatenSetCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginDokumenteBereinigenDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndDokumenteBereinigenDelegate;
+  private SendOrPostCallback onDokumenteBereinigenCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginDokumenteValidierenDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndDokumenteValidierenDelegate;
+  private SendOrPostCallback onDokumenteValidierenCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginTimerServicesGetAllDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndTimerServicesGetAllDelegate;
+  private SendOrPostCallback onTimerServicesGetAllCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginTimerServicesPersistDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndTimerServicesPersistDelegate;
+  private SendOrPostCallback onTimerServicesPersistCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginTimerServicesDeleteDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndTimerServicesDeleteDelegate;
+  private SendOrPostCallback onTimerServicesDeleteCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginTimerServicesExecuteJobManualDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndTimerServicesExecuteJobManualDelegate;
+  private SendOrPostCallback onTimerServicesExecuteJobManualCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginWakeOnLanClientPersistDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndWakeOnLanClientPersistDelegate;
+  private SendOrPostCallback onWakeOnLanClientPersistCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginWakeOnLanClientDeleteDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndWakeOnLanClientDeleteDelegate;
+  private SendOrPostCallback onWakeOnLanClientDeleteCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginWakeOnLanClientWAKEClientDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndWakeOnLanClientWAKEClientDelegate;
+  private SendOrPostCallback onWakeOnLanClientWAKEClientCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginWakeOnLanClientGetAllDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndWakeOnLanClientGetAllDelegate;
+  private SendOrPostCallback onWakeOnLanClientGetAllCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginSirenenprogrammGetAllDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndSirenenprogrammGetAllDelegate;
+  private SendOrPostCallback onSirenenprogrammGetAllCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginSirenenprogrammPersistDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndSirenenprogrammPersistDelegate;
+  private SendOrPostCallback onSirenenprogrammPersistCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginDatenValidierenDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndDatenValidierenDelegate;
+  private SendOrPostCallback onDatenValidierenCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginDatenReparierenDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndDatenReparierenDelegate;
+  private SendOrPostCallback onDatenReparierenCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginKarteiBlattGetCountDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndKarteiBlattGetCountDelegate;
+  private SendOrPostCallback onKarteiBlattGetCountCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginObjektKarteiGetCountDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndObjektKarteiGetCountDelegate;
+  private SendOrPostCallback onObjektKarteiGetCountCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginKarteiBlattGetRangeDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndKarteiBlattGetRangeDelegate;
+  private SendOrPostCallback onKarteiBlattGetRangeCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginObjektKarteiGetRangeDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndObjektKarteiGetRangeDelegate;
+  private SendOrPostCallback onObjektKarteiGetRangeCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginKarteiBlattCheckAlternativNameDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndKarteiBlattCheckAlternativNameDelegate;
+  private SendOrPostCallback onKarteiBlattCheckAlternativNameCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginKarteiblattSaveDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndKarteiblattSaveDelegate;
+  private SendOrPostCallback onKarteiblattSaveCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginObjektKarteiPersistDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndObjektKarteiPersistDelegate;
+  private SendOrPostCallback onObjektKarteiPersistCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginKarteiblattDeleteDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndKarteiblattDeleteDelegate;
+  private SendOrPostCallback onKarteiblattDeleteCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginObjektKarteiDeleteDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndObjektKarteiDeleteDelegate;
+  private SendOrPostCallback onObjektKarteiDeleteCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginKarteiblattCopyDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndKarteiblattCopyDelegate;
+  private SendOrPostCallback onKarteiblattCopyCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginObjektKarteiCopyDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndObjektKarteiCopyDelegate;
+  private SendOrPostCallback onObjektKarteiCopyCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginKarteiDokumentPersistDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndKarteiDokumentPersistDelegate;
+  private SendOrPostCallback onKarteiDokumentPersistCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginKarteiDokumentDeleteDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndKarteiDokumentDeleteDelegate;
+  private SendOrPostCallback onKarteiDokumentDeleteCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginKarteiDokumentAddEinsatzTypDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndKarteiDokumentAddEinsatzTypDelegate;
+  private SendOrPostCallback onKarteiDokumentAddEinsatzTypCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginKarteiDokumentRemoveEinsatzTypDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndKarteiDokumentRemoveEinsatzTypDelegate;
+  private SendOrPostCallback onKarteiDokumentRemoveEinsatzTypCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginKarteiDokumentGetEinsatzTypenDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndKarteiDokumentGetEinsatzTypenDelegate;
+  private SendOrPostCallback onKarteiDokumentGetEinsatzTypenCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginObjektKategorieGetDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndObjektKategorieGetDelegate;
+  private SendOrPostCallback onObjektKategorieGetCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginObjektKategoriePersistDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndObjektKategoriePersistDelegate;
+  private SendOrPostCallback onObjektKategoriePersistCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginObjektKategorieDeleteDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndObjektKategorieDeleteDelegate;
+  private SendOrPostCallback onObjektKategorieDeleteCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginCheckListeGetAllDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndCheckListeGetAllDelegate;
+  private SendOrPostCallback onCheckListeGetAllCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginCheckListePersistDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndCheckListePersistDelegate;
+  private SendOrPostCallback onCheckListePersistCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginCheckListeDeleteDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndCheckListeDeleteDelegate;
+  private SendOrPostCallback onCheckListeDeleteCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginCheckListeAddEinsatzTypDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndCheckListeAddEinsatzTypDelegate;
+  private SendOrPostCallback onCheckListeAddEinsatzTypCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginCheckListeRemoveEinsatzTypDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndCheckListeRemoveEinsatzTypDelegate;
+  private SendOrPostCallback onCheckListeRemoveEinsatzTypCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginFremdSystemGetEinsatzkarteiByEinsatzDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndFremdSystemGetEinsatzkarteiByEinsatzDelegate;
+  private SendOrPostCallback onFremdSystemGetEinsatzkarteiByEinsatzCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginFremdSystemGetEinsatzkarteiListeDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndFremdSystemGetEinsatzkarteiListeDelegate;
+  private SendOrPostCallback onFremdSystemGetEinsatzkarteiListeCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginFremdSystemGetObjektKarteiListeDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndFremdSystemGetObjektKarteiListeDelegate;
+  private SendOrPostCallback onFremdSystemGetObjektKarteiListeCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginFremdSystemGetWasserEntnahmenListeDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndFremdSystemGetWasserEntnahmenListeDelegate;
+  private SendOrPostCallback onFremdSystemGetWasserEntnahmenListeCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginFremdSystemGetKarteiByKBGuidDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndFremdSystemGetKarteiByKBGuidDelegate;
+  private SendOrPostCallback onFremdSystemGetKarteiByKBGuidCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginFremdSystemGetObjektKarteiByKBGuidDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndFremdSystemGetObjektKarteiByKBGuidDelegate;
+  private SendOrPostCallback onFremdSystemGetObjektKarteiByKBGuidCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginFremdSystemGetWasserEntnahmeByWEGuidDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndFremdSystemGetWasserEntnahmeByWEGuidDelegate;
+  private SendOrPostCallback onFremdSystemGetWasserEntnahmeByWEGuidCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginFremdSystemeGetAllDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndFremdSystemeGetAllDelegate;
+  private SendOrPostCallback onFremdSystemeGetAllCompletedDelegate;
+  private ClientBase<IELISWCFService>.BeginOperationDelegate onBeginFremdSystemPersistDelegate;
+  private ClientBase<IELISWCFService>.EndOperationDelegate onEndFremdSystemPersistDelegate;
+  private SendOrPostCallback onFremdSystemPersistCompletedDelegate;
+
+  public ELISWCFServiceClient()
+  {
+  }
+
+  public ELISWCFServiceClient(string endpointConfigurationName)
+    : base(endpointConfigurationName)
+  {
+  }
+
+  public ELISWCFServiceClient(string endpointConfigurationName, string remoteAddress)
+    : base(endpointConfigurationName, remoteAddress)
+  {
+  }
+
+  public ELISWCFServiceClient(string endpointConfigurationName, EndpointAddress remoteAddress)
+    : base(endpointConfigurationName, remoteAddress)
+  {
+  }
+
+  public ELISWCFServiceClient(Binding binding, EndpointAddress remoteAddress)
+    : base(binding, remoteAddress)
+  {
+  }
+
+  public event EventHandler<NewWASNrGetCompletedEventArgs> NewWASNrGetCompleted;
+
+  public event EventHandler<NewEinsatzGuidGetCompletedEventArgs> NewEinsatzGuidGetCompleted;
+
+  public event EventHandler<EinsatzPersonenStatusAktiviertCompletedEventArgs> EinsatzPersonenStatusAktiviertCompleted;
+
+  public event EventHandler<EinsatzPersonPersistCompletedEventArgs> EinsatzPersonPersistCompleted;
+
+  public event EventHandler<EinsatzPersonGetByEinsatzCompletedEventArgs> EinsatzPersonGetByEinsatzCompleted;
+
+  public event EventHandler<FileDownloadCompletedEventArgs> FileDownloadCompleted;
+
+  public event EventHandler<AsyncCompletedEventArgs> FileUploadCompleted;
+
+  public event EventHandler<FileCheckExistsCompletedEventArgs> FileCheckExistsCompleted;
+
+  public event EventHandler<FileGetLastModificationDateCompletedEventArgs> FileGetLastModificationDateCompleted;
+
+  public event EventHandler<WCFTicketGetAllCompletedEventArgs> WCFTicketGetAllCompleted;
+
+  public event EventHandler<WCFTicketGetFilteredCompletedEventArgs> WCFTicketGetFilteredCompleted;
+
+  public event EventHandler<WCFLogGetAllCompletedEventArgs> WCFLogGetAllCompleted;
+
+  public event EventHandler<WCFLogGetbyNrCompletedEventArgs> WCFLogGetbyNrCompleted;
+
+  public event EventHandler<WCFLogGetCountCompletedEventArgs> WCFLogGetCountCompleted;
+
+  public event EventHandler<WCFLogGetByTicketCompletedEventArgs> WCFLogGetByTicketCompleted;
+
+  public event EventHandler<WCFLogDeleteAllCompletedEventArgs> WCFLogDeleteAllCompleted;
+
+  public event EventHandler<WCFLogDeleteTicketCompletedEventArgs> WCFLogDeleteTicketCompleted;
+
+  public event EventHandler<SystemLogGetAllCompletedEventArgs> SystemLogGetAllCompleted;
+
+  public event EventHandler<SystemLogWriteCompletedEventArgs> SystemLogWriteCompleted;
+
+  public event EventHandler<AppLogWriteCompletedEventArgs> AppLogWriteCompleted;
+
+  public event EventHandler<SystemLogGetAllModuleNamesCompletedEventArgs> SystemLogGetAllModuleNamesCompleted;
+
+  public event EventHandler<SystemLogGetRowCountCompletedEventArgs> SystemLogGetRowCountCompleted;
+
+  public event EventHandler<SystemLogGetFilteredRangeCompletedEventArgs> SystemLogGetFilteredRangeCompleted;
+
+  public event EventHandler<TimerServiceLogGetAllCompletedEventArgs> TimerServiceLogGetAllCompleted;
+
+  public event EventHandler<TimerServiceLogGetAllTimerServiceNamesCompletedEventArgs> TimerServiceLogGetAllTimerServiceNamesCompleted;
+
+  public event EventHandler<TimerServiceLogGetRowCountCompletedEventArgs> TimerServiceLogGetRowCountCompleted;
+
+  public event EventHandler<TimerServiceLogGetFilteredRangeCompletedEventArgs> TimerServiceLogGetFilteredRangeCompleted;
+
+  public event EventHandler<AsyncCompletedEventArgs> PrintKarteiCompleted;
+
+  public event EventHandler<AsyncCompletedEventArgs> PrintWASEinsatzberichtCompleted;
+
+  public event EventHandler<AsyncCompletedEventArgs> PrintLFKEinsatzmeldungCompleted;
+
+  public event EventHandler<AsyncCompletedEventArgs> PrintChecklisteCompleted;
+
+  public event EventHandler<AsyncCompletedEventArgs> PrintEinsatzprotokollCompleted;
+
+  public event EventHandler<AsyncCompletedEventArgs> PrintAnfahrtEinsatzortübersichtCompleted;
+
+  public event EventHandler<PrintGetPrintersCompletedEventArgs> PrintGetPrintersCompleted;
+
+  public event EventHandler<AusfahrtsrichtungenGetAllCompletedEventArgs> AusfahrtsrichtungenGetAllCompleted;
+
+  public event EventHandler<AusfahrtsrichtungPersistCompletedEventArgs> AusfahrtsrichtungPersistCompleted;
+
+  public event EventHandler<AusfahrtsrichtungDeleteCompletedEventArgs> AusfahrtsrichtungDeleteCompleted;
+
+  public event EventHandler<SystemTestStartCompletedEventArgs> SystemTestStartCompleted;
+
+  public event EventHandler<EinsatzTyp_GruppePersistCompletedEventArgs> EinsatzTyp_GruppePersistCompleted;
+
+  public event EventHandler<EinsatzTyp_GruppeRemoveCompletedEventArgs> EinsatzTyp_GruppeRemoveCompleted;
+
+  public event EventHandler<BenutzerGruppeGetByEinsatzTypCompletedEventArgs> BenutzerGruppeGetByEinsatzTypCompleted;
+
+  public event EventHandler<BenutzerGruppenGetAllCompletedEventArgs> BenutzerGruppenGetAllCompleted;
+
+  public event EventHandler<BenutzerGruppenGetByBenutzerCompletedEventArgs> BenutzerGruppenGetByBenutzerCompleted;
+
+  public event EventHandler<EinsatzTyp_GruppenGetAllCompletedEventArgs> EinsatzTyp_GruppenGetAllCompleted;
+
+  public event EventHandler<EinsatzTyp_GruppenGetByGruppeCompletedEventArgs> EinsatzTyp_GruppenGetByGruppeCompleted;
+
+  public event EventHandler<BenutzerGetByBenutzerGruppenIdCompletedEventArgs> BenutzerGetByBenutzerGruppenIdCompleted;
+
+  public event EventHandler<BenutzerResetPasswordEnabledCompletedEventArgs> BenutzerResetPasswordEnabledCompleted;
+
+  public event EventHandler<BenutzerResetPasswordCompletedEventArgs> BenutzerResetPasswordCompleted;
+
+  public event EventHandler<BenutzerSendPINCompletedEventArgs> BenutzerSendPINCompleted;
+
+  public event EventHandler<BenutzerGetDeviceRegistrationCompletedEventArgs> BenutzerGetDeviceRegistrationCompleted;
+
+  public event EventHandler<GCalenderGetListCompletedEventArgs> GCalenderGetListCompleted;
+
+  public event EventHandler<InfoGetFeuerwehrNameCompletedEventArgs> InfoGetFeuerwehrNameCompleted;
+
+  public event EventHandler<InfoGetFeuerwehrAdresseCompletedEventArgs> InfoGetFeuerwehrAdresseCompleted;
+
+  public event EventHandler<InfoGetFeuerwehrAdressePLZGemeindeCompletedEventArgs> InfoGetFeuerwehrAdressePLZGemeindeCompleted;
+
+  public event EventHandler<InfoGetFeuerwehrAdresseGPSLatitudeCompletedEventArgs> InfoGetFeuerwehrAdresseGPSLatitudeCompleted;
+
+  public event EventHandler<InfoGetFeuerwehrAdresseGPSLongitudeCompletedEventArgs> InfoGetFeuerwehrAdresseGPSLongitudeCompleted;
+
+  public event EventHandler<InfoGetFeuerwehrAdresseGPSKoordinatenStringCompletedEventArgs> InfoGetFeuerwehrAdresseGPSKoordinatenStringCompleted;
+
+  public event EventHandler<InfoGetPLZCompletedEventArgs> InfoGetPLZCompleted;
+
+  public event EventHandler<InfoGetGemeindeKennzahlCompletedEventArgs> InfoGetGemeindeKennzahlCompleted;
+
+  public event EventHandler<InfoGetGemeindeKennzahlRegionCompletedEventArgs> InfoGetGemeindeKennzahlRegionCompleted;
+
+  public event EventHandler<InfoGetGemeindeCompletedEventArgs> InfoGetGemeindeCompleted;
+
+  public event EventHandler<InfoGetBezirkCompletedEventArgs> InfoGetBezirkCompleted;
+
+  public event EventHandler<InfoGetLandCompletedEventArgs> InfoGetLandCompleted;
+
+  public event EventHandler<InfoGetWetterCompletedEventArgs> InfoGetWetterCompleted;
+
+  public event EventHandler<InfoGetObjDBVersionCompletedEventArgs> InfoGetObjDBVersionCompleted;
+
+  public event EventHandler<InfoGetSysDBVersionCompletedEventArgs> InfoGetSysDBVersionCompleted;
+
+  public event EventHandler<InfoGetAPDBVersionCompletedEventArgs> InfoGetAPDBVersionCompleted;
+
+  public event EventHandler<InfoGetWCFVersionCompletedEventArgs> InfoGetWCFVersionCompleted;
+
+  public event EventHandler<InfoGetWCFEinsatzOptionKonfigCompletedEventArgs> InfoGetWCFEinsatzOptionKonfigCompleted;
+
+  public event EventHandler<InfoGetELISBenutzerverwaltungsSystemCompletedEventArgs> InfoGetELISBenutzerverwaltungsSystemCompleted;
+
+  public event EventHandler<InfoGetSystemBuildDateCompletedEventArgs> InfoGetSystemBuildDateCompleted;
+
+  public event EventHandler<InfoGetELISSystemIDCompletedEventArgs> InfoGetELISSystemIDCompleted;
+
+  public event EventHandler<InfoGetELISPublicURLCompletedEventArgs> InfoGetELISPublicURLCompleted;
+
+  public event EventHandler<InfoGetEinsatzZonenDetailsCompletedEventArgs> InfoGetEinsatzZonenDetailsCompleted;
+
+  public event EventHandler<InfoGetGMapLadezeitCompletedEventArgs> InfoGetGMapLadezeitCompleted;
+
+  public event EventHandler<InfoGetGAPIClientKeyCompletedEventArgs> InfoGetGAPIClientKeyCompleted;
+
+  public event EventHandler<InfoGetGAPIServerKeyCompletedEventArgs> InfoGetGAPIServerKeyCompleted;
+
+  public event EventHandler<AsyncCompletedEventArgs> ProtocolWriteCompleted;
+
+  public event EventHandler<ProtocolDeleteEntryCompletedEventArgs> ProtocolDeleteEntryCompleted;
+
+  public event EventHandler<ProtocolGetFilteredCountCompletedEventArgs> ProtocolGetFilteredCountCompleted;
+
+  public event EventHandler<ProtocolGetFilteredRangeCompletedEventArgs> ProtocolGetFilteredRangeCompleted;
+
+  public event EventHandler<ProtocolGetArtListCompletedEventArgs> ProtocolGetArtListCompleted;
+
+  public event EventHandler<JournalFzInfoGetAllCompletedEventArgs> JournalFzInfoGetAllCompleted;
+
+  public event EventHandler<JournalFzInfoPersistCompletedEventArgs> JournalFzInfoPersistCompleted;
+
+  public event EventHandler<JournalFzInfoDeleteCompletedEventArgs> JournalFzInfoDeleteCompleted;
+
+  public event EventHandler<SMSSendNEWCompletedEventArgs> SMSSendNEWCompleted;
+
+  public event EventHandler<SMSSendWithSenderCompletedEventArgs> SMSSendWithSenderCompleted;
+
+  public event EventHandler<EmailSendCompletedEventArgs> EmailSendCompleted;
+
+  public event EventHandler<EmailSend2CompletedEventArgs> EmailSend2Completed;
+
+  public event EventHandler<EmailSendAttachmentsCompletedEventArgs> EmailSendAttachmentsCompleted;
+
+  public event EventHandler<ConnectedWASCompletedEventArgs> ConnectedWASCompleted;
+
+  public event EventHandler<ConnectedELISCompletedEventArgs> ConnectedELISCompleted;
+
+  public event EventHandler<EinsatzDataGetAllCompletedEventArgs> EinsatzDataGetAllCompleted;
+
+  public event EventHandler<EinsatzHistoryDataGetCountCompletedEventArgs> EinsatzHistoryDataGetCountCompleted;
+
+  public event EventHandler<EinsatzHistoryDataGetCountTimeSpanCompletedEventArgs> EinsatzHistoryDataGetCountTimeSpanCompleted;
+
+  public event EventHandler<EinsatzHistoryDataGetRangeCompletedEventArgs> EinsatzHistoryDataGetRangeCompleted;
+
+  public event EventHandler<EinsatzHistoryDataGetRangeTimeSpanCompletedEventArgs> EinsatzHistoryDataGetRangeTimeSpanCompleted;
+
+  public event EventHandler<EinsatzHistoryDataGetbyIdCompletedEventArgs> EinsatzHistoryDataGetbyIdCompleted;
+
+  public event EventHandler<EinsatzHistoryDataDeletebyIdCompletedEventArgs> EinsatzHistoryDataDeletebyIdCompleted;
+
+  public event EventHandler<EinsatzDataPersistCompletedEventArgs> EinsatzDataPersistCompleted;
+
+  public event EventHandler<EinsatzHistoryDataPersistCompletedEventArgs> EinsatzHistoryDataPersistCompleted;
+
+  public event EventHandler<EinsatzGetFahrzeugeCompletedEventArgs> EinsatzGetFahrzeugeCompleted;
+
+  public event EventHandler<FremdSystemDeleteCompletedEventArgs> FremdSystemDeleteCompleted;
+
+  public event EventHandler<FremdSystemDeleteSyncDataCompletedEventArgs> FremdSystemDeleteSyncDataCompleted;
+
+  public event EventHandler<EigeneFeuerwehrSetCompletedEventArgs> EigeneFeuerwehrSetCompleted;
+
+  public event EventHandler<KontaktObjDeleteCompletedEventArgs> KontaktObjDeleteCompleted;
+
+  public event EventHandler<KontaktGetAllCompletedEventArgs> KontaktGetAllCompleted;
+
+  public event EventHandler<FeuerwehrenGetAllCompletedEventArgs> FeuerwehrenGetAllCompleted;
+
+  public event EventHandler<FeuerwehrGetEigeneCompletedEventArgs> FeuerwehrGetEigeneCompleted;
+
+  public event EventHandler<FeuerwehrPersistCompletedEventArgs> FeuerwehrPersistCompleted;
+
+  public event EventHandler<FeuerwehrDeleteCompletedEventArgs> FeuerwehrDeleteCompleted;
+
+  public event EventHandler<FahrzeugeGetAllCompletedEventArgs> FahrzeugeGetAllCompleted;
+
+  public event EventHandler<FahrzeugeGetByFeuerwehrCompletedEventArgs> FahrzeugeGetByFeuerwehrCompleted;
+
+  public event EventHandler<FahrzeugeGetByEigenerFeuerwehrCompletedEventArgs> FahrzeugeGetByEigenerFeuerwehrCompleted;
+
+  public event EventHandler<FahrzeugeGetAllVerfuegbarCompletedEventArgs> FahrzeugeGetAllVerfuegbarCompleted;
+
+  public event EventHandler<FahrzeugeGetAllDisponierbarCompletedEventArgs> FahrzeugeGetAllDisponierbarCompleted;
+
+  public event EventHandler<FahrzeugPersistCompletedEventArgs> FahrzeugPersistCompleted;
+
+  public event EventHandler<FahrzeugDeleteCompletedEventArgs> FahrzeugDeleteCompleted;
+
+  public event EventHandler<FahrzeugChangeImDienstCompletedEventArgs> FahrzeugChangeImDienstCompleted;
+
+  public event EventHandler<FahrzeugSetStatusInfoCompletedEventArgs> FahrzeugSetStatusInfoCompleted;
+
+  public event EventHandler<AlarmplanKategorieGetAllCompletedEventArgs> AlarmplanKategorieGetAllCompleted;
+
+  public event EventHandler<AlarmplanKategoriePersistCompletedEventArgs> AlarmplanKategoriePersistCompleted;
+
+  public event EventHandler<AlarmplanKategorieDeleteCompletedEventArgs> AlarmplanKategorieDeleteCompleted;
+
+  public event EventHandler<AlarmplanGetAllCompletedEventArgs> AlarmplanGetAllCompleted;
+
+  public event EventHandler<AlarmplanPersistCompletedEventArgs> AlarmplanPersistCompleted;
+
+  public event EventHandler<AlarmplanDeleteCompletedEventArgs> AlarmplanDeleteCompleted;
+
+  public event EventHandler<AlarmplanGeneratorStartCompletedEventArgs> AlarmplanGeneratorStartCompleted;
+
+  public event EventHandler<AlarmplanGetCountCompletedEventArgs> AlarmplanGetCountCompleted;
+
+  public event EventHandler<AlarmplanGetRangeCompletedEventArgs> AlarmplanGetRangeCompleted;
+
+  public event EventHandler<AlarmplanObjGetAllCompletedEventArgs> AlarmplanObjGetAllCompleted;
+
+  public event EventHandler<AlarmplanObjPersistCompletedEventArgs> AlarmplanObjPersistCompleted;
+
+  public event EventHandler<AlarmplanObjDeleteCompletedEventArgs> AlarmplanObjDeleteCompleted;
+
+  public event EventHandler<EinsatzTypObjGetAllCompletedEventArgs> EinsatzTypObjGetAllCompleted;
+
+  public event EventHandler<EinsatzTypObjPersistCompletedEventArgs> EinsatzTypObjPersistCompleted;
+
+  public event EventHandler<EinsatzTypObjDeleteCompletedEventArgs> EinsatzTypObjDeleteCompleted;
+
+  public event EventHandler<AusrueckeOrdnungGetAllCompletedEventArgs> AusrueckeOrdnungGetAllCompleted;
+
+  public event EventHandler<AusrueckeOrdnungGetByEinsatzTypCompletedEventArgs> AusrueckeOrdnungGetByEinsatzTypCompleted;
+
+  public event EventHandler<AusrueckeOrdnungPersistCompletedEventArgs> AusrueckeOrdnungPersistCompleted;
+
+  public event EventHandler<AusrueckeOrdnungDeleteCompletedEventArgs> AusrueckeOrdnungDeleteCompleted;
+
+  public event EventHandler<SondergeraeteGetAllCompletedEventArgs> SondergeraeteGetAllCompleted;
+
+  public event EventHandler<SondergeraeteGetByFeuerwehrCompletedEventArgs> SondergeraeteGetByFeuerwehrCompleted;
+
+  public event EventHandler<SondergeraetPersistCompletedEventArgs> SondergeraetPersistCompleted;
+
+  public event EventHandler<SondergeraetDeleteCompletedEventArgs> SondergeraetDeleteCompleted;
+
+  public event EventHandler<FremdhilfeArtenGetAllCompletedEventArgs> FremdhilfeArtenGetAllCompleted;
+
+  public event EventHandler<FremdhilfeArtPersistCompletedEventArgs> FremdhilfeArtPersistCompleted;
+
+  public event EventHandler<FremdhilfeArtDeleteCompletedEventArgs> FremdhilfeArtDeleteCompleted;
+
+  public event EventHandler<FremdhilfeLeisterGetAllCompletedEventArgs> FremdhilfeLeisterGetAllCompleted;
+
+  public event EventHandler<FremdhilfeLeisterGetByArtCompletedEventArgs> FremdhilfeLeisterGetByArtCompleted;
+
+  public event EventHandler<FremdhilfeLeisterPersistCompletedEventArgs> FremdhilfeLeisterPersistCompleted;
+
+  public event EventHandler<FremdhilfeLeisterDeleteCompletedEventArgs> FremdhilfeLeisterDeleteCompleted;
+
+  public event EventHandler<CreateTicketCompletedEventArgs> CreateTicketCompleted;
+
+  public event EventHandler<CheckTicketCompletedEventArgs> CheckTicketCompleted;
+
+  public event EventHandler<CloseTicketCompletedEventArgs> CloseTicketCompleted;
+
+  public event EventHandler<LogELISProgramUseCompletedEventArgs> LogELISProgramUseCompleted;
+
+  public event EventHandler<CheckELISClientVersionValidCompletedEventArgs> CheckELISClientVersionValidCompleted;
+
+  public event EventHandler<UserGetAllCompletedEventArgs> UserGetAllCompleted;
+
+  public event EventHandler<UserGetByLoginAndPwCompletedEventArgs> UserGetByLoginAndPwCompleted;
+
+  public event EventHandler<UserGetActiveCompletedEventArgs> UserGetActiveCompleted;
+
+  public event EventHandler<UserPersistCompletedEventArgs> UserPersistCompleted;
+
+  public event EventHandler<UserDeleteCompletedEventArgs> UserDeleteCompleted;
+
+  public event EventHandler<UserSendEMailLoginCompletedEventArgs> UserSendEMailLoginCompleted;
+
+  public event EventHandler<EmailSMSGetActiveCompletedEventArgs> EmailSMSGetActiveCompleted;
+
+  public event EventHandler<BenutzerGruppePersistCompletedEventArgs> BenutzerGruppePersistCompleted;
+
+  public event EventHandler<BenutzerGruppeDeleteCompletedEventArgs> BenutzerGruppeDeleteCompleted;
+
+  public event EventHandler<BenutzerGruppeAddBenutzerCompletedEventArgs> BenutzerGruppeAddBenutzerCompleted;
+
+  public event EventHandler<BenutzerGruppeRemoveBenutzerCompletedEventArgs> BenutzerGruppeRemoveBenutzerCompleted;
+
+  public event EventHandler<AppLogLastGPSCompletedEventArgs> AppLogLastGPSCompleted;
+
+  public event EventHandler<AppLogLastMonthGPSCompletedEventArgs> AppLogLastMonthGPSCompleted;
+
+  public event EventHandler<SucheDatenCompletedEventArgs> SucheDatenCompleted;
+
+  public event EventHandler<AsyncCompletedEventArgs> WasserentnahmestelleSaveCompleted;
+
+  public event EventHandler<WasserentnahmestellenGetCountCompletedEventArgs> WasserentnahmestellenGetCountCompleted;
+
+  public event EventHandler<WasserentnahmestellenGetRangeCompletedEventArgs> WasserentnahmestellenGetRangeCompleted;
+
+  public event EventHandler<WasserentnahmestelleSearchCompletedEventArgs> WasserentnahmestelleSearchCompleted;
+
+  public event EventHandler<WasserentnahmestelleGetByNumberCompletedEventArgs> WasserentnahmestelleGetByNumberCompleted;
+
+  public event EventHandler<AsyncCompletedEventArgs> WasserentnahmestelleDeleteCompleted;
+
+  public event EventHandler<WasserentnahmestelleIconRefreshCompletedEventArgs> WasserentnahmestelleIconRefreshCompleted;
+
+  public event EventHandler<WasserentnahmestellenBilderGetAllCompletedEventArgs> WasserentnahmestellenBilderGetAllCompleted;
+
+  public event EventHandler<WasserentnahmestellenBilderGetByWasserentnahmestelleCompletedEventArgs> WasserentnahmestellenBilderGetByWasserentnahmestelleCompleted;
+
+  public event EventHandler<WasserentnahmestellenBildPersistCompletedEventArgs> WasserentnahmestellenBildPersistCompleted;
+
+  public event EventHandler<WasserentnahmestellenBildDeleteCompletedEventArgs> WasserentnahmestellenBildDeleteCompleted;
+
+  public event EventHandler<WasserentnahmestellenGMLAttributUpdateCompletedEventArgs> WasserentnahmestellenGMLAttributUpdateCompleted;
+
+  public event EventHandler<ConfigNeuEinlesenCompletedEventArgs> ConfigNeuEinlesenCompleted;
+
+  public event EventHandler<FeuerwehrhausKoordinatenSetCompletedEventArgs> FeuerwehrhausKoordinatenSetCompleted;
+
+  public event EventHandler<DokumenteBereinigenCompletedEventArgs> DokumenteBereinigenCompleted;
+
+  public event EventHandler<DokumenteValidierenCompletedEventArgs> DokumenteValidierenCompleted;
+
+  public event EventHandler<TimerServicesGetAllCompletedEventArgs> TimerServicesGetAllCompleted;
+
+  public event EventHandler<TimerServicesPersistCompletedEventArgs> TimerServicesPersistCompleted;
+
+  public event EventHandler<TimerServicesDeleteCompletedEventArgs> TimerServicesDeleteCompleted;
+
+  public event EventHandler<TimerServicesExecuteJobManualCompletedEventArgs> TimerServicesExecuteJobManualCompleted;
+
+  public event EventHandler<WakeOnLanClientPersistCompletedEventArgs> WakeOnLanClientPersistCompleted;
+
+  public event EventHandler<WakeOnLanClientDeleteCompletedEventArgs> WakeOnLanClientDeleteCompleted;
+
+  public event EventHandler<WakeOnLanClientWAKEClientCompletedEventArgs> WakeOnLanClientWAKEClientCompleted;
+
+  public event EventHandler<WakeOnLanClientGetAllCompletedEventArgs> WakeOnLanClientGetAllCompleted;
+
+  public event EventHandler<SirenenprogrammGetAllCompletedEventArgs> SirenenprogrammGetAllCompleted;
+
+  public event EventHandler<SirenenprogrammPersistCompletedEventArgs> SirenenprogrammPersistCompleted;
+
+  public event EventHandler<DatenValidierenCompletedEventArgs> DatenValidierenCompleted;
+
+  public event EventHandler<DatenReparierenCompletedEventArgs> DatenReparierenCompleted;
+
+  public event EventHandler<KarteiBlattGetCountCompletedEventArgs> KarteiBlattGetCountCompleted;
+
+  public event EventHandler<ObjektKarteiGetCountCompletedEventArgs> ObjektKarteiGetCountCompleted;
+
+  public event EventHandler<KarteiBlattGetRangeCompletedEventArgs> KarteiBlattGetRangeCompleted;
+
+  public event EventHandler<ObjektKarteiGetRangeCompletedEventArgs> ObjektKarteiGetRangeCompleted;
+
+  public event EventHandler<KarteiBlattCheckAlternativNameCompletedEventArgs> KarteiBlattCheckAlternativNameCompleted;
+
+  public event EventHandler<KarteiblattSaveCompletedEventArgs> KarteiblattSaveCompleted;
+
+  public event EventHandler<ObjektKarteiPersistCompletedEventArgs> ObjektKarteiPersistCompleted;
+
+  public event EventHandler<AsyncCompletedEventArgs> KarteiblattDeleteCompleted;
+
+  public event EventHandler<AsyncCompletedEventArgs> ObjektKarteiDeleteCompleted;
+
+  public event EventHandler<KarteiblattCopyCompletedEventArgs> KarteiblattCopyCompleted;
+
+  public event EventHandler<ObjektKarteiCopyCompletedEventArgs> ObjektKarteiCopyCompleted;
+
+  public event EventHandler<KarteiDokumentPersistCompletedEventArgs> KarteiDokumentPersistCompleted;
+
+  public event EventHandler<KarteiDokumentDeleteCompletedEventArgs> KarteiDokumentDeleteCompleted;
+
+  public event EventHandler<KarteiDokumentAddEinsatzTypCompletedEventArgs> KarteiDokumentAddEinsatzTypCompleted;
+
+  public event EventHandler<KarteiDokumentRemoveEinsatzTypCompletedEventArgs> KarteiDokumentRemoveEinsatzTypCompleted;
+
+  public event EventHandler<KarteiDokumentGetEinsatzTypenCompletedEventArgs> KarteiDokumentGetEinsatzTypenCompleted;
+
+  public event EventHandler<ObjektKategorieGetCompletedEventArgs> ObjektKategorieGetCompleted;
+
+  public event EventHandler<ObjektKategoriePersistCompletedEventArgs> ObjektKategoriePersistCompleted;
+
+  public event EventHandler<ObjektKategorieDeleteCompletedEventArgs> ObjektKategorieDeleteCompleted;
+
+  public event EventHandler<CheckListeGetAllCompletedEventArgs> CheckListeGetAllCompleted;
+
+  public event EventHandler<CheckListePersistCompletedEventArgs> CheckListePersistCompleted;
+
+  public event EventHandler<CheckListeDeleteCompletedEventArgs> CheckListeDeleteCompleted;
+
+  public event EventHandler<CheckListeAddEinsatzTypCompletedEventArgs> CheckListeAddEinsatzTypCompleted;
+
+  public event EventHandler<CheckListeRemoveEinsatzTypCompletedEventArgs> CheckListeRemoveEinsatzTypCompleted;
+
+  public event EventHandler<FremdSystemGetEinsatzkarteiByEinsatzCompletedEventArgs> FremdSystemGetEinsatzkarteiByEinsatzCompleted;
+
+  public event EventHandler<FremdSystemGetEinsatzkarteiListeCompletedEventArgs> FremdSystemGetEinsatzkarteiListeCompleted;
+
+  public event EventHandler<FremdSystemGetObjektKarteiListeCompletedEventArgs> FremdSystemGetObjektKarteiListeCompleted;
+
+  public event EventHandler<FremdSystemGetWasserEntnahmenListeCompletedEventArgs> FremdSystemGetWasserEntnahmenListeCompleted;
+
+  public event EventHandler<FremdSystemGetKarteiByKBGuidCompletedEventArgs> FremdSystemGetKarteiByKBGuidCompleted;
+
+  public event EventHandler<FremdSystemGetObjektKarteiByKBGuidCompletedEventArgs> FremdSystemGetObjektKarteiByKBGuidCompleted;
+
+  public event EventHandler<FremdSystemGetWasserEntnahmeByWEGuidCompletedEventArgs> FremdSystemGetWasserEntnahmeByWEGuidCompleted;
+
+  public event EventHandler<FremdSystemeGetAllCompletedEventArgs> FremdSystemeGetAllCompleted;
+
+  public event EventHandler<FremdSystemPersistCompletedEventArgs> FremdSystemPersistCompleted;
+
+  public string NewWASNrGet() => this.Channel.NewWASNrGet();
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginNewWASNrGet(AsyncCallback callback, object asyncState)
+  {
+    return this.Channel.BeginNewWASNrGet(callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public string EndNewWASNrGet(IAsyncResult result) => this.Channel.EndNewWASNrGet(result);
+
+  private IAsyncResult OnBeginNewWASNrGet(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginNewWASNrGet(callback, asyncState);
+  }
+
+  private object[] OnEndNewWASNrGet(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndNewWASNrGet(result)
+    };
+  }
+
+  private void OnNewWASNrGetCompleted(object state)
+  {
+    if (this.NewWASNrGetCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.NewWASNrGetCompleted((object) this, new NewWASNrGetCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void NewWASNrGetAsync() => this.NewWASNrGetAsync((object) null);
+
+  public void NewWASNrGetAsync(object userState)
+  {
+    if (this.onBeginNewWASNrGetDelegate == null)
+      this.onBeginNewWASNrGetDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginNewWASNrGet);
+    if (this.onEndNewWASNrGetDelegate == null)
+      this.onEndNewWASNrGetDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndNewWASNrGet);
+    if (this.onNewWASNrGetCompletedDelegate == null)
+      this.onNewWASNrGetCompletedDelegate = new SendOrPostCallback(this.OnNewWASNrGetCompleted);
+    this.InvokeAsync(this.onBeginNewWASNrGetDelegate, (object[]) null, this.onEndNewWASNrGetDelegate, this.onNewWASNrGetCompletedDelegate, userState);
+  }
+
+  public string NewEinsatzGuidGet() => this.Channel.NewEinsatzGuidGet();
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginNewEinsatzGuidGet(AsyncCallback callback, object asyncState)
+  {
+    return this.Channel.BeginNewEinsatzGuidGet(callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public string EndNewEinsatzGuidGet(IAsyncResult result)
+  {
+    return this.Channel.EndNewEinsatzGuidGet(result);
+  }
+
+  private IAsyncResult OnBeginNewEinsatzGuidGet(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginNewEinsatzGuidGet(callback, asyncState);
+  }
+
+  private object[] OnEndNewEinsatzGuidGet(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndNewEinsatzGuidGet(result)
+    };
+  }
+
+  private void OnNewEinsatzGuidGetCompleted(object state)
+  {
+    if (this.NewEinsatzGuidGetCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.NewEinsatzGuidGetCompleted((object) this, new NewEinsatzGuidGetCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void NewEinsatzGuidGetAsync() => this.NewEinsatzGuidGetAsync((object) null);
+
+  public void NewEinsatzGuidGetAsync(object userState)
+  {
+    if (this.onBeginNewEinsatzGuidGetDelegate == null)
+      this.onBeginNewEinsatzGuidGetDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginNewEinsatzGuidGet);
+    if (this.onEndNewEinsatzGuidGetDelegate == null)
+      this.onEndNewEinsatzGuidGetDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndNewEinsatzGuidGet);
+    if (this.onNewEinsatzGuidGetCompletedDelegate == null)
+      this.onNewEinsatzGuidGetCompletedDelegate = new SendOrPostCallback(this.OnNewEinsatzGuidGetCompleted);
+    this.InvokeAsync(this.onBeginNewEinsatzGuidGetDelegate, (object[]) null, this.onEndNewEinsatzGuidGetDelegate, this.onNewEinsatzGuidGetCompletedDelegate, userState);
+  }
+
+  public bool EinsatzPersonenStatusAktiviert() => this.Channel.EinsatzPersonenStatusAktiviert();
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginEinsatzPersonenStatusAktiviert(AsyncCallback callback, object asyncState)
+  {
+    return this.Channel.BeginEinsatzPersonenStatusAktiviert(callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndEinsatzPersonenStatusAktiviert(IAsyncResult result)
+  {
+    return this.Channel.EndEinsatzPersonenStatusAktiviert(result);
+  }
+
+  private IAsyncResult OnBeginEinsatzPersonenStatusAktiviert(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginEinsatzPersonenStatusAktiviert(callback, asyncState);
+  }
+
+  private object[] OnEndEinsatzPersonenStatusAktiviert(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndEinsatzPersonenStatusAktiviert(result)
+    };
+  }
+
+  private void OnEinsatzPersonenStatusAktiviertCompleted(object state)
+  {
+    if (this.EinsatzPersonenStatusAktiviertCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.EinsatzPersonenStatusAktiviertCompleted((object) this, new EinsatzPersonenStatusAktiviertCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void EinsatzPersonenStatusAktiviertAsync()
+  {
+    this.EinsatzPersonenStatusAktiviertAsync((object) null);
+  }
+
+  public void EinsatzPersonenStatusAktiviertAsync(object userState)
+  {
+    if (this.onBeginEinsatzPersonenStatusAktiviertDelegate == null)
+      this.onBeginEinsatzPersonenStatusAktiviertDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginEinsatzPersonenStatusAktiviert);
+    if (this.onEndEinsatzPersonenStatusAktiviertDelegate == null)
+      this.onEndEinsatzPersonenStatusAktiviertDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndEinsatzPersonenStatusAktiviert);
+    if (this.onEinsatzPersonenStatusAktiviertCompletedDelegate == null)
+      this.onEinsatzPersonenStatusAktiviertCompletedDelegate = new SendOrPostCallback(this.OnEinsatzPersonenStatusAktiviertCompleted);
+    this.InvokeAsync(this.onBeginEinsatzPersonenStatusAktiviertDelegate, (object[]) null, this.onEndEinsatzPersonenStatusAktiviertDelegate, this.onEinsatzPersonenStatusAktiviertCompletedDelegate, userState);
+  }
+
+  public bool EinsatzPersonPersist(string einsatzNr, string mail, string status, Guid TicketID)
+  {
+    return this.Channel.EinsatzPersonPersist(einsatzNr, mail, status, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginEinsatzPersonPersist(
+    string einsatzNr,
+    string mail,
+    string status,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginEinsatzPersonPersist(einsatzNr, mail, status, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndEinsatzPersonPersist(IAsyncResult result)
+  {
+    return this.Channel.EndEinsatzPersonPersist(result);
+  }
+
+  private IAsyncResult OnBeginEinsatzPersonPersist(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginEinsatzPersonPersist((string) inValues[0], (string) inValues[1], (string) inValues[2], (Guid) inValues[3], callback, asyncState);
+  }
+
+  private object[] OnEndEinsatzPersonPersist(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndEinsatzPersonPersist(result)
+    };
+  }
+
+  private void OnEinsatzPersonPersistCompleted(object state)
+  {
+    if (this.EinsatzPersonPersistCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.EinsatzPersonPersistCompleted((object) this, new EinsatzPersonPersistCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void EinsatzPersonPersistAsync(
+    string einsatzNr,
+    string mail,
+    string status,
+    Guid TicketID)
+  {
+    this.EinsatzPersonPersistAsync(einsatzNr, mail, status, TicketID, (object) null);
+  }
+
+  public void EinsatzPersonPersistAsync(
+    string einsatzNr,
+    string mail,
+    string status,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginEinsatzPersonPersistDelegate == null)
+      this.onBeginEinsatzPersonPersistDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginEinsatzPersonPersist);
+    if (this.onEndEinsatzPersonPersistDelegate == null)
+      this.onEndEinsatzPersonPersistDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndEinsatzPersonPersist);
+    if (this.onEinsatzPersonPersistCompletedDelegate == null)
+      this.onEinsatzPersonPersistCompletedDelegate = new SendOrPostCallback(this.OnEinsatzPersonPersistCompleted);
+    this.InvokeAsync(this.onBeginEinsatzPersonPersistDelegate, new object[4]
+    {
+      (object) einsatzNr,
+      (object) mail,
+      (object) status,
+      (object) TicketID
+    }, this.onEndEinsatzPersonPersistDelegate, this.onEinsatzPersonPersistCompletedDelegate, userState);
+  }
+
+  public Dictionary<string, bool> EinsatzPersonGetByEinsatz(string einsatzNr, Guid TicketID)
+  {
+    return this.Channel.EinsatzPersonGetByEinsatz(einsatzNr, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginEinsatzPersonGetByEinsatz(
+    string einsatzNr,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginEinsatzPersonGetByEinsatz(einsatzNr, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public Dictionary<string, bool> EndEinsatzPersonGetByEinsatz(IAsyncResult result)
+  {
+    return this.Channel.EndEinsatzPersonGetByEinsatz(result);
+  }
+
+  private IAsyncResult OnBeginEinsatzPersonGetByEinsatz(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginEinsatzPersonGetByEinsatz((string) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndEinsatzPersonGetByEinsatz(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndEinsatzPersonGetByEinsatz(result)
+    };
+  }
+
+  private void OnEinsatzPersonGetByEinsatzCompleted(object state)
+  {
+    if (this.EinsatzPersonGetByEinsatzCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.EinsatzPersonGetByEinsatzCompleted((object) this, new EinsatzPersonGetByEinsatzCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void EinsatzPersonGetByEinsatzAsync(string einsatzNr, Guid TicketID)
+  {
+    this.EinsatzPersonGetByEinsatzAsync(einsatzNr, TicketID, (object) null);
+  }
+
+  public void EinsatzPersonGetByEinsatzAsync(string einsatzNr, Guid TicketID, object userState)
+  {
+    if (this.onBeginEinsatzPersonGetByEinsatzDelegate == null)
+      this.onBeginEinsatzPersonGetByEinsatzDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginEinsatzPersonGetByEinsatz);
+    if (this.onEndEinsatzPersonGetByEinsatzDelegate == null)
+      this.onEndEinsatzPersonGetByEinsatzDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndEinsatzPersonGetByEinsatz);
+    if (this.onEinsatzPersonGetByEinsatzCompletedDelegate == null)
+      this.onEinsatzPersonGetByEinsatzCompletedDelegate = new SendOrPostCallback(this.OnEinsatzPersonGetByEinsatzCompleted);
+    this.InvokeAsync(this.onBeginEinsatzPersonGetByEinsatzDelegate, new object[2]
+    {
+      (object) einsatzNr,
+      (object) TicketID
+    }, this.onEndEinsatzPersonGetByEinsatzDelegate, this.onEinsatzPersonGetByEinsatzCompletedDelegate, userState);
+  }
+
+  public Stream FileDownload(string fileName, WCFFileTyp ft, Guid TicketID)
+  {
+    return this.Channel.FileDownload(fileName, ft, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginFileDownload(
+    string fileName,
+    WCFFileTyp ft,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginFileDownload(fileName, ft, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public Stream EndFileDownload(IAsyncResult result) => this.Channel.EndFileDownload(result);
+
+  private IAsyncResult OnBeginFileDownload(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginFileDownload((string) inValues[0], (WCFFileTyp) inValues[1], (Guid) inValues[2], callback, asyncState);
+  }
+
+  private object[] OnEndFileDownload(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndFileDownload(result)
+    };
+  }
+
+  private void OnFileDownloadCompleted(object state)
+  {
+    if (this.FileDownloadCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.FileDownloadCompleted((object) this, new FileDownloadCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void FileDownloadAsync(string fileName, WCFFileTyp ft, Guid TicketID)
+  {
+    this.FileDownloadAsync(fileName, ft, TicketID, (object) null);
+  }
+
+  public void FileDownloadAsync(string fileName, WCFFileTyp ft, Guid TicketID, object userState)
+  {
+    if (this.onBeginFileDownloadDelegate == null)
+      this.onBeginFileDownloadDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginFileDownload);
+    if (this.onEndFileDownloadDelegate == null)
+      this.onEndFileDownloadDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndFileDownload);
+    if (this.onFileDownloadCompletedDelegate == null)
+      this.onFileDownloadCompletedDelegate = new SendOrPostCallback(this.OnFileDownloadCompleted);
+    this.InvokeAsync(this.onBeginFileDownloadDelegate, new object[3]
+    {
+      (object) fileName,
+      (object) ft,
+      (object) TicketID
+    }, this.onEndFileDownloadDelegate, this.onFileDownloadCompletedDelegate, userState);
+  }
+
+  public void FileUpload(string fileName, byte[] data, WCFFileTyp ft, Guid TicketID)
+  {
+    this.Channel.FileUpload(fileName, data, ft, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginFileUpload(
+    string fileName,
+    byte[] data,
+    WCFFileTyp ft,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginFileUpload(fileName, data, ft, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public void EndFileUpload(IAsyncResult result) => this.Channel.EndFileUpload(result);
+
+  private IAsyncResult OnBeginFileUpload(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginFileUpload((string) inValues[0], (byte[]) inValues[1], (WCFFileTyp) inValues[2], (Guid) inValues[3], callback, asyncState);
+  }
+
+  private object[] OnEndFileUpload(IAsyncResult result)
+  {
+    this.EndFileUpload(result);
+    return (object[]) null;
+  }
+
+  private void OnFileUploadCompleted(object state)
+  {
+    if (this.FileUploadCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.FileUploadCompleted((object) this, new AsyncCompletedEventArgs(completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void FileUploadAsync(string fileName, byte[] data, WCFFileTyp ft, Guid TicketID)
+  {
+    this.FileUploadAsync(fileName, data, ft, TicketID, (object) null);
+  }
+
+  public void FileUploadAsync(
+    string fileName,
+    byte[] data,
+    WCFFileTyp ft,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginFileUploadDelegate == null)
+      this.onBeginFileUploadDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginFileUpload);
+    if (this.onEndFileUploadDelegate == null)
+      this.onEndFileUploadDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndFileUpload);
+    if (this.onFileUploadCompletedDelegate == null)
+      this.onFileUploadCompletedDelegate = new SendOrPostCallback(this.OnFileUploadCompleted);
+    this.InvokeAsync(this.onBeginFileUploadDelegate, new object[4]
+    {
+      (object) fileName,
+      (object) data,
+      (object) ft,
+      (object) TicketID
+    }, this.onEndFileUploadDelegate, this.onFileUploadCompletedDelegate, userState);
+  }
+
+  public bool FileCheckExists(string fileName, WCFFileTyp ft, Guid TicketID)
+  {
+    return this.Channel.FileCheckExists(fileName, ft, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginFileCheckExists(
+    string fileName,
+    WCFFileTyp ft,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginFileCheckExists(fileName, ft, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndFileCheckExists(IAsyncResult result) => this.Channel.EndFileCheckExists(result);
+
+  private IAsyncResult OnBeginFileCheckExists(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginFileCheckExists((string) inValues[0], (WCFFileTyp) inValues[1], (Guid) inValues[2], callback, asyncState);
+  }
+
+  private object[] OnEndFileCheckExists(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndFileCheckExists(result)
+    };
+  }
+
+  private void OnFileCheckExistsCompleted(object state)
+  {
+    if (this.FileCheckExistsCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.FileCheckExistsCompleted((object) this, new FileCheckExistsCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void FileCheckExistsAsync(string fileName, WCFFileTyp ft, Guid TicketID)
+  {
+    this.FileCheckExistsAsync(fileName, ft, TicketID, (object) null);
+  }
+
+  public void FileCheckExistsAsync(
+    string fileName,
+    WCFFileTyp ft,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginFileCheckExistsDelegate == null)
+      this.onBeginFileCheckExistsDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginFileCheckExists);
+    if (this.onEndFileCheckExistsDelegate == null)
+      this.onEndFileCheckExistsDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndFileCheckExists);
+    if (this.onFileCheckExistsCompletedDelegate == null)
+      this.onFileCheckExistsCompletedDelegate = new SendOrPostCallback(this.OnFileCheckExistsCompleted);
+    this.InvokeAsync(this.onBeginFileCheckExistsDelegate, new object[3]
+    {
+      (object) fileName,
+      (object) ft,
+      (object) TicketID
+    }, this.onEndFileCheckExistsDelegate, this.onFileCheckExistsCompletedDelegate, userState);
+  }
+
+  public DateTime? FileGetLastModificationDate(string fileName, WCFFileTyp ft, Guid TicketID)
+  {
+    return this.Channel.FileGetLastModificationDate(fileName, ft, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginFileGetLastModificationDate(
+    string fileName,
+    WCFFileTyp ft,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginFileGetLastModificationDate(fileName, ft, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public DateTime? EndFileGetLastModificationDate(IAsyncResult result)
+  {
+    return this.Channel.EndFileGetLastModificationDate(result);
+  }
+
+  private IAsyncResult OnBeginFileGetLastModificationDate(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginFileGetLastModificationDate((string) inValues[0], (WCFFileTyp) inValues[1], (Guid) inValues[2], callback, asyncState);
+  }
+
+  private object[] OnEndFileGetLastModificationDate(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndFileGetLastModificationDate(result)
+    };
+  }
+
+  private void OnFileGetLastModificationDateCompleted(object state)
+  {
+    if (this.FileGetLastModificationDateCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.FileGetLastModificationDateCompleted((object) this, new FileGetLastModificationDateCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void FileGetLastModificationDateAsync(string fileName, WCFFileTyp ft, Guid TicketID)
+  {
+    this.FileGetLastModificationDateAsync(fileName, ft, TicketID, (object) null);
+  }
+
+  public void FileGetLastModificationDateAsync(
+    string fileName,
+    WCFFileTyp ft,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginFileGetLastModificationDateDelegate == null)
+      this.onBeginFileGetLastModificationDateDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginFileGetLastModificationDate);
+    if (this.onEndFileGetLastModificationDateDelegate == null)
+      this.onEndFileGetLastModificationDateDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndFileGetLastModificationDate);
+    if (this.onFileGetLastModificationDateCompletedDelegate == null)
+      this.onFileGetLastModificationDateCompletedDelegate = new SendOrPostCallback(this.OnFileGetLastModificationDateCompleted);
+    this.InvokeAsync(this.onBeginFileGetLastModificationDateDelegate, new object[3]
+    {
+      (object) fileName,
+      (object) ft,
+      (object) TicketID
+    }, this.onEndFileGetLastModificationDateDelegate, this.onFileGetLastModificationDateCompletedDelegate, userState);
+  }
+
+  public WCFTicket[] WCFTicketGetAll(Guid TicketID) => this.Channel.WCFTicketGetAll(TicketID);
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginWCFTicketGetAll(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginWCFTicketGetAll(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFTicket[] EndWCFTicketGetAll(IAsyncResult result)
+  {
+    return this.Channel.EndWCFTicketGetAll(result);
+  }
+
+  private IAsyncResult OnBeginWCFTicketGetAll(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginWCFTicketGetAll((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndWCFTicketGetAll(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndWCFTicketGetAll(result)
+    };
+  }
+
+  private void OnWCFTicketGetAllCompleted(object state)
+  {
+    if (this.WCFTicketGetAllCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.WCFTicketGetAllCompleted((object) this, new WCFTicketGetAllCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void WCFTicketGetAllAsync(Guid TicketID)
+  {
+    this.WCFTicketGetAllAsync(TicketID, (object) null);
+  }
+
+  public void WCFTicketGetAllAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginWCFTicketGetAllDelegate == null)
+      this.onBeginWCFTicketGetAllDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginWCFTicketGetAll);
+    if (this.onEndWCFTicketGetAllDelegate == null)
+      this.onEndWCFTicketGetAllDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndWCFTicketGetAll);
+    if (this.onWCFTicketGetAllCompletedDelegate == null)
+      this.onWCFTicketGetAllCompletedDelegate = new SendOrPostCallback(this.OnWCFTicketGetAllCompleted);
+    this.InvokeAsync(this.onBeginWCFTicketGetAllDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndWCFTicketGetAllDelegate, this.onWCFTicketGetAllCompletedDelegate, userState);
+  }
+
+  public WCFTicket[] WCFTicketGetFiltered(string name, Guid TicketID)
+  {
+    return this.Channel.WCFTicketGetFiltered(name, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginWCFTicketGetFiltered(
+    string name,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginWCFTicketGetFiltered(name, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFTicket[] EndWCFTicketGetFiltered(IAsyncResult result)
+  {
+    return this.Channel.EndWCFTicketGetFiltered(result);
+  }
+
+  private IAsyncResult OnBeginWCFTicketGetFiltered(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginWCFTicketGetFiltered((string) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndWCFTicketGetFiltered(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndWCFTicketGetFiltered(result)
+    };
+  }
+
+  private void OnWCFTicketGetFilteredCompleted(object state)
+  {
+    if (this.WCFTicketGetFilteredCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.WCFTicketGetFilteredCompleted((object) this, new WCFTicketGetFilteredCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void WCFTicketGetFilteredAsync(string name, Guid TicketID)
+  {
+    this.WCFTicketGetFilteredAsync(name, TicketID, (object) null);
+  }
+
+  public void WCFTicketGetFilteredAsync(string name, Guid TicketID, object userState)
+  {
+    if (this.onBeginWCFTicketGetFilteredDelegate == null)
+      this.onBeginWCFTicketGetFilteredDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginWCFTicketGetFiltered);
+    if (this.onEndWCFTicketGetFilteredDelegate == null)
+      this.onEndWCFTicketGetFilteredDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndWCFTicketGetFiltered);
+    if (this.onWCFTicketGetFilteredCompletedDelegate == null)
+      this.onWCFTicketGetFilteredCompletedDelegate = new SendOrPostCallback(this.OnWCFTicketGetFilteredCompleted);
+    this.InvokeAsync(this.onBeginWCFTicketGetFilteredDelegate, new object[2]
+    {
+      (object) name,
+      (object) TicketID
+    }, this.onEndWCFTicketGetFilteredDelegate, this.onWCFTicketGetFilteredCompletedDelegate, userState);
+  }
+
+  public WCFLog[] WCFLogGetAll(Guid TicketID) => this.Channel.WCFLogGetAll(TicketID);
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginWCFLogGetAll(Guid TicketID, AsyncCallback callback, object asyncState)
+  {
+    return this.Channel.BeginWCFLogGetAll(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFLog[] EndWCFLogGetAll(IAsyncResult result) => this.Channel.EndWCFLogGetAll(result);
+
+  private IAsyncResult OnBeginWCFLogGetAll(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginWCFLogGetAll((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndWCFLogGetAll(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndWCFLogGetAll(result)
+    };
+  }
+
+  private void OnWCFLogGetAllCompleted(object state)
+  {
+    if (this.WCFLogGetAllCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.WCFLogGetAllCompleted((object) this, new WCFLogGetAllCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void WCFLogGetAllAsync(Guid TicketID) => this.WCFLogGetAllAsync(TicketID, (object) null);
+
+  public void WCFLogGetAllAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginWCFLogGetAllDelegate == null)
+      this.onBeginWCFLogGetAllDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginWCFLogGetAll);
+    if (this.onEndWCFLogGetAllDelegate == null)
+      this.onEndWCFLogGetAllDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndWCFLogGetAll);
+    if (this.onWCFLogGetAllCompletedDelegate == null)
+      this.onWCFLogGetAllCompletedDelegate = new SendOrPostCallback(this.OnWCFLogGetAllCompleted);
+    this.InvokeAsync(this.onBeginWCFLogGetAllDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndWCFLogGetAllDelegate, this.onWCFLogGetAllCompletedDelegate, userState);
+  }
+
+  public WCFLog[] WCFLogGetbyNr(int start, int end, Guid TicketID)
+  {
+    return this.Channel.WCFLogGetbyNr(start, end, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginWCFLogGetbyNr(
+    int start,
+    int end,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginWCFLogGetbyNr(start, end, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFLog[] EndWCFLogGetbyNr(IAsyncResult result) => this.Channel.EndWCFLogGetbyNr(result);
+
+  private IAsyncResult OnBeginWCFLogGetbyNr(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginWCFLogGetbyNr((int) inValues[0], (int) inValues[1], (Guid) inValues[2], callback, asyncState);
+  }
+
+  private object[] OnEndWCFLogGetbyNr(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndWCFLogGetbyNr(result)
+    };
+  }
+
+  private void OnWCFLogGetbyNrCompleted(object state)
+  {
+    if (this.WCFLogGetbyNrCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.WCFLogGetbyNrCompleted((object) this, new WCFLogGetbyNrCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void WCFLogGetbyNrAsync(int start, int end, Guid TicketID)
+  {
+    this.WCFLogGetbyNrAsync(start, end, TicketID, (object) null);
+  }
+
+  public void WCFLogGetbyNrAsync(int start, int end, Guid TicketID, object userState)
+  {
+    if (this.onBeginWCFLogGetbyNrDelegate == null)
+      this.onBeginWCFLogGetbyNrDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginWCFLogGetbyNr);
+    if (this.onEndWCFLogGetbyNrDelegate == null)
+      this.onEndWCFLogGetbyNrDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndWCFLogGetbyNr);
+    if (this.onWCFLogGetbyNrCompletedDelegate == null)
+      this.onWCFLogGetbyNrCompletedDelegate = new SendOrPostCallback(this.OnWCFLogGetbyNrCompleted);
+    this.InvokeAsync(this.onBeginWCFLogGetbyNrDelegate, new object[3]
+    {
+      (object) start,
+      (object) end,
+      (object) TicketID
+    }, this.onEndWCFLogGetbyNrDelegate, this.onWCFLogGetbyNrCompletedDelegate, userState);
+  }
+
+  public int WCFLogGetCount(Guid TicketID) => this.Channel.WCFLogGetCount(TicketID);
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginWCFLogGetCount(Guid TicketID, AsyncCallback callback, object asyncState)
+  {
+    return this.Channel.BeginWCFLogGetCount(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public int EndWCFLogGetCount(IAsyncResult result) => this.Channel.EndWCFLogGetCount(result);
+
+  private IAsyncResult OnBeginWCFLogGetCount(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginWCFLogGetCount((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndWCFLogGetCount(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndWCFLogGetCount(result)
+    };
+  }
+
+  private void OnWCFLogGetCountCompleted(object state)
+  {
+    if (this.WCFLogGetCountCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.WCFLogGetCountCompleted((object) this, new WCFLogGetCountCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void WCFLogGetCountAsync(Guid TicketID)
+  {
+    this.WCFLogGetCountAsync(TicketID, (object) null);
+  }
+
+  public void WCFLogGetCountAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginWCFLogGetCountDelegate == null)
+      this.onBeginWCFLogGetCountDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginWCFLogGetCount);
+    if (this.onEndWCFLogGetCountDelegate == null)
+      this.onEndWCFLogGetCountDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndWCFLogGetCount);
+    if (this.onWCFLogGetCountCompletedDelegate == null)
+      this.onWCFLogGetCountCompletedDelegate = new SendOrPostCallback(this.OnWCFLogGetCountCompleted);
+    this.InvokeAsync(this.onBeginWCFLogGetCountDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndWCFLogGetCountDelegate, this.onWCFLogGetCountCompletedDelegate, userState);
+  }
+
+  public WCFLog[] WCFLogGetByTicket(Guid QueryTicket, Guid TicketID)
+  {
+    return this.Channel.WCFLogGetByTicket(QueryTicket, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginWCFLogGetByTicket(
+    Guid QueryTicket,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginWCFLogGetByTicket(QueryTicket, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFLog[] EndWCFLogGetByTicket(IAsyncResult result)
+  {
+    return this.Channel.EndWCFLogGetByTicket(result);
+  }
+
+  private IAsyncResult OnBeginWCFLogGetByTicket(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginWCFLogGetByTicket((Guid) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndWCFLogGetByTicket(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndWCFLogGetByTicket(result)
+    };
+  }
+
+  private void OnWCFLogGetByTicketCompleted(object state)
+  {
+    if (this.WCFLogGetByTicketCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.WCFLogGetByTicketCompleted((object) this, new WCFLogGetByTicketCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void WCFLogGetByTicketAsync(Guid QueryTicket, Guid TicketID)
+  {
+    this.WCFLogGetByTicketAsync(QueryTicket, TicketID, (object) null);
+  }
+
+  public void WCFLogGetByTicketAsync(Guid QueryTicket, Guid TicketID, object userState)
+  {
+    if (this.onBeginWCFLogGetByTicketDelegate == null)
+      this.onBeginWCFLogGetByTicketDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginWCFLogGetByTicket);
+    if (this.onEndWCFLogGetByTicketDelegate == null)
+      this.onEndWCFLogGetByTicketDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndWCFLogGetByTicket);
+    if (this.onWCFLogGetByTicketCompletedDelegate == null)
+      this.onWCFLogGetByTicketCompletedDelegate = new SendOrPostCallback(this.OnWCFLogGetByTicketCompleted);
+    this.InvokeAsync(this.onBeginWCFLogGetByTicketDelegate, new object[2]
+    {
+      (object) QueryTicket,
+      (object) TicketID
+    }, this.onEndWCFLogGetByTicketDelegate, this.onWCFLogGetByTicketCompletedDelegate, userState);
+  }
+
+  public int WCFLogDeleteAll(Guid TicketID) => this.Channel.WCFLogDeleteAll(TicketID);
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginWCFLogDeleteAll(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginWCFLogDeleteAll(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public int EndWCFLogDeleteAll(IAsyncResult result) => this.Channel.EndWCFLogDeleteAll(result);
+
+  private IAsyncResult OnBeginWCFLogDeleteAll(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginWCFLogDeleteAll((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndWCFLogDeleteAll(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndWCFLogDeleteAll(result)
+    };
+  }
+
+  private void OnWCFLogDeleteAllCompleted(object state)
+  {
+    if (this.WCFLogDeleteAllCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.WCFLogDeleteAllCompleted((object) this, new WCFLogDeleteAllCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void WCFLogDeleteAllAsync(Guid TicketID)
+  {
+    this.WCFLogDeleteAllAsync(TicketID, (object) null);
+  }
+
+  public void WCFLogDeleteAllAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginWCFLogDeleteAllDelegate == null)
+      this.onBeginWCFLogDeleteAllDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginWCFLogDeleteAll);
+    if (this.onEndWCFLogDeleteAllDelegate == null)
+      this.onEndWCFLogDeleteAllDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndWCFLogDeleteAll);
+    if (this.onWCFLogDeleteAllCompletedDelegate == null)
+      this.onWCFLogDeleteAllCompletedDelegate = new SendOrPostCallback(this.OnWCFLogDeleteAllCompleted);
+    this.InvokeAsync(this.onBeginWCFLogDeleteAllDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndWCFLogDeleteAllDelegate, this.onWCFLogDeleteAllCompletedDelegate, userState);
+  }
+
+  public bool WCFLogDeleteTicket(WCFTicket ticket, Guid TicketID)
+  {
+    return this.Channel.WCFLogDeleteTicket(ticket, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginWCFLogDeleteTicket(
+    WCFTicket ticket,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginWCFLogDeleteTicket(ticket, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndWCFLogDeleteTicket(IAsyncResult result)
+  {
+    return this.Channel.EndWCFLogDeleteTicket(result);
+  }
+
+  private IAsyncResult OnBeginWCFLogDeleteTicket(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginWCFLogDeleteTicket((WCFTicket) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndWCFLogDeleteTicket(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndWCFLogDeleteTicket(result)
+    };
+  }
+
+  private void OnWCFLogDeleteTicketCompleted(object state)
+  {
+    if (this.WCFLogDeleteTicketCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.WCFLogDeleteTicketCompleted((object) this, new WCFLogDeleteTicketCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void WCFLogDeleteTicketAsync(WCFTicket ticket, Guid TicketID)
+  {
+    this.WCFLogDeleteTicketAsync(ticket, TicketID, (object) null);
+  }
+
+  public void WCFLogDeleteTicketAsync(WCFTicket ticket, Guid TicketID, object userState)
+  {
+    if (this.onBeginWCFLogDeleteTicketDelegate == null)
+      this.onBeginWCFLogDeleteTicketDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginWCFLogDeleteTicket);
+    if (this.onEndWCFLogDeleteTicketDelegate == null)
+      this.onEndWCFLogDeleteTicketDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndWCFLogDeleteTicket);
+    if (this.onWCFLogDeleteTicketCompletedDelegate == null)
+      this.onWCFLogDeleteTicketCompletedDelegate = new SendOrPostCallback(this.OnWCFLogDeleteTicketCompleted);
+    this.InvokeAsync(this.onBeginWCFLogDeleteTicketDelegate, new object[2]
+    {
+      (object) ticket,
+      (object) TicketID
+    }, this.onEndWCFLogDeleteTicketDelegate, this.onWCFLogDeleteTicketCompletedDelegate, userState);
+  }
+
+  public WCFSystemLog[] SystemLogGetAll(Guid TicketID) => this.Channel.SystemLogGetAll(TicketID);
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginSystemLogGetAll(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginSystemLogGetAll(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFSystemLog[] EndSystemLogGetAll(IAsyncResult result)
+  {
+    return this.Channel.EndSystemLogGetAll(result);
+  }
+
+  private IAsyncResult OnBeginSystemLogGetAll(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginSystemLogGetAll((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndSystemLogGetAll(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndSystemLogGetAll(result)
+    };
+  }
+
+  private void OnSystemLogGetAllCompleted(object state)
+  {
+    if (this.SystemLogGetAllCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.SystemLogGetAllCompleted((object) this, new SystemLogGetAllCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void SystemLogGetAllAsync(Guid TicketID)
+  {
+    this.SystemLogGetAllAsync(TicketID, (object) null);
+  }
+
+  public void SystemLogGetAllAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginSystemLogGetAllDelegate == null)
+      this.onBeginSystemLogGetAllDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginSystemLogGetAll);
+    if (this.onEndSystemLogGetAllDelegate == null)
+      this.onEndSystemLogGetAllDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndSystemLogGetAll);
+    if (this.onSystemLogGetAllCompletedDelegate == null)
+      this.onSystemLogGetAllCompletedDelegate = new SendOrPostCallback(this.OnSystemLogGetAllCompleted);
+    this.InvokeAsync(this.onBeginSystemLogGetAllDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndSystemLogGetAllDelegate, this.onSystemLogGetAllCompletedDelegate, userState);
+  }
+
+  public bool SystemLogWrite(WCFSystemLog log) => this.Channel.SystemLogWrite(log);
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginSystemLogWrite(
+    WCFSystemLog log,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginSystemLogWrite(log, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndSystemLogWrite(IAsyncResult result) => this.Channel.EndSystemLogWrite(result);
+
+  private IAsyncResult OnBeginSystemLogWrite(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginSystemLogWrite((WCFSystemLog) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndSystemLogWrite(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndSystemLogWrite(result)
+    };
+  }
+
+  private void OnSystemLogWriteCompleted(object state)
+  {
+    if (this.SystemLogWriteCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.SystemLogWriteCompleted((object) this, new SystemLogWriteCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void SystemLogWriteAsync(WCFSystemLog log) => this.SystemLogWriteAsync(log, (object) null);
+
+  public void SystemLogWriteAsync(WCFSystemLog log, object userState)
+  {
+    if (this.onBeginSystemLogWriteDelegate == null)
+      this.onBeginSystemLogWriteDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginSystemLogWrite);
+    if (this.onEndSystemLogWriteDelegate == null)
+      this.onEndSystemLogWriteDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndSystemLogWrite);
+    if (this.onSystemLogWriteCompletedDelegate == null)
+      this.onSystemLogWriteCompletedDelegate = new SendOrPostCallback(this.OnSystemLogWriteCompleted);
+    this.InvokeAsync(this.onBeginSystemLogWriteDelegate, new object[1]
+    {
+      (object) log
+    }, this.onEndSystemLogWriteDelegate, this.onSystemLogWriteCompletedDelegate, userState);
+  }
+
+  public bool AppLogWrite(WCFAppLog log, Guid TicketID) => this.Channel.AppLogWrite(log, TicketID);
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginAppLogWrite(
+    WCFAppLog log,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginAppLogWrite(log, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndAppLogWrite(IAsyncResult result) => this.Channel.EndAppLogWrite(result);
+
+  private IAsyncResult OnBeginAppLogWrite(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginAppLogWrite((WCFAppLog) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndAppLogWrite(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndAppLogWrite(result)
+    };
+  }
+
+  private void OnAppLogWriteCompleted(object state)
+  {
+    if (this.AppLogWriteCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.AppLogWriteCompleted((object) this, new AppLogWriteCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void AppLogWriteAsync(WCFAppLog log, Guid TicketID)
+  {
+    this.AppLogWriteAsync(log, TicketID, (object) null);
+  }
+
+  public void AppLogWriteAsync(WCFAppLog log, Guid TicketID, object userState)
+  {
+    if (this.onBeginAppLogWriteDelegate == null)
+      this.onBeginAppLogWriteDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginAppLogWrite);
+    if (this.onEndAppLogWriteDelegate == null)
+      this.onEndAppLogWriteDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndAppLogWrite);
+    if (this.onAppLogWriteCompletedDelegate == null)
+      this.onAppLogWriteCompletedDelegate = new SendOrPostCallback(this.OnAppLogWriteCompleted);
+    this.InvokeAsync(this.onBeginAppLogWriteDelegate, new object[2]
+    {
+      (object) log,
+      (object) TicketID
+    }, this.onEndAppLogWriteDelegate, this.onAppLogWriteCompletedDelegate, userState);
+  }
+
+  public string[] SystemLogGetAllModuleNames(Guid TicketID)
+  {
+    return this.Channel.SystemLogGetAllModuleNames(TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginSystemLogGetAllModuleNames(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginSystemLogGetAllModuleNames(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public string[] EndSystemLogGetAllModuleNames(IAsyncResult result)
+  {
+    return this.Channel.EndSystemLogGetAllModuleNames(result);
+  }
+
+  private IAsyncResult OnBeginSystemLogGetAllModuleNames(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginSystemLogGetAllModuleNames((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndSystemLogGetAllModuleNames(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndSystemLogGetAllModuleNames(result)
+    };
+  }
+
+  private void OnSystemLogGetAllModuleNamesCompleted(object state)
+  {
+    if (this.SystemLogGetAllModuleNamesCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.SystemLogGetAllModuleNamesCompleted((object) this, new SystemLogGetAllModuleNamesCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void SystemLogGetAllModuleNamesAsync(Guid TicketID)
+  {
+    this.SystemLogGetAllModuleNamesAsync(TicketID, (object) null);
+  }
+
+  public void SystemLogGetAllModuleNamesAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginSystemLogGetAllModuleNamesDelegate == null)
+      this.onBeginSystemLogGetAllModuleNamesDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginSystemLogGetAllModuleNames);
+    if (this.onEndSystemLogGetAllModuleNamesDelegate == null)
+      this.onEndSystemLogGetAllModuleNamesDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndSystemLogGetAllModuleNames);
+    if (this.onSystemLogGetAllModuleNamesCompletedDelegate == null)
+      this.onSystemLogGetAllModuleNamesCompletedDelegate = new SendOrPostCallback(this.OnSystemLogGetAllModuleNamesCompleted);
+    this.InvokeAsync(this.onBeginSystemLogGetAllModuleNamesDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndSystemLogGetAllModuleNamesDelegate, this.onSystemLogGetAllModuleNamesCompletedDelegate, userState);
+  }
+
+  public int SystemLogGetRowCount(string modulFilter, string eventTypFilter, Guid TicketID)
+  {
+    return this.Channel.SystemLogGetRowCount(modulFilter, eventTypFilter, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginSystemLogGetRowCount(
+    string modulFilter,
+    string eventTypFilter,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginSystemLogGetRowCount(modulFilter, eventTypFilter, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public int EndSystemLogGetRowCount(IAsyncResult result)
+  {
+    return this.Channel.EndSystemLogGetRowCount(result);
+  }
+
+  private IAsyncResult OnBeginSystemLogGetRowCount(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginSystemLogGetRowCount((string) inValues[0], (string) inValues[1], (Guid) inValues[2], callback, asyncState);
+  }
+
+  private object[] OnEndSystemLogGetRowCount(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndSystemLogGetRowCount(result)
+    };
+  }
+
+  private void OnSystemLogGetRowCountCompleted(object state)
+  {
+    if (this.SystemLogGetRowCountCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.SystemLogGetRowCountCompleted((object) this, new SystemLogGetRowCountCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void SystemLogGetRowCountAsync(string modulFilter, string eventTypFilter, Guid TicketID)
+  {
+    this.SystemLogGetRowCountAsync(modulFilter, eventTypFilter, TicketID, (object) null);
+  }
+
+  public void SystemLogGetRowCountAsync(
+    string modulFilter,
+    string eventTypFilter,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginSystemLogGetRowCountDelegate == null)
+      this.onBeginSystemLogGetRowCountDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginSystemLogGetRowCount);
+    if (this.onEndSystemLogGetRowCountDelegate == null)
+      this.onEndSystemLogGetRowCountDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndSystemLogGetRowCount);
+    if (this.onSystemLogGetRowCountCompletedDelegate == null)
+      this.onSystemLogGetRowCountCompletedDelegate = new SendOrPostCallback(this.OnSystemLogGetRowCountCompleted);
+    this.InvokeAsync(this.onBeginSystemLogGetRowCountDelegate, new object[3]
+    {
+      (object) modulFilter,
+      (object) eventTypFilter,
+      (object) TicketID
+    }, this.onEndSystemLogGetRowCountDelegate, this.onSystemLogGetRowCountCompletedDelegate, userState);
+  }
+
+  public WCFSystemLog[] SystemLogGetFilteredRange(
+    int startRowIndex,
+    int maximumRows,
+    string modulFilter,
+    string eventTypFilter,
+    Guid TicketID)
+  {
+    return this.Channel.SystemLogGetFilteredRange(startRowIndex, maximumRows, modulFilter, eventTypFilter, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginSystemLogGetFilteredRange(
+    int startRowIndex,
+    int maximumRows,
+    string modulFilter,
+    string eventTypFilter,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginSystemLogGetFilteredRange(startRowIndex, maximumRows, modulFilter, eventTypFilter, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFSystemLog[] EndSystemLogGetFilteredRange(IAsyncResult result)
+  {
+    return this.Channel.EndSystemLogGetFilteredRange(result);
+  }
+
+  private IAsyncResult OnBeginSystemLogGetFilteredRange(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginSystemLogGetFilteredRange((int) inValues[0], (int) inValues[1], (string) inValues[2], (string) inValues[3], (Guid) inValues[4], callback, asyncState);
+  }
+
+  private object[] OnEndSystemLogGetFilteredRange(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndSystemLogGetFilteredRange(result)
+    };
+  }
+
+  private void OnSystemLogGetFilteredRangeCompleted(object state)
+  {
+    if (this.SystemLogGetFilteredRangeCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.SystemLogGetFilteredRangeCompleted((object) this, new SystemLogGetFilteredRangeCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void SystemLogGetFilteredRangeAsync(
+    int startRowIndex,
+    int maximumRows,
+    string modulFilter,
+    string eventTypFilter,
+    Guid TicketID)
+  {
+    this.SystemLogGetFilteredRangeAsync(startRowIndex, maximumRows, modulFilter, eventTypFilter, TicketID, (object) null);
+  }
+
+  public void SystemLogGetFilteredRangeAsync(
+    int startRowIndex,
+    int maximumRows,
+    string modulFilter,
+    string eventTypFilter,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginSystemLogGetFilteredRangeDelegate == null)
+      this.onBeginSystemLogGetFilteredRangeDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginSystemLogGetFilteredRange);
+    if (this.onEndSystemLogGetFilteredRangeDelegate == null)
+      this.onEndSystemLogGetFilteredRangeDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndSystemLogGetFilteredRange);
+    if (this.onSystemLogGetFilteredRangeCompletedDelegate == null)
+      this.onSystemLogGetFilteredRangeCompletedDelegate = new SendOrPostCallback(this.OnSystemLogGetFilteredRangeCompleted);
+    this.InvokeAsync(this.onBeginSystemLogGetFilteredRangeDelegate, new object[5]
+    {
+      (object) startRowIndex,
+      (object) maximumRows,
+      (object) modulFilter,
+      (object) eventTypFilter,
+      (object) TicketID
+    }, this.onEndSystemLogGetFilteredRangeDelegate, this.onSystemLogGetFilteredRangeCompletedDelegate, userState);
+  }
+
+  public WCFTimerServiceLog[] TimerServiceLogGetAll(Guid TicketID)
+  {
+    return this.Channel.TimerServiceLogGetAll(TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginTimerServiceLogGetAll(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginTimerServiceLogGetAll(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFTimerServiceLog[] EndTimerServiceLogGetAll(IAsyncResult result)
+  {
+    return this.Channel.EndTimerServiceLogGetAll(result);
+  }
+
+  private IAsyncResult OnBeginTimerServiceLogGetAll(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginTimerServiceLogGetAll((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndTimerServiceLogGetAll(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndTimerServiceLogGetAll(result)
+    };
+  }
+
+  private void OnTimerServiceLogGetAllCompleted(object state)
+  {
+    if (this.TimerServiceLogGetAllCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.TimerServiceLogGetAllCompleted((object) this, new TimerServiceLogGetAllCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void TimerServiceLogGetAllAsync(Guid TicketID)
+  {
+    this.TimerServiceLogGetAllAsync(TicketID, (object) null);
+  }
+
+  public void TimerServiceLogGetAllAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginTimerServiceLogGetAllDelegate == null)
+      this.onBeginTimerServiceLogGetAllDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginTimerServiceLogGetAll);
+    if (this.onEndTimerServiceLogGetAllDelegate == null)
+      this.onEndTimerServiceLogGetAllDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndTimerServiceLogGetAll);
+    if (this.onTimerServiceLogGetAllCompletedDelegate == null)
+      this.onTimerServiceLogGetAllCompletedDelegate = new SendOrPostCallback(this.OnTimerServiceLogGetAllCompleted);
+    this.InvokeAsync(this.onBeginTimerServiceLogGetAllDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndTimerServiceLogGetAllDelegate, this.onTimerServiceLogGetAllCompletedDelegate, userState);
+  }
+
+  public string[] TimerServiceLogGetAllTimerServiceNames(Guid TicketID)
+  {
+    return this.Channel.TimerServiceLogGetAllTimerServiceNames(TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginTimerServiceLogGetAllTimerServiceNames(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginTimerServiceLogGetAllTimerServiceNames(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public string[] EndTimerServiceLogGetAllTimerServiceNames(IAsyncResult result)
+  {
+    return this.Channel.EndTimerServiceLogGetAllTimerServiceNames(result);
+  }
+
+  private IAsyncResult OnBeginTimerServiceLogGetAllTimerServiceNames(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginTimerServiceLogGetAllTimerServiceNames((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndTimerServiceLogGetAllTimerServiceNames(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndTimerServiceLogGetAllTimerServiceNames(result)
+    };
+  }
+
+  private void OnTimerServiceLogGetAllTimerServiceNamesCompleted(object state)
+  {
+    if (this.TimerServiceLogGetAllTimerServiceNamesCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.TimerServiceLogGetAllTimerServiceNamesCompleted((object) this, new TimerServiceLogGetAllTimerServiceNamesCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void TimerServiceLogGetAllTimerServiceNamesAsync(Guid TicketID)
+  {
+    this.TimerServiceLogGetAllTimerServiceNamesAsync(TicketID, (object) null);
+  }
+
+  public void TimerServiceLogGetAllTimerServiceNamesAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginTimerServiceLogGetAllTimerServiceNamesDelegate == null)
+      this.onBeginTimerServiceLogGetAllTimerServiceNamesDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginTimerServiceLogGetAllTimerServiceNames);
+    if (this.onEndTimerServiceLogGetAllTimerServiceNamesDelegate == null)
+      this.onEndTimerServiceLogGetAllTimerServiceNamesDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndTimerServiceLogGetAllTimerServiceNames);
+    if (this.onTimerServiceLogGetAllTimerServiceNamesCompletedDelegate == null)
+      this.onTimerServiceLogGetAllTimerServiceNamesCompletedDelegate = new SendOrPostCallback(this.OnTimerServiceLogGetAllTimerServiceNamesCompleted);
+    this.InvokeAsync(this.onBeginTimerServiceLogGetAllTimerServiceNamesDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndTimerServiceLogGetAllTimerServiceNamesDelegate, this.onTimerServiceLogGetAllTimerServiceNamesCompletedDelegate, userState);
+  }
+
+  public int TimerServiceLogGetRowCount(string modulFilter, string eventTypFilter, Guid TicketID)
+  {
+    return this.Channel.TimerServiceLogGetRowCount(modulFilter, eventTypFilter, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginTimerServiceLogGetRowCount(
+    string modulFilter,
+    string eventTypFilter,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginTimerServiceLogGetRowCount(modulFilter, eventTypFilter, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public int EndTimerServiceLogGetRowCount(IAsyncResult result)
+  {
+    return this.Channel.EndTimerServiceLogGetRowCount(result);
+  }
+
+  private IAsyncResult OnBeginTimerServiceLogGetRowCount(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginTimerServiceLogGetRowCount((string) inValues[0], (string) inValues[1], (Guid) inValues[2], callback, asyncState);
+  }
+
+  private object[] OnEndTimerServiceLogGetRowCount(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndTimerServiceLogGetRowCount(result)
+    };
+  }
+
+  private void OnTimerServiceLogGetRowCountCompleted(object state)
+  {
+    if (this.TimerServiceLogGetRowCountCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.TimerServiceLogGetRowCountCompleted((object) this, new TimerServiceLogGetRowCountCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void TimerServiceLogGetRowCountAsync(
+    string modulFilter,
+    string eventTypFilter,
+    Guid TicketID)
+  {
+    this.TimerServiceLogGetRowCountAsync(modulFilter, eventTypFilter, TicketID, (object) null);
+  }
+
+  public void TimerServiceLogGetRowCountAsync(
+    string modulFilter,
+    string eventTypFilter,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginTimerServiceLogGetRowCountDelegate == null)
+      this.onBeginTimerServiceLogGetRowCountDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginTimerServiceLogGetRowCount);
+    if (this.onEndTimerServiceLogGetRowCountDelegate == null)
+      this.onEndTimerServiceLogGetRowCountDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndTimerServiceLogGetRowCount);
+    if (this.onTimerServiceLogGetRowCountCompletedDelegate == null)
+      this.onTimerServiceLogGetRowCountCompletedDelegate = new SendOrPostCallback(this.OnTimerServiceLogGetRowCountCompleted);
+    this.InvokeAsync(this.onBeginTimerServiceLogGetRowCountDelegate, new object[3]
+    {
+      (object) modulFilter,
+      (object) eventTypFilter,
+      (object) TicketID
+    }, this.onEndTimerServiceLogGetRowCountDelegate, this.onTimerServiceLogGetRowCountCompletedDelegate, userState);
+  }
+
+  public WCFTimerServiceLog[] TimerServiceLogGetFilteredRange(
+    int startRowIndex,
+    int maximumRows,
+    string modulFilter,
+    string eventTypFilter,
+    Guid TicketID)
+  {
+    return this.Channel.TimerServiceLogGetFilteredRange(startRowIndex, maximumRows, modulFilter, eventTypFilter, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginTimerServiceLogGetFilteredRange(
+    int startRowIndex,
+    int maximumRows,
+    string modulFilter,
+    string eventTypFilter,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginTimerServiceLogGetFilteredRange(startRowIndex, maximumRows, modulFilter, eventTypFilter, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFTimerServiceLog[] EndTimerServiceLogGetFilteredRange(IAsyncResult result)
+  {
+    return this.Channel.EndTimerServiceLogGetFilteredRange(result);
+  }
+
+  private IAsyncResult OnBeginTimerServiceLogGetFilteredRange(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginTimerServiceLogGetFilteredRange((int) inValues[0], (int) inValues[1], (string) inValues[2], (string) inValues[3], (Guid) inValues[4], callback, asyncState);
+  }
+
+  private object[] OnEndTimerServiceLogGetFilteredRange(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndTimerServiceLogGetFilteredRange(result)
+    };
+  }
+
+  private void OnTimerServiceLogGetFilteredRangeCompleted(object state)
+  {
+    if (this.TimerServiceLogGetFilteredRangeCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.TimerServiceLogGetFilteredRangeCompleted((object) this, new TimerServiceLogGetFilteredRangeCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void TimerServiceLogGetFilteredRangeAsync(
+    int startRowIndex,
+    int maximumRows,
+    string modulFilter,
+    string eventTypFilter,
+    Guid TicketID)
+  {
+    this.TimerServiceLogGetFilteredRangeAsync(startRowIndex, maximumRows, modulFilter, eventTypFilter, TicketID, (object) null);
+  }
+
+  public void TimerServiceLogGetFilteredRangeAsync(
+    int startRowIndex,
+    int maximumRows,
+    string modulFilter,
+    string eventTypFilter,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginTimerServiceLogGetFilteredRangeDelegate == null)
+      this.onBeginTimerServiceLogGetFilteredRangeDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginTimerServiceLogGetFilteredRange);
+    if (this.onEndTimerServiceLogGetFilteredRangeDelegate == null)
+      this.onEndTimerServiceLogGetFilteredRangeDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndTimerServiceLogGetFilteredRange);
+    if (this.onTimerServiceLogGetFilteredRangeCompletedDelegate == null)
+      this.onTimerServiceLogGetFilteredRangeCompletedDelegate = new SendOrPostCallback(this.OnTimerServiceLogGetFilteredRangeCompleted);
+    this.InvokeAsync(this.onBeginTimerServiceLogGetFilteredRangeDelegate, new object[5]
+    {
+      (object) startRowIndex,
+      (object) maximumRows,
+      (object) modulFilter,
+      (object) eventTypFilter,
+      (object) TicketID
+    }, this.onEndTimerServiceLogGetFilteredRangeDelegate, this.onTimerServiceLogGetFilteredRangeCompletedDelegate, userState);
+  }
+
+  public void PrintKartei(string address, string printer, Guid TicketID)
+  {
+    this.Channel.PrintKartei(address, printer, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginPrintKartei(
+    string address,
+    string printer,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginPrintKartei(address, printer, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public void EndPrintKartei(IAsyncResult result) => this.Channel.EndPrintKartei(result);
+
+  private IAsyncResult OnBeginPrintKartei(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginPrintKartei((string) inValues[0], (string) inValues[1], (Guid) inValues[2], callback, asyncState);
+  }
+
+  private object[] OnEndPrintKartei(IAsyncResult result)
+  {
+    this.EndPrintKartei(result);
+    return (object[]) null;
+  }
+
+  private void OnPrintKarteiCompleted(object state)
+  {
+    if (this.PrintKarteiCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.PrintKarteiCompleted((object) this, new AsyncCompletedEventArgs(completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void PrintKarteiAsync(string address, string printer, Guid TicketID)
+  {
+    this.PrintKarteiAsync(address, printer, TicketID, (object) null);
+  }
+
+  public void PrintKarteiAsync(string address, string printer, Guid TicketID, object userState)
+  {
+    if (this.onBeginPrintKarteiDelegate == null)
+      this.onBeginPrintKarteiDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginPrintKartei);
+    if (this.onEndPrintKarteiDelegate == null)
+      this.onEndPrintKarteiDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndPrintKartei);
+    if (this.onPrintKarteiCompletedDelegate == null)
+      this.onPrintKarteiCompletedDelegate = new SendOrPostCallback(this.OnPrintKarteiCompleted);
+    this.InvokeAsync(this.onBeginPrintKarteiDelegate, new object[3]
+    {
+      (object) address,
+      (object) printer,
+      (object) TicketID
+    }, this.onEndPrintKarteiDelegate, this.onPrintKarteiCompletedDelegate, userState);
+  }
+
+  public void PrintWASEinsatzbericht(WCFEinsatzdaten wed, string printer, Guid TicketID)
+  {
+    this.Channel.PrintWASEinsatzbericht(wed, printer, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginPrintWASEinsatzbericht(
+    WCFEinsatzdaten wed,
+    string printer,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginPrintWASEinsatzbericht(wed, printer, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public void EndPrintWASEinsatzbericht(IAsyncResult result)
+  {
+    this.Channel.EndPrintWASEinsatzbericht(result);
+  }
+
+  private IAsyncResult OnBeginPrintWASEinsatzbericht(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginPrintWASEinsatzbericht((WCFEinsatzdaten) inValues[0], (string) inValues[1], (Guid) inValues[2], callback, asyncState);
+  }
+
+  private object[] OnEndPrintWASEinsatzbericht(IAsyncResult result)
+  {
+    this.EndPrintWASEinsatzbericht(result);
+    return (object[]) null;
+  }
+
+  private void OnPrintWASEinsatzberichtCompleted(object state)
+  {
+    if (this.PrintWASEinsatzberichtCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.PrintWASEinsatzberichtCompleted((object) this, new AsyncCompletedEventArgs(completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void PrintWASEinsatzberichtAsync(WCFEinsatzdaten wed, string printer, Guid TicketID)
+  {
+    this.PrintWASEinsatzberichtAsync(wed, printer, TicketID, (object) null);
+  }
+
+  public void PrintWASEinsatzberichtAsync(
+    WCFEinsatzdaten wed,
+    string printer,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginPrintWASEinsatzberichtDelegate == null)
+      this.onBeginPrintWASEinsatzberichtDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginPrintWASEinsatzbericht);
+    if (this.onEndPrintWASEinsatzberichtDelegate == null)
+      this.onEndPrintWASEinsatzberichtDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndPrintWASEinsatzbericht);
+    if (this.onPrintWASEinsatzberichtCompletedDelegate == null)
+      this.onPrintWASEinsatzberichtCompletedDelegate = new SendOrPostCallback(this.OnPrintWASEinsatzberichtCompleted);
+    this.InvokeAsync(this.onBeginPrintWASEinsatzberichtDelegate, new object[3]
+    {
+      (object) wed,
+      (object) printer,
+      (object) TicketID
+    }, this.onEndPrintWASEinsatzberichtDelegate, this.onPrintWASEinsatzberichtCompletedDelegate, userState);
+  }
+
+  public void PrintLFKEinsatzmeldung(WCFEinsatzdaten wed, string printer, Guid TicketID)
+  {
+    this.Channel.PrintLFKEinsatzmeldung(wed, printer, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginPrintLFKEinsatzmeldung(
+    WCFEinsatzdaten wed,
+    string printer,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginPrintLFKEinsatzmeldung(wed, printer, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public void EndPrintLFKEinsatzmeldung(IAsyncResult result)
+  {
+    this.Channel.EndPrintLFKEinsatzmeldung(result);
+  }
+
+  private IAsyncResult OnBeginPrintLFKEinsatzmeldung(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginPrintLFKEinsatzmeldung((WCFEinsatzdaten) inValues[0], (string) inValues[1], (Guid) inValues[2], callback, asyncState);
+  }
+
+  private object[] OnEndPrintLFKEinsatzmeldung(IAsyncResult result)
+  {
+    this.EndPrintLFKEinsatzmeldung(result);
+    return (object[]) null;
+  }
+
+  private void OnPrintLFKEinsatzmeldungCompleted(object state)
+  {
+    if (this.PrintLFKEinsatzmeldungCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.PrintLFKEinsatzmeldungCompleted((object) this, new AsyncCompletedEventArgs(completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void PrintLFKEinsatzmeldungAsync(WCFEinsatzdaten wed, string printer, Guid TicketID)
+  {
+    this.PrintLFKEinsatzmeldungAsync(wed, printer, TicketID, (object) null);
+  }
+
+  public void PrintLFKEinsatzmeldungAsync(
+    WCFEinsatzdaten wed,
+    string printer,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginPrintLFKEinsatzmeldungDelegate == null)
+      this.onBeginPrintLFKEinsatzmeldungDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginPrintLFKEinsatzmeldung);
+    if (this.onEndPrintLFKEinsatzmeldungDelegate == null)
+      this.onEndPrintLFKEinsatzmeldungDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndPrintLFKEinsatzmeldung);
+    if (this.onPrintLFKEinsatzmeldungCompletedDelegate == null)
+      this.onPrintLFKEinsatzmeldungCompletedDelegate = new SendOrPostCallback(this.OnPrintLFKEinsatzmeldungCompleted);
+    this.InvokeAsync(this.onBeginPrintLFKEinsatzmeldungDelegate, new object[3]
+    {
+      (object) wed,
+      (object) printer,
+      (object) TicketID
+    }, this.onEndPrintLFKEinsatzmeldungDelegate, this.onPrintLFKEinsatzmeldungCompletedDelegate, userState);
+  }
+
+  public void PrintCheckliste(string einsatzGrund, string printer, Guid TicketID)
+  {
+    this.Channel.PrintCheckliste(einsatzGrund, printer, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginPrintCheckliste(
+    string einsatzGrund,
+    string printer,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginPrintCheckliste(einsatzGrund, printer, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public void EndPrintCheckliste(IAsyncResult result) => this.Channel.EndPrintCheckliste(result);
+
+  private IAsyncResult OnBeginPrintCheckliste(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginPrintCheckliste((string) inValues[0], (string) inValues[1], (Guid) inValues[2], callback, asyncState);
+  }
+
+  private object[] OnEndPrintCheckliste(IAsyncResult result)
+  {
+    this.EndPrintCheckliste(result);
+    return (object[]) null;
+  }
+
+  private void OnPrintChecklisteCompleted(object state)
+  {
+    if (this.PrintChecklisteCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.PrintChecklisteCompleted((object) this, new AsyncCompletedEventArgs(completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void PrintChecklisteAsync(string einsatzGrund, string printer, Guid TicketID)
+  {
+    this.PrintChecklisteAsync(einsatzGrund, printer, TicketID, (object) null);
+  }
+
+  public void PrintChecklisteAsync(
+    string einsatzGrund,
+    string printer,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginPrintChecklisteDelegate == null)
+      this.onBeginPrintChecklisteDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginPrintCheckliste);
+    if (this.onEndPrintChecklisteDelegate == null)
+      this.onEndPrintChecklisteDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndPrintCheckliste);
+    if (this.onPrintChecklisteCompletedDelegate == null)
+      this.onPrintChecklisteCompletedDelegate = new SendOrPostCallback(this.OnPrintChecklisteCompleted);
+    this.InvokeAsync(this.onBeginPrintChecklisteDelegate, new object[3]
+    {
+      (object) einsatzGrund,
+      (object) printer,
+      (object) TicketID
+    }, this.onEndPrintChecklisteDelegate, this.onPrintChecklisteCompletedDelegate, userState);
+  }
+
+  public void PrintEinsatzprotokoll(WCFEinsatzdaten wed, string printer, Guid TicketID)
+  {
+    this.Channel.PrintEinsatzprotokoll(wed, printer, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginPrintEinsatzprotokoll(
+    WCFEinsatzdaten wed,
+    string printer,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginPrintEinsatzprotokoll(wed, printer, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public void EndPrintEinsatzprotokoll(IAsyncResult result)
+  {
+    this.Channel.EndPrintEinsatzprotokoll(result);
+  }
+
+  private IAsyncResult OnBeginPrintEinsatzprotokoll(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginPrintEinsatzprotokoll((WCFEinsatzdaten) inValues[0], (string) inValues[1], (Guid) inValues[2], callback, asyncState);
+  }
+
+  private object[] OnEndPrintEinsatzprotokoll(IAsyncResult result)
+  {
+    this.EndPrintEinsatzprotokoll(result);
+    return (object[]) null;
+  }
+
+  private void OnPrintEinsatzprotokollCompleted(object state)
+  {
+    if (this.PrintEinsatzprotokollCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.PrintEinsatzprotokollCompleted((object) this, new AsyncCompletedEventArgs(completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void PrintEinsatzprotokollAsync(WCFEinsatzdaten wed, string printer, Guid TicketID)
+  {
+    this.PrintEinsatzprotokollAsync(wed, printer, TicketID, (object) null);
+  }
+
+  public void PrintEinsatzprotokollAsync(
+    WCFEinsatzdaten wed,
+    string printer,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginPrintEinsatzprotokollDelegate == null)
+      this.onBeginPrintEinsatzprotokollDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginPrintEinsatzprotokoll);
+    if (this.onEndPrintEinsatzprotokollDelegate == null)
+      this.onEndPrintEinsatzprotokollDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndPrintEinsatzprotokoll);
+    if (this.onPrintEinsatzprotokollCompletedDelegate == null)
+      this.onPrintEinsatzprotokollCompletedDelegate = new SendOrPostCallback(this.OnPrintEinsatzprotokollCompleted);
+    this.InvokeAsync(this.onBeginPrintEinsatzprotokollDelegate, new object[3]
+    {
+      (object) wed,
+      (object) printer,
+      (object) TicketID
+    }, this.onEndPrintEinsatzprotokollDelegate, this.onPrintEinsatzprotokollCompletedDelegate, userState);
+  }
+
+  public void PrintAnfahrtEinsatzortübersicht(WCFEinsatzdaten wed, string printer, Guid TicketID)
+  {
+    this.Channel.PrintAnfahrtEinsatzortübersicht(wed, printer, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginPrintAnfahrtEinsatzortübersicht(
+    WCFEinsatzdaten wed,
+    string printer,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginPrintAnfahrtEinsatzortübersicht(wed, printer, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public void EndPrintAnfahrtEinsatzortübersicht(IAsyncResult result)
+  {
+    this.Channel.EndPrintAnfahrtEinsatzortübersicht(result);
+  }
+
+  private IAsyncResult OnBeginPrintAnfahrtEinsatzortübersicht(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginPrintAnfahrtEinsatzortübersicht((WCFEinsatzdaten) inValues[0], (string) inValues[1], (Guid) inValues[2], callback, asyncState);
+  }
+
+  private object[] OnEndPrintAnfahrtEinsatzortübersicht(IAsyncResult result)
+  {
+    this.EndPrintAnfahrtEinsatzortübersicht(result);
+    return (object[]) null;
+  }
+
+  private void OnPrintAnfahrtEinsatzortübersichtCompleted(object state)
+  {
+    if (this.PrintAnfahrtEinsatzortübersichtCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.PrintAnfahrtEinsatzortübersichtCompleted((object) this, new AsyncCompletedEventArgs(completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void PrintAnfahrtEinsatzortübersichtAsync(
+    WCFEinsatzdaten wed,
+    string printer,
+    Guid TicketID)
+  {
+    this.PrintAnfahrtEinsatzortübersichtAsync(wed, printer, TicketID, (object) null);
+  }
+
+  public void PrintAnfahrtEinsatzortübersichtAsync(
+    WCFEinsatzdaten wed,
+    string printer,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginPrintAnfahrtEinsatzortübersichtDelegate == null)
+      this.onBeginPrintAnfahrtEinsatzortübersichtDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginPrintAnfahrtEinsatzortübersicht);
+    if (this.onEndPrintAnfahrtEinsatzortübersichtDelegate == null)
+      this.onEndPrintAnfahrtEinsatzortübersichtDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndPrintAnfahrtEinsatzortübersicht);
+    if (this.onPrintAnfahrtEinsatzortübersichtCompletedDelegate == null)
+      this.onPrintAnfahrtEinsatzortübersichtCompletedDelegate = new SendOrPostCallback(this.OnPrintAnfahrtEinsatzortübersichtCompleted);
+    this.InvokeAsync(this.onBeginPrintAnfahrtEinsatzortübersichtDelegate, new object[3]
+    {
+      (object) wed,
+      (object) printer,
+      (object) TicketID
+    }, this.onEndPrintAnfahrtEinsatzortübersichtDelegate, this.onPrintAnfahrtEinsatzortübersichtCompletedDelegate, userState);
+  }
+
+  public string[] PrintGetPrinters(Guid TicketID) => this.Channel.PrintGetPrinters(TicketID);
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginPrintGetPrinters(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginPrintGetPrinters(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public string[] EndPrintGetPrinters(IAsyncResult result)
+  {
+    return this.Channel.EndPrintGetPrinters(result);
+  }
+
+  private IAsyncResult OnBeginPrintGetPrinters(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginPrintGetPrinters((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndPrintGetPrinters(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndPrintGetPrinters(result)
+    };
+  }
+
+  private void OnPrintGetPrintersCompleted(object state)
+  {
+    if (this.PrintGetPrintersCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.PrintGetPrintersCompleted((object) this, new PrintGetPrintersCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void PrintGetPrintersAsync(Guid TicketID)
+  {
+    this.PrintGetPrintersAsync(TicketID, (object) null);
+  }
+
+  public void PrintGetPrintersAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginPrintGetPrintersDelegate == null)
+      this.onBeginPrintGetPrintersDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginPrintGetPrinters);
+    if (this.onEndPrintGetPrintersDelegate == null)
+      this.onEndPrintGetPrintersDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndPrintGetPrinters);
+    if (this.onPrintGetPrintersCompletedDelegate == null)
+      this.onPrintGetPrintersCompletedDelegate = new SendOrPostCallback(this.OnPrintGetPrintersCompleted);
+    this.InvokeAsync(this.onBeginPrintGetPrintersDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndPrintGetPrintersDelegate, this.onPrintGetPrintersCompletedDelegate, userState);
+  }
+
+  public WCFAusfahrtsrichtung[] AusfahrtsrichtungenGetAll(Guid TicketID)
+  {
+    return this.Channel.AusfahrtsrichtungenGetAll(TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginAusfahrtsrichtungenGetAll(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginAusfahrtsrichtungenGetAll(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFAusfahrtsrichtung[] EndAusfahrtsrichtungenGetAll(IAsyncResult result)
+  {
+    return this.Channel.EndAusfahrtsrichtungenGetAll(result);
+  }
+
+  private IAsyncResult OnBeginAusfahrtsrichtungenGetAll(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginAusfahrtsrichtungenGetAll((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndAusfahrtsrichtungenGetAll(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndAusfahrtsrichtungenGetAll(result)
+    };
+  }
+
+  private void OnAusfahrtsrichtungenGetAllCompleted(object state)
+  {
+    if (this.AusfahrtsrichtungenGetAllCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.AusfahrtsrichtungenGetAllCompleted((object) this, new AusfahrtsrichtungenGetAllCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void AusfahrtsrichtungenGetAllAsync(Guid TicketID)
+  {
+    this.AusfahrtsrichtungenGetAllAsync(TicketID, (object) null);
+  }
+
+  public void AusfahrtsrichtungenGetAllAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginAusfahrtsrichtungenGetAllDelegate == null)
+      this.onBeginAusfahrtsrichtungenGetAllDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginAusfahrtsrichtungenGetAll);
+    if (this.onEndAusfahrtsrichtungenGetAllDelegate == null)
+      this.onEndAusfahrtsrichtungenGetAllDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndAusfahrtsrichtungenGetAll);
+    if (this.onAusfahrtsrichtungenGetAllCompletedDelegate == null)
+      this.onAusfahrtsrichtungenGetAllCompletedDelegate = new SendOrPostCallback(this.OnAusfahrtsrichtungenGetAllCompleted);
+    this.InvokeAsync(this.onBeginAusfahrtsrichtungenGetAllDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndAusfahrtsrichtungenGetAllDelegate, this.onAusfahrtsrichtungenGetAllCompletedDelegate, userState);
+  }
+
+  public int AusfahrtsrichtungPersist(WCFAusfahrtsrichtung wa, Guid TicketID)
+  {
+    return this.Channel.AusfahrtsrichtungPersist(wa, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginAusfahrtsrichtungPersist(
+    WCFAusfahrtsrichtung wa,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginAusfahrtsrichtungPersist(wa, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public int EndAusfahrtsrichtungPersist(IAsyncResult result)
+  {
+    return this.Channel.EndAusfahrtsrichtungPersist(result);
+  }
+
+  private IAsyncResult OnBeginAusfahrtsrichtungPersist(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginAusfahrtsrichtungPersist((WCFAusfahrtsrichtung) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndAusfahrtsrichtungPersist(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndAusfahrtsrichtungPersist(result)
+    };
+  }
+
+  private void OnAusfahrtsrichtungPersistCompleted(object state)
+  {
+    if (this.AusfahrtsrichtungPersistCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.AusfahrtsrichtungPersistCompleted((object) this, new AusfahrtsrichtungPersistCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void AusfahrtsrichtungPersistAsync(WCFAusfahrtsrichtung wa, Guid TicketID)
+  {
+    this.AusfahrtsrichtungPersistAsync(wa, TicketID, (object) null);
+  }
+
+  public void AusfahrtsrichtungPersistAsync(
+    WCFAusfahrtsrichtung wa,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginAusfahrtsrichtungPersistDelegate == null)
+      this.onBeginAusfahrtsrichtungPersistDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginAusfahrtsrichtungPersist);
+    if (this.onEndAusfahrtsrichtungPersistDelegate == null)
+      this.onEndAusfahrtsrichtungPersistDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndAusfahrtsrichtungPersist);
+    if (this.onAusfahrtsrichtungPersistCompletedDelegate == null)
+      this.onAusfahrtsrichtungPersistCompletedDelegate = new SendOrPostCallback(this.OnAusfahrtsrichtungPersistCompleted);
+    this.InvokeAsync(this.onBeginAusfahrtsrichtungPersistDelegate, new object[2]
+    {
+      (object) wa,
+      (object) TicketID
+    }, this.onEndAusfahrtsrichtungPersistDelegate, this.onAusfahrtsrichtungPersistCompletedDelegate, userState);
+  }
+
+  public bool AusfahrtsrichtungDelete(WCFAusfahrtsrichtung wa, Guid TicketID)
+  {
+    return this.Channel.AusfahrtsrichtungDelete(wa, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginAusfahrtsrichtungDelete(
+    WCFAusfahrtsrichtung wa,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginAusfahrtsrichtungDelete(wa, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndAusfahrtsrichtungDelete(IAsyncResult result)
+  {
+    return this.Channel.EndAusfahrtsrichtungDelete(result);
+  }
+
+  private IAsyncResult OnBeginAusfahrtsrichtungDelete(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginAusfahrtsrichtungDelete((WCFAusfahrtsrichtung) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndAusfahrtsrichtungDelete(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndAusfahrtsrichtungDelete(result)
+    };
+  }
+
+  private void OnAusfahrtsrichtungDeleteCompleted(object state)
+  {
+    if (this.AusfahrtsrichtungDeleteCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.AusfahrtsrichtungDeleteCompleted((object) this, new AusfahrtsrichtungDeleteCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void AusfahrtsrichtungDeleteAsync(WCFAusfahrtsrichtung wa, Guid TicketID)
+  {
+    this.AusfahrtsrichtungDeleteAsync(wa, TicketID, (object) null);
+  }
+
+  public void AusfahrtsrichtungDeleteAsync(
+    WCFAusfahrtsrichtung wa,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginAusfahrtsrichtungDeleteDelegate == null)
+      this.onBeginAusfahrtsrichtungDeleteDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginAusfahrtsrichtungDelete);
+    if (this.onEndAusfahrtsrichtungDeleteDelegate == null)
+      this.onEndAusfahrtsrichtungDeleteDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndAusfahrtsrichtungDelete);
+    if (this.onAusfahrtsrichtungDeleteCompletedDelegate == null)
+      this.onAusfahrtsrichtungDeleteCompletedDelegate = new SendOrPostCallback(this.OnAusfahrtsrichtungDeleteCompleted);
+    this.InvokeAsync(this.onBeginAusfahrtsrichtungDeleteDelegate, new object[2]
+    {
+      (object) wa,
+      (object) TicketID
+    }, this.onEndAusfahrtsrichtungDeleteDelegate, this.onAusfahrtsrichtungDeleteCompletedDelegate, userState);
+  }
+
+  public bool SystemTestStart(WCFEinsatzOptionen optionen, Guid TicketID)
+  {
+    return this.Channel.SystemTestStart(optionen, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginSystemTestStart(
+    WCFEinsatzOptionen optionen,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginSystemTestStart(optionen, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndSystemTestStart(IAsyncResult result) => this.Channel.EndSystemTestStart(result);
+
+  private IAsyncResult OnBeginSystemTestStart(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginSystemTestStart((WCFEinsatzOptionen) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndSystemTestStart(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndSystemTestStart(result)
+    };
+  }
+
+  private void OnSystemTestStartCompleted(object state)
+  {
+    if (this.SystemTestStartCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.SystemTestStartCompleted((object) this, new SystemTestStartCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void SystemTestStartAsync(WCFEinsatzOptionen optionen, Guid TicketID)
+  {
+    this.SystemTestStartAsync(optionen, TicketID, (object) null);
+  }
+
+  public void SystemTestStartAsync(WCFEinsatzOptionen optionen, Guid TicketID, object userState)
+  {
+    if (this.onBeginSystemTestStartDelegate == null)
+      this.onBeginSystemTestStartDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginSystemTestStart);
+    if (this.onEndSystemTestStartDelegate == null)
+      this.onEndSystemTestStartDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndSystemTestStart);
+    if (this.onSystemTestStartCompletedDelegate == null)
+      this.onSystemTestStartCompletedDelegate = new SendOrPostCallback(this.OnSystemTestStartCompleted);
+    this.InvokeAsync(this.onBeginSystemTestStartDelegate, new object[2]
+    {
+      (object) optionen,
+      (object) TicketID
+    }, this.onEndSystemTestStartDelegate, this.onSystemTestStartCompletedDelegate, userState);
+  }
+
+  public bool EinsatzTyp_GruppePersist(WCFEinsatzTypGruppe etg, Guid TicketID)
+  {
+    return this.Channel.EinsatzTyp_GruppePersist(etg, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginEinsatzTyp_GruppePersist(
+    WCFEinsatzTypGruppe etg,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginEinsatzTyp_GruppePersist(etg, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndEinsatzTyp_GruppePersist(IAsyncResult result)
+  {
+    return this.Channel.EndEinsatzTyp_GruppePersist(result);
+  }
+
+  private IAsyncResult OnBeginEinsatzTyp_GruppePersist(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginEinsatzTyp_GruppePersist((WCFEinsatzTypGruppe) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndEinsatzTyp_GruppePersist(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndEinsatzTyp_GruppePersist(result)
+    };
+  }
+
+  private void OnEinsatzTyp_GruppePersistCompleted(object state)
+  {
+    if (this.EinsatzTyp_GruppePersistCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.EinsatzTyp_GruppePersistCompleted((object) this, new EinsatzTyp_GruppePersistCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void EinsatzTyp_GruppePersistAsync(WCFEinsatzTypGruppe etg, Guid TicketID)
+  {
+    this.EinsatzTyp_GruppePersistAsync(etg, TicketID, (object) null);
+  }
+
+  public void EinsatzTyp_GruppePersistAsync(
+    WCFEinsatzTypGruppe etg,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginEinsatzTyp_GruppePersistDelegate == null)
+      this.onBeginEinsatzTyp_GruppePersistDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginEinsatzTyp_GruppePersist);
+    if (this.onEndEinsatzTyp_GruppePersistDelegate == null)
+      this.onEndEinsatzTyp_GruppePersistDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndEinsatzTyp_GruppePersist);
+    if (this.onEinsatzTyp_GruppePersistCompletedDelegate == null)
+      this.onEinsatzTyp_GruppePersistCompletedDelegate = new SendOrPostCallback(this.OnEinsatzTyp_GruppePersistCompleted);
+    this.InvokeAsync(this.onBeginEinsatzTyp_GruppePersistDelegate, new object[2]
+    {
+      (object) etg,
+      (object) TicketID
+    }, this.onEndEinsatzTyp_GruppePersistDelegate, this.onEinsatzTyp_GruppePersistCompletedDelegate, userState);
+  }
+
+  public bool EinsatzTyp_GruppeRemove(int etg, Guid TicketID)
+  {
+    return this.Channel.EinsatzTyp_GruppeRemove(etg, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginEinsatzTyp_GruppeRemove(
+    int etg,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginEinsatzTyp_GruppeRemove(etg, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndEinsatzTyp_GruppeRemove(IAsyncResult result)
+  {
+    return this.Channel.EndEinsatzTyp_GruppeRemove(result);
+  }
+
+  private IAsyncResult OnBeginEinsatzTyp_GruppeRemove(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginEinsatzTyp_GruppeRemove((int) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndEinsatzTyp_GruppeRemove(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndEinsatzTyp_GruppeRemove(result)
+    };
+  }
+
+  private void OnEinsatzTyp_GruppeRemoveCompleted(object state)
+  {
+    if (this.EinsatzTyp_GruppeRemoveCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.EinsatzTyp_GruppeRemoveCompleted((object) this, new EinsatzTyp_GruppeRemoveCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void EinsatzTyp_GruppeRemoveAsync(int etg, Guid TicketID)
+  {
+    this.EinsatzTyp_GruppeRemoveAsync(etg, TicketID, (object) null);
+  }
+
+  public void EinsatzTyp_GruppeRemoveAsync(int etg, Guid TicketID, object userState)
+  {
+    if (this.onBeginEinsatzTyp_GruppeRemoveDelegate == null)
+      this.onBeginEinsatzTyp_GruppeRemoveDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginEinsatzTyp_GruppeRemove);
+    if (this.onEndEinsatzTyp_GruppeRemoveDelegate == null)
+      this.onEndEinsatzTyp_GruppeRemoveDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndEinsatzTyp_GruppeRemove);
+    if (this.onEinsatzTyp_GruppeRemoveCompletedDelegate == null)
+      this.onEinsatzTyp_GruppeRemoveCompletedDelegate = new SendOrPostCallback(this.OnEinsatzTyp_GruppeRemoveCompleted);
+    this.InvokeAsync(this.onBeginEinsatzTyp_GruppeRemoveDelegate, new object[2]
+    {
+      (object) etg,
+      (object) TicketID
+    }, this.onEndEinsatzTyp_GruppeRemoveDelegate, this.onEinsatzTyp_GruppeRemoveCompletedDelegate, userState);
+  }
+
+  public WCFBenutzerGruppe[] BenutzerGruppeGetByEinsatzTyp(string EinsatzTyp, Guid TicketID)
+  {
+    return this.Channel.BenutzerGruppeGetByEinsatzTyp(EinsatzTyp, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginBenutzerGruppeGetByEinsatzTyp(
+    string EinsatzTyp,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginBenutzerGruppeGetByEinsatzTyp(EinsatzTyp, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFBenutzerGruppe[] EndBenutzerGruppeGetByEinsatzTyp(IAsyncResult result)
+  {
+    return this.Channel.EndBenutzerGruppeGetByEinsatzTyp(result);
+  }
+
+  private IAsyncResult OnBeginBenutzerGruppeGetByEinsatzTyp(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginBenutzerGruppeGetByEinsatzTyp((string) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndBenutzerGruppeGetByEinsatzTyp(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndBenutzerGruppeGetByEinsatzTyp(result)
+    };
+  }
+
+  private void OnBenutzerGruppeGetByEinsatzTypCompleted(object state)
+  {
+    if (this.BenutzerGruppeGetByEinsatzTypCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.BenutzerGruppeGetByEinsatzTypCompleted((object) this, new BenutzerGruppeGetByEinsatzTypCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void BenutzerGruppeGetByEinsatzTypAsync(string EinsatzTyp, Guid TicketID)
+  {
+    this.BenutzerGruppeGetByEinsatzTypAsync(EinsatzTyp, TicketID, (object) null);
+  }
+
+  public void BenutzerGruppeGetByEinsatzTypAsync(
+    string EinsatzTyp,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginBenutzerGruppeGetByEinsatzTypDelegate == null)
+      this.onBeginBenutzerGruppeGetByEinsatzTypDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginBenutzerGruppeGetByEinsatzTyp);
+    if (this.onEndBenutzerGruppeGetByEinsatzTypDelegate == null)
+      this.onEndBenutzerGruppeGetByEinsatzTypDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndBenutzerGruppeGetByEinsatzTyp);
+    if (this.onBenutzerGruppeGetByEinsatzTypCompletedDelegate == null)
+      this.onBenutzerGruppeGetByEinsatzTypCompletedDelegate = new SendOrPostCallback(this.OnBenutzerGruppeGetByEinsatzTypCompleted);
+    this.InvokeAsync(this.onBeginBenutzerGruppeGetByEinsatzTypDelegate, new object[2]
+    {
+      (object) EinsatzTyp,
+      (object) TicketID
+    }, this.onEndBenutzerGruppeGetByEinsatzTypDelegate, this.onBenutzerGruppeGetByEinsatzTypCompletedDelegate, userState);
+  }
+
+  public WCFBenutzerGruppe[] BenutzerGruppenGetAll(Guid TicketID)
+  {
+    return this.Channel.BenutzerGruppenGetAll(TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginBenutzerGruppenGetAll(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginBenutzerGruppenGetAll(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFBenutzerGruppe[] EndBenutzerGruppenGetAll(IAsyncResult result)
+  {
+    return this.Channel.EndBenutzerGruppenGetAll(result);
+  }
+
+  private IAsyncResult OnBeginBenutzerGruppenGetAll(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginBenutzerGruppenGetAll((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndBenutzerGruppenGetAll(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndBenutzerGruppenGetAll(result)
+    };
+  }
+
+  private void OnBenutzerGruppenGetAllCompleted(object state)
+  {
+    if (this.BenutzerGruppenGetAllCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.BenutzerGruppenGetAllCompleted((object) this, new BenutzerGruppenGetAllCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void BenutzerGruppenGetAllAsync(Guid TicketID)
+  {
+    this.BenutzerGruppenGetAllAsync(TicketID, (object) null);
+  }
+
+  public void BenutzerGruppenGetAllAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginBenutzerGruppenGetAllDelegate == null)
+      this.onBeginBenutzerGruppenGetAllDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginBenutzerGruppenGetAll);
+    if (this.onEndBenutzerGruppenGetAllDelegate == null)
+      this.onEndBenutzerGruppenGetAllDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndBenutzerGruppenGetAll);
+    if (this.onBenutzerGruppenGetAllCompletedDelegate == null)
+      this.onBenutzerGruppenGetAllCompletedDelegate = new SendOrPostCallback(this.OnBenutzerGruppenGetAllCompleted);
+    this.InvokeAsync(this.onBeginBenutzerGruppenGetAllDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndBenutzerGruppenGetAllDelegate, this.onBenutzerGruppenGetAllCompletedDelegate, userState);
+  }
+
+  public WCFBenutzerGruppe[] BenutzerGruppenGetByBenutzer(WCFBenutzer benutzer, Guid TicketID)
+  {
+    return this.Channel.BenutzerGruppenGetByBenutzer(benutzer, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginBenutzerGruppenGetByBenutzer(
+    WCFBenutzer benutzer,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginBenutzerGruppenGetByBenutzer(benutzer, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFBenutzerGruppe[] EndBenutzerGruppenGetByBenutzer(IAsyncResult result)
+  {
+    return this.Channel.EndBenutzerGruppenGetByBenutzer(result);
+  }
+
+  private IAsyncResult OnBeginBenutzerGruppenGetByBenutzer(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginBenutzerGruppenGetByBenutzer((WCFBenutzer) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndBenutzerGruppenGetByBenutzer(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndBenutzerGruppenGetByBenutzer(result)
+    };
+  }
+
+  private void OnBenutzerGruppenGetByBenutzerCompleted(object state)
+  {
+    if (this.BenutzerGruppenGetByBenutzerCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.BenutzerGruppenGetByBenutzerCompleted((object) this, new BenutzerGruppenGetByBenutzerCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void BenutzerGruppenGetByBenutzerAsync(WCFBenutzer benutzer, Guid TicketID)
+  {
+    this.BenutzerGruppenGetByBenutzerAsync(benutzer, TicketID, (object) null);
+  }
+
+  public void BenutzerGruppenGetByBenutzerAsync(
+    WCFBenutzer benutzer,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginBenutzerGruppenGetByBenutzerDelegate == null)
+      this.onBeginBenutzerGruppenGetByBenutzerDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginBenutzerGruppenGetByBenutzer);
+    if (this.onEndBenutzerGruppenGetByBenutzerDelegate == null)
+      this.onEndBenutzerGruppenGetByBenutzerDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndBenutzerGruppenGetByBenutzer);
+    if (this.onBenutzerGruppenGetByBenutzerCompletedDelegate == null)
+      this.onBenutzerGruppenGetByBenutzerCompletedDelegate = new SendOrPostCallback(this.OnBenutzerGruppenGetByBenutzerCompleted);
+    this.InvokeAsync(this.onBeginBenutzerGruppenGetByBenutzerDelegate, new object[2]
+    {
+      (object) benutzer,
+      (object) TicketID
+    }, this.onEndBenutzerGruppenGetByBenutzerDelegate, this.onBenutzerGruppenGetByBenutzerCompletedDelegate, userState);
+  }
+
+  public WCFEinsatzTypGruppe[] EinsatzTyp_GruppenGetAll(Guid TicketID)
+  {
+    return this.Channel.EinsatzTyp_GruppenGetAll(TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginEinsatzTyp_GruppenGetAll(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginEinsatzTyp_GruppenGetAll(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFEinsatzTypGruppe[] EndEinsatzTyp_GruppenGetAll(IAsyncResult result)
+  {
+    return this.Channel.EndEinsatzTyp_GruppenGetAll(result);
+  }
+
+  private IAsyncResult OnBeginEinsatzTyp_GruppenGetAll(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginEinsatzTyp_GruppenGetAll((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndEinsatzTyp_GruppenGetAll(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndEinsatzTyp_GruppenGetAll(result)
+    };
+  }
+
+  private void OnEinsatzTyp_GruppenGetAllCompleted(object state)
+  {
+    if (this.EinsatzTyp_GruppenGetAllCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.EinsatzTyp_GruppenGetAllCompleted((object) this, new EinsatzTyp_GruppenGetAllCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void EinsatzTyp_GruppenGetAllAsync(Guid TicketID)
+  {
+    this.EinsatzTyp_GruppenGetAllAsync(TicketID, (object) null);
+  }
+
+  public void EinsatzTyp_GruppenGetAllAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginEinsatzTyp_GruppenGetAllDelegate == null)
+      this.onBeginEinsatzTyp_GruppenGetAllDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginEinsatzTyp_GruppenGetAll);
+    if (this.onEndEinsatzTyp_GruppenGetAllDelegate == null)
+      this.onEndEinsatzTyp_GruppenGetAllDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndEinsatzTyp_GruppenGetAll);
+    if (this.onEinsatzTyp_GruppenGetAllCompletedDelegate == null)
+      this.onEinsatzTyp_GruppenGetAllCompletedDelegate = new SendOrPostCallback(this.OnEinsatzTyp_GruppenGetAllCompleted);
+    this.InvokeAsync(this.onBeginEinsatzTyp_GruppenGetAllDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndEinsatzTyp_GruppenGetAllDelegate, this.onEinsatzTyp_GruppenGetAllCompletedDelegate, userState);
+  }
+
+  public WCFEinsatzTypGruppe[] EinsatzTyp_GruppenGetByGruppe(
+    WCFBenutzerGruppe gruppe,
+    Guid TicketID)
+  {
+    return this.Channel.EinsatzTyp_GruppenGetByGruppe(gruppe, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginEinsatzTyp_GruppenGetByGruppe(
+    WCFBenutzerGruppe gruppe,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginEinsatzTyp_GruppenGetByGruppe(gruppe, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFEinsatzTypGruppe[] EndEinsatzTyp_GruppenGetByGruppe(IAsyncResult result)
+  {
+    return this.Channel.EndEinsatzTyp_GruppenGetByGruppe(result);
+  }
+
+  private IAsyncResult OnBeginEinsatzTyp_GruppenGetByGruppe(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginEinsatzTyp_GruppenGetByGruppe((WCFBenutzerGruppe) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndEinsatzTyp_GruppenGetByGruppe(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndEinsatzTyp_GruppenGetByGruppe(result)
+    };
+  }
+
+  private void OnEinsatzTyp_GruppenGetByGruppeCompleted(object state)
+  {
+    if (this.EinsatzTyp_GruppenGetByGruppeCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.EinsatzTyp_GruppenGetByGruppeCompleted((object) this, new EinsatzTyp_GruppenGetByGruppeCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void EinsatzTyp_GruppenGetByGruppeAsync(WCFBenutzerGruppe gruppe, Guid TicketID)
+  {
+    this.EinsatzTyp_GruppenGetByGruppeAsync(gruppe, TicketID, (object) null);
+  }
+
+  public void EinsatzTyp_GruppenGetByGruppeAsync(
+    WCFBenutzerGruppe gruppe,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginEinsatzTyp_GruppenGetByGruppeDelegate == null)
+      this.onBeginEinsatzTyp_GruppenGetByGruppeDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginEinsatzTyp_GruppenGetByGruppe);
+    if (this.onEndEinsatzTyp_GruppenGetByGruppeDelegate == null)
+      this.onEndEinsatzTyp_GruppenGetByGruppeDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndEinsatzTyp_GruppenGetByGruppe);
+    if (this.onEinsatzTyp_GruppenGetByGruppeCompletedDelegate == null)
+      this.onEinsatzTyp_GruppenGetByGruppeCompletedDelegate = new SendOrPostCallback(this.OnEinsatzTyp_GruppenGetByGruppeCompleted);
+    this.InvokeAsync(this.onBeginEinsatzTyp_GruppenGetByGruppeDelegate, new object[2]
+    {
+      (object) gruppe,
+      (object) TicketID
+    }, this.onEndEinsatzTyp_GruppenGetByGruppeDelegate, this.onEinsatzTyp_GruppenGetByGruppeCompletedDelegate, userState);
+  }
+
+  public WCFBenutzer[] BenutzerGetByBenutzerGruppenId(int gruppeId, Guid TicketID)
+  {
+    return this.Channel.BenutzerGetByBenutzerGruppenId(gruppeId, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginBenutzerGetByBenutzerGruppenId(
+    int gruppeId,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginBenutzerGetByBenutzerGruppenId(gruppeId, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFBenutzer[] EndBenutzerGetByBenutzerGruppenId(IAsyncResult result)
+  {
+    return this.Channel.EndBenutzerGetByBenutzerGruppenId(result);
+  }
+
+  private IAsyncResult OnBeginBenutzerGetByBenutzerGruppenId(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginBenutzerGetByBenutzerGruppenId((int) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndBenutzerGetByBenutzerGruppenId(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndBenutzerGetByBenutzerGruppenId(result)
+    };
+  }
+
+  private void OnBenutzerGetByBenutzerGruppenIdCompleted(object state)
+  {
+    if (this.BenutzerGetByBenutzerGruppenIdCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.BenutzerGetByBenutzerGruppenIdCompleted((object) this, new BenutzerGetByBenutzerGruppenIdCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void BenutzerGetByBenutzerGruppenIdAsync(int gruppeId, Guid TicketID)
+  {
+    this.BenutzerGetByBenutzerGruppenIdAsync(gruppeId, TicketID, (object) null);
+  }
+
+  public void BenutzerGetByBenutzerGruppenIdAsync(int gruppeId, Guid TicketID, object userState)
+  {
+    if (this.onBeginBenutzerGetByBenutzerGruppenIdDelegate == null)
+      this.onBeginBenutzerGetByBenutzerGruppenIdDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginBenutzerGetByBenutzerGruppenId);
+    if (this.onEndBenutzerGetByBenutzerGruppenIdDelegate == null)
+      this.onEndBenutzerGetByBenutzerGruppenIdDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndBenutzerGetByBenutzerGruppenId);
+    if (this.onBenutzerGetByBenutzerGruppenIdCompletedDelegate == null)
+      this.onBenutzerGetByBenutzerGruppenIdCompletedDelegate = new SendOrPostCallback(this.OnBenutzerGetByBenutzerGruppenIdCompleted);
+    this.InvokeAsync(this.onBeginBenutzerGetByBenutzerGruppenIdDelegate, new object[2]
+    {
+      (object) gruppeId,
+      (object) TicketID
+    }, this.onEndBenutzerGetByBenutzerGruppenIdDelegate, this.onBenutzerGetByBenutzerGruppenIdCompletedDelegate, userState);
+  }
+
+  public bool BenutzerResetPasswordEnabled() => this.Channel.BenutzerResetPasswordEnabled();
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginBenutzerResetPasswordEnabled(AsyncCallback callback, object asyncState)
+  {
+    return this.Channel.BeginBenutzerResetPasswordEnabled(callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndBenutzerResetPasswordEnabled(IAsyncResult result)
+  {
+    return this.Channel.EndBenutzerResetPasswordEnabled(result);
+  }
+
+  private IAsyncResult OnBeginBenutzerResetPasswordEnabled(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginBenutzerResetPasswordEnabled(callback, asyncState);
+  }
+
+  private object[] OnEndBenutzerResetPasswordEnabled(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndBenutzerResetPasswordEnabled(result)
+    };
+  }
+
+  private void OnBenutzerResetPasswordEnabledCompleted(object state)
+  {
+    if (this.BenutzerResetPasswordEnabledCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.BenutzerResetPasswordEnabledCompleted((object) this, new BenutzerResetPasswordEnabledCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void BenutzerResetPasswordEnabledAsync()
+  {
+    this.BenutzerResetPasswordEnabledAsync((object) null);
+  }
+
+  public void BenutzerResetPasswordEnabledAsync(object userState)
+  {
+    if (this.onBeginBenutzerResetPasswordEnabledDelegate == null)
+      this.onBeginBenutzerResetPasswordEnabledDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginBenutzerResetPasswordEnabled);
+    if (this.onEndBenutzerResetPasswordEnabledDelegate == null)
+      this.onEndBenutzerResetPasswordEnabledDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndBenutzerResetPasswordEnabled);
+    if (this.onBenutzerResetPasswordEnabledCompletedDelegate == null)
+      this.onBenutzerResetPasswordEnabledCompletedDelegate = new SendOrPostCallback(this.OnBenutzerResetPasswordEnabledCompleted);
+    this.InvokeAsync(this.onBeginBenutzerResetPasswordEnabledDelegate, (object[]) null, this.onEndBenutzerResetPasswordEnabledDelegate, this.onBenutzerResetPasswordEnabledCompletedDelegate, userState);
+  }
+
+  public bool BenutzerResetPassword(string email) => this.Channel.BenutzerResetPassword(email);
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginBenutzerResetPassword(
+    string email,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginBenutzerResetPassword(email, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndBenutzerResetPassword(IAsyncResult result)
+  {
+    return this.Channel.EndBenutzerResetPassword(result);
+  }
+
+  private IAsyncResult OnBeginBenutzerResetPassword(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginBenutzerResetPassword((string) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndBenutzerResetPassword(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndBenutzerResetPassword(result)
+    };
+  }
+
+  private void OnBenutzerResetPasswordCompleted(object state)
+  {
+    if (this.BenutzerResetPasswordCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.BenutzerResetPasswordCompleted((object) this, new BenutzerResetPasswordCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void BenutzerResetPasswordAsync(string email)
+  {
+    this.BenutzerResetPasswordAsync(email, (object) null);
+  }
+
+  public void BenutzerResetPasswordAsync(string email, object userState)
+  {
+    if (this.onBeginBenutzerResetPasswordDelegate == null)
+      this.onBeginBenutzerResetPasswordDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginBenutzerResetPassword);
+    if (this.onEndBenutzerResetPasswordDelegate == null)
+      this.onEndBenutzerResetPasswordDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndBenutzerResetPassword);
+    if (this.onBenutzerResetPasswordCompletedDelegate == null)
+      this.onBenutzerResetPasswordCompletedDelegate = new SendOrPostCallback(this.OnBenutzerResetPasswordCompleted);
+    this.InvokeAsync(this.onBeginBenutzerResetPasswordDelegate, new object[1]
+    {
+      (object) email
+    }, this.onEndBenutzerResetPasswordDelegate, this.onBenutzerResetPasswordCompletedDelegate, userState);
+  }
+
+  public bool BenutzerSendPIN(string email) => this.Channel.BenutzerSendPIN(email);
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginBenutzerSendPIN(string email, AsyncCallback callback, object asyncState)
+  {
+    return this.Channel.BeginBenutzerSendPIN(email, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndBenutzerSendPIN(IAsyncResult result) => this.Channel.EndBenutzerSendPIN(result);
+
+  private IAsyncResult OnBeginBenutzerSendPIN(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginBenutzerSendPIN((string) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndBenutzerSendPIN(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndBenutzerSendPIN(result)
+    };
+  }
+
+  private void OnBenutzerSendPINCompleted(object state)
+  {
+    if (this.BenutzerSendPINCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.BenutzerSendPINCompleted((object) this, new BenutzerSendPINCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void BenutzerSendPINAsync(string email) => this.BenutzerSendPINAsync(email, (object) null);
+
+  public void BenutzerSendPINAsync(string email, object userState)
+  {
+    if (this.onBeginBenutzerSendPINDelegate == null)
+      this.onBeginBenutzerSendPINDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginBenutzerSendPIN);
+    if (this.onEndBenutzerSendPINDelegate == null)
+      this.onEndBenutzerSendPINDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndBenutzerSendPIN);
+    if (this.onBenutzerSendPINCompletedDelegate == null)
+      this.onBenutzerSendPINCompletedDelegate = new SendOrPostCallback(this.OnBenutzerSendPINCompleted);
+    this.InvokeAsync(this.onBeginBenutzerSendPINDelegate, new object[1]
+    {
+      (object) email
+    }, this.onEndBenutzerSendPINDelegate, this.onBenutzerSendPINCompletedDelegate, userState);
+  }
+
+  public string BenutzerGetDeviceRegistration(string email, string PIN, string deviceName)
+  {
+    return this.Channel.BenutzerGetDeviceRegistration(email, PIN, deviceName);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginBenutzerGetDeviceRegistration(
+    string email,
+    string PIN,
+    string deviceName,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginBenutzerGetDeviceRegistration(email, PIN, deviceName, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public string EndBenutzerGetDeviceRegistration(IAsyncResult result)
+  {
+    return this.Channel.EndBenutzerGetDeviceRegistration(result);
+  }
+
+  private IAsyncResult OnBeginBenutzerGetDeviceRegistration(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginBenutzerGetDeviceRegistration((string) inValues[0], (string) inValues[1], (string) inValues[2], callback, asyncState);
+  }
+
+  private object[] OnEndBenutzerGetDeviceRegistration(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndBenutzerGetDeviceRegistration(result)
+    };
+  }
+
+  private void OnBenutzerGetDeviceRegistrationCompleted(object state)
+  {
+    if (this.BenutzerGetDeviceRegistrationCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.BenutzerGetDeviceRegistrationCompleted((object) this, new BenutzerGetDeviceRegistrationCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void BenutzerGetDeviceRegistrationAsync(string email, string PIN, string deviceName)
+  {
+    this.BenutzerGetDeviceRegistrationAsync(email, PIN, deviceName, (object) null);
+  }
+
+  public void BenutzerGetDeviceRegistrationAsync(
+    string email,
+    string PIN,
+    string deviceName,
+    object userState)
+  {
+    if (this.onBeginBenutzerGetDeviceRegistrationDelegate == null)
+      this.onBeginBenutzerGetDeviceRegistrationDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginBenutzerGetDeviceRegistration);
+    if (this.onEndBenutzerGetDeviceRegistrationDelegate == null)
+      this.onEndBenutzerGetDeviceRegistrationDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndBenutzerGetDeviceRegistration);
+    if (this.onBenutzerGetDeviceRegistrationCompletedDelegate == null)
+      this.onBenutzerGetDeviceRegistrationCompletedDelegate = new SendOrPostCallback(this.OnBenutzerGetDeviceRegistrationCompleted);
+    this.InvokeAsync(this.onBeginBenutzerGetDeviceRegistrationDelegate, new object[3]
+    {
+      (object) email,
+      (object) PIN,
+      (object) deviceName
+    }, this.onEndBenutzerGetDeviceRegistrationDelegate, this.onBenutzerGetDeviceRegistrationCompletedDelegate, userState);
+  }
+
+  public WCFGCalenderObj[] GCalenderGetList(Guid TicketID)
+  {
+    return this.Channel.GCalenderGetList(TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginGCalenderGetList(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginGCalenderGetList(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFGCalenderObj[] EndGCalenderGetList(IAsyncResult result)
+  {
+    return this.Channel.EndGCalenderGetList(result);
+  }
+
+  private IAsyncResult OnBeginGCalenderGetList(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginGCalenderGetList((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndGCalenderGetList(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndGCalenderGetList(result)
+    };
+  }
+
+  private void OnGCalenderGetListCompleted(object state)
+  {
+    if (this.GCalenderGetListCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.GCalenderGetListCompleted((object) this, new GCalenderGetListCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void GCalenderGetListAsync(Guid TicketID)
+  {
+    this.GCalenderGetListAsync(TicketID, (object) null);
+  }
+
+  public void GCalenderGetListAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginGCalenderGetListDelegate == null)
+      this.onBeginGCalenderGetListDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginGCalenderGetList);
+    if (this.onEndGCalenderGetListDelegate == null)
+      this.onEndGCalenderGetListDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndGCalenderGetList);
+    if (this.onGCalenderGetListCompletedDelegate == null)
+      this.onGCalenderGetListCompletedDelegate = new SendOrPostCallback(this.OnGCalenderGetListCompleted);
+    this.InvokeAsync(this.onBeginGCalenderGetListDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndGCalenderGetListDelegate, this.onGCalenderGetListCompletedDelegate, userState);
+  }
+
+  public string InfoGetFeuerwehrName() => this.Channel.InfoGetFeuerwehrName();
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginInfoGetFeuerwehrName(AsyncCallback callback, object asyncState)
+  {
+    return this.Channel.BeginInfoGetFeuerwehrName(callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public string EndInfoGetFeuerwehrName(IAsyncResult result)
+  {
+    return this.Channel.EndInfoGetFeuerwehrName(result);
+  }
+
+  private IAsyncResult OnBeginInfoGetFeuerwehrName(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginInfoGetFeuerwehrName(callback, asyncState);
+  }
+
+  private object[] OnEndInfoGetFeuerwehrName(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndInfoGetFeuerwehrName(result)
+    };
+  }
+
+  private void OnInfoGetFeuerwehrNameCompleted(object state)
+  {
+    if (this.InfoGetFeuerwehrNameCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.InfoGetFeuerwehrNameCompleted((object) this, new InfoGetFeuerwehrNameCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void InfoGetFeuerwehrNameAsync() => this.InfoGetFeuerwehrNameAsync((object) null);
+
+  public void InfoGetFeuerwehrNameAsync(object userState)
+  {
+    if (this.onBeginInfoGetFeuerwehrNameDelegate == null)
+      this.onBeginInfoGetFeuerwehrNameDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginInfoGetFeuerwehrName);
+    if (this.onEndInfoGetFeuerwehrNameDelegate == null)
+      this.onEndInfoGetFeuerwehrNameDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndInfoGetFeuerwehrName);
+    if (this.onInfoGetFeuerwehrNameCompletedDelegate == null)
+      this.onInfoGetFeuerwehrNameCompletedDelegate = new SendOrPostCallback(this.OnInfoGetFeuerwehrNameCompleted);
+    this.InvokeAsync(this.onBeginInfoGetFeuerwehrNameDelegate, (object[]) null, this.onEndInfoGetFeuerwehrNameDelegate, this.onInfoGetFeuerwehrNameCompletedDelegate, userState);
+  }
+
+  public string InfoGetFeuerwehrAdresse() => this.Channel.InfoGetFeuerwehrAdresse();
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginInfoGetFeuerwehrAdresse(AsyncCallback callback, object asyncState)
+  {
+    return this.Channel.BeginInfoGetFeuerwehrAdresse(callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public string EndInfoGetFeuerwehrAdresse(IAsyncResult result)
+  {
+    return this.Channel.EndInfoGetFeuerwehrAdresse(result);
+  }
+
+  private IAsyncResult OnBeginInfoGetFeuerwehrAdresse(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginInfoGetFeuerwehrAdresse(callback, asyncState);
+  }
+
+  private object[] OnEndInfoGetFeuerwehrAdresse(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndInfoGetFeuerwehrAdresse(result)
+    };
+  }
+
+  private void OnInfoGetFeuerwehrAdresseCompleted(object state)
+  {
+    if (this.InfoGetFeuerwehrAdresseCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.InfoGetFeuerwehrAdresseCompleted((object) this, new InfoGetFeuerwehrAdresseCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void InfoGetFeuerwehrAdresseAsync() => this.InfoGetFeuerwehrAdresseAsync((object) null);
+
+  public void InfoGetFeuerwehrAdresseAsync(object userState)
+  {
+    if (this.onBeginInfoGetFeuerwehrAdresseDelegate == null)
+      this.onBeginInfoGetFeuerwehrAdresseDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginInfoGetFeuerwehrAdresse);
+    if (this.onEndInfoGetFeuerwehrAdresseDelegate == null)
+      this.onEndInfoGetFeuerwehrAdresseDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndInfoGetFeuerwehrAdresse);
+    if (this.onInfoGetFeuerwehrAdresseCompletedDelegate == null)
+      this.onInfoGetFeuerwehrAdresseCompletedDelegate = new SendOrPostCallback(this.OnInfoGetFeuerwehrAdresseCompleted);
+    this.InvokeAsync(this.onBeginInfoGetFeuerwehrAdresseDelegate, (object[]) null, this.onEndInfoGetFeuerwehrAdresseDelegate, this.onInfoGetFeuerwehrAdresseCompletedDelegate, userState);
+  }
+
+  public string InfoGetFeuerwehrAdressePLZGemeinde()
+  {
+    return this.Channel.InfoGetFeuerwehrAdressePLZGemeinde();
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginInfoGetFeuerwehrAdressePLZGemeinde(
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginInfoGetFeuerwehrAdressePLZGemeinde(callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public string EndInfoGetFeuerwehrAdressePLZGemeinde(IAsyncResult result)
+  {
+    return this.Channel.EndInfoGetFeuerwehrAdressePLZGemeinde(result);
+  }
+
+  private IAsyncResult OnBeginInfoGetFeuerwehrAdressePLZGemeinde(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginInfoGetFeuerwehrAdressePLZGemeinde(callback, asyncState);
+  }
+
+  private object[] OnEndInfoGetFeuerwehrAdressePLZGemeinde(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndInfoGetFeuerwehrAdressePLZGemeinde(result)
+    };
+  }
+
+  private void OnInfoGetFeuerwehrAdressePLZGemeindeCompleted(object state)
+  {
+    if (this.InfoGetFeuerwehrAdressePLZGemeindeCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.InfoGetFeuerwehrAdressePLZGemeindeCompleted((object) this, new InfoGetFeuerwehrAdressePLZGemeindeCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void InfoGetFeuerwehrAdressePLZGemeindeAsync()
+  {
+    this.InfoGetFeuerwehrAdressePLZGemeindeAsync((object) null);
+  }
+
+  public void InfoGetFeuerwehrAdressePLZGemeindeAsync(object userState)
+  {
+    if (this.onBeginInfoGetFeuerwehrAdressePLZGemeindeDelegate == null)
+      this.onBeginInfoGetFeuerwehrAdressePLZGemeindeDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginInfoGetFeuerwehrAdressePLZGemeinde);
+    if (this.onEndInfoGetFeuerwehrAdressePLZGemeindeDelegate == null)
+      this.onEndInfoGetFeuerwehrAdressePLZGemeindeDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndInfoGetFeuerwehrAdressePLZGemeinde);
+    if (this.onInfoGetFeuerwehrAdressePLZGemeindeCompletedDelegate == null)
+      this.onInfoGetFeuerwehrAdressePLZGemeindeCompletedDelegate = new SendOrPostCallback(this.OnInfoGetFeuerwehrAdressePLZGemeindeCompleted);
+    this.InvokeAsync(this.onBeginInfoGetFeuerwehrAdressePLZGemeindeDelegate, (object[]) null, this.onEndInfoGetFeuerwehrAdressePLZGemeindeDelegate, this.onInfoGetFeuerwehrAdressePLZGemeindeCompletedDelegate, userState);
+  }
+
+  public double InfoGetFeuerwehrAdresseGPSLatitude()
+  {
+    return this.Channel.InfoGetFeuerwehrAdresseGPSLatitude();
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginInfoGetFeuerwehrAdresseGPSLatitude(
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginInfoGetFeuerwehrAdresseGPSLatitude(callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public double EndInfoGetFeuerwehrAdresseGPSLatitude(IAsyncResult result)
+  {
+    return this.Channel.EndInfoGetFeuerwehrAdresseGPSLatitude(result);
+  }
+
+  private IAsyncResult OnBeginInfoGetFeuerwehrAdresseGPSLatitude(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginInfoGetFeuerwehrAdresseGPSLatitude(callback, asyncState);
+  }
+
+  private object[] OnEndInfoGetFeuerwehrAdresseGPSLatitude(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndInfoGetFeuerwehrAdresseGPSLatitude(result)
+    };
+  }
+
+  private void OnInfoGetFeuerwehrAdresseGPSLatitudeCompleted(object state)
+  {
+    if (this.InfoGetFeuerwehrAdresseGPSLatitudeCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.InfoGetFeuerwehrAdresseGPSLatitudeCompleted((object) this, new InfoGetFeuerwehrAdresseGPSLatitudeCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void InfoGetFeuerwehrAdresseGPSLatitudeAsync()
+  {
+    this.InfoGetFeuerwehrAdresseGPSLatitudeAsync((object) null);
+  }
+
+  public void InfoGetFeuerwehrAdresseGPSLatitudeAsync(object userState)
+  {
+    if (this.onBeginInfoGetFeuerwehrAdresseGPSLatitudeDelegate == null)
+      this.onBeginInfoGetFeuerwehrAdresseGPSLatitudeDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginInfoGetFeuerwehrAdresseGPSLatitude);
+    if (this.onEndInfoGetFeuerwehrAdresseGPSLatitudeDelegate == null)
+      this.onEndInfoGetFeuerwehrAdresseGPSLatitudeDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndInfoGetFeuerwehrAdresseGPSLatitude);
+    if (this.onInfoGetFeuerwehrAdresseGPSLatitudeCompletedDelegate == null)
+      this.onInfoGetFeuerwehrAdresseGPSLatitudeCompletedDelegate = new SendOrPostCallback(this.OnInfoGetFeuerwehrAdresseGPSLatitudeCompleted);
+    this.InvokeAsync(this.onBeginInfoGetFeuerwehrAdresseGPSLatitudeDelegate, (object[]) null, this.onEndInfoGetFeuerwehrAdresseGPSLatitudeDelegate, this.onInfoGetFeuerwehrAdresseGPSLatitudeCompletedDelegate, userState);
+  }
+
+  public double InfoGetFeuerwehrAdresseGPSLongitude()
+  {
+    return this.Channel.InfoGetFeuerwehrAdresseGPSLongitude();
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginInfoGetFeuerwehrAdresseGPSLongitude(
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginInfoGetFeuerwehrAdresseGPSLongitude(callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public double EndInfoGetFeuerwehrAdresseGPSLongitude(IAsyncResult result)
+  {
+    return this.Channel.EndInfoGetFeuerwehrAdresseGPSLongitude(result);
+  }
+
+  private IAsyncResult OnBeginInfoGetFeuerwehrAdresseGPSLongitude(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginInfoGetFeuerwehrAdresseGPSLongitude(callback, asyncState);
+  }
+
+  private object[] OnEndInfoGetFeuerwehrAdresseGPSLongitude(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndInfoGetFeuerwehrAdresseGPSLongitude(result)
+    };
+  }
+
+  private void OnInfoGetFeuerwehrAdresseGPSLongitudeCompleted(object state)
+  {
+    if (this.InfoGetFeuerwehrAdresseGPSLongitudeCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.InfoGetFeuerwehrAdresseGPSLongitudeCompleted((object) this, new InfoGetFeuerwehrAdresseGPSLongitudeCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void InfoGetFeuerwehrAdresseGPSLongitudeAsync()
+  {
+    this.InfoGetFeuerwehrAdresseGPSLongitudeAsync((object) null);
+  }
+
+  public void InfoGetFeuerwehrAdresseGPSLongitudeAsync(object userState)
+  {
+    if (this.onBeginInfoGetFeuerwehrAdresseGPSLongitudeDelegate == null)
+      this.onBeginInfoGetFeuerwehrAdresseGPSLongitudeDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginInfoGetFeuerwehrAdresseGPSLongitude);
+    if (this.onEndInfoGetFeuerwehrAdresseGPSLongitudeDelegate == null)
+      this.onEndInfoGetFeuerwehrAdresseGPSLongitudeDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndInfoGetFeuerwehrAdresseGPSLongitude);
+    if (this.onInfoGetFeuerwehrAdresseGPSLongitudeCompletedDelegate == null)
+      this.onInfoGetFeuerwehrAdresseGPSLongitudeCompletedDelegate = new SendOrPostCallback(this.OnInfoGetFeuerwehrAdresseGPSLongitudeCompleted);
+    this.InvokeAsync(this.onBeginInfoGetFeuerwehrAdresseGPSLongitudeDelegate, (object[]) null, this.onEndInfoGetFeuerwehrAdresseGPSLongitudeDelegate, this.onInfoGetFeuerwehrAdresseGPSLongitudeCompletedDelegate, userState);
+  }
+
+  public string InfoGetFeuerwehrAdresseGPSKoordinatenString()
+  {
+    return this.Channel.InfoGetFeuerwehrAdresseGPSKoordinatenString();
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginInfoGetFeuerwehrAdresseGPSKoordinatenString(
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginInfoGetFeuerwehrAdresseGPSKoordinatenString(callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public string EndInfoGetFeuerwehrAdresseGPSKoordinatenString(IAsyncResult result)
+  {
+    return this.Channel.EndInfoGetFeuerwehrAdresseGPSKoordinatenString(result);
+  }
+
+  private IAsyncResult OnBeginInfoGetFeuerwehrAdresseGPSKoordinatenString(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginInfoGetFeuerwehrAdresseGPSKoordinatenString(callback, asyncState);
+  }
+
+  private object[] OnEndInfoGetFeuerwehrAdresseGPSKoordinatenString(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndInfoGetFeuerwehrAdresseGPSKoordinatenString(result)
+    };
+  }
+
+  private void OnInfoGetFeuerwehrAdresseGPSKoordinatenStringCompleted(object state)
+  {
+    if (this.InfoGetFeuerwehrAdresseGPSKoordinatenStringCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.InfoGetFeuerwehrAdresseGPSKoordinatenStringCompleted((object) this, new InfoGetFeuerwehrAdresseGPSKoordinatenStringCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void InfoGetFeuerwehrAdresseGPSKoordinatenStringAsync()
+  {
+    this.InfoGetFeuerwehrAdresseGPSKoordinatenStringAsync((object) null);
+  }
+
+  public void InfoGetFeuerwehrAdresseGPSKoordinatenStringAsync(object userState)
+  {
+    if (this.onBeginInfoGetFeuerwehrAdresseGPSKoordinatenStringDelegate == null)
+      this.onBeginInfoGetFeuerwehrAdresseGPSKoordinatenStringDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginInfoGetFeuerwehrAdresseGPSKoordinatenString);
+    if (this.onEndInfoGetFeuerwehrAdresseGPSKoordinatenStringDelegate == null)
+      this.onEndInfoGetFeuerwehrAdresseGPSKoordinatenStringDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndInfoGetFeuerwehrAdresseGPSKoordinatenString);
+    if (this.onInfoGetFeuerwehrAdresseGPSKoordinatenStringCompletedDelegate == null)
+      this.onInfoGetFeuerwehrAdresseGPSKoordinatenStringCompletedDelegate = new SendOrPostCallback(this.OnInfoGetFeuerwehrAdresseGPSKoordinatenStringCompleted);
+    this.InvokeAsync(this.onBeginInfoGetFeuerwehrAdresseGPSKoordinatenStringDelegate, (object[]) null, this.onEndInfoGetFeuerwehrAdresseGPSKoordinatenStringDelegate, this.onInfoGetFeuerwehrAdresseGPSKoordinatenStringCompletedDelegate, userState);
+  }
+
+  public string InfoGetPLZ() => this.Channel.InfoGetPLZ();
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginInfoGetPLZ(AsyncCallback callback, object asyncState)
+  {
+    return this.Channel.BeginInfoGetPLZ(callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public string EndInfoGetPLZ(IAsyncResult result) => this.Channel.EndInfoGetPLZ(result);
+
+  private IAsyncResult OnBeginInfoGetPLZ(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginInfoGetPLZ(callback, asyncState);
+  }
+
+  private object[] OnEndInfoGetPLZ(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndInfoGetPLZ(result)
+    };
+  }
+
+  private void OnInfoGetPLZCompleted(object state)
+  {
+    if (this.InfoGetPLZCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.InfoGetPLZCompleted((object) this, new InfoGetPLZCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void InfoGetPLZAsync() => this.InfoGetPLZAsync((object) null);
+
+  public void InfoGetPLZAsync(object userState)
+  {
+    if (this.onBeginInfoGetPLZDelegate == null)
+      this.onBeginInfoGetPLZDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginInfoGetPLZ);
+    if (this.onEndInfoGetPLZDelegate == null)
+      this.onEndInfoGetPLZDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndInfoGetPLZ);
+    if (this.onInfoGetPLZCompletedDelegate == null)
+      this.onInfoGetPLZCompletedDelegate = new SendOrPostCallback(this.OnInfoGetPLZCompleted);
+    this.InvokeAsync(this.onBeginInfoGetPLZDelegate, (object[]) null, this.onEndInfoGetPLZDelegate, this.onInfoGetPLZCompletedDelegate, userState);
+  }
+
+  public string InfoGetGemeindeKennzahl() => this.Channel.InfoGetGemeindeKennzahl();
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginInfoGetGemeindeKennzahl(AsyncCallback callback, object asyncState)
+  {
+    return this.Channel.BeginInfoGetGemeindeKennzahl(callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public string EndInfoGetGemeindeKennzahl(IAsyncResult result)
+  {
+    return this.Channel.EndInfoGetGemeindeKennzahl(result);
+  }
+
+  private IAsyncResult OnBeginInfoGetGemeindeKennzahl(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginInfoGetGemeindeKennzahl(callback, asyncState);
+  }
+
+  private object[] OnEndInfoGetGemeindeKennzahl(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndInfoGetGemeindeKennzahl(result)
+    };
+  }
+
+  private void OnInfoGetGemeindeKennzahlCompleted(object state)
+  {
+    if (this.InfoGetGemeindeKennzahlCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.InfoGetGemeindeKennzahlCompleted((object) this, new InfoGetGemeindeKennzahlCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void InfoGetGemeindeKennzahlAsync() => this.InfoGetGemeindeKennzahlAsync((object) null);
+
+  public void InfoGetGemeindeKennzahlAsync(object userState)
+  {
+    if (this.onBeginInfoGetGemeindeKennzahlDelegate == null)
+      this.onBeginInfoGetGemeindeKennzahlDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginInfoGetGemeindeKennzahl);
+    if (this.onEndInfoGetGemeindeKennzahlDelegate == null)
+      this.onEndInfoGetGemeindeKennzahlDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndInfoGetGemeindeKennzahl);
+    if (this.onInfoGetGemeindeKennzahlCompletedDelegate == null)
+      this.onInfoGetGemeindeKennzahlCompletedDelegate = new SendOrPostCallback(this.OnInfoGetGemeindeKennzahlCompleted);
+    this.InvokeAsync(this.onBeginInfoGetGemeindeKennzahlDelegate, (object[]) null, this.onEndInfoGetGemeindeKennzahlDelegate, this.onInfoGetGemeindeKennzahlCompletedDelegate, userState);
+  }
+
+  public string InfoGetGemeindeKennzahlRegion() => this.Channel.InfoGetGemeindeKennzahlRegion();
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginInfoGetGemeindeKennzahlRegion(AsyncCallback callback, object asyncState)
+  {
+    return this.Channel.BeginInfoGetGemeindeKennzahlRegion(callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public string EndInfoGetGemeindeKennzahlRegion(IAsyncResult result)
+  {
+    return this.Channel.EndInfoGetGemeindeKennzahlRegion(result);
+  }
+
+  private IAsyncResult OnBeginInfoGetGemeindeKennzahlRegion(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginInfoGetGemeindeKennzahlRegion(callback, asyncState);
+  }
+
+  private object[] OnEndInfoGetGemeindeKennzahlRegion(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndInfoGetGemeindeKennzahlRegion(result)
+    };
+  }
+
+  private void OnInfoGetGemeindeKennzahlRegionCompleted(object state)
+  {
+    if (this.InfoGetGemeindeKennzahlRegionCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.InfoGetGemeindeKennzahlRegionCompleted((object) this, new InfoGetGemeindeKennzahlRegionCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void InfoGetGemeindeKennzahlRegionAsync()
+  {
+    this.InfoGetGemeindeKennzahlRegionAsync((object) null);
+  }
+
+  public void InfoGetGemeindeKennzahlRegionAsync(object userState)
+  {
+    if (this.onBeginInfoGetGemeindeKennzahlRegionDelegate == null)
+      this.onBeginInfoGetGemeindeKennzahlRegionDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginInfoGetGemeindeKennzahlRegion);
+    if (this.onEndInfoGetGemeindeKennzahlRegionDelegate == null)
+      this.onEndInfoGetGemeindeKennzahlRegionDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndInfoGetGemeindeKennzahlRegion);
+    if (this.onInfoGetGemeindeKennzahlRegionCompletedDelegate == null)
+      this.onInfoGetGemeindeKennzahlRegionCompletedDelegate = new SendOrPostCallback(this.OnInfoGetGemeindeKennzahlRegionCompleted);
+    this.InvokeAsync(this.onBeginInfoGetGemeindeKennzahlRegionDelegate, (object[]) null, this.onEndInfoGetGemeindeKennzahlRegionDelegate, this.onInfoGetGemeindeKennzahlRegionCompletedDelegate, userState);
+  }
+
+  public string InfoGetGemeinde() => this.Channel.InfoGetGemeinde();
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginInfoGetGemeinde(AsyncCallback callback, object asyncState)
+  {
+    return this.Channel.BeginInfoGetGemeinde(callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public string EndInfoGetGemeinde(IAsyncResult result) => this.Channel.EndInfoGetGemeinde(result);
+
+  private IAsyncResult OnBeginInfoGetGemeinde(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginInfoGetGemeinde(callback, asyncState);
+  }
+
+  private object[] OnEndInfoGetGemeinde(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndInfoGetGemeinde(result)
+    };
+  }
+
+  private void OnInfoGetGemeindeCompleted(object state)
+  {
+    if (this.InfoGetGemeindeCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.InfoGetGemeindeCompleted((object) this, new InfoGetGemeindeCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void InfoGetGemeindeAsync() => this.InfoGetGemeindeAsync((object) null);
+
+  public void InfoGetGemeindeAsync(object userState)
+  {
+    if (this.onBeginInfoGetGemeindeDelegate == null)
+      this.onBeginInfoGetGemeindeDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginInfoGetGemeinde);
+    if (this.onEndInfoGetGemeindeDelegate == null)
+      this.onEndInfoGetGemeindeDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndInfoGetGemeinde);
+    if (this.onInfoGetGemeindeCompletedDelegate == null)
+      this.onInfoGetGemeindeCompletedDelegate = new SendOrPostCallback(this.OnInfoGetGemeindeCompleted);
+    this.InvokeAsync(this.onBeginInfoGetGemeindeDelegate, (object[]) null, this.onEndInfoGetGemeindeDelegate, this.onInfoGetGemeindeCompletedDelegate, userState);
+  }
+
+  public string InfoGetBezirk() => this.Channel.InfoGetBezirk();
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginInfoGetBezirk(AsyncCallback callback, object asyncState)
+  {
+    return this.Channel.BeginInfoGetBezirk(callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public string EndInfoGetBezirk(IAsyncResult result) => this.Channel.EndInfoGetBezirk(result);
+
+  private IAsyncResult OnBeginInfoGetBezirk(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginInfoGetBezirk(callback, asyncState);
+  }
+
+  private object[] OnEndInfoGetBezirk(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndInfoGetBezirk(result)
+    };
+  }
+
+  private void OnInfoGetBezirkCompleted(object state)
+  {
+    if (this.InfoGetBezirkCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.InfoGetBezirkCompleted((object) this, new InfoGetBezirkCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void InfoGetBezirkAsync() => this.InfoGetBezirkAsync((object) null);
+
+  public void InfoGetBezirkAsync(object userState)
+  {
+    if (this.onBeginInfoGetBezirkDelegate == null)
+      this.onBeginInfoGetBezirkDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginInfoGetBezirk);
+    if (this.onEndInfoGetBezirkDelegate == null)
+      this.onEndInfoGetBezirkDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndInfoGetBezirk);
+    if (this.onInfoGetBezirkCompletedDelegate == null)
+      this.onInfoGetBezirkCompletedDelegate = new SendOrPostCallback(this.OnInfoGetBezirkCompleted);
+    this.InvokeAsync(this.onBeginInfoGetBezirkDelegate, (object[]) null, this.onEndInfoGetBezirkDelegate, this.onInfoGetBezirkCompletedDelegate, userState);
+  }
+
+  public string InfoGetLand() => this.Channel.InfoGetLand();
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginInfoGetLand(AsyncCallback callback, object asyncState)
+  {
+    return this.Channel.BeginInfoGetLand(callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public string EndInfoGetLand(IAsyncResult result) => this.Channel.EndInfoGetLand(result);
+
+  private IAsyncResult OnBeginInfoGetLand(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginInfoGetLand(callback, asyncState);
+  }
+
+  private object[] OnEndInfoGetLand(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndInfoGetLand(result)
+    };
+  }
+
+  private void OnInfoGetLandCompleted(object state)
+  {
+    if (this.InfoGetLandCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.InfoGetLandCompleted((object) this, new InfoGetLandCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void InfoGetLandAsync() => this.InfoGetLandAsync((object) null);
+
+  public void InfoGetLandAsync(object userState)
+  {
+    if (this.onBeginInfoGetLandDelegate == null)
+      this.onBeginInfoGetLandDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginInfoGetLand);
+    if (this.onEndInfoGetLandDelegate == null)
+      this.onEndInfoGetLandDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndInfoGetLand);
+    if (this.onInfoGetLandCompletedDelegate == null)
+      this.onInfoGetLandCompletedDelegate = new SendOrPostCallback(this.OnInfoGetLandCompleted);
+    this.InvokeAsync(this.onBeginInfoGetLandDelegate, (object[]) null, this.onEndInfoGetLandDelegate, this.onInfoGetLandCompletedDelegate, userState);
+  }
+
+  public WCFWetterObj InfoGetWetter() => this.Channel.InfoGetWetter();
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginInfoGetWetter(AsyncCallback callback, object asyncState)
+  {
+    return this.Channel.BeginInfoGetWetter(callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFWetterObj EndInfoGetWetter(IAsyncResult result)
+  {
+    return this.Channel.EndInfoGetWetter(result);
+  }
+
+  private IAsyncResult OnBeginInfoGetWetter(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginInfoGetWetter(callback, asyncState);
+  }
+
+  private object[] OnEndInfoGetWetter(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndInfoGetWetter(result)
+    };
+  }
+
+  private void OnInfoGetWetterCompleted(object state)
+  {
+    if (this.InfoGetWetterCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.InfoGetWetterCompleted((object) this, new InfoGetWetterCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void InfoGetWetterAsync() => this.InfoGetWetterAsync((object) null);
+
+  public void InfoGetWetterAsync(object userState)
+  {
+    if (this.onBeginInfoGetWetterDelegate == null)
+      this.onBeginInfoGetWetterDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginInfoGetWetter);
+    if (this.onEndInfoGetWetterDelegate == null)
+      this.onEndInfoGetWetterDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndInfoGetWetter);
+    if (this.onInfoGetWetterCompletedDelegate == null)
+      this.onInfoGetWetterCompletedDelegate = new SendOrPostCallback(this.OnInfoGetWetterCompleted);
+    this.InvokeAsync(this.onBeginInfoGetWetterDelegate, (object[]) null, this.onEndInfoGetWetterDelegate, this.onInfoGetWetterCompletedDelegate, userState);
+  }
+
+  public string InfoGetObjDBVersion() => this.Channel.InfoGetObjDBVersion();
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginInfoGetObjDBVersion(AsyncCallback callback, object asyncState)
+  {
+    return this.Channel.BeginInfoGetObjDBVersion(callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public string EndInfoGetObjDBVersion(IAsyncResult result)
+  {
+    return this.Channel.EndInfoGetObjDBVersion(result);
+  }
+
+  private IAsyncResult OnBeginInfoGetObjDBVersion(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginInfoGetObjDBVersion(callback, asyncState);
+  }
+
+  private object[] OnEndInfoGetObjDBVersion(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndInfoGetObjDBVersion(result)
+    };
+  }
+
+  private void OnInfoGetObjDBVersionCompleted(object state)
+  {
+    if (this.InfoGetObjDBVersionCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.InfoGetObjDBVersionCompleted((object) this, new InfoGetObjDBVersionCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void InfoGetObjDBVersionAsync() => this.InfoGetObjDBVersionAsync((object) null);
+
+  public void InfoGetObjDBVersionAsync(object userState)
+  {
+    if (this.onBeginInfoGetObjDBVersionDelegate == null)
+      this.onBeginInfoGetObjDBVersionDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginInfoGetObjDBVersion);
+    if (this.onEndInfoGetObjDBVersionDelegate == null)
+      this.onEndInfoGetObjDBVersionDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndInfoGetObjDBVersion);
+    if (this.onInfoGetObjDBVersionCompletedDelegate == null)
+      this.onInfoGetObjDBVersionCompletedDelegate = new SendOrPostCallback(this.OnInfoGetObjDBVersionCompleted);
+    this.InvokeAsync(this.onBeginInfoGetObjDBVersionDelegate, (object[]) null, this.onEndInfoGetObjDBVersionDelegate, this.onInfoGetObjDBVersionCompletedDelegate, userState);
+  }
+
+  public string InfoGetSysDBVersion() => this.Channel.InfoGetSysDBVersion();
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginInfoGetSysDBVersion(AsyncCallback callback, object asyncState)
+  {
+    return this.Channel.BeginInfoGetSysDBVersion(callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public string EndInfoGetSysDBVersion(IAsyncResult result)
+  {
+    return this.Channel.EndInfoGetSysDBVersion(result);
+  }
+
+  private IAsyncResult OnBeginInfoGetSysDBVersion(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginInfoGetSysDBVersion(callback, asyncState);
+  }
+
+  private object[] OnEndInfoGetSysDBVersion(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndInfoGetSysDBVersion(result)
+    };
+  }
+
+  private void OnInfoGetSysDBVersionCompleted(object state)
+  {
+    if (this.InfoGetSysDBVersionCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.InfoGetSysDBVersionCompleted((object) this, new InfoGetSysDBVersionCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void InfoGetSysDBVersionAsync() => this.InfoGetSysDBVersionAsync((object) null);
+
+  public void InfoGetSysDBVersionAsync(object userState)
+  {
+    if (this.onBeginInfoGetSysDBVersionDelegate == null)
+      this.onBeginInfoGetSysDBVersionDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginInfoGetSysDBVersion);
+    if (this.onEndInfoGetSysDBVersionDelegate == null)
+      this.onEndInfoGetSysDBVersionDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndInfoGetSysDBVersion);
+    if (this.onInfoGetSysDBVersionCompletedDelegate == null)
+      this.onInfoGetSysDBVersionCompletedDelegate = new SendOrPostCallback(this.OnInfoGetSysDBVersionCompleted);
+    this.InvokeAsync(this.onBeginInfoGetSysDBVersionDelegate, (object[]) null, this.onEndInfoGetSysDBVersionDelegate, this.onInfoGetSysDBVersionCompletedDelegate, userState);
+  }
+
+  public string InfoGetAPDBVersion() => this.Channel.InfoGetAPDBVersion();
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginInfoGetAPDBVersion(AsyncCallback callback, object asyncState)
+  {
+    return this.Channel.BeginInfoGetAPDBVersion(callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public string EndInfoGetAPDBVersion(IAsyncResult result)
+  {
+    return this.Channel.EndInfoGetAPDBVersion(result);
+  }
+
+  private IAsyncResult OnBeginInfoGetAPDBVersion(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginInfoGetAPDBVersion(callback, asyncState);
+  }
+
+  private object[] OnEndInfoGetAPDBVersion(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndInfoGetAPDBVersion(result)
+    };
+  }
+
+  private void OnInfoGetAPDBVersionCompleted(object state)
+  {
+    if (this.InfoGetAPDBVersionCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.InfoGetAPDBVersionCompleted((object) this, new InfoGetAPDBVersionCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void InfoGetAPDBVersionAsync() => this.InfoGetAPDBVersionAsync((object) null);
+
+  public void InfoGetAPDBVersionAsync(object userState)
+  {
+    if (this.onBeginInfoGetAPDBVersionDelegate == null)
+      this.onBeginInfoGetAPDBVersionDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginInfoGetAPDBVersion);
+    if (this.onEndInfoGetAPDBVersionDelegate == null)
+      this.onEndInfoGetAPDBVersionDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndInfoGetAPDBVersion);
+    if (this.onInfoGetAPDBVersionCompletedDelegate == null)
+      this.onInfoGetAPDBVersionCompletedDelegate = new SendOrPostCallback(this.OnInfoGetAPDBVersionCompleted);
+    this.InvokeAsync(this.onBeginInfoGetAPDBVersionDelegate, (object[]) null, this.onEndInfoGetAPDBVersionDelegate, this.onInfoGetAPDBVersionCompletedDelegate, userState);
+  }
+
+  public double InfoGetWCFVersion() => this.Channel.InfoGetWCFVersion();
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginInfoGetWCFVersion(AsyncCallback callback, object asyncState)
+  {
+    return this.Channel.BeginInfoGetWCFVersion(callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public double EndInfoGetWCFVersion(IAsyncResult result)
+  {
+    return this.Channel.EndInfoGetWCFVersion(result);
+  }
+
+  private IAsyncResult OnBeginInfoGetWCFVersion(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginInfoGetWCFVersion(callback, asyncState);
+  }
+
+  private object[] OnEndInfoGetWCFVersion(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndInfoGetWCFVersion(result)
+    };
+  }
+
+  private void OnInfoGetWCFVersionCompleted(object state)
+  {
+    if (this.InfoGetWCFVersionCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.InfoGetWCFVersionCompleted((object) this, new InfoGetWCFVersionCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void InfoGetWCFVersionAsync() => this.InfoGetWCFVersionAsync((object) null);
+
+  public void InfoGetWCFVersionAsync(object userState)
+  {
+    if (this.onBeginInfoGetWCFVersionDelegate == null)
+      this.onBeginInfoGetWCFVersionDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginInfoGetWCFVersion);
+    if (this.onEndInfoGetWCFVersionDelegate == null)
+      this.onEndInfoGetWCFVersionDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndInfoGetWCFVersion);
+    if (this.onInfoGetWCFVersionCompletedDelegate == null)
+      this.onInfoGetWCFVersionCompletedDelegate = new SendOrPostCallback(this.OnInfoGetWCFVersionCompleted);
+    this.InvokeAsync(this.onBeginInfoGetWCFVersionDelegate, (object[]) null, this.onEndInfoGetWCFVersionDelegate, this.onInfoGetWCFVersionCompletedDelegate, userState);
+  }
+
+  public WCFEinsatzOptionKonfig InfoGetWCFEinsatzOptionKonfig(Guid TicketID)
+  {
+    return this.Channel.InfoGetWCFEinsatzOptionKonfig(TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginInfoGetWCFEinsatzOptionKonfig(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginInfoGetWCFEinsatzOptionKonfig(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFEinsatzOptionKonfig EndInfoGetWCFEinsatzOptionKonfig(IAsyncResult result)
+  {
+    return this.Channel.EndInfoGetWCFEinsatzOptionKonfig(result);
+  }
+
+  private IAsyncResult OnBeginInfoGetWCFEinsatzOptionKonfig(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginInfoGetWCFEinsatzOptionKonfig((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndInfoGetWCFEinsatzOptionKonfig(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndInfoGetWCFEinsatzOptionKonfig(result)
+    };
+  }
+
+  private void OnInfoGetWCFEinsatzOptionKonfigCompleted(object state)
+  {
+    if (this.InfoGetWCFEinsatzOptionKonfigCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.InfoGetWCFEinsatzOptionKonfigCompleted((object) this, new InfoGetWCFEinsatzOptionKonfigCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void InfoGetWCFEinsatzOptionKonfigAsync(Guid TicketID)
+  {
+    this.InfoGetWCFEinsatzOptionKonfigAsync(TicketID, (object) null);
+  }
+
+  public void InfoGetWCFEinsatzOptionKonfigAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginInfoGetWCFEinsatzOptionKonfigDelegate == null)
+      this.onBeginInfoGetWCFEinsatzOptionKonfigDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginInfoGetWCFEinsatzOptionKonfig);
+    if (this.onEndInfoGetWCFEinsatzOptionKonfigDelegate == null)
+      this.onEndInfoGetWCFEinsatzOptionKonfigDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndInfoGetWCFEinsatzOptionKonfig);
+    if (this.onInfoGetWCFEinsatzOptionKonfigCompletedDelegate == null)
+      this.onInfoGetWCFEinsatzOptionKonfigCompletedDelegate = new SendOrPostCallback(this.OnInfoGetWCFEinsatzOptionKonfigCompleted);
+    this.InvokeAsync(this.onBeginInfoGetWCFEinsatzOptionKonfigDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndInfoGetWCFEinsatzOptionKonfigDelegate, this.onInfoGetWCFEinsatzOptionKonfigCompletedDelegate, userState);
+  }
+
+  public ELISServiceConfigBenutzerVerwaltungsSystemTyp InfoGetELISBenutzerverwaltungsSystem(
+    Guid TicketID)
+  {
+    return this.Channel.InfoGetELISBenutzerverwaltungsSystem(TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginInfoGetELISBenutzerverwaltungsSystem(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginInfoGetELISBenutzerverwaltungsSystem(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public ELISServiceConfigBenutzerVerwaltungsSystemTyp EndInfoGetELISBenutzerverwaltungsSystem(
+    IAsyncResult result)
+  {
+    return this.Channel.EndInfoGetELISBenutzerverwaltungsSystem(result);
+  }
+
+  private IAsyncResult OnBeginInfoGetELISBenutzerverwaltungsSystem(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginInfoGetELISBenutzerverwaltungsSystem((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndInfoGetELISBenutzerverwaltungsSystem(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndInfoGetELISBenutzerverwaltungsSystem(result)
+    };
+  }
+
+  private void OnInfoGetELISBenutzerverwaltungsSystemCompleted(object state)
+  {
+    if (this.InfoGetELISBenutzerverwaltungsSystemCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.InfoGetELISBenutzerverwaltungsSystemCompleted((object) this, new InfoGetELISBenutzerverwaltungsSystemCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void InfoGetELISBenutzerverwaltungsSystemAsync(Guid TicketID)
+  {
+    this.InfoGetELISBenutzerverwaltungsSystemAsync(TicketID, (object) null);
+  }
+
+  public void InfoGetELISBenutzerverwaltungsSystemAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginInfoGetELISBenutzerverwaltungsSystemDelegate == null)
+      this.onBeginInfoGetELISBenutzerverwaltungsSystemDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginInfoGetELISBenutzerverwaltungsSystem);
+    if (this.onEndInfoGetELISBenutzerverwaltungsSystemDelegate == null)
+      this.onEndInfoGetELISBenutzerverwaltungsSystemDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndInfoGetELISBenutzerverwaltungsSystem);
+    if (this.onInfoGetELISBenutzerverwaltungsSystemCompletedDelegate == null)
+      this.onInfoGetELISBenutzerverwaltungsSystemCompletedDelegate = new SendOrPostCallback(this.OnInfoGetELISBenutzerverwaltungsSystemCompleted);
+    this.InvokeAsync(this.onBeginInfoGetELISBenutzerverwaltungsSystemDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndInfoGetELISBenutzerverwaltungsSystemDelegate, this.onInfoGetELISBenutzerverwaltungsSystemCompletedDelegate, userState);
+  }
+
+  public DateTime InfoGetSystemBuildDate() => this.Channel.InfoGetSystemBuildDate();
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginInfoGetSystemBuildDate(AsyncCallback callback, object asyncState)
+  {
+    return this.Channel.BeginInfoGetSystemBuildDate(callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public DateTime EndInfoGetSystemBuildDate(IAsyncResult result)
+  {
+    return this.Channel.EndInfoGetSystemBuildDate(result);
+  }
+
+  private IAsyncResult OnBeginInfoGetSystemBuildDate(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginInfoGetSystemBuildDate(callback, asyncState);
+  }
+
+  private object[] OnEndInfoGetSystemBuildDate(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndInfoGetSystemBuildDate(result)
+    };
+  }
+
+  private void OnInfoGetSystemBuildDateCompleted(object state)
+  {
+    if (this.InfoGetSystemBuildDateCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.InfoGetSystemBuildDateCompleted((object) this, new InfoGetSystemBuildDateCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void InfoGetSystemBuildDateAsync() => this.InfoGetSystemBuildDateAsync((object) null);
+
+  public void InfoGetSystemBuildDateAsync(object userState)
+  {
+    if (this.onBeginInfoGetSystemBuildDateDelegate == null)
+      this.onBeginInfoGetSystemBuildDateDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginInfoGetSystemBuildDate);
+    if (this.onEndInfoGetSystemBuildDateDelegate == null)
+      this.onEndInfoGetSystemBuildDateDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndInfoGetSystemBuildDate);
+    if (this.onInfoGetSystemBuildDateCompletedDelegate == null)
+      this.onInfoGetSystemBuildDateCompletedDelegate = new SendOrPostCallback(this.OnInfoGetSystemBuildDateCompleted);
+    this.InvokeAsync(this.onBeginInfoGetSystemBuildDateDelegate, (object[]) null, this.onEndInfoGetSystemBuildDateDelegate, this.onInfoGetSystemBuildDateCompletedDelegate, userState);
+  }
+
+  public string InfoGetELISSystemID() => this.Channel.InfoGetELISSystemID();
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginInfoGetELISSystemID(AsyncCallback callback, object asyncState)
+  {
+    return this.Channel.BeginInfoGetELISSystemID(callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public string EndInfoGetELISSystemID(IAsyncResult result)
+  {
+    return this.Channel.EndInfoGetELISSystemID(result);
+  }
+
+  private IAsyncResult OnBeginInfoGetELISSystemID(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginInfoGetELISSystemID(callback, asyncState);
+  }
+
+  private object[] OnEndInfoGetELISSystemID(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndInfoGetELISSystemID(result)
+    };
+  }
+
+  private void OnInfoGetELISSystemIDCompleted(object state)
+  {
+    if (this.InfoGetELISSystemIDCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.InfoGetELISSystemIDCompleted((object) this, new InfoGetELISSystemIDCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void InfoGetELISSystemIDAsync() => this.InfoGetELISSystemIDAsync((object) null);
+
+  public void InfoGetELISSystemIDAsync(object userState)
+  {
+    if (this.onBeginInfoGetELISSystemIDDelegate == null)
+      this.onBeginInfoGetELISSystemIDDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginInfoGetELISSystemID);
+    if (this.onEndInfoGetELISSystemIDDelegate == null)
+      this.onEndInfoGetELISSystemIDDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndInfoGetELISSystemID);
+    if (this.onInfoGetELISSystemIDCompletedDelegate == null)
+      this.onInfoGetELISSystemIDCompletedDelegate = new SendOrPostCallback(this.OnInfoGetELISSystemIDCompleted);
+    this.InvokeAsync(this.onBeginInfoGetELISSystemIDDelegate, (object[]) null, this.onEndInfoGetELISSystemIDDelegate, this.onInfoGetELISSystemIDCompletedDelegate, userState);
+  }
+
+  public string InfoGetELISPublicURL() => this.Channel.InfoGetELISPublicURL();
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginInfoGetELISPublicURL(AsyncCallback callback, object asyncState)
+  {
+    return this.Channel.BeginInfoGetELISPublicURL(callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public string EndInfoGetELISPublicURL(IAsyncResult result)
+  {
+    return this.Channel.EndInfoGetELISPublicURL(result);
+  }
+
+  private IAsyncResult OnBeginInfoGetELISPublicURL(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginInfoGetELISPublicURL(callback, asyncState);
+  }
+
+  private object[] OnEndInfoGetELISPublicURL(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndInfoGetELISPublicURL(result)
+    };
+  }
+
+  private void OnInfoGetELISPublicURLCompleted(object state)
+  {
+    if (this.InfoGetELISPublicURLCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.InfoGetELISPublicURLCompleted((object) this, new InfoGetELISPublicURLCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void InfoGetELISPublicURLAsync() => this.InfoGetELISPublicURLAsync((object) null);
+
+  public void InfoGetELISPublicURLAsync(object userState)
+  {
+    if (this.onBeginInfoGetELISPublicURLDelegate == null)
+      this.onBeginInfoGetELISPublicURLDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginInfoGetELISPublicURL);
+    if (this.onEndInfoGetELISPublicURLDelegate == null)
+      this.onEndInfoGetELISPublicURLDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndInfoGetELISPublicURL);
+    if (this.onInfoGetELISPublicURLCompletedDelegate == null)
+      this.onInfoGetELISPublicURLCompletedDelegate = new SendOrPostCallback(this.OnInfoGetELISPublicURLCompleted);
+    this.InvokeAsync(this.onBeginInfoGetELISPublicURLDelegate, (object[]) null, this.onEndInfoGetELISPublicURLDelegate, this.onInfoGetELISPublicURLCompletedDelegate, userState);
+  }
+
+  public WCFEinsatzzonenInfo InfoGetEinsatzZonenDetails(string einsatzzonenId)
+  {
+    return this.Channel.InfoGetEinsatzZonenDetails(einsatzzonenId);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginInfoGetEinsatzZonenDetails(
+    string einsatzzonenId,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginInfoGetEinsatzZonenDetails(einsatzzonenId, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFEinsatzzonenInfo EndInfoGetEinsatzZonenDetails(IAsyncResult result)
+  {
+    return this.Channel.EndInfoGetEinsatzZonenDetails(result);
+  }
+
+  private IAsyncResult OnBeginInfoGetEinsatzZonenDetails(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginInfoGetEinsatzZonenDetails((string) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndInfoGetEinsatzZonenDetails(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndInfoGetEinsatzZonenDetails(result)
+    };
+  }
+
+  private void OnInfoGetEinsatzZonenDetailsCompleted(object state)
+  {
+    if (this.InfoGetEinsatzZonenDetailsCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.InfoGetEinsatzZonenDetailsCompleted((object) this, new InfoGetEinsatzZonenDetailsCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void InfoGetEinsatzZonenDetailsAsync(string einsatzzonenId)
+  {
+    this.InfoGetEinsatzZonenDetailsAsync(einsatzzonenId, (object) null);
+  }
+
+  public void InfoGetEinsatzZonenDetailsAsync(string einsatzzonenId, object userState)
+  {
+    if (this.onBeginInfoGetEinsatzZonenDetailsDelegate == null)
+      this.onBeginInfoGetEinsatzZonenDetailsDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginInfoGetEinsatzZonenDetails);
+    if (this.onEndInfoGetEinsatzZonenDetailsDelegate == null)
+      this.onEndInfoGetEinsatzZonenDetailsDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndInfoGetEinsatzZonenDetails);
+    if (this.onInfoGetEinsatzZonenDetailsCompletedDelegate == null)
+      this.onInfoGetEinsatzZonenDetailsCompletedDelegate = new SendOrPostCallback(this.OnInfoGetEinsatzZonenDetailsCompleted);
+    this.InvokeAsync(this.onBeginInfoGetEinsatzZonenDetailsDelegate, new object[1]
+    {
+      (object) einsatzzonenId
+    }, this.onEndInfoGetEinsatzZonenDetailsDelegate, this.onInfoGetEinsatzZonenDetailsCompletedDelegate, userState);
+  }
+
+  public int InfoGetGMapLadezeit() => this.Channel.InfoGetGMapLadezeit();
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginInfoGetGMapLadezeit(AsyncCallback callback, object asyncState)
+  {
+    return this.Channel.BeginInfoGetGMapLadezeit(callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public int EndInfoGetGMapLadezeit(IAsyncResult result)
+  {
+    return this.Channel.EndInfoGetGMapLadezeit(result);
+  }
+
+  private IAsyncResult OnBeginInfoGetGMapLadezeit(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginInfoGetGMapLadezeit(callback, asyncState);
+  }
+
+  private object[] OnEndInfoGetGMapLadezeit(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndInfoGetGMapLadezeit(result)
+    };
+  }
+
+  private void OnInfoGetGMapLadezeitCompleted(object state)
+  {
+    if (this.InfoGetGMapLadezeitCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.InfoGetGMapLadezeitCompleted((object) this, new InfoGetGMapLadezeitCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void InfoGetGMapLadezeitAsync() => this.InfoGetGMapLadezeitAsync((object) null);
+
+  public void InfoGetGMapLadezeitAsync(object userState)
+  {
+    if (this.onBeginInfoGetGMapLadezeitDelegate == null)
+      this.onBeginInfoGetGMapLadezeitDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginInfoGetGMapLadezeit);
+    if (this.onEndInfoGetGMapLadezeitDelegate == null)
+      this.onEndInfoGetGMapLadezeitDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndInfoGetGMapLadezeit);
+    if (this.onInfoGetGMapLadezeitCompletedDelegate == null)
+      this.onInfoGetGMapLadezeitCompletedDelegate = new SendOrPostCallback(this.OnInfoGetGMapLadezeitCompleted);
+    this.InvokeAsync(this.onBeginInfoGetGMapLadezeitDelegate, (object[]) null, this.onEndInfoGetGMapLadezeitDelegate, this.onInfoGetGMapLadezeitCompletedDelegate, userState);
+  }
+
+  public string InfoGetGAPIClientKey(ELISProgram program, Guid TicketID)
+  {
+    return this.Channel.InfoGetGAPIClientKey(program, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginInfoGetGAPIClientKey(
+    ELISProgram program,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginInfoGetGAPIClientKey(program, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public string EndInfoGetGAPIClientKey(IAsyncResult result)
+  {
+    return this.Channel.EndInfoGetGAPIClientKey(result);
+  }
+
+  private IAsyncResult OnBeginInfoGetGAPIClientKey(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginInfoGetGAPIClientKey((ELISProgram) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndInfoGetGAPIClientKey(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndInfoGetGAPIClientKey(result)
+    };
+  }
+
+  private void OnInfoGetGAPIClientKeyCompleted(object state)
+  {
+    if (this.InfoGetGAPIClientKeyCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.InfoGetGAPIClientKeyCompleted((object) this, new InfoGetGAPIClientKeyCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void InfoGetGAPIClientKeyAsync(ELISProgram program, Guid TicketID)
+  {
+    this.InfoGetGAPIClientKeyAsync(program, TicketID, (object) null);
+  }
+
+  public void InfoGetGAPIClientKeyAsync(ELISProgram program, Guid TicketID, object userState)
+  {
+    if (this.onBeginInfoGetGAPIClientKeyDelegate == null)
+      this.onBeginInfoGetGAPIClientKeyDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginInfoGetGAPIClientKey);
+    if (this.onEndInfoGetGAPIClientKeyDelegate == null)
+      this.onEndInfoGetGAPIClientKeyDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndInfoGetGAPIClientKey);
+    if (this.onInfoGetGAPIClientKeyCompletedDelegate == null)
+      this.onInfoGetGAPIClientKeyCompletedDelegate = new SendOrPostCallback(this.OnInfoGetGAPIClientKeyCompleted);
+    this.InvokeAsync(this.onBeginInfoGetGAPIClientKeyDelegate, new object[2]
+    {
+      (object) program,
+      (object) TicketID
+    }, this.onEndInfoGetGAPIClientKeyDelegate, this.onInfoGetGAPIClientKeyCompletedDelegate, userState);
+  }
+
+  public string InfoGetGAPIServerKey(ELISProgram program, Guid TicketID)
+  {
+    return this.Channel.InfoGetGAPIServerKey(program, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginInfoGetGAPIServerKey(
+    ELISProgram program,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginInfoGetGAPIServerKey(program, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public string EndInfoGetGAPIServerKey(IAsyncResult result)
+  {
+    return this.Channel.EndInfoGetGAPIServerKey(result);
+  }
+
+  private IAsyncResult OnBeginInfoGetGAPIServerKey(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginInfoGetGAPIServerKey((ELISProgram) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndInfoGetGAPIServerKey(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndInfoGetGAPIServerKey(result)
+    };
+  }
+
+  private void OnInfoGetGAPIServerKeyCompleted(object state)
+  {
+    if (this.InfoGetGAPIServerKeyCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.InfoGetGAPIServerKeyCompleted((object) this, new InfoGetGAPIServerKeyCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void InfoGetGAPIServerKeyAsync(ELISProgram program, Guid TicketID)
+  {
+    this.InfoGetGAPIServerKeyAsync(program, TicketID, (object) null);
+  }
+
+  public void InfoGetGAPIServerKeyAsync(ELISProgram program, Guid TicketID, object userState)
+  {
+    if (this.onBeginInfoGetGAPIServerKeyDelegate == null)
+      this.onBeginInfoGetGAPIServerKeyDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginInfoGetGAPIServerKey);
+    if (this.onEndInfoGetGAPIServerKeyDelegate == null)
+      this.onEndInfoGetGAPIServerKeyDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndInfoGetGAPIServerKey);
+    if (this.onInfoGetGAPIServerKeyCompletedDelegate == null)
+      this.onInfoGetGAPIServerKeyCompletedDelegate = new SendOrPostCallback(this.OnInfoGetGAPIServerKeyCompleted);
+    this.InvokeAsync(this.onBeginInfoGetGAPIServerKeyDelegate, new object[2]
+    {
+      (object) program,
+      (object) TicketID
+    }, this.onEndInfoGetGAPIServerKeyDelegate, this.onInfoGetGAPIServerKeyCompletedDelegate, userState);
+  }
+
+  public void ProtocolWrite(WCFJournalEntry je, Guid TicketID)
+  {
+    this.Channel.ProtocolWrite(je, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginProtocolWrite(
+    WCFJournalEntry je,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginProtocolWrite(je, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public void EndProtocolWrite(IAsyncResult result) => this.Channel.EndProtocolWrite(result);
+
+  private IAsyncResult OnBeginProtocolWrite(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginProtocolWrite((WCFJournalEntry) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndProtocolWrite(IAsyncResult result)
+  {
+    this.EndProtocolWrite(result);
+    return (object[]) null;
+  }
+
+  private void OnProtocolWriteCompleted(object state)
+  {
+    if (this.ProtocolWriteCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.ProtocolWriteCompleted((object) this, new AsyncCompletedEventArgs(completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void ProtocolWriteAsync(WCFJournalEntry je, Guid TicketID)
+  {
+    this.ProtocolWriteAsync(je, TicketID, (object) null);
+  }
+
+  public void ProtocolWriteAsync(WCFJournalEntry je, Guid TicketID, object userState)
+  {
+    if (this.onBeginProtocolWriteDelegate == null)
+      this.onBeginProtocolWriteDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginProtocolWrite);
+    if (this.onEndProtocolWriteDelegate == null)
+      this.onEndProtocolWriteDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndProtocolWrite);
+    if (this.onProtocolWriteCompletedDelegate == null)
+      this.onProtocolWriteCompletedDelegate = new SendOrPostCallback(this.OnProtocolWriteCompleted);
+    this.InvokeAsync(this.onBeginProtocolWriteDelegate, new object[2]
+    {
+      (object) je,
+      (object) TicketID
+    }, this.onEndProtocolWriteDelegate, this.onProtocolWriteCompletedDelegate, userState);
+  }
+
+  public bool ProtocolDeleteEntry(WCFJournalEntry je, Guid TicketID)
+  {
+    return this.Channel.ProtocolDeleteEntry(je, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginProtocolDeleteEntry(
+    WCFJournalEntry je,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginProtocolDeleteEntry(je, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndProtocolDeleteEntry(IAsyncResult result)
+  {
+    return this.Channel.EndProtocolDeleteEntry(result);
+  }
+
+  private IAsyncResult OnBeginProtocolDeleteEntry(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginProtocolDeleteEntry((WCFJournalEntry) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndProtocolDeleteEntry(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndProtocolDeleteEntry(result)
+    };
+  }
+
+  private void OnProtocolDeleteEntryCompleted(object state)
+  {
+    if (this.ProtocolDeleteEntryCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.ProtocolDeleteEntryCompleted((object) this, new ProtocolDeleteEntryCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void ProtocolDeleteEntryAsync(WCFJournalEntry je, Guid TicketID)
+  {
+    this.ProtocolDeleteEntryAsync(je, TicketID, (object) null);
+  }
+
+  public void ProtocolDeleteEntryAsync(WCFJournalEntry je, Guid TicketID, object userState)
+  {
+    if (this.onBeginProtocolDeleteEntryDelegate == null)
+      this.onBeginProtocolDeleteEntryDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginProtocolDeleteEntry);
+    if (this.onEndProtocolDeleteEntryDelegate == null)
+      this.onEndProtocolDeleteEntryDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndProtocolDeleteEntry);
+    if (this.onProtocolDeleteEntryCompletedDelegate == null)
+      this.onProtocolDeleteEntryCompletedDelegate = new SendOrPostCallback(this.OnProtocolDeleteEntryCompleted);
+    this.InvokeAsync(this.onBeginProtocolDeleteEntryDelegate, new object[2]
+    {
+      (object) je,
+      (object) TicketID
+    }, this.onEndProtocolDeleteEntryDelegate, this.onProtocolDeleteEntryCompletedDelegate, userState);
+  }
+
+  public int ProtocolGetFilteredCount(
+    string artFilter,
+    DateTime fromDate,
+    DateTime toDate,
+    Guid TicketID)
+  {
+    return this.Channel.ProtocolGetFilteredCount(artFilter, fromDate, toDate, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginProtocolGetFilteredCount(
+    string artFilter,
+    DateTime fromDate,
+    DateTime toDate,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginProtocolGetFilteredCount(artFilter, fromDate, toDate, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public int EndProtocolGetFilteredCount(IAsyncResult result)
+  {
+    return this.Channel.EndProtocolGetFilteredCount(result);
+  }
+
+  private IAsyncResult OnBeginProtocolGetFilteredCount(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginProtocolGetFilteredCount((string) inValues[0], (DateTime) inValues[1], (DateTime) inValues[2], (Guid) inValues[3], callback, asyncState);
+  }
+
+  private object[] OnEndProtocolGetFilteredCount(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndProtocolGetFilteredCount(result)
+    };
+  }
+
+  private void OnProtocolGetFilteredCountCompleted(object state)
+  {
+    if (this.ProtocolGetFilteredCountCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.ProtocolGetFilteredCountCompleted((object) this, new ProtocolGetFilteredCountCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void ProtocolGetFilteredCountAsync(
+    string artFilter,
+    DateTime fromDate,
+    DateTime toDate,
+    Guid TicketID)
+  {
+    this.ProtocolGetFilteredCountAsync(artFilter, fromDate, toDate, TicketID, (object) null);
+  }
+
+  public void ProtocolGetFilteredCountAsync(
+    string artFilter,
+    DateTime fromDate,
+    DateTime toDate,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginProtocolGetFilteredCountDelegate == null)
+      this.onBeginProtocolGetFilteredCountDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginProtocolGetFilteredCount);
+    if (this.onEndProtocolGetFilteredCountDelegate == null)
+      this.onEndProtocolGetFilteredCountDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndProtocolGetFilteredCount);
+    if (this.onProtocolGetFilteredCountCompletedDelegate == null)
+      this.onProtocolGetFilteredCountCompletedDelegate = new SendOrPostCallback(this.OnProtocolGetFilteredCountCompleted);
+    this.InvokeAsync(this.onBeginProtocolGetFilteredCountDelegate, new object[4]
+    {
+      (object) artFilter,
+      (object) fromDate,
+      (object) toDate,
+      (object) TicketID
+    }, this.onEndProtocolGetFilteredCountDelegate, this.onProtocolGetFilteredCountCompletedDelegate, userState);
+  }
+
+  public WCFJournalEntry[] ProtocolGetFilteredRange(
+    int startRowIndex,
+    int maximumRows,
+    string artFilter,
+    DateTime fromDate,
+    DateTime toDate,
+    Guid TicketID)
+  {
+    return this.Channel.ProtocolGetFilteredRange(startRowIndex, maximumRows, artFilter, fromDate, toDate, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginProtocolGetFilteredRange(
+    int startRowIndex,
+    int maximumRows,
+    string artFilter,
+    DateTime fromDate,
+    DateTime toDate,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginProtocolGetFilteredRange(startRowIndex, maximumRows, artFilter, fromDate, toDate, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFJournalEntry[] EndProtocolGetFilteredRange(IAsyncResult result)
+  {
+    return this.Channel.EndProtocolGetFilteredRange(result);
+  }
+
+  private IAsyncResult OnBeginProtocolGetFilteredRange(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginProtocolGetFilteredRange((int) inValues[0], (int) inValues[1], (string) inValues[2], (DateTime) inValues[3], (DateTime) inValues[4], (Guid) inValues[5], callback, asyncState);
+  }
+
+  private object[] OnEndProtocolGetFilteredRange(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndProtocolGetFilteredRange(result)
+    };
+  }
+
+  private void OnProtocolGetFilteredRangeCompleted(object state)
+  {
+    if (this.ProtocolGetFilteredRangeCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.ProtocolGetFilteredRangeCompleted((object) this, new ProtocolGetFilteredRangeCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void ProtocolGetFilteredRangeAsync(
+    int startRowIndex,
+    int maximumRows,
+    string artFilter,
+    DateTime fromDate,
+    DateTime toDate,
+    Guid TicketID)
+  {
+    this.ProtocolGetFilteredRangeAsync(startRowIndex, maximumRows, artFilter, fromDate, toDate, TicketID, (object) null);
+  }
+
+  public void ProtocolGetFilteredRangeAsync(
+    int startRowIndex,
+    int maximumRows,
+    string artFilter,
+    DateTime fromDate,
+    DateTime toDate,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginProtocolGetFilteredRangeDelegate == null)
+      this.onBeginProtocolGetFilteredRangeDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginProtocolGetFilteredRange);
+    if (this.onEndProtocolGetFilteredRangeDelegate == null)
+      this.onEndProtocolGetFilteredRangeDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndProtocolGetFilteredRange);
+    if (this.onProtocolGetFilteredRangeCompletedDelegate == null)
+      this.onProtocolGetFilteredRangeCompletedDelegate = new SendOrPostCallback(this.OnProtocolGetFilteredRangeCompleted);
+    this.InvokeAsync(this.onBeginProtocolGetFilteredRangeDelegate, new object[6]
+    {
+      (object) startRowIndex,
+      (object) maximumRows,
+      (object) artFilter,
+      (object) fromDate,
+      (object) toDate,
+      (object) TicketID
+    }, this.onEndProtocolGetFilteredRangeDelegate, this.onProtocolGetFilteredRangeCompletedDelegate, userState);
+  }
+
+  public string[] ProtocolGetArtList(DateTime fromDate, DateTime toDate, Guid TicketID)
+  {
+    return this.Channel.ProtocolGetArtList(fromDate, toDate, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginProtocolGetArtList(
+    DateTime fromDate,
+    DateTime toDate,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginProtocolGetArtList(fromDate, toDate, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public string[] EndProtocolGetArtList(IAsyncResult result)
+  {
+    return this.Channel.EndProtocolGetArtList(result);
+  }
+
+  private IAsyncResult OnBeginProtocolGetArtList(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginProtocolGetArtList((DateTime) inValues[0], (DateTime) inValues[1], (Guid) inValues[2], callback, asyncState);
+  }
+
+  private object[] OnEndProtocolGetArtList(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndProtocolGetArtList(result)
+    };
+  }
+
+  private void OnProtocolGetArtListCompleted(object state)
+  {
+    if (this.ProtocolGetArtListCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.ProtocolGetArtListCompleted((object) this, new ProtocolGetArtListCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void ProtocolGetArtListAsync(DateTime fromDate, DateTime toDate, Guid TicketID)
+  {
+    this.ProtocolGetArtListAsync(fromDate, toDate, TicketID, (object) null);
+  }
+
+  public void ProtocolGetArtListAsync(
+    DateTime fromDate,
+    DateTime toDate,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginProtocolGetArtListDelegate == null)
+      this.onBeginProtocolGetArtListDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginProtocolGetArtList);
+    if (this.onEndProtocolGetArtListDelegate == null)
+      this.onEndProtocolGetArtListDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndProtocolGetArtList);
+    if (this.onProtocolGetArtListCompletedDelegate == null)
+      this.onProtocolGetArtListCompletedDelegate = new SendOrPostCallback(this.OnProtocolGetArtListCompleted);
+    this.InvokeAsync(this.onBeginProtocolGetArtListDelegate, new object[3]
+    {
+      (object) fromDate,
+      (object) toDate,
+      (object) TicketID
+    }, this.onEndProtocolGetArtListDelegate, this.onProtocolGetArtListCompletedDelegate, userState);
+  }
+
+  public WCFJournalFzInfo[] JournalFzInfoGetAll(Guid TicketId)
+  {
+    return this.Channel.JournalFzInfoGetAll(TicketId);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginJournalFzInfoGetAll(
+    Guid TicketId,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginJournalFzInfoGetAll(TicketId, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFJournalFzInfo[] EndJournalFzInfoGetAll(IAsyncResult result)
+  {
+    return this.Channel.EndJournalFzInfoGetAll(result);
+  }
+
+  private IAsyncResult OnBeginJournalFzInfoGetAll(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginJournalFzInfoGetAll((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndJournalFzInfoGetAll(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndJournalFzInfoGetAll(result)
+    };
+  }
+
+  private void OnJournalFzInfoGetAllCompleted(object state)
+  {
+    if (this.JournalFzInfoGetAllCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.JournalFzInfoGetAllCompleted((object) this, new JournalFzInfoGetAllCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void JournalFzInfoGetAllAsync(Guid TicketId)
+  {
+    this.JournalFzInfoGetAllAsync(TicketId, (object) null);
+  }
+
+  public void JournalFzInfoGetAllAsync(Guid TicketId, object userState)
+  {
+    if (this.onBeginJournalFzInfoGetAllDelegate == null)
+      this.onBeginJournalFzInfoGetAllDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginJournalFzInfoGetAll);
+    if (this.onEndJournalFzInfoGetAllDelegate == null)
+      this.onEndJournalFzInfoGetAllDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndJournalFzInfoGetAll);
+    if (this.onJournalFzInfoGetAllCompletedDelegate == null)
+      this.onJournalFzInfoGetAllCompletedDelegate = new SendOrPostCallback(this.OnJournalFzInfoGetAllCompleted);
+    this.InvokeAsync(this.onBeginJournalFzInfoGetAllDelegate, new object[1]
+    {
+      (object) TicketId
+    }, this.onEndJournalFzInfoGetAllDelegate, this.onJournalFzInfoGetAllCompletedDelegate, userState);
+  }
+
+  public WCFJournalFzInfo JournalFzInfoPersist(WCFJournalFzInfo fzInfo, Guid TicketId)
+  {
+    return this.Channel.JournalFzInfoPersist(fzInfo, TicketId);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginJournalFzInfoPersist(
+    WCFJournalFzInfo fzInfo,
+    Guid TicketId,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginJournalFzInfoPersist(fzInfo, TicketId, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFJournalFzInfo EndJournalFzInfoPersist(IAsyncResult result)
+  {
+    return this.Channel.EndJournalFzInfoPersist(result);
+  }
+
+  private IAsyncResult OnBeginJournalFzInfoPersist(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginJournalFzInfoPersist((WCFJournalFzInfo) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndJournalFzInfoPersist(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndJournalFzInfoPersist(result)
+    };
+  }
+
+  private void OnJournalFzInfoPersistCompleted(object state)
+  {
+    if (this.JournalFzInfoPersistCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.JournalFzInfoPersistCompleted((object) this, new JournalFzInfoPersistCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void JournalFzInfoPersistAsync(WCFJournalFzInfo fzInfo, Guid TicketId)
+  {
+    this.JournalFzInfoPersistAsync(fzInfo, TicketId, (object) null);
+  }
+
+  public void JournalFzInfoPersistAsync(WCFJournalFzInfo fzInfo, Guid TicketId, object userState)
+  {
+    if (this.onBeginJournalFzInfoPersistDelegate == null)
+      this.onBeginJournalFzInfoPersistDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginJournalFzInfoPersist);
+    if (this.onEndJournalFzInfoPersistDelegate == null)
+      this.onEndJournalFzInfoPersistDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndJournalFzInfoPersist);
+    if (this.onJournalFzInfoPersistCompletedDelegate == null)
+      this.onJournalFzInfoPersistCompletedDelegate = new SendOrPostCallback(this.OnJournalFzInfoPersistCompleted);
+    this.InvokeAsync(this.onBeginJournalFzInfoPersistDelegate, new object[2]
+    {
+      (object) fzInfo,
+      (object) TicketId
+    }, this.onEndJournalFzInfoPersistDelegate, this.onJournalFzInfoPersistCompletedDelegate, userState);
+  }
+
+  public bool JournalFzInfoDelete(WCFJournalFzInfo fzInfo, Guid TicketId)
+  {
+    return this.Channel.JournalFzInfoDelete(fzInfo, TicketId);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginJournalFzInfoDelete(
+    WCFJournalFzInfo fzInfo,
+    Guid TicketId,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginJournalFzInfoDelete(fzInfo, TicketId, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndJournalFzInfoDelete(IAsyncResult result)
+  {
+    return this.Channel.EndJournalFzInfoDelete(result);
+  }
+
+  private IAsyncResult OnBeginJournalFzInfoDelete(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginJournalFzInfoDelete((WCFJournalFzInfo) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndJournalFzInfoDelete(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndJournalFzInfoDelete(result)
+    };
+  }
+
+  private void OnJournalFzInfoDeleteCompleted(object state)
+  {
+    if (this.JournalFzInfoDeleteCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.JournalFzInfoDeleteCompleted((object) this, new JournalFzInfoDeleteCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void JournalFzInfoDeleteAsync(WCFJournalFzInfo fzInfo, Guid TicketId)
+  {
+    this.JournalFzInfoDeleteAsync(fzInfo, TicketId, (object) null);
+  }
+
+  public void JournalFzInfoDeleteAsync(WCFJournalFzInfo fzInfo, Guid TicketId, object userState)
+  {
+    if (this.onBeginJournalFzInfoDeleteDelegate == null)
+      this.onBeginJournalFzInfoDeleteDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginJournalFzInfoDelete);
+    if (this.onEndJournalFzInfoDeleteDelegate == null)
+      this.onEndJournalFzInfoDeleteDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndJournalFzInfoDelete);
+    if (this.onJournalFzInfoDeleteCompletedDelegate == null)
+      this.onJournalFzInfoDeleteCompletedDelegate = new SendOrPostCallback(this.OnJournalFzInfoDeleteCompleted);
+    this.InvokeAsync(this.onBeginJournalFzInfoDeleteDelegate, new object[2]
+    {
+      (object) fzInfo,
+      (object) TicketId
+    }, this.onEndJournalFzInfoDeleteDelegate, this.onJournalFzInfoDeleteCompletedDelegate, userState);
+  }
+
+  public bool SMSSendNEW(string Message, string TelNumber, Guid TicketID)
+  {
+    return this.Channel.SMSSendNEW(Message, TelNumber, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginSMSSendNEW(
+    string Message,
+    string TelNumber,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginSMSSendNEW(Message, TelNumber, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndSMSSendNEW(IAsyncResult result) => this.Channel.EndSMSSendNEW(result);
+
+  private IAsyncResult OnBeginSMSSendNEW(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginSMSSendNEW((string) inValues[0], (string) inValues[1], (Guid) inValues[2], callback, asyncState);
+  }
+
+  private object[] OnEndSMSSendNEW(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndSMSSendNEW(result)
+    };
+  }
+
+  private void OnSMSSendNEWCompleted(object state)
+  {
+    if (this.SMSSendNEWCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.SMSSendNEWCompleted((object) this, new SMSSendNEWCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void SMSSendNEWAsync(string Message, string TelNumber, Guid TicketID)
+  {
+    this.SMSSendNEWAsync(Message, TelNumber, TicketID, (object) null);
+  }
+
+  public void SMSSendNEWAsync(string Message, string TelNumber, Guid TicketID, object userState)
+  {
+    if (this.onBeginSMSSendNEWDelegate == null)
+      this.onBeginSMSSendNEWDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginSMSSendNEW);
+    if (this.onEndSMSSendNEWDelegate == null)
+      this.onEndSMSSendNEWDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndSMSSendNEW);
+    if (this.onSMSSendNEWCompletedDelegate == null)
+      this.onSMSSendNEWCompletedDelegate = new SendOrPostCallback(this.OnSMSSendNEWCompleted);
+    this.InvokeAsync(this.onBeginSMSSendNEWDelegate, new object[3]
+    {
+      (object) Message,
+      (object) TelNumber,
+      (object) TicketID
+    }, this.onEndSMSSendNEWDelegate, this.onSMSSendNEWCompletedDelegate, userState);
+  }
+
+  public bool SMSSendWithSender(
+    string Message,
+    string TelNumber,
+    string fromTel,
+    string fromName,
+    Guid TicketID)
+  {
+    return this.Channel.SMSSendWithSender(Message, TelNumber, fromTel, fromName, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginSMSSendWithSender(
+    string Message,
+    string TelNumber,
+    string fromTel,
+    string fromName,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginSMSSendWithSender(Message, TelNumber, fromTel, fromName, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndSMSSendWithSender(IAsyncResult result)
+  {
+    return this.Channel.EndSMSSendWithSender(result);
+  }
+
+  private IAsyncResult OnBeginSMSSendWithSender(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginSMSSendWithSender((string) inValues[0], (string) inValues[1], (string) inValues[2], (string) inValues[3], (Guid) inValues[4], callback, asyncState);
+  }
+
+  private object[] OnEndSMSSendWithSender(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndSMSSendWithSender(result)
+    };
+  }
+
+  private void OnSMSSendWithSenderCompleted(object state)
+  {
+    if (this.SMSSendWithSenderCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.SMSSendWithSenderCompleted((object) this, new SMSSendWithSenderCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void SMSSendWithSenderAsync(
+    string Message,
+    string TelNumber,
+    string fromTel,
+    string fromName,
+    Guid TicketID)
+  {
+    this.SMSSendWithSenderAsync(Message, TelNumber, fromTel, fromName, TicketID, (object) null);
+  }
+
+  public void SMSSendWithSenderAsync(
+    string Message,
+    string TelNumber,
+    string fromTel,
+    string fromName,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginSMSSendWithSenderDelegate == null)
+      this.onBeginSMSSendWithSenderDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginSMSSendWithSender);
+    if (this.onEndSMSSendWithSenderDelegate == null)
+      this.onEndSMSSendWithSenderDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndSMSSendWithSender);
+    if (this.onSMSSendWithSenderCompletedDelegate == null)
+      this.onSMSSendWithSenderCompletedDelegate = new SendOrPostCallback(this.OnSMSSendWithSenderCompleted);
+    this.InvokeAsync(this.onBeginSMSSendWithSenderDelegate, new object[5]
+    {
+      (object) Message,
+      (object) TelNumber,
+      (object) fromTel,
+      (object) fromName,
+      (object) TicketID
+    }, this.onEndSMSSendWithSenderDelegate, this.onSMSSendWithSenderCompletedDelegate, userState);
+  }
+
+  public bool EmailSend(string Betreff, string Message, string to, string toName, Guid TicketID)
+  {
+    return this.Channel.EmailSend(Betreff, Message, to, toName, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginEmailSend(
+    string Betreff,
+    string Message,
+    string to,
+    string toName,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginEmailSend(Betreff, Message, to, toName, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndEmailSend(IAsyncResult result) => this.Channel.EndEmailSend(result);
+
+  private IAsyncResult OnBeginEmailSend(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginEmailSend((string) inValues[0], (string) inValues[1], (string) inValues[2], (string) inValues[3], (Guid) inValues[4], callback, asyncState);
+  }
+
+  private object[] OnEndEmailSend(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndEmailSend(result)
+    };
+  }
+
+  private void OnEmailSendCompleted(object state)
+  {
+    if (this.EmailSendCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.EmailSendCompleted((object) this, new EmailSendCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void EmailSendAsync(
+    string Betreff,
+    string Message,
+    string to,
+    string toName,
+    Guid TicketID)
+  {
+    this.EmailSendAsync(Betreff, Message, to, toName, TicketID, (object) null);
+  }
+
+  public void EmailSendAsync(
+    string Betreff,
+    string Message,
+    string to,
+    string toName,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginEmailSendDelegate == null)
+      this.onBeginEmailSendDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginEmailSend);
+    if (this.onEndEmailSendDelegate == null)
+      this.onEndEmailSendDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndEmailSend);
+    if (this.onEmailSendCompletedDelegate == null)
+      this.onEmailSendCompletedDelegate = new SendOrPostCallback(this.OnEmailSendCompleted);
+    this.InvokeAsync(this.onBeginEmailSendDelegate, new object[5]
+    {
+      (object) Betreff,
+      (object) Message,
+      (object) to,
+      (object) toName,
+      (object) TicketID
+    }, this.onEndEmailSendDelegate, this.onEmailSendCompletedDelegate, userState);
+  }
+
+  public bool EmailSend2(
+    string Betreff,
+    string Message,
+    string to,
+    string toName,
+    string from,
+    string fromName,
+    Guid TicketID)
+  {
+    return this.Channel.EmailSend2(Betreff, Message, to, toName, from, fromName, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginEmailSend2(
+    string Betreff,
+    string Message,
+    string to,
+    string toName,
+    string from,
+    string fromName,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginEmailSend2(Betreff, Message, to, toName, from, fromName, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndEmailSend2(IAsyncResult result) => this.Channel.EndEmailSend2(result);
+
+  private IAsyncResult OnBeginEmailSend2(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginEmailSend2((string) inValues[0], (string) inValues[1], (string) inValues[2], (string) inValues[3], (string) inValues[4], (string) inValues[5], (Guid) inValues[6], callback, asyncState);
+  }
+
+  private object[] OnEndEmailSend2(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndEmailSend2(result)
+    };
+  }
+
+  private void OnEmailSend2Completed(object state)
+  {
+    if (this.EmailSend2Completed == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.EmailSend2Completed((object) this, new EmailSend2CompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void EmailSend2Async(
+    string Betreff,
+    string Message,
+    string to,
+    string toName,
+    string from,
+    string fromName,
+    Guid TicketID)
+  {
+    this.EmailSend2Async(Betreff, Message, to, toName, from, fromName, TicketID, (object) null);
+  }
+
+  public void EmailSend2Async(
+    string Betreff,
+    string Message,
+    string to,
+    string toName,
+    string from,
+    string fromName,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginEmailSend2Delegate == null)
+      this.onBeginEmailSend2Delegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginEmailSend2);
+    if (this.onEndEmailSend2Delegate == null)
+      this.onEndEmailSend2Delegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndEmailSend2);
+    if (this.onEmailSend2CompletedDelegate == null)
+      this.onEmailSend2CompletedDelegate = new SendOrPostCallback(this.OnEmailSend2Completed);
+    this.InvokeAsync(this.onBeginEmailSend2Delegate, new object[7]
+    {
+      (object) Betreff,
+      (object) Message,
+      (object) to,
+      (object) toName,
+      (object) from,
+      (object) fromName,
+      (object) TicketID
+    }, this.onEndEmailSend2Delegate, this.onEmailSend2CompletedDelegate, userState);
+  }
+
+  public bool EmailSendAttachments(
+    string Betreff,
+    string Message,
+    string[] toEMail,
+    string[] toName,
+    string from,
+    string fromName,
+    string[] attList,
+    Guid TicketID)
+  {
+    return this.Channel.EmailSendAttachments(Betreff, Message, toEMail, toName, from, fromName, attList, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginEmailSendAttachments(
+    string Betreff,
+    string Message,
+    string[] toEMail,
+    string[] toName,
+    string from,
+    string fromName,
+    string[] attList,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginEmailSendAttachments(Betreff, Message, toEMail, toName, from, fromName, attList, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndEmailSendAttachments(IAsyncResult result)
+  {
+    return this.Channel.EndEmailSendAttachments(result);
+  }
+
+  private IAsyncResult OnBeginEmailSendAttachments(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginEmailSendAttachments((string) inValues[0], (string) inValues[1], (string[]) inValues[2], (string[]) inValues[3], (string) inValues[4], (string) inValues[5], (string[]) inValues[6], (Guid) inValues[7], callback, asyncState);
+  }
+
+  private object[] OnEndEmailSendAttachments(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndEmailSendAttachments(result)
+    };
+  }
+
+  private void OnEmailSendAttachmentsCompleted(object state)
+  {
+    if (this.EmailSendAttachmentsCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.EmailSendAttachmentsCompleted((object) this, new EmailSendAttachmentsCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void EmailSendAttachmentsAsync(
+    string Betreff,
+    string Message,
+    string[] toEMail,
+    string[] toName,
+    string from,
+    string fromName,
+    string[] attList,
+    Guid TicketID)
+  {
+    this.EmailSendAttachmentsAsync(Betreff, Message, toEMail, toName, from, fromName, attList, TicketID, (object) null);
+  }
+
+  public void EmailSendAttachmentsAsync(
+    string Betreff,
+    string Message,
+    string[] toEMail,
+    string[] toName,
+    string from,
+    string fromName,
+    string[] attList,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginEmailSendAttachmentsDelegate == null)
+      this.onBeginEmailSendAttachmentsDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginEmailSendAttachments);
+    if (this.onEndEmailSendAttachmentsDelegate == null)
+      this.onEndEmailSendAttachmentsDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndEmailSendAttachments);
+    if (this.onEmailSendAttachmentsCompletedDelegate == null)
+      this.onEmailSendAttachmentsCompletedDelegate = new SendOrPostCallback(this.OnEmailSendAttachmentsCompleted);
+    this.InvokeAsync(this.onBeginEmailSendAttachmentsDelegate, new object[8]
+    {
+      (object) Betreff,
+      (object) Message,
+      (object) toEMail,
+      (object) toName,
+      (object) from,
+      (object) fromName,
+      (object) attList,
+      (object) TicketID
+    }, this.onEndEmailSendAttachmentsDelegate, this.onEmailSendAttachmentsCompletedDelegate, userState);
+  }
+
+  public bool ConnectedWAS() => this.Channel.ConnectedWAS();
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginConnectedWAS(AsyncCallback callback, object asyncState)
+  {
+    return this.Channel.BeginConnectedWAS(callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndConnectedWAS(IAsyncResult result) => this.Channel.EndConnectedWAS(result);
+
+  private IAsyncResult OnBeginConnectedWAS(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginConnectedWAS(callback, asyncState);
+  }
+
+  private object[] OnEndConnectedWAS(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndConnectedWAS(result)
+    };
+  }
+
+  private void OnConnectedWASCompleted(object state)
+  {
+    if (this.ConnectedWASCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.ConnectedWASCompleted((object) this, new ConnectedWASCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void ConnectedWASAsync() => this.ConnectedWASAsync((object) null);
+
+  public void ConnectedWASAsync(object userState)
+  {
+    if (this.onBeginConnectedWASDelegate == null)
+      this.onBeginConnectedWASDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginConnectedWAS);
+    if (this.onEndConnectedWASDelegate == null)
+      this.onEndConnectedWASDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndConnectedWAS);
+    if (this.onConnectedWASCompletedDelegate == null)
+      this.onConnectedWASCompletedDelegate = new SendOrPostCallback(this.OnConnectedWASCompleted);
+    this.InvokeAsync(this.onBeginConnectedWASDelegate, (object[]) null, this.onEndConnectedWASDelegate, this.onConnectedWASCompletedDelegate, userState);
+  }
+
+  public bool ConnectedELIS() => this.Channel.ConnectedELIS();
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginConnectedELIS(AsyncCallback callback, object asyncState)
+  {
+    return this.Channel.BeginConnectedELIS(callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndConnectedELIS(IAsyncResult result) => this.Channel.EndConnectedELIS(result);
+
+  private IAsyncResult OnBeginConnectedELIS(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginConnectedELIS(callback, asyncState);
+  }
+
+  private object[] OnEndConnectedELIS(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndConnectedELIS(result)
+    };
+  }
+
+  private void OnConnectedELISCompleted(object state)
+  {
+    if (this.ConnectedELISCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.ConnectedELISCompleted((object) this, new ConnectedELISCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void ConnectedELISAsync() => this.ConnectedELISAsync((object) null);
+
+  public void ConnectedELISAsync(object userState)
+  {
+    if (this.onBeginConnectedELISDelegate == null)
+      this.onBeginConnectedELISDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginConnectedELIS);
+    if (this.onEndConnectedELISDelegate == null)
+      this.onEndConnectedELISDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndConnectedELIS);
+    if (this.onConnectedELISCompletedDelegate == null)
+      this.onConnectedELISCompletedDelegate = new SendOrPostCallback(this.OnConnectedELISCompleted);
+    this.InvokeAsync(this.onBeginConnectedELISDelegate, (object[]) null, this.onEndConnectedELISDelegate, this.onConnectedELISCompletedDelegate, userState);
+  }
+
+  public WCFEinsatzdaten[] EinsatzDataGetAll(Guid TicketID)
+  {
+    return this.Channel.EinsatzDataGetAll(TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginEinsatzDataGetAll(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginEinsatzDataGetAll(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFEinsatzdaten[] EndEinsatzDataGetAll(IAsyncResult result)
+  {
+    return this.Channel.EndEinsatzDataGetAll(result);
+  }
+
+  private IAsyncResult OnBeginEinsatzDataGetAll(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginEinsatzDataGetAll((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndEinsatzDataGetAll(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndEinsatzDataGetAll(result)
+    };
+  }
+
+  private void OnEinsatzDataGetAllCompleted(object state)
+  {
+    if (this.EinsatzDataGetAllCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.EinsatzDataGetAllCompleted((object) this, new EinsatzDataGetAllCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void EinsatzDataGetAllAsync(Guid TicketID)
+  {
+    this.EinsatzDataGetAllAsync(TicketID, (object) null);
+  }
+
+  public void EinsatzDataGetAllAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginEinsatzDataGetAllDelegate == null)
+      this.onBeginEinsatzDataGetAllDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginEinsatzDataGetAll);
+    if (this.onEndEinsatzDataGetAllDelegate == null)
+      this.onEndEinsatzDataGetAllDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndEinsatzDataGetAll);
+    if (this.onEinsatzDataGetAllCompletedDelegate == null)
+      this.onEinsatzDataGetAllCompletedDelegate = new SendOrPostCallback(this.OnEinsatzDataGetAllCompleted);
+    this.InvokeAsync(this.onBeginEinsatzDataGetAllDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndEinsatzDataGetAllDelegate, this.onEinsatzDataGetAllCompletedDelegate, userState);
+  }
+
+  public int EinsatzHistoryDataGetCount(Guid TicketID)
+  {
+    return this.Channel.EinsatzHistoryDataGetCount(TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginEinsatzHistoryDataGetCount(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginEinsatzHistoryDataGetCount(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public int EndEinsatzHistoryDataGetCount(IAsyncResult result)
+  {
+    return this.Channel.EndEinsatzHistoryDataGetCount(result);
+  }
+
+  private IAsyncResult OnBeginEinsatzHistoryDataGetCount(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginEinsatzHistoryDataGetCount((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndEinsatzHistoryDataGetCount(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndEinsatzHistoryDataGetCount(result)
+    };
+  }
+
+  private void OnEinsatzHistoryDataGetCountCompleted(object state)
+  {
+    if (this.EinsatzHistoryDataGetCountCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.EinsatzHistoryDataGetCountCompleted((object) this, new EinsatzHistoryDataGetCountCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void EinsatzHistoryDataGetCountAsync(Guid TicketID)
+  {
+    this.EinsatzHistoryDataGetCountAsync(TicketID, (object) null);
+  }
+
+  public void EinsatzHistoryDataGetCountAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginEinsatzHistoryDataGetCountDelegate == null)
+      this.onBeginEinsatzHistoryDataGetCountDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginEinsatzHistoryDataGetCount);
+    if (this.onEndEinsatzHistoryDataGetCountDelegate == null)
+      this.onEndEinsatzHistoryDataGetCountDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndEinsatzHistoryDataGetCount);
+    if (this.onEinsatzHistoryDataGetCountCompletedDelegate == null)
+      this.onEinsatzHistoryDataGetCountCompletedDelegate = new SendOrPostCallback(this.OnEinsatzHistoryDataGetCountCompleted);
+    this.InvokeAsync(this.onBeginEinsatzHistoryDataGetCountDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndEinsatzHistoryDataGetCountDelegate, this.onEinsatzHistoryDataGetCountCompletedDelegate, userState);
+  }
+
+  public int EinsatzHistoryDataGetCountTimeSpan(DateTime begin, DateTime end, Guid TicketID)
+  {
+    return this.Channel.EinsatzHistoryDataGetCountTimeSpan(begin, end, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginEinsatzHistoryDataGetCountTimeSpan(
+    DateTime begin,
+    DateTime end,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginEinsatzHistoryDataGetCountTimeSpan(begin, end, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public int EndEinsatzHistoryDataGetCountTimeSpan(IAsyncResult result)
+  {
+    return this.Channel.EndEinsatzHistoryDataGetCountTimeSpan(result);
+  }
+
+  private IAsyncResult OnBeginEinsatzHistoryDataGetCountTimeSpan(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginEinsatzHistoryDataGetCountTimeSpan((DateTime) inValues[0], (DateTime) inValues[1], (Guid) inValues[2], callback, asyncState);
+  }
+
+  private object[] OnEndEinsatzHistoryDataGetCountTimeSpan(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndEinsatzHistoryDataGetCountTimeSpan(result)
+    };
+  }
+
+  private void OnEinsatzHistoryDataGetCountTimeSpanCompleted(object state)
+  {
+    if (this.EinsatzHistoryDataGetCountTimeSpanCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.EinsatzHistoryDataGetCountTimeSpanCompleted((object) this, new EinsatzHistoryDataGetCountTimeSpanCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void EinsatzHistoryDataGetCountTimeSpanAsync(DateTime begin, DateTime end, Guid TicketID)
+  {
+    this.EinsatzHistoryDataGetCountTimeSpanAsync(begin, end, TicketID, (object) null);
+  }
+
+  public void EinsatzHistoryDataGetCountTimeSpanAsync(
+    DateTime begin,
+    DateTime end,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginEinsatzHistoryDataGetCountTimeSpanDelegate == null)
+      this.onBeginEinsatzHistoryDataGetCountTimeSpanDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginEinsatzHistoryDataGetCountTimeSpan);
+    if (this.onEndEinsatzHistoryDataGetCountTimeSpanDelegate == null)
+      this.onEndEinsatzHistoryDataGetCountTimeSpanDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndEinsatzHistoryDataGetCountTimeSpan);
+    if (this.onEinsatzHistoryDataGetCountTimeSpanCompletedDelegate == null)
+      this.onEinsatzHistoryDataGetCountTimeSpanCompletedDelegate = new SendOrPostCallback(this.OnEinsatzHistoryDataGetCountTimeSpanCompleted);
+    this.InvokeAsync(this.onBeginEinsatzHistoryDataGetCountTimeSpanDelegate, new object[3]
+    {
+      (object) begin,
+      (object) end,
+      (object) TicketID
+    }, this.onEndEinsatzHistoryDataGetCountTimeSpanDelegate, this.onEinsatzHistoryDataGetCountTimeSpanCompletedDelegate, userState);
+  }
+
+  public WCFEinsatzdaten[] EinsatzHistoryDataGetRange(
+    int startRowIndex,
+    int maximumRows,
+    Guid TicketID)
+  {
+    return this.Channel.EinsatzHistoryDataGetRange(startRowIndex, maximumRows, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginEinsatzHistoryDataGetRange(
+    int startRowIndex,
+    int maximumRows,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginEinsatzHistoryDataGetRange(startRowIndex, maximumRows, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFEinsatzdaten[] EndEinsatzHistoryDataGetRange(IAsyncResult result)
+  {
+    return this.Channel.EndEinsatzHistoryDataGetRange(result);
+  }
+
+  private IAsyncResult OnBeginEinsatzHistoryDataGetRange(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginEinsatzHistoryDataGetRange((int) inValues[0], (int) inValues[1], (Guid) inValues[2], callback, asyncState);
+  }
+
+  private object[] OnEndEinsatzHistoryDataGetRange(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndEinsatzHistoryDataGetRange(result)
+    };
+  }
+
+  private void OnEinsatzHistoryDataGetRangeCompleted(object state)
+  {
+    if (this.EinsatzHistoryDataGetRangeCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.EinsatzHistoryDataGetRangeCompleted((object) this, new EinsatzHistoryDataGetRangeCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void EinsatzHistoryDataGetRangeAsync(int startRowIndex, int maximumRows, Guid TicketID)
+  {
+    this.EinsatzHistoryDataGetRangeAsync(startRowIndex, maximumRows, TicketID, (object) null);
+  }
+
+  public void EinsatzHistoryDataGetRangeAsync(
+    int startRowIndex,
+    int maximumRows,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginEinsatzHistoryDataGetRangeDelegate == null)
+      this.onBeginEinsatzHistoryDataGetRangeDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginEinsatzHistoryDataGetRange);
+    if (this.onEndEinsatzHistoryDataGetRangeDelegate == null)
+      this.onEndEinsatzHistoryDataGetRangeDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndEinsatzHistoryDataGetRange);
+    if (this.onEinsatzHistoryDataGetRangeCompletedDelegate == null)
+      this.onEinsatzHistoryDataGetRangeCompletedDelegate = new SendOrPostCallback(this.OnEinsatzHistoryDataGetRangeCompleted);
+    this.InvokeAsync(this.onBeginEinsatzHistoryDataGetRangeDelegate, new object[3]
+    {
+      (object) startRowIndex,
+      (object) maximumRows,
+      (object) TicketID
+    }, this.onEndEinsatzHistoryDataGetRangeDelegate, this.onEinsatzHistoryDataGetRangeCompletedDelegate, userState);
+  }
+
+  public WCFEinsatzdaten[] EinsatzHistoryDataGetRangeTimeSpan(
+    DateTime begin,
+    DateTime end,
+    int startRowIndex,
+    int maximumRows,
+    Guid TicketID)
+  {
+    return this.Channel.EinsatzHistoryDataGetRangeTimeSpan(begin, end, startRowIndex, maximumRows, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginEinsatzHistoryDataGetRangeTimeSpan(
+    DateTime begin,
+    DateTime end,
+    int startRowIndex,
+    int maximumRows,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginEinsatzHistoryDataGetRangeTimeSpan(begin, end, startRowIndex, maximumRows, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFEinsatzdaten[] EndEinsatzHistoryDataGetRangeTimeSpan(IAsyncResult result)
+  {
+    return this.Channel.EndEinsatzHistoryDataGetRangeTimeSpan(result);
+  }
+
+  private IAsyncResult OnBeginEinsatzHistoryDataGetRangeTimeSpan(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginEinsatzHistoryDataGetRangeTimeSpan((DateTime) inValues[0], (DateTime) inValues[1], (int) inValues[2], (int) inValues[3], (Guid) inValues[4], callback, asyncState);
+  }
+
+  private object[] OnEndEinsatzHistoryDataGetRangeTimeSpan(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndEinsatzHistoryDataGetRangeTimeSpan(result)
+    };
+  }
+
+  private void OnEinsatzHistoryDataGetRangeTimeSpanCompleted(object state)
+  {
+    if (this.EinsatzHistoryDataGetRangeTimeSpanCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.EinsatzHistoryDataGetRangeTimeSpanCompleted((object) this, new EinsatzHistoryDataGetRangeTimeSpanCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void EinsatzHistoryDataGetRangeTimeSpanAsync(
+    DateTime begin,
+    DateTime end,
+    int startRowIndex,
+    int maximumRows,
+    Guid TicketID)
+  {
+    this.EinsatzHistoryDataGetRangeTimeSpanAsync(begin, end, startRowIndex, maximumRows, TicketID, (object) null);
+  }
+
+  public void EinsatzHistoryDataGetRangeTimeSpanAsync(
+    DateTime begin,
+    DateTime end,
+    int startRowIndex,
+    int maximumRows,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginEinsatzHistoryDataGetRangeTimeSpanDelegate == null)
+      this.onBeginEinsatzHistoryDataGetRangeTimeSpanDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginEinsatzHistoryDataGetRangeTimeSpan);
+    if (this.onEndEinsatzHistoryDataGetRangeTimeSpanDelegate == null)
+      this.onEndEinsatzHistoryDataGetRangeTimeSpanDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndEinsatzHistoryDataGetRangeTimeSpan);
+    if (this.onEinsatzHistoryDataGetRangeTimeSpanCompletedDelegate == null)
+      this.onEinsatzHistoryDataGetRangeTimeSpanCompletedDelegate = new SendOrPostCallback(this.OnEinsatzHistoryDataGetRangeTimeSpanCompleted);
+    this.InvokeAsync(this.onBeginEinsatzHistoryDataGetRangeTimeSpanDelegate, new object[5]
+    {
+      (object) begin,
+      (object) end,
+      (object) startRowIndex,
+      (object) maximumRows,
+      (object) TicketID
+    }, this.onEndEinsatzHistoryDataGetRangeTimeSpanDelegate, this.onEinsatzHistoryDataGetRangeTimeSpanCompletedDelegate, userState);
+  }
+
+  public WCFEinsatzdaten EinsatzHistoryDataGetbyId(int einsatzId, Guid TicketID)
+  {
+    return this.Channel.EinsatzHistoryDataGetbyId(einsatzId, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginEinsatzHistoryDataGetbyId(
+    int einsatzId,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginEinsatzHistoryDataGetbyId(einsatzId, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFEinsatzdaten EndEinsatzHistoryDataGetbyId(IAsyncResult result)
+  {
+    return this.Channel.EndEinsatzHistoryDataGetbyId(result);
+  }
+
+  private IAsyncResult OnBeginEinsatzHistoryDataGetbyId(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginEinsatzHistoryDataGetbyId((int) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndEinsatzHistoryDataGetbyId(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndEinsatzHistoryDataGetbyId(result)
+    };
+  }
+
+  private void OnEinsatzHistoryDataGetbyIdCompleted(object state)
+  {
+    if (this.EinsatzHistoryDataGetbyIdCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.EinsatzHistoryDataGetbyIdCompleted((object) this, new EinsatzHistoryDataGetbyIdCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void EinsatzHistoryDataGetbyIdAsync(int einsatzId, Guid TicketID)
+  {
+    this.EinsatzHistoryDataGetbyIdAsync(einsatzId, TicketID, (object) null);
+  }
+
+  public void EinsatzHistoryDataGetbyIdAsync(int einsatzId, Guid TicketID, object userState)
+  {
+    if (this.onBeginEinsatzHistoryDataGetbyIdDelegate == null)
+      this.onBeginEinsatzHistoryDataGetbyIdDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginEinsatzHistoryDataGetbyId);
+    if (this.onEndEinsatzHistoryDataGetbyIdDelegate == null)
+      this.onEndEinsatzHistoryDataGetbyIdDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndEinsatzHistoryDataGetbyId);
+    if (this.onEinsatzHistoryDataGetbyIdCompletedDelegate == null)
+      this.onEinsatzHistoryDataGetbyIdCompletedDelegate = new SendOrPostCallback(this.OnEinsatzHistoryDataGetbyIdCompleted);
+    this.InvokeAsync(this.onBeginEinsatzHistoryDataGetbyIdDelegate, new object[2]
+    {
+      (object) einsatzId,
+      (object) TicketID
+    }, this.onEndEinsatzHistoryDataGetbyIdDelegate, this.onEinsatzHistoryDataGetbyIdCompletedDelegate, userState);
+  }
+
+  public bool EinsatzHistoryDataDeletebyId(int einsatzId, Guid TicketID)
+  {
+    return this.Channel.EinsatzHistoryDataDeletebyId(einsatzId, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginEinsatzHistoryDataDeletebyId(
+    int einsatzId,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginEinsatzHistoryDataDeletebyId(einsatzId, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndEinsatzHistoryDataDeletebyId(IAsyncResult result)
+  {
+    return this.Channel.EndEinsatzHistoryDataDeletebyId(result);
+  }
+
+  private IAsyncResult OnBeginEinsatzHistoryDataDeletebyId(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginEinsatzHistoryDataDeletebyId((int) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndEinsatzHistoryDataDeletebyId(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndEinsatzHistoryDataDeletebyId(result)
+    };
+  }
+
+  private void OnEinsatzHistoryDataDeletebyIdCompleted(object state)
+  {
+    if (this.EinsatzHistoryDataDeletebyIdCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.EinsatzHistoryDataDeletebyIdCompleted((object) this, new EinsatzHistoryDataDeletebyIdCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void EinsatzHistoryDataDeletebyIdAsync(int einsatzId, Guid TicketID)
+  {
+    this.EinsatzHistoryDataDeletebyIdAsync(einsatzId, TicketID, (object) null);
+  }
+
+  public void EinsatzHistoryDataDeletebyIdAsync(int einsatzId, Guid TicketID, object userState)
+  {
+    if (this.onBeginEinsatzHistoryDataDeletebyIdDelegate == null)
+      this.onBeginEinsatzHistoryDataDeletebyIdDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginEinsatzHistoryDataDeletebyId);
+    if (this.onEndEinsatzHistoryDataDeletebyIdDelegate == null)
+      this.onEndEinsatzHistoryDataDeletebyIdDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndEinsatzHistoryDataDeletebyId);
+    if (this.onEinsatzHistoryDataDeletebyIdCompletedDelegate == null)
+      this.onEinsatzHistoryDataDeletebyIdCompletedDelegate = new SendOrPostCallback(this.OnEinsatzHistoryDataDeletebyIdCompleted);
+    this.InvokeAsync(this.onBeginEinsatzHistoryDataDeletebyIdDelegate, new object[2]
+    {
+      (object) einsatzId,
+      (object) TicketID
+    }, this.onEndEinsatzHistoryDataDeletebyIdDelegate, this.onEinsatzHistoryDataDeletebyIdCompletedDelegate, userState);
+  }
+
+  public bool EinsatzDataPersist(WCFEinsatzdaten ed, Guid TicketID)
+  {
+    return this.Channel.EinsatzDataPersist(ed, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginEinsatzDataPersist(
+    WCFEinsatzdaten ed,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginEinsatzDataPersist(ed, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndEinsatzDataPersist(IAsyncResult result)
+  {
+    return this.Channel.EndEinsatzDataPersist(result);
+  }
+
+  private IAsyncResult OnBeginEinsatzDataPersist(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginEinsatzDataPersist((WCFEinsatzdaten) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndEinsatzDataPersist(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndEinsatzDataPersist(result)
+    };
+  }
+
+  private void OnEinsatzDataPersistCompleted(object state)
+  {
+    if (this.EinsatzDataPersistCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.EinsatzDataPersistCompleted((object) this, new EinsatzDataPersistCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void EinsatzDataPersistAsync(WCFEinsatzdaten ed, Guid TicketID)
+  {
+    this.EinsatzDataPersistAsync(ed, TicketID, (object) null);
+  }
+
+  public void EinsatzDataPersistAsync(WCFEinsatzdaten ed, Guid TicketID, object userState)
+  {
+    if (this.onBeginEinsatzDataPersistDelegate == null)
+      this.onBeginEinsatzDataPersistDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginEinsatzDataPersist);
+    if (this.onEndEinsatzDataPersistDelegate == null)
+      this.onEndEinsatzDataPersistDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndEinsatzDataPersist);
+    if (this.onEinsatzDataPersistCompletedDelegate == null)
+      this.onEinsatzDataPersistCompletedDelegate = new SendOrPostCallback(this.OnEinsatzDataPersistCompleted);
+    this.InvokeAsync(this.onBeginEinsatzDataPersistDelegate, new object[2]
+    {
+      (object) ed,
+      (object) TicketID
+    }, this.onEndEinsatzDataPersistDelegate, this.onEinsatzDataPersistCompletedDelegate, userState);
+  }
+
+  public bool EinsatzHistoryDataPersist(WCFEinsatzdaten ed, Guid TicketID)
+  {
+    return this.Channel.EinsatzHistoryDataPersist(ed, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginEinsatzHistoryDataPersist(
+    WCFEinsatzdaten ed,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginEinsatzHistoryDataPersist(ed, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndEinsatzHistoryDataPersist(IAsyncResult result)
+  {
+    return this.Channel.EndEinsatzHistoryDataPersist(result);
+  }
+
+  private IAsyncResult OnBeginEinsatzHistoryDataPersist(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginEinsatzHistoryDataPersist((WCFEinsatzdaten) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndEinsatzHistoryDataPersist(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndEinsatzHistoryDataPersist(result)
+    };
+  }
+
+  private void OnEinsatzHistoryDataPersistCompleted(object state)
+  {
+    if (this.EinsatzHistoryDataPersistCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.EinsatzHistoryDataPersistCompleted((object) this, new EinsatzHistoryDataPersistCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void EinsatzHistoryDataPersistAsync(WCFEinsatzdaten ed, Guid TicketID)
+  {
+    this.EinsatzHistoryDataPersistAsync(ed, TicketID, (object) null);
+  }
+
+  public void EinsatzHistoryDataPersistAsync(WCFEinsatzdaten ed, Guid TicketID, object userState)
+  {
+    if (this.onBeginEinsatzHistoryDataPersistDelegate == null)
+      this.onBeginEinsatzHistoryDataPersistDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginEinsatzHistoryDataPersist);
+    if (this.onEndEinsatzHistoryDataPersistDelegate == null)
+      this.onEndEinsatzHistoryDataPersistDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndEinsatzHistoryDataPersist);
+    if (this.onEinsatzHistoryDataPersistCompletedDelegate == null)
+      this.onEinsatzHistoryDataPersistCompletedDelegate = new SendOrPostCallback(this.OnEinsatzHistoryDataPersistCompleted);
+    this.InvokeAsync(this.onBeginEinsatzHistoryDataPersistDelegate, new object[2]
+    {
+      (object) ed,
+      (object) TicketID
+    }, this.onEndEinsatzHistoryDataPersistDelegate, this.onEinsatzHistoryDataPersistCompletedDelegate, userState);
+  }
+
+  public WCFEinsatz_Fahrzeug[] EinsatzGetFahrzeuge(
+    int einsatzId,
+    bool historyEinsatz,
+    Guid TicketID)
+  {
+    return this.Channel.EinsatzGetFahrzeuge(einsatzId, historyEinsatz, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginEinsatzGetFahrzeuge(
+    int einsatzId,
+    bool historyEinsatz,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginEinsatzGetFahrzeuge(einsatzId, historyEinsatz, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFEinsatz_Fahrzeug[] EndEinsatzGetFahrzeuge(IAsyncResult result)
+  {
+    return this.Channel.EndEinsatzGetFahrzeuge(result);
+  }
+
+  private IAsyncResult OnBeginEinsatzGetFahrzeuge(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginEinsatzGetFahrzeuge((int) inValues[0], (bool) inValues[1], (Guid) inValues[2], callback, asyncState);
+  }
+
+  private object[] OnEndEinsatzGetFahrzeuge(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndEinsatzGetFahrzeuge(result)
+    };
+  }
+
+  private void OnEinsatzGetFahrzeugeCompleted(object state)
+  {
+    if (this.EinsatzGetFahrzeugeCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.EinsatzGetFahrzeugeCompleted((object) this, new EinsatzGetFahrzeugeCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void EinsatzGetFahrzeugeAsync(int einsatzId, bool historyEinsatz, Guid TicketID)
+  {
+    this.EinsatzGetFahrzeugeAsync(einsatzId, historyEinsatz, TicketID, (object) null);
+  }
+
+  public void EinsatzGetFahrzeugeAsync(
+    int einsatzId,
+    bool historyEinsatz,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginEinsatzGetFahrzeugeDelegate == null)
+      this.onBeginEinsatzGetFahrzeugeDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginEinsatzGetFahrzeuge);
+    if (this.onEndEinsatzGetFahrzeugeDelegate == null)
+      this.onEndEinsatzGetFahrzeugeDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndEinsatzGetFahrzeuge);
+    if (this.onEinsatzGetFahrzeugeCompletedDelegate == null)
+      this.onEinsatzGetFahrzeugeCompletedDelegate = new SendOrPostCallback(this.OnEinsatzGetFahrzeugeCompleted);
+    this.InvokeAsync(this.onBeginEinsatzGetFahrzeugeDelegate, new object[3]
+    {
+      (object) einsatzId,
+      (object) historyEinsatz,
+      (object) TicketID
+    }, this.onEndEinsatzGetFahrzeugeDelegate, this.onEinsatzGetFahrzeugeCompletedDelegate, userState);
+  }
+
+  public bool FremdSystemDelete(WCFFremdSystem fs, Guid TicketID)
+  {
+    return this.Channel.FremdSystemDelete(fs, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginFremdSystemDelete(
+    WCFFremdSystem fs,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginFremdSystemDelete(fs, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndFremdSystemDelete(IAsyncResult result)
+  {
+    return this.Channel.EndFremdSystemDelete(result);
+  }
+
+  private IAsyncResult OnBeginFremdSystemDelete(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginFremdSystemDelete((WCFFremdSystem) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndFremdSystemDelete(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndFremdSystemDelete(result)
+    };
+  }
+
+  private void OnFremdSystemDeleteCompleted(object state)
+  {
+    if (this.FremdSystemDeleteCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.FremdSystemDeleteCompleted((object) this, new FremdSystemDeleteCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void FremdSystemDeleteAsync(WCFFremdSystem fs, Guid TicketID)
+  {
+    this.FremdSystemDeleteAsync(fs, TicketID, (object) null);
+  }
+
+  public void FremdSystemDeleteAsync(WCFFremdSystem fs, Guid TicketID, object userState)
+  {
+    if (this.onBeginFremdSystemDeleteDelegate == null)
+      this.onBeginFremdSystemDeleteDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginFremdSystemDelete);
+    if (this.onEndFremdSystemDeleteDelegate == null)
+      this.onEndFremdSystemDeleteDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndFremdSystemDelete);
+    if (this.onFremdSystemDeleteCompletedDelegate == null)
+      this.onFremdSystemDeleteCompletedDelegate = new SendOrPostCallback(this.OnFremdSystemDeleteCompleted);
+    this.InvokeAsync(this.onBeginFremdSystemDeleteDelegate, new object[2]
+    {
+      (object) fs,
+      (object) TicketID
+    }, this.onEndFremdSystemDeleteDelegate, this.onFremdSystemDeleteCompletedDelegate, userState);
+  }
+
+  public bool FremdSystemDeleteSyncData(WCFFremdSystem fs, Guid TicketID)
+  {
+    return this.Channel.FremdSystemDeleteSyncData(fs, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginFremdSystemDeleteSyncData(
+    WCFFremdSystem fs,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginFremdSystemDeleteSyncData(fs, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndFremdSystemDeleteSyncData(IAsyncResult result)
+  {
+    return this.Channel.EndFremdSystemDeleteSyncData(result);
+  }
+
+  private IAsyncResult OnBeginFremdSystemDeleteSyncData(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginFremdSystemDeleteSyncData((WCFFremdSystem) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndFremdSystemDeleteSyncData(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndFremdSystemDeleteSyncData(result)
+    };
+  }
+
+  private void OnFremdSystemDeleteSyncDataCompleted(object state)
+  {
+    if (this.FremdSystemDeleteSyncDataCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.FremdSystemDeleteSyncDataCompleted((object) this, new FremdSystemDeleteSyncDataCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void FremdSystemDeleteSyncDataAsync(WCFFremdSystem fs, Guid TicketID)
+  {
+    this.FremdSystemDeleteSyncDataAsync(fs, TicketID, (object) null);
+  }
+
+  public void FremdSystemDeleteSyncDataAsync(WCFFremdSystem fs, Guid TicketID, object userState)
+  {
+    if (this.onBeginFremdSystemDeleteSyncDataDelegate == null)
+      this.onBeginFremdSystemDeleteSyncDataDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginFremdSystemDeleteSyncData);
+    if (this.onEndFremdSystemDeleteSyncDataDelegate == null)
+      this.onEndFremdSystemDeleteSyncDataDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndFremdSystemDeleteSyncData);
+    if (this.onFremdSystemDeleteSyncDataCompletedDelegate == null)
+      this.onFremdSystemDeleteSyncDataCompletedDelegate = new SendOrPostCallback(this.OnFremdSystemDeleteSyncDataCompleted);
+    this.InvokeAsync(this.onBeginFremdSystemDeleteSyncDataDelegate, new object[2]
+    {
+      (object) fs,
+      (object) TicketID
+    }, this.onEndFremdSystemDeleteSyncDataDelegate, this.onFremdSystemDeleteSyncDataCompletedDelegate, userState);
+  }
+
+  public bool EigeneFeuerwehrSet(WCFFeuerwehr fwId, Guid TicketID)
+  {
+    return this.Channel.EigeneFeuerwehrSet(fwId, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginEigeneFeuerwehrSet(
+    WCFFeuerwehr fwId,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginEigeneFeuerwehrSet(fwId, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndEigeneFeuerwehrSet(IAsyncResult result)
+  {
+    return this.Channel.EndEigeneFeuerwehrSet(result);
+  }
+
+  private IAsyncResult OnBeginEigeneFeuerwehrSet(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginEigeneFeuerwehrSet((WCFFeuerwehr) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndEigeneFeuerwehrSet(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndEigeneFeuerwehrSet(result)
+    };
+  }
+
+  private void OnEigeneFeuerwehrSetCompleted(object state)
+  {
+    if (this.EigeneFeuerwehrSetCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.EigeneFeuerwehrSetCompleted((object) this, new EigeneFeuerwehrSetCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void EigeneFeuerwehrSetAsync(WCFFeuerwehr fwId, Guid TicketID)
+  {
+    this.EigeneFeuerwehrSetAsync(fwId, TicketID, (object) null);
+  }
+
+  public void EigeneFeuerwehrSetAsync(WCFFeuerwehr fwId, Guid TicketID, object userState)
+  {
+    if (this.onBeginEigeneFeuerwehrSetDelegate == null)
+      this.onBeginEigeneFeuerwehrSetDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginEigeneFeuerwehrSet);
+    if (this.onEndEigeneFeuerwehrSetDelegate == null)
+      this.onEndEigeneFeuerwehrSetDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndEigeneFeuerwehrSet);
+    if (this.onEigeneFeuerwehrSetCompletedDelegate == null)
+      this.onEigeneFeuerwehrSetCompletedDelegate = new SendOrPostCallback(this.OnEigeneFeuerwehrSetCompleted);
+    this.InvokeAsync(this.onBeginEigeneFeuerwehrSetDelegate, new object[2]
+    {
+      (object) fwId,
+      (object) TicketID
+    }, this.onEndEigeneFeuerwehrSetDelegate, this.onEigeneFeuerwehrSetCompletedDelegate, userState);
+  }
+
+  public bool KontaktObjDelete(int id, Guid TicketID)
+  {
+    return this.Channel.KontaktObjDelete(id, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginKontaktObjDelete(
+    int id,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginKontaktObjDelete(id, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndKontaktObjDelete(IAsyncResult result) => this.Channel.EndKontaktObjDelete(result);
+
+  private IAsyncResult OnBeginKontaktObjDelete(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginKontaktObjDelete((int) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndKontaktObjDelete(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndKontaktObjDelete(result)
+    };
+  }
+
+  private void OnKontaktObjDeleteCompleted(object state)
+  {
+    if (this.KontaktObjDeleteCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.KontaktObjDeleteCompleted((object) this, new KontaktObjDeleteCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void KontaktObjDeleteAsync(int id, Guid TicketID)
+  {
+    this.KontaktObjDeleteAsync(id, TicketID, (object) null);
+  }
+
+  public void KontaktObjDeleteAsync(int id, Guid TicketID, object userState)
+  {
+    if (this.onBeginKontaktObjDeleteDelegate == null)
+      this.onBeginKontaktObjDeleteDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginKontaktObjDelete);
+    if (this.onEndKontaktObjDeleteDelegate == null)
+      this.onEndKontaktObjDeleteDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndKontaktObjDelete);
+    if (this.onKontaktObjDeleteCompletedDelegate == null)
+      this.onKontaktObjDeleteCompletedDelegate = new SendOrPostCallback(this.OnKontaktObjDeleteCompleted);
+    this.InvokeAsync(this.onBeginKontaktObjDeleteDelegate, new object[2]
+    {
+      (object) id,
+      (object) TicketID
+    }, this.onEndKontaktObjDeleteDelegate, this.onKontaktObjDeleteCompletedDelegate, userState);
+  }
+
+  public WCFKontakt[] KontaktGetAll(Guid TicketID) => this.Channel.KontaktGetAll(TicketID);
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginKontaktGetAll(Guid TicketID, AsyncCallback callback, object asyncState)
+  {
+    return this.Channel.BeginKontaktGetAll(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFKontakt[] EndKontaktGetAll(IAsyncResult result)
+  {
+    return this.Channel.EndKontaktGetAll(result);
+  }
+
+  private IAsyncResult OnBeginKontaktGetAll(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginKontaktGetAll((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndKontaktGetAll(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndKontaktGetAll(result)
+    };
+  }
+
+  private void OnKontaktGetAllCompleted(object state)
+  {
+    if (this.KontaktGetAllCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.KontaktGetAllCompleted((object) this, new KontaktGetAllCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void KontaktGetAllAsync(Guid TicketID) => this.KontaktGetAllAsync(TicketID, (object) null);
+
+  public void KontaktGetAllAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginKontaktGetAllDelegate == null)
+      this.onBeginKontaktGetAllDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginKontaktGetAll);
+    if (this.onEndKontaktGetAllDelegate == null)
+      this.onEndKontaktGetAllDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndKontaktGetAll);
+    if (this.onKontaktGetAllCompletedDelegate == null)
+      this.onKontaktGetAllCompletedDelegate = new SendOrPostCallback(this.OnKontaktGetAllCompleted);
+    this.InvokeAsync(this.onBeginKontaktGetAllDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndKontaktGetAllDelegate, this.onKontaktGetAllCompletedDelegate, userState);
+  }
+
+  public WCFFeuerwehr[] FeuerwehrenGetAll(Guid TicketID, bool withDisabled)
+  {
+    return this.Channel.FeuerwehrenGetAll(TicketID, withDisabled);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginFeuerwehrenGetAll(
+    Guid TicketID,
+    bool withDisabled,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginFeuerwehrenGetAll(TicketID, withDisabled, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFFeuerwehr[] EndFeuerwehrenGetAll(IAsyncResult result)
+  {
+    return this.Channel.EndFeuerwehrenGetAll(result);
+  }
+
+  private IAsyncResult OnBeginFeuerwehrenGetAll(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginFeuerwehrenGetAll((Guid) inValues[0], (bool) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndFeuerwehrenGetAll(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndFeuerwehrenGetAll(result)
+    };
+  }
+
+  private void OnFeuerwehrenGetAllCompleted(object state)
+  {
+    if (this.FeuerwehrenGetAllCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.FeuerwehrenGetAllCompleted((object) this, new FeuerwehrenGetAllCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void FeuerwehrenGetAllAsync(Guid TicketID, bool withDisabled)
+  {
+    this.FeuerwehrenGetAllAsync(TicketID, withDisabled, (object) null);
+  }
+
+  public void FeuerwehrenGetAllAsync(Guid TicketID, bool withDisabled, object userState)
+  {
+    if (this.onBeginFeuerwehrenGetAllDelegate == null)
+      this.onBeginFeuerwehrenGetAllDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginFeuerwehrenGetAll);
+    if (this.onEndFeuerwehrenGetAllDelegate == null)
+      this.onEndFeuerwehrenGetAllDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndFeuerwehrenGetAll);
+    if (this.onFeuerwehrenGetAllCompletedDelegate == null)
+      this.onFeuerwehrenGetAllCompletedDelegate = new SendOrPostCallback(this.OnFeuerwehrenGetAllCompleted);
+    this.InvokeAsync(this.onBeginFeuerwehrenGetAllDelegate, new object[2]
+    {
+      (object) TicketID,
+      (object) withDisabled
+    }, this.onEndFeuerwehrenGetAllDelegate, this.onFeuerwehrenGetAllCompletedDelegate, userState);
+  }
+
+  public WCFFeuerwehr FeuerwehrGetEigene(Guid TicketID)
+  {
+    return this.Channel.FeuerwehrGetEigene(TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginFeuerwehrGetEigene(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginFeuerwehrGetEigene(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFFeuerwehr EndFeuerwehrGetEigene(IAsyncResult result)
+  {
+    return this.Channel.EndFeuerwehrGetEigene(result);
+  }
+
+  private IAsyncResult OnBeginFeuerwehrGetEigene(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginFeuerwehrGetEigene((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndFeuerwehrGetEigene(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndFeuerwehrGetEigene(result)
+    };
+  }
+
+  private void OnFeuerwehrGetEigeneCompleted(object state)
+  {
+    if (this.FeuerwehrGetEigeneCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.FeuerwehrGetEigeneCompleted((object) this, new FeuerwehrGetEigeneCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void FeuerwehrGetEigeneAsync(Guid TicketID)
+  {
+    this.FeuerwehrGetEigeneAsync(TicketID, (object) null);
+  }
+
+  public void FeuerwehrGetEigeneAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginFeuerwehrGetEigeneDelegate == null)
+      this.onBeginFeuerwehrGetEigeneDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginFeuerwehrGetEigene);
+    if (this.onEndFeuerwehrGetEigeneDelegate == null)
+      this.onEndFeuerwehrGetEigeneDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndFeuerwehrGetEigene);
+    if (this.onFeuerwehrGetEigeneCompletedDelegate == null)
+      this.onFeuerwehrGetEigeneCompletedDelegate = new SendOrPostCallback(this.OnFeuerwehrGetEigeneCompleted);
+    this.InvokeAsync(this.onBeginFeuerwehrGetEigeneDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndFeuerwehrGetEigeneDelegate, this.onFeuerwehrGetEigeneCompletedDelegate, userState);
+  }
+
+  public WCFFeuerwehr FeuerwehrPersist(WCFFeuerwehr fw, Guid TicketID)
+  {
+    return this.Channel.FeuerwehrPersist(fw, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginFeuerwehrPersist(
+    WCFFeuerwehr fw,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginFeuerwehrPersist(fw, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFFeuerwehr EndFeuerwehrPersist(IAsyncResult result)
+  {
+    return this.Channel.EndFeuerwehrPersist(result);
+  }
+
+  private IAsyncResult OnBeginFeuerwehrPersist(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginFeuerwehrPersist((WCFFeuerwehr) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndFeuerwehrPersist(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndFeuerwehrPersist(result)
+    };
+  }
+
+  private void OnFeuerwehrPersistCompleted(object state)
+  {
+    if (this.FeuerwehrPersistCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.FeuerwehrPersistCompleted((object) this, new FeuerwehrPersistCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void FeuerwehrPersistAsync(WCFFeuerwehr fw, Guid TicketID)
+  {
+    this.FeuerwehrPersistAsync(fw, TicketID, (object) null);
+  }
+
+  public void FeuerwehrPersistAsync(WCFFeuerwehr fw, Guid TicketID, object userState)
+  {
+    if (this.onBeginFeuerwehrPersistDelegate == null)
+      this.onBeginFeuerwehrPersistDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginFeuerwehrPersist);
+    if (this.onEndFeuerwehrPersistDelegate == null)
+      this.onEndFeuerwehrPersistDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndFeuerwehrPersist);
+    if (this.onFeuerwehrPersistCompletedDelegate == null)
+      this.onFeuerwehrPersistCompletedDelegate = new SendOrPostCallback(this.OnFeuerwehrPersistCompleted);
+    this.InvokeAsync(this.onBeginFeuerwehrPersistDelegate, new object[2]
+    {
+      (object) fw,
+      (object) TicketID
+    }, this.onEndFeuerwehrPersistDelegate, this.onFeuerwehrPersistCompletedDelegate, userState);
+  }
+
+  public string[] FeuerwehrDelete(int id, Guid TicketID)
+  {
+    return this.Channel.FeuerwehrDelete(id, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginFeuerwehrDelete(
+    int id,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginFeuerwehrDelete(id, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public string[] EndFeuerwehrDelete(IAsyncResult result)
+  {
+    return this.Channel.EndFeuerwehrDelete(result);
+  }
+
+  private IAsyncResult OnBeginFeuerwehrDelete(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginFeuerwehrDelete((int) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndFeuerwehrDelete(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndFeuerwehrDelete(result)
+    };
+  }
+
+  private void OnFeuerwehrDeleteCompleted(object state)
+  {
+    if (this.FeuerwehrDeleteCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.FeuerwehrDeleteCompleted((object) this, new FeuerwehrDeleteCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void FeuerwehrDeleteAsync(int id, Guid TicketID)
+  {
+    this.FeuerwehrDeleteAsync(id, TicketID, (object) null);
+  }
+
+  public void FeuerwehrDeleteAsync(int id, Guid TicketID, object userState)
+  {
+    if (this.onBeginFeuerwehrDeleteDelegate == null)
+      this.onBeginFeuerwehrDeleteDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginFeuerwehrDelete);
+    if (this.onEndFeuerwehrDeleteDelegate == null)
+      this.onEndFeuerwehrDeleteDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndFeuerwehrDelete);
+    if (this.onFeuerwehrDeleteCompletedDelegate == null)
+      this.onFeuerwehrDeleteCompletedDelegate = new SendOrPostCallback(this.OnFeuerwehrDeleteCompleted);
+    this.InvokeAsync(this.onBeginFeuerwehrDeleteDelegate, new object[2]
+    {
+      (object) id,
+      (object) TicketID
+    }, this.onEndFeuerwehrDeleteDelegate, this.onFeuerwehrDeleteCompletedDelegate, userState);
+  }
+
+  public WCFFahrzeug[] FahrzeugeGetAll(Guid TicketID) => this.Channel.FahrzeugeGetAll(TicketID);
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginFahrzeugeGetAll(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginFahrzeugeGetAll(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFFahrzeug[] EndFahrzeugeGetAll(IAsyncResult result)
+  {
+    return this.Channel.EndFahrzeugeGetAll(result);
+  }
+
+  private IAsyncResult OnBeginFahrzeugeGetAll(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginFahrzeugeGetAll((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndFahrzeugeGetAll(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndFahrzeugeGetAll(result)
+    };
+  }
+
+  private void OnFahrzeugeGetAllCompleted(object state)
+  {
+    if (this.FahrzeugeGetAllCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.FahrzeugeGetAllCompleted((object) this, new FahrzeugeGetAllCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void FahrzeugeGetAllAsync(Guid TicketID)
+  {
+    this.FahrzeugeGetAllAsync(TicketID, (object) null);
+  }
+
+  public void FahrzeugeGetAllAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginFahrzeugeGetAllDelegate == null)
+      this.onBeginFahrzeugeGetAllDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginFahrzeugeGetAll);
+    if (this.onEndFahrzeugeGetAllDelegate == null)
+      this.onEndFahrzeugeGetAllDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndFahrzeugeGetAll);
+    if (this.onFahrzeugeGetAllCompletedDelegate == null)
+      this.onFahrzeugeGetAllCompletedDelegate = new SendOrPostCallback(this.OnFahrzeugeGetAllCompleted);
+    this.InvokeAsync(this.onBeginFahrzeugeGetAllDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndFahrzeugeGetAllDelegate, this.onFahrzeugeGetAllCompletedDelegate, userState);
+  }
+
+  public WCFFahrzeug[] FahrzeugeGetByFeuerwehr(int fwId, Guid TicketID)
+  {
+    return this.Channel.FahrzeugeGetByFeuerwehr(fwId, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginFahrzeugeGetByFeuerwehr(
+    int fwId,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginFahrzeugeGetByFeuerwehr(fwId, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFFahrzeug[] EndFahrzeugeGetByFeuerwehr(IAsyncResult result)
+  {
+    return this.Channel.EndFahrzeugeGetByFeuerwehr(result);
+  }
+
+  private IAsyncResult OnBeginFahrzeugeGetByFeuerwehr(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginFahrzeugeGetByFeuerwehr((int) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndFahrzeugeGetByFeuerwehr(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndFahrzeugeGetByFeuerwehr(result)
+    };
+  }
+
+  private void OnFahrzeugeGetByFeuerwehrCompleted(object state)
+  {
+    if (this.FahrzeugeGetByFeuerwehrCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.FahrzeugeGetByFeuerwehrCompleted((object) this, new FahrzeugeGetByFeuerwehrCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void FahrzeugeGetByFeuerwehrAsync(int fwId, Guid TicketID)
+  {
+    this.FahrzeugeGetByFeuerwehrAsync(fwId, TicketID, (object) null);
+  }
+
+  public void FahrzeugeGetByFeuerwehrAsync(int fwId, Guid TicketID, object userState)
+  {
+    if (this.onBeginFahrzeugeGetByFeuerwehrDelegate == null)
+      this.onBeginFahrzeugeGetByFeuerwehrDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginFahrzeugeGetByFeuerwehr);
+    if (this.onEndFahrzeugeGetByFeuerwehrDelegate == null)
+      this.onEndFahrzeugeGetByFeuerwehrDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndFahrzeugeGetByFeuerwehr);
+    if (this.onFahrzeugeGetByFeuerwehrCompletedDelegate == null)
+      this.onFahrzeugeGetByFeuerwehrCompletedDelegate = new SendOrPostCallback(this.OnFahrzeugeGetByFeuerwehrCompleted);
+    this.InvokeAsync(this.onBeginFahrzeugeGetByFeuerwehrDelegate, new object[2]
+    {
+      (object) fwId,
+      (object) TicketID
+    }, this.onEndFahrzeugeGetByFeuerwehrDelegate, this.onFahrzeugeGetByFeuerwehrCompletedDelegate, userState);
+  }
+
+  public WCFFahrzeug[] FahrzeugeGetByEigenerFeuerwehr(Guid TicketID)
+  {
+    return this.Channel.FahrzeugeGetByEigenerFeuerwehr(TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginFahrzeugeGetByEigenerFeuerwehr(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginFahrzeugeGetByEigenerFeuerwehr(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFFahrzeug[] EndFahrzeugeGetByEigenerFeuerwehr(IAsyncResult result)
+  {
+    return this.Channel.EndFahrzeugeGetByEigenerFeuerwehr(result);
+  }
+
+  private IAsyncResult OnBeginFahrzeugeGetByEigenerFeuerwehr(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginFahrzeugeGetByEigenerFeuerwehr((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndFahrzeugeGetByEigenerFeuerwehr(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndFahrzeugeGetByEigenerFeuerwehr(result)
+    };
+  }
+
+  private void OnFahrzeugeGetByEigenerFeuerwehrCompleted(object state)
+  {
+    if (this.FahrzeugeGetByEigenerFeuerwehrCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.FahrzeugeGetByEigenerFeuerwehrCompleted((object) this, new FahrzeugeGetByEigenerFeuerwehrCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void FahrzeugeGetByEigenerFeuerwehrAsync(Guid TicketID)
+  {
+    this.FahrzeugeGetByEigenerFeuerwehrAsync(TicketID, (object) null);
+  }
+
+  public void FahrzeugeGetByEigenerFeuerwehrAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginFahrzeugeGetByEigenerFeuerwehrDelegate == null)
+      this.onBeginFahrzeugeGetByEigenerFeuerwehrDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginFahrzeugeGetByEigenerFeuerwehr);
+    if (this.onEndFahrzeugeGetByEigenerFeuerwehrDelegate == null)
+      this.onEndFahrzeugeGetByEigenerFeuerwehrDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndFahrzeugeGetByEigenerFeuerwehr);
+    if (this.onFahrzeugeGetByEigenerFeuerwehrCompletedDelegate == null)
+      this.onFahrzeugeGetByEigenerFeuerwehrCompletedDelegate = new SendOrPostCallback(this.OnFahrzeugeGetByEigenerFeuerwehrCompleted);
+    this.InvokeAsync(this.onBeginFahrzeugeGetByEigenerFeuerwehrDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndFahrzeugeGetByEigenerFeuerwehrDelegate, this.onFahrzeugeGetByEigenerFeuerwehrCompletedDelegate, userState);
+  }
+
+  public WCFFahrzeug[] FahrzeugeGetAllVerfuegbar(Guid TicketID)
+  {
+    return this.Channel.FahrzeugeGetAllVerfuegbar(TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginFahrzeugeGetAllVerfuegbar(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginFahrzeugeGetAllVerfuegbar(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFFahrzeug[] EndFahrzeugeGetAllVerfuegbar(IAsyncResult result)
+  {
+    return this.Channel.EndFahrzeugeGetAllVerfuegbar(result);
+  }
+
+  private IAsyncResult OnBeginFahrzeugeGetAllVerfuegbar(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginFahrzeugeGetAllVerfuegbar((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndFahrzeugeGetAllVerfuegbar(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndFahrzeugeGetAllVerfuegbar(result)
+    };
+  }
+
+  private void OnFahrzeugeGetAllVerfuegbarCompleted(object state)
+  {
+    if (this.FahrzeugeGetAllVerfuegbarCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.FahrzeugeGetAllVerfuegbarCompleted((object) this, new FahrzeugeGetAllVerfuegbarCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void FahrzeugeGetAllVerfuegbarAsync(Guid TicketID)
+  {
+    this.FahrzeugeGetAllVerfuegbarAsync(TicketID, (object) null);
+  }
+
+  public void FahrzeugeGetAllVerfuegbarAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginFahrzeugeGetAllVerfuegbarDelegate == null)
+      this.onBeginFahrzeugeGetAllVerfuegbarDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginFahrzeugeGetAllVerfuegbar);
+    if (this.onEndFahrzeugeGetAllVerfuegbarDelegate == null)
+      this.onEndFahrzeugeGetAllVerfuegbarDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndFahrzeugeGetAllVerfuegbar);
+    if (this.onFahrzeugeGetAllVerfuegbarCompletedDelegate == null)
+      this.onFahrzeugeGetAllVerfuegbarCompletedDelegate = new SendOrPostCallback(this.OnFahrzeugeGetAllVerfuegbarCompleted);
+    this.InvokeAsync(this.onBeginFahrzeugeGetAllVerfuegbarDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndFahrzeugeGetAllVerfuegbarDelegate, this.onFahrzeugeGetAllVerfuegbarCompletedDelegate, userState);
+  }
+
+  public WCFFahrzeug[] FahrzeugeGetAllDisponierbar(Guid TicketID)
+  {
+    return this.Channel.FahrzeugeGetAllDisponierbar(TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginFahrzeugeGetAllDisponierbar(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginFahrzeugeGetAllDisponierbar(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFFahrzeug[] EndFahrzeugeGetAllDisponierbar(IAsyncResult result)
+  {
+    return this.Channel.EndFahrzeugeGetAllDisponierbar(result);
+  }
+
+  private IAsyncResult OnBeginFahrzeugeGetAllDisponierbar(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginFahrzeugeGetAllDisponierbar((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndFahrzeugeGetAllDisponierbar(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndFahrzeugeGetAllDisponierbar(result)
+    };
+  }
+
+  private void OnFahrzeugeGetAllDisponierbarCompleted(object state)
+  {
+    if (this.FahrzeugeGetAllDisponierbarCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.FahrzeugeGetAllDisponierbarCompleted((object) this, new FahrzeugeGetAllDisponierbarCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void FahrzeugeGetAllDisponierbarAsync(Guid TicketID)
+  {
+    this.FahrzeugeGetAllDisponierbarAsync(TicketID, (object) null);
+  }
+
+  public void FahrzeugeGetAllDisponierbarAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginFahrzeugeGetAllDisponierbarDelegate == null)
+      this.onBeginFahrzeugeGetAllDisponierbarDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginFahrzeugeGetAllDisponierbar);
+    if (this.onEndFahrzeugeGetAllDisponierbarDelegate == null)
+      this.onEndFahrzeugeGetAllDisponierbarDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndFahrzeugeGetAllDisponierbar);
+    if (this.onFahrzeugeGetAllDisponierbarCompletedDelegate == null)
+      this.onFahrzeugeGetAllDisponierbarCompletedDelegate = new SendOrPostCallback(this.OnFahrzeugeGetAllDisponierbarCompleted);
+    this.InvokeAsync(this.onBeginFahrzeugeGetAllDisponierbarDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndFahrzeugeGetAllDisponierbarDelegate, this.onFahrzeugeGetAllDisponierbarCompletedDelegate, userState);
+  }
+
+  public WCFFahrzeug FahrzeugPersist(WCFFahrzeug fz, Guid TicketID)
+  {
+    return this.Channel.FahrzeugPersist(fz, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginFahrzeugPersist(
+    WCFFahrzeug fz,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginFahrzeugPersist(fz, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFFahrzeug EndFahrzeugPersist(IAsyncResult result)
+  {
+    return this.Channel.EndFahrzeugPersist(result);
+  }
+
+  private IAsyncResult OnBeginFahrzeugPersist(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginFahrzeugPersist((WCFFahrzeug) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndFahrzeugPersist(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndFahrzeugPersist(result)
+    };
+  }
+
+  private void OnFahrzeugPersistCompleted(object state)
+  {
+    if (this.FahrzeugPersistCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.FahrzeugPersistCompleted((object) this, new FahrzeugPersistCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void FahrzeugPersistAsync(WCFFahrzeug fz, Guid TicketID)
+  {
+    this.FahrzeugPersistAsync(fz, TicketID, (object) null);
+  }
+
+  public void FahrzeugPersistAsync(WCFFahrzeug fz, Guid TicketID, object userState)
+  {
+    if (this.onBeginFahrzeugPersistDelegate == null)
+      this.onBeginFahrzeugPersistDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginFahrzeugPersist);
+    if (this.onEndFahrzeugPersistDelegate == null)
+      this.onEndFahrzeugPersistDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndFahrzeugPersist);
+    if (this.onFahrzeugPersistCompletedDelegate == null)
+      this.onFahrzeugPersistCompletedDelegate = new SendOrPostCallback(this.OnFahrzeugPersistCompleted);
+    this.InvokeAsync(this.onBeginFahrzeugPersistDelegate, new object[2]
+    {
+      (object) fz,
+      (object) TicketID
+    }, this.onEndFahrzeugPersistDelegate, this.onFahrzeugPersistCompletedDelegate, userState);
+  }
+
+  public bool FahrzeugDelete(int id, Guid TicketID) => this.Channel.FahrzeugDelete(id, TicketID);
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginFahrzeugDelete(
+    int id,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginFahrzeugDelete(id, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndFahrzeugDelete(IAsyncResult result) => this.Channel.EndFahrzeugDelete(result);
+
+  private IAsyncResult OnBeginFahrzeugDelete(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginFahrzeugDelete((int) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndFahrzeugDelete(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndFahrzeugDelete(result)
+    };
+  }
+
+  private void OnFahrzeugDeleteCompleted(object state)
+  {
+    if (this.FahrzeugDeleteCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.FahrzeugDeleteCompleted((object) this, new FahrzeugDeleteCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void FahrzeugDeleteAsync(int id, Guid TicketID)
+  {
+    this.FahrzeugDeleteAsync(id, TicketID, (object) null);
+  }
+
+  public void FahrzeugDeleteAsync(int id, Guid TicketID, object userState)
+  {
+    if (this.onBeginFahrzeugDeleteDelegate == null)
+      this.onBeginFahrzeugDeleteDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginFahrzeugDelete);
+    if (this.onEndFahrzeugDeleteDelegate == null)
+      this.onEndFahrzeugDeleteDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndFahrzeugDelete);
+    if (this.onFahrzeugDeleteCompletedDelegate == null)
+      this.onFahrzeugDeleteCompletedDelegate = new SendOrPostCallback(this.OnFahrzeugDeleteCompleted);
+    this.InvokeAsync(this.onBeginFahrzeugDeleteDelegate, new object[2]
+    {
+      (object) id,
+      (object) TicketID
+    }, this.onEndFahrzeugDeleteDelegate, this.onFahrzeugDeleteCompletedDelegate, userState);
+  }
+
+  public WCFFahrzeug FahrzeugChangeImDienst(WCFFahrzeug fz, bool imDienst, Guid TicketID)
+  {
+    return this.Channel.FahrzeugChangeImDienst(fz, imDienst, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginFahrzeugChangeImDienst(
+    WCFFahrzeug fz,
+    bool imDienst,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginFahrzeugChangeImDienst(fz, imDienst, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFFahrzeug EndFahrzeugChangeImDienst(IAsyncResult result)
+  {
+    return this.Channel.EndFahrzeugChangeImDienst(result);
+  }
+
+  private IAsyncResult OnBeginFahrzeugChangeImDienst(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginFahrzeugChangeImDienst((WCFFahrzeug) inValues[0], (bool) inValues[1], (Guid) inValues[2], callback, asyncState);
+  }
+
+  private object[] OnEndFahrzeugChangeImDienst(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndFahrzeugChangeImDienst(result)
+    };
+  }
+
+  private void OnFahrzeugChangeImDienstCompleted(object state)
+  {
+    if (this.FahrzeugChangeImDienstCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.FahrzeugChangeImDienstCompleted((object) this, new FahrzeugChangeImDienstCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void FahrzeugChangeImDienstAsync(WCFFahrzeug fz, bool imDienst, Guid TicketID)
+  {
+    this.FahrzeugChangeImDienstAsync(fz, imDienst, TicketID, (object) null);
+  }
+
+  public void FahrzeugChangeImDienstAsync(
+    WCFFahrzeug fz,
+    bool imDienst,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginFahrzeugChangeImDienstDelegate == null)
+      this.onBeginFahrzeugChangeImDienstDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginFahrzeugChangeImDienst);
+    if (this.onEndFahrzeugChangeImDienstDelegate == null)
+      this.onEndFahrzeugChangeImDienstDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndFahrzeugChangeImDienst);
+    if (this.onFahrzeugChangeImDienstCompletedDelegate == null)
+      this.onFahrzeugChangeImDienstCompletedDelegate = new SendOrPostCallback(this.OnFahrzeugChangeImDienstCompleted);
+    this.InvokeAsync(this.onBeginFahrzeugChangeImDienstDelegate, new object[3]
+    {
+      (object) fz,
+      (object) imDienst,
+      (object) TicketID
+    }, this.onEndFahrzeugChangeImDienstDelegate, this.onFahrzeugChangeImDienstCompletedDelegate, userState);
+  }
+
+  public WCFFahrzeug FahrzeugSetStatusInfo(
+    string statusInfo,
+    string logKategorie,
+    WCFFahrzeug fz,
+    Guid TicketID)
+  {
+    return this.Channel.FahrzeugSetStatusInfo(statusInfo, logKategorie, fz, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginFahrzeugSetStatusInfo(
+    string statusInfo,
+    string logKategorie,
+    WCFFahrzeug fz,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginFahrzeugSetStatusInfo(statusInfo, logKategorie, fz, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFFahrzeug EndFahrzeugSetStatusInfo(IAsyncResult result)
+  {
+    return this.Channel.EndFahrzeugSetStatusInfo(result);
+  }
+
+  private IAsyncResult OnBeginFahrzeugSetStatusInfo(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginFahrzeugSetStatusInfo((string) inValues[0], (string) inValues[1], (WCFFahrzeug) inValues[2], (Guid) inValues[3], callback, asyncState);
+  }
+
+  private object[] OnEndFahrzeugSetStatusInfo(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndFahrzeugSetStatusInfo(result)
+    };
+  }
+
+  private void OnFahrzeugSetStatusInfoCompleted(object state)
+  {
+    if (this.FahrzeugSetStatusInfoCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.FahrzeugSetStatusInfoCompleted((object) this, new FahrzeugSetStatusInfoCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void FahrzeugSetStatusInfoAsync(
+    string statusInfo,
+    string logKategorie,
+    WCFFahrzeug fz,
+    Guid TicketID)
+  {
+    this.FahrzeugSetStatusInfoAsync(statusInfo, logKategorie, fz, TicketID, (object) null);
+  }
+
+  public void FahrzeugSetStatusInfoAsync(
+    string statusInfo,
+    string logKategorie,
+    WCFFahrzeug fz,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginFahrzeugSetStatusInfoDelegate == null)
+      this.onBeginFahrzeugSetStatusInfoDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginFahrzeugSetStatusInfo);
+    if (this.onEndFahrzeugSetStatusInfoDelegate == null)
+      this.onEndFahrzeugSetStatusInfoDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndFahrzeugSetStatusInfo);
+    if (this.onFahrzeugSetStatusInfoCompletedDelegate == null)
+      this.onFahrzeugSetStatusInfoCompletedDelegate = new SendOrPostCallback(this.OnFahrzeugSetStatusInfoCompleted);
+    this.InvokeAsync(this.onBeginFahrzeugSetStatusInfoDelegate, new object[4]
+    {
+      (object) statusInfo,
+      (object) logKategorie,
+      (object) fz,
+      (object) TicketID
+    }, this.onEndFahrzeugSetStatusInfoDelegate, this.onFahrzeugSetStatusInfoCompletedDelegate, userState);
+  }
+
+  public WCFAlarmplanKategorie[] AlarmplanKategorieGetAll(Guid TicketID)
+  {
+    return this.Channel.AlarmplanKategorieGetAll(TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginAlarmplanKategorieGetAll(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginAlarmplanKategorieGetAll(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFAlarmplanKategorie[] EndAlarmplanKategorieGetAll(IAsyncResult result)
+  {
+    return this.Channel.EndAlarmplanKategorieGetAll(result);
+  }
+
+  private IAsyncResult OnBeginAlarmplanKategorieGetAll(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginAlarmplanKategorieGetAll((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndAlarmplanKategorieGetAll(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndAlarmplanKategorieGetAll(result)
+    };
+  }
+
+  private void OnAlarmplanKategorieGetAllCompleted(object state)
+  {
+    if (this.AlarmplanKategorieGetAllCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.AlarmplanKategorieGetAllCompleted((object) this, new AlarmplanKategorieGetAllCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void AlarmplanKategorieGetAllAsync(Guid TicketID)
+  {
+    this.AlarmplanKategorieGetAllAsync(TicketID, (object) null);
+  }
+
+  public void AlarmplanKategorieGetAllAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginAlarmplanKategorieGetAllDelegate == null)
+      this.onBeginAlarmplanKategorieGetAllDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginAlarmplanKategorieGetAll);
+    if (this.onEndAlarmplanKategorieGetAllDelegate == null)
+      this.onEndAlarmplanKategorieGetAllDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndAlarmplanKategorieGetAll);
+    if (this.onAlarmplanKategorieGetAllCompletedDelegate == null)
+      this.onAlarmplanKategorieGetAllCompletedDelegate = new SendOrPostCallback(this.OnAlarmplanKategorieGetAllCompleted);
+    this.InvokeAsync(this.onBeginAlarmplanKategorieGetAllDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndAlarmplanKategorieGetAllDelegate, this.onAlarmplanKategorieGetAllCompletedDelegate, userState);
+  }
+
+  public WCFAlarmplanKategorie AlarmplanKategoriePersist(WCFAlarmplanKategorie ap, Guid TicketID)
+  {
+    return this.Channel.AlarmplanKategoriePersist(ap, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginAlarmplanKategoriePersist(
+    WCFAlarmplanKategorie ap,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginAlarmplanKategoriePersist(ap, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFAlarmplanKategorie EndAlarmplanKategoriePersist(IAsyncResult result)
+  {
+    return this.Channel.EndAlarmplanKategoriePersist(result);
+  }
+
+  private IAsyncResult OnBeginAlarmplanKategoriePersist(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginAlarmplanKategoriePersist((WCFAlarmplanKategorie) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndAlarmplanKategoriePersist(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndAlarmplanKategoriePersist(result)
+    };
+  }
+
+  private void OnAlarmplanKategoriePersistCompleted(object state)
+  {
+    if (this.AlarmplanKategoriePersistCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.AlarmplanKategoriePersistCompleted((object) this, new AlarmplanKategoriePersistCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void AlarmplanKategoriePersistAsync(WCFAlarmplanKategorie ap, Guid TicketID)
+  {
+    this.AlarmplanKategoriePersistAsync(ap, TicketID, (object) null);
+  }
+
+  public void AlarmplanKategoriePersistAsync(
+    WCFAlarmplanKategorie ap,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginAlarmplanKategoriePersistDelegate == null)
+      this.onBeginAlarmplanKategoriePersistDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginAlarmplanKategoriePersist);
+    if (this.onEndAlarmplanKategoriePersistDelegate == null)
+      this.onEndAlarmplanKategoriePersistDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndAlarmplanKategoriePersist);
+    if (this.onAlarmplanKategoriePersistCompletedDelegate == null)
+      this.onAlarmplanKategoriePersistCompletedDelegate = new SendOrPostCallback(this.OnAlarmplanKategoriePersistCompleted);
+    this.InvokeAsync(this.onBeginAlarmplanKategoriePersistDelegate, new object[2]
+    {
+      (object) ap,
+      (object) TicketID
+    }, this.onEndAlarmplanKategoriePersistDelegate, this.onAlarmplanKategoriePersistCompletedDelegate, userState);
+  }
+
+  public bool AlarmplanKategorieDelete(WCFAlarmplanKategorie apKat, Guid TicketID)
+  {
+    return this.Channel.AlarmplanKategorieDelete(apKat, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginAlarmplanKategorieDelete(
+    WCFAlarmplanKategorie apKat,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginAlarmplanKategorieDelete(apKat, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndAlarmplanKategorieDelete(IAsyncResult result)
+  {
+    return this.Channel.EndAlarmplanKategorieDelete(result);
+  }
+
+  private IAsyncResult OnBeginAlarmplanKategorieDelete(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginAlarmplanKategorieDelete((WCFAlarmplanKategorie) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndAlarmplanKategorieDelete(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndAlarmplanKategorieDelete(result)
+    };
+  }
+
+  private void OnAlarmplanKategorieDeleteCompleted(object state)
+  {
+    if (this.AlarmplanKategorieDeleteCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.AlarmplanKategorieDeleteCompleted((object) this, new AlarmplanKategorieDeleteCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void AlarmplanKategorieDeleteAsync(WCFAlarmplanKategorie apKat, Guid TicketID)
+  {
+    this.AlarmplanKategorieDeleteAsync(apKat, TicketID, (object) null);
+  }
+
+  public void AlarmplanKategorieDeleteAsync(
+    WCFAlarmplanKategorie apKat,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginAlarmplanKategorieDeleteDelegate == null)
+      this.onBeginAlarmplanKategorieDeleteDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginAlarmplanKategorieDelete);
+    if (this.onEndAlarmplanKategorieDeleteDelegate == null)
+      this.onEndAlarmplanKategorieDeleteDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndAlarmplanKategorieDelete);
+    if (this.onAlarmplanKategorieDeleteCompletedDelegate == null)
+      this.onAlarmplanKategorieDeleteCompletedDelegate = new SendOrPostCallback(this.OnAlarmplanKategorieDeleteCompleted);
+    this.InvokeAsync(this.onBeginAlarmplanKategorieDeleteDelegate, new object[2]
+    {
+      (object) apKat,
+      (object) TicketID
+    }, this.onEndAlarmplanKategorieDeleteDelegate, this.onAlarmplanKategorieDeleteCompletedDelegate, userState);
+  }
+
+  public WCFAlarmplan[] AlarmplanGetAll(Guid TicketID) => this.Channel.AlarmplanGetAll(TicketID);
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginAlarmplanGetAll(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginAlarmplanGetAll(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFAlarmplan[] EndAlarmplanGetAll(IAsyncResult result)
+  {
+    return this.Channel.EndAlarmplanGetAll(result);
+  }
+
+  private IAsyncResult OnBeginAlarmplanGetAll(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginAlarmplanGetAll((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndAlarmplanGetAll(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndAlarmplanGetAll(result)
+    };
+  }
+
+  private void OnAlarmplanGetAllCompleted(object state)
+  {
+    if (this.AlarmplanGetAllCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.AlarmplanGetAllCompleted((object) this, new AlarmplanGetAllCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void AlarmplanGetAllAsync(Guid TicketID)
+  {
+    this.AlarmplanGetAllAsync(TicketID, (object) null);
+  }
+
+  public void AlarmplanGetAllAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginAlarmplanGetAllDelegate == null)
+      this.onBeginAlarmplanGetAllDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginAlarmplanGetAll);
+    if (this.onEndAlarmplanGetAllDelegate == null)
+      this.onEndAlarmplanGetAllDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndAlarmplanGetAll);
+    if (this.onAlarmplanGetAllCompletedDelegate == null)
+      this.onAlarmplanGetAllCompletedDelegate = new SendOrPostCallback(this.OnAlarmplanGetAllCompleted);
+    this.InvokeAsync(this.onBeginAlarmplanGetAllDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndAlarmplanGetAllDelegate, this.onAlarmplanGetAllCompletedDelegate, userState);
+  }
+
+  public WCFAlarmplan AlarmplanPersist(WCFAlarmplan ap, Guid TicketID)
+  {
+    return this.Channel.AlarmplanPersist(ap, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginAlarmplanPersist(
+    WCFAlarmplan ap,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginAlarmplanPersist(ap, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFAlarmplan EndAlarmplanPersist(IAsyncResult result)
+  {
+    return this.Channel.EndAlarmplanPersist(result);
+  }
+
+  private IAsyncResult OnBeginAlarmplanPersist(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginAlarmplanPersist((WCFAlarmplan) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndAlarmplanPersist(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndAlarmplanPersist(result)
+    };
+  }
+
+  private void OnAlarmplanPersistCompleted(object state)
+  {
+    if (this.AlarmplanPersistCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.AlarmplanPersistCompleted((object) this, new AlarmplanPersistCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void AlarmplanPersistAsync(WCFAlarmplan ap, Guid TicketID)
+  {
+    this.AlarmplanPersistAsync(ap, TicketID, (object) null);
+  }
+
+  public void AlarmplanPersistAsync(WCFAlarmplan ap, Guid TicketID, object userState)
+  {
+    if (this.onBeginAlarmplanPersistDelegate == null)
+      this.onBeginAlarmplanPersistDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginAlarmplanPersist);
+    if (this.onEndAlarmplanPersistDelegate == null)
+      this.onEndAlarmplanPersistDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndAlarmplanPersist);
+    if (this.onAlarmplanPersistCompletedDelegate == null)
+      this.onAlarmplanPersistCompletedDelegate = new SendOrPostCallback(this.OnAlarmplanPersistCompleted);
+    this.InvokeAsync(this.onBeginAlarmplanPersistDelegate, new object[2]
+    {
+      (object) ap,
+      (object) TicketID
+    }, this.onEndAlarmplanPersistDelegate, this.onAlarmplanPersistCompletedDelegate, userState);
+  }
+
+  public bool AlarmplanDelete(int id, Guid TicketID) => this.Channel.AlarmplanDelete(id, TicketID);
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginAlarmplanDelete(
+    int id,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginAlarmplanDelete(id, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndAlarmplanDelete(IAsyncResult result) => this.Channel.EndAlarmplanDelete(result);
+
+  private IAsyncResult OnBeginAlarmplanDelete(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginAlarmplanDelete((int) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndAlarmplanDelete(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndAlarmplanDelete(result)
+    };
+  }
+
+  private void OnAlarmplanDeleteCompleted(object state)
+  {
+    if (this.AlarmplanDeleteCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.AlarmplanDeleteCompleted((object) this, new AlarmplanDeleteCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void AlarmplanDeleteAsync(int id, Guid TicketID)
+  {
+    this.AlarmplanDeleteAsync(id, TicketID, (object) null);
+  }
+
+  public void AlarmplanDeleteAsync(int id, Guid TicketID, object userState)
+  {
+    if (this.onBeginAlarmplanDeleteDelegate == null)
+      this.onBeginAlarmplanDeleteDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginAlarmplanDelete);
+    if (this.onEndAlarmplanDeleteDelegate == null)
+      this.onEndAlarmplanDeleteDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndAlarmplanDelete);
+    if (this.onAlarmplanDeleteCompletedDelegate == null)
+      this.onAlarmplanDeleteCompletedDelegate = new SendOrPostCallback(this.OnAlarmplanDeleteCompleted);
+    this.InvokeAsync(this.onBeginAlarmplanDeleteDelegate, new object[2]
+    {
+      (object) id,
+      (object) TicketID
+    }, this.onEndAlarmplanDeleteDelegate, this.onAlarmplanDeleteCompletedDelegate, userState);
+  }
+
+  public string[] AlarmplanGeneratorStart(Guid TicketID)
+  {
+    return this.Channel.AlarmplanGeneratorStart(TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginAlarmplanGeneratorStart(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginAlarmplanGeneratorStart(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public string[] EndAlarmplanGeneratorStart(IAsyncResult result)
+  {
+    return this.Channel.EndAlarmplanGeneratorStart(result);
+  }
+
+  private IAsyncResult OnBeginAlarmplanGeneratorStart(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginAlarmplanGeneratorStart((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndAlarmplanGeneratorStart(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndAlarmplanGeneratorStart(result)
+    };
+  }
+
+  private void OnAlarmplanGeneratorStartCompleted(object state)
+  {
+    if (this.AlarmplanGeneratorStartCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.AlarmplanGeneratorStartCompleted((object) this, new AlarmplanGeneratorStartCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void AlarmplanGeneratorStartAsync(Guid TicketID)
+  {
+    this.AlarmplanGeneratorStartAsync(TicketID, (object) null);
+  }
+
+  public void AlarmplanGeneratorStartAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginAlarmplanGeneratorStartDelegate == null)
+      this.onBeginAlarmplanGeneratorStartDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginAlarmplanGeneratorStart);
+    if (this.onEndAlarmplanGeneratorStartDelegate == null)
+      this.onEndAlarmplanGeneratorStartDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndAlarmplanGeneratorStart);
+    if (this.onAlarmplanGeneratorStartCompletedDelegate == null)
+      this.onAlarmplanGeneratorStartCompletedDelegate = new SendOrPostCallback(this.OnAlarmplanGeneratorStartCompleted);
+    this.InvokeAsync(this.onBeginAlarmplanGeneratorStartDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndAlarmplanGeneratorStartDelegate, this.onAlarmplanGeneratorStartCompletedDelegate, userState);
+  }
+
+  public int AlarmplanGetCount(Guid TicketID) => this.Channel.AlarmplanGetCount(TicketID);
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginAlarmplanGetCount(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginAlarmplanGetCount(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public int EndAlarmplanGetCount(IAsyncResult result) => this.Channel.EndAlarmplanGetCount(result);
+
+  private IAsyncResult OnBeginAlarmplanGetCount(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginAlarmplanGetCount((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndAlarmplanGetCount(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndAlarmplanGetCount(result)
+    };
+  }
+
+  private void OnAlarmplanGetCountCompleted(object state)
+  {
+    if (this.AlarmplanGetCountCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.AlarmplanGetCountCompleted((object) this, new AlarmplanGetCountCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void AlarmplanGetCountAsync(Guid TicketID)
+  {
+    this.AlarmplanGetCountAsync(TicketID, (object) null);
+  }
+
+  public void AlarmplanGetCountAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginAlarmplanGetCountDelegate == null)
+      this.onBeginAlarmplanGetCountDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginAlarmplanGetCount);
+    if (this.onEndAlarmplanGetCountDelegate == null)
+      this.onEndAlarmplanGetCountDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndAlarmplanGetCount);
+    if (this.onAlarmplanGetCountCompletedDelegate == null)
+      this.onAlarmplanGetCountCompletedDelegate = new SendOrPostCallback(this.OnAlarmplanGetCountCompleted);
+    this.InvokeAsync(this.onBeginAlarmplanGetCountDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndAlarmplanGetCountDelegate, this.onAlarmplanGetCountCompletedDelegate, userState);
+  }
+
+  public WCFAlarmplan[] AlarmplanGetRange(int start, int count, Guid TicketID)
+  {
+    return this.Channel.AlarmplanGetRange(start, count, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginAlarmplanGetRange(
+    int start,
+    int count,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginAlarmplanGetRange(start, count, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFAlarmplan[] EndAlarmplanGetRange(IAsyncResult result)
+  {
+    return this.Channel.EndAlarmplanGetRange(result);
+  }
+
+  private IAsyncResult OnBeginAlarmplanGetRange(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginAlarmplanGetRange((int) inValues[0], (int) inValues[1], (Guid) inValues[2], callback, asyncState);
+  }
+
+  private object[] OnEndAlarmplanGetRange(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndAlarmplanGetRange(result)
+    };
+  }
+
+  private void OnAlarmplanGetRangeCompleted(object state)
+  {
+    if (this.AlarmplanGetRangeCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.AlarmplanGetRangeCompleted((object) this, new AlarmplanGetRangeCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void AlarmplanGetRangeAsync(int start, int count, Guid TicketID)
+  {
+    this.AlarmplanGetRangeAsync(start, count, TicketID, (object) null);
+  }
+
+  public void AlarmplanGetRangeAsync(int start, int count, Guid TicketID, object userState)
+  {
+    if (this.onBeginAlarmplanGetRangeDelegate == null)
+      this.onBeginAlarmplanGetRangeDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginAlarmplanGetRange);
+    if (this.onEndAlarmplanGetRangeDelegate == null)
+      this.onEndAlarmplanGetRangeDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndAlarmplanGetRange);
+    if (this.onAlarmplanGetRangeCompletedDelegate == null)
+      this.onAlarmplanGetRangeCompletedDelegate = new SendOrPostCallback(this.OnAlarmplanGetRangeCompleted);
+    this.InvokeAsync(this.onBeginAlarmplanGetRangeDelegate, new object[3]
+    {
+      (object) start,
+      (object) count,
+      (object) TicketID
+    }, this.onEndAlarmplanGetRangeDelegate, this.onAlarmplanGetRangeCompletedDelegate, userState);
+  }
+
+  public WCFAlarmplanObj[] AlarmplanObjGetAll(int apId, Guid TicketID)
+  {
+    return this.Channel.AlarmplanObjGetAll(apId, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginAlarmplanObjGetAll(
+    int apId,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginAlarmplanObjGetAll(apId, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFAlarmplanObj[] EndAlarmplanObjGetAll(IAsyncResult result)
+  {
+    return this.Channel.EndAlarmplanObjGetAll(result);
+  }
+
+  private IAsyncResult OnBeginAlarmplanObjGetAll(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginAlarmplanObjGetAll((int) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndAlarmplanObjGetAll(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndAlarmplanObjGetAll(result)
+    };
+  }
+
+  private void OnAlarmplanObjGetAllCompleted(object state)
+  {
+    if (this.AlarmplanObjGetAllCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.AlarmplanObjGetAllCompleted((object) this, new AlarmplanObjGetAllCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void AlarmplanObjGetAllAsync(int apId, Guid TicketID)
+  {
+    this.AlarmplanObjGetAllAsync(apId, TicketID, (object) null);
+  }
+
+  public void AlarmplanObjGetAllAsync(int apId, Guid TicketID, object userState)
+  {
+    if (this.onBeginAlarmplanObjGetAllDelegate == null)
+      this.onBeginAlarmplanObjGetAllDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginAlarmplanObjGetAll);
+    if (this.onEndAlarmplanObjGetAllDelegate == null)
+      this.onEndAlarmplanObjGetAllDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndAlarmplanObjGetAll);
+    if (this.onAlarmplanObjGetAllCompletedDelegate == null)
+      this.onAlarmplanObjGetAllCompletedDelegate = new SendOrPostCallback(this.OnAlarmplanObjGetAllCompleted);
+    this.InvokeAsync(this.onBeginAlarmplanObjGetAllDelegate, new object[2]
+    {
+      (object) apId,
+      (object) TicketID
+    }, this.onEndAlarmplanObjGetAllDelegate, this.onAlarmplanObjGetAllCompletedDelegate, userState);
+  }
+
+  public WCFAlarmplanObj AlarmplanObjPersist(WCFAlarmplanObj apo, Guid TicketID)
+  {
+    return this.Channel.AlarmplanObjPersist(apo, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginAlarmplanObjPersist(
+    WCFAlarmplanObj apo,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginAlarmplanObjPersist(apo, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFAlarmplanObj EndAlarmplanObjPersist(IAsyncResult result)
+  {
+    return this.Channel.EndAlarmplanObjPersist(result);
+  }
+
+  private IAsyncResult OnBeginAlarmplanObjPersist(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginAlarmplanObjPersist((WCFAlarmplanObj) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndAlarmplanObjPersist(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndAlarmplanObjPersist(result)
+    };
+  }
+
+  private void OnAlarmplanObjPersistCompleted(object state)
+  {
+    if (this.AlarmplanObjPersistCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.AlarmplanObjPersistCompleted((object) this, new AlarmplanObjPersistCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void AlarmplanObjPersistAsync(WCFAlarmplanObj apo, Guid TicketID)
+  {
+    this.AlarmplanObjPersistAsync(apo, TicketID, (object) null);
+  }
+
+  public void AlarmplanObjPersistAsync(WCFAlarmplanObj apo, Guid TicketID, object userState)
+  {
+    if (this.onBeginAlarmplanObjPersistDelegate == null)
+      this.onBeginAlarmplanObjPersistDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginAlarmplanObjPersist);
+    if (this.onEndAlarmplanObjPersistDelegate == null)
+      this.onEndAlarmplanObjPersistDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndAlarmplanObjPersist);
+    if (this.onAlarmplanObjPersistCompletedDelegate == null)
+      this.onAlarmplanObjPersistCompletedDelegate = new SendOrPostCallback(this.OnAlarmplanObjPersistCompleted);
+    this.InvokeAsync(this.onBeginAlarmplanObjPersistDelegate, new object[2]
+    {
+      (object) apo,
+      (object) TicketID
+    }, this.onEndAlarmplanObjPersistDelegate, this.onAlarmplanObjPersistCompletedDelegate, userState);
+  }
+
+  public bool AlarmplanObjDelete(int id, Guid TicketID)
+  {
+    return this.Channel.AlarmplanObjDelete(id, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginAlarmplanObjDelete(
+    int id,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginAlarmplanObjDelete(id, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndAlarmplanObjDelete(IAsyncResult result)
+  {
+    return this.Channel.EndAlarmplanObjDelete(result);
+  }
+
+  private IAsyncResult OnBeginAlarmplanObjDelete(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginAlarmplanObjDelete((int) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndAlarmplanObjDelete(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndAlarmplanObjDelete(result)
+    };
+  }
+
+  private void OnAlarmplanObjDeleteCompleted(object state)
+  {
+    if (this.AlarmplanObjDeleteCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.AlarmplanObjDeleteCompleted((object) this, new AlarmplanObjDeleteCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void AlarmplanObjDeleteAsync(int id, Guid TicketID)
+  {
+    this.AlarmplanObjDeleteAsync(id, TicketID, (object) null);
+  }
+
+  public void AlarmplanObjDeleteAsync(int id, Guid TicketID, object userState)
+  {
+    if (this.onBeginAlarmplanObjDeleteDelegate == null)
+      this.onBeginAlarmplanObjDeleteDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginAlarmplanObjDelete);
+    if (this.onEndAlarmplanObjDeleteDelegate == null)
+      this.onEndAlarmplanObjDeleteDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndAlarmplanObjDelete);
+    if (this.onAlarmplanObjDeleteCompletedDelegate == null)
+      this.onAlarmplanObjDeleteCompletedDelegate = new SendOrPostCallback(this.OnAlarmplanObjDeleteCompleted);
+    this.InvokeAsync(this.onBeginAlarmplanObjDeleteDelegate, new object[2]
+    {
+      (object) id,
+      (object) TicketID
+    }, this.onEndAlarmplanObjDeleteDelegate, this.onAlarmplanObjDeleteCompletedDelegate, userState);
+  }
+
+  public WCFEinsatzTyp[] EinsatzTypObjGetAll(bool withDeativated, Guid TicketID)
+  {
+    return this.Channel.EinsatzTypObjGetAll(withDeativated, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginEinsatzTypObjGetAll(
+    bool withDeativated,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginEinsatzTypObjGetAll(withDeativated, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFEinsatzTyp[] EndEinsatzTypObjGetAll(IAsyncResult result)
+  {
+    return this.Channel.EndEinsatzTypObjGetAll(result);
+  }
+
+  private IAsyncResult OnBeginEinsatzTypObjGetAll(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginEinsatzTypObjGetAll((bool) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndEinsatzTypObjGetAll(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndEinsatzTypObjGetAll(result)
+    };
+  }
+
+  private void OnEinsatzTypObjGetAllCompleted(object state)
+  {
+    if (this.EinsatzTypObjGetAllCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.EinsatzTypObjGetAllCompleted((object) this, new EinsatzTypObjGetAllCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void EinsatzTypObjGetAllAsync(bool withDeativated, Guid TicketID)
+  {
+    this.EinsatzTypObjGetAllAsync(withDeativated, TicketID, (object) null);
+  }
+
+  public void EinsatzTypObjGetAllAsync(bool withDeativated, Guid TicketID, object userState)
+  {
+    if (this.onBeginEinsatzTypObjGetAllDelegate == null)
+      this.onBeginEinsatzTypObjGetAllDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginEinsatzTypObjGetAll);
+    if (this.onEndEinsatzTypObjGetAllDelegate == null)
+      this.onEndEinsatzTypObjGetAllDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndEinsatzTypObjGetAll);
+    if (this.onEinsatzTypObjGetAllCompletedDelegate == null)
+      this.onEinsatzTypObjGetAllCompletedDelegate = new SendOrPostCallback(this.OnEinsatzTypObjGetAllCompleted);
+    this.InvokeAsync(this.onBeginEinsatzTypObjGetAllDelegate, new object[2]
+    {
+      (object) withDeativated,
+      (object) TicketID
+    }, this.onEndEinsatzTypObjGetAllDelegate, this.onEinsatzTypObjGetAllCompletedDelegate, userState);
+  }
+
+  public WCFEinsatzTyp EinsatzTypObjPersist(WCFEinsatzTyp et, Guid TicketID)
+  {
+    return this.Channel.EinsatzTypObjPersist(et, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginEinsatzTypObjPersist(
+    WCFEinsatzTyp et,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginEinsatzTypObjPersist(et, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFEinsatzTyp EndEinsatzTypObjPersist(IAsyncResult result)
+  {
+    return this.Channel.EndEinsatzTypObjPersist(result);
+  }
+
+  private IAsyncResult OnBeginEinsatzTypObjPersist(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginEinsatzTypObjPersist((WCFEinsatzTyp) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndEinsatzTypObjPersist(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndEinsatzTypObjPersist(result)
+    };
+  }
+
+  private void OnEinsatzTypObjPersistCompleted(object state)
+  {
+    if (this.EinsatzTypObjPersistCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.EinsatzTypObjPersistCompleted((object) this, new EinsatzTypObjPersistCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void EinsatzTypObjPersistAsync(WCFEinsatzTyp et, Guid TicketID)
+  {
+    this.EinsatzTypObjPersistAsync(et, TicketID, (object) null);
+  }
+
+  public void EinsatzTypObjPersistAsync(WCFEinsatzTyp et, Guid TicketID, object userState)
+  {
+    if (this.onBeginEinsatzTypObjPersistDelegate == null)
+      this.onBeginEinsatzTypObjPersistDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginEinsatzTypObjPersist);
+    if (this.onEndEinsatzTypObjPersistDelegate == null)
+      this.onEndEinsatzTypObjPersistDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndEinsatzTypObjPersist);
+    if (this.onEinsatzTypObjPersistCompletedDelegate == null)
+      this.onEinsatzTypObjPersistCompletedDelegate = new SendOrPostCallback(this.OnEinsatzTypObjPersistCompleted);
+    this.InvokeAsync(this.onBeginEinsatzTypObjPersistDelegate, new object[2]
+    {
+      (object) et,
+      (object) TicketID
+    }, this.onEndEinsatzTypObjPersistDelegate, this.onEinsatzTypObjPersistCompletedDelegate, userState);
+  }
+
+  public bool EinsatzTypObjDelete(WCFEinsatzTyp et, Guid TicketID)
+  {
+    return this.Channel.EinsatzTypObjDelete(et, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginEinsatzTypObjDelete(
+    WCFEinsatzTyp et,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginEinsatzTypObjDelete(et, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndEinsatzTypObjDelete(IAsyncResult result)
+  {
+    return this.Channel.EndEinsatzTypObjDelete(result);
+  }
+
+  private IAsyncResult OnBeginEinsatzTypObjDelete(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginEinsatzTypObjDelete((WCFEinsatzTyp) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndEinsatzTypObjDelete(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndEinsatzTypObjDelete(result)
+    };
+  }
+
+  private void OnEinsatzTypObjDeleteCompleted(object state)
+  {
+    if (this.EinsatzTypObjDeleteCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.EinsatzTypObjDeleteCompleted((object) this, new EinsatzTypObjDeleteCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void EinsatzTypObjDeleteAsync(WCFEinsatzTyp et, Guid TicketID)
+  {
+    this.EinsatzTypObjDeleteAsync(et, TicketID, (object) null);
+  }
+
+  public void EinsatzTypObjDeleteAsync(WCFEinsatzTyp et, Guid TicketID, object userState)
+  {
+    if (this.onBeginEinsatzTypObjDeleteDelegate == null)
+      this.onBeginEinsatzTypObjDeleteDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginEinsatzTypObjDelete);
+    if (this.onEndEinsatzTypObjDeleteDelegate == null)
+      this.onEndEinsatzTypObjDeleteDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndEinsatzTypObjDelete);
+    if (this.onEinsatzTypObjDeleteCompletedDelegate == null)
+      this.onEinsatzTypObjDeleteCompletedDelegate = new SendOrPostCallback(this.OnEinsatzTypObjDeleteCompleted);
+    this.InvokeAsync(this.onBeginEinsatzTypObjDeleteDelegate, new object[2]
+    {
+      (object) et,
+      (object) TicketID
+    }, this.onEndEinsatzTypObjDeleteDelegate, this.onEinsatzTypObjDeleteCompletedDelegate, userState);
+  }
+
+  public WCFAusrueckeOrdnung[] AusrueckeOrdnungGetAll(Guid TicketID)
+  {
+    return this.Channel.AusrueckeOrdnungGetAll(TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginAusrueckeOrdnungGetAll(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginAusrueckeOrdnungGetAll(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFAusrueckeOrdnung[] EndAusrueckeOrdnungGetAll(IAsyncResult result)
+  {
+    return this.Channel.EndAusrueckeOrdnungGetAll(result);
+  }
+
+  private IAsyncResult OnBeginAusrueckeOrdnungGetAll(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginAusrueckeOrdnungGetAll((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndAusrueckeOrdnungGetAll(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndAusrueckeOrdnungGetAll(result)
+    };
+  }
+
+  private void OnAusrueckeOrdnungGetAllCompleted(object state)
+  {
+    if (this.AusrueckeOrdnungGetAllCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.AusrueckeOrdnungGetAllCompleted((object) this, new AusrueckeOrdnungGetAllCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void AusrueckeOrdnungGetAllAsync(Guid TicketID)
+  {
+    this.AusrueckeOrdnungGetAllAsync(TicketID, (object) null);
+  }
+
+  public void AusrueckeOrdnungGetAllAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginAusrueckeOrdnungGetAllDelegate == null)
+      this.onBeginAusrueckeOrdnungGetAllDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginAusrueckeOrdnungGetAll);
+    if (this.onEndAusrueckeOrdnungGetAllDelegate == null)
+      this.onEndAusrueckeOrdnungGetAllDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndAusrueckeOrdnungGetAll);
+    if (this.onAusrueckeOrdnungGetAllCompletedDelegate == null)
+      this.onAusrueckeOrdnungGetAllCompletedDelegate = new SendOrPostCallback(this.OnAusrueckeOrdnungGetAllCompleted);
+    this.InvokeAsync(this.onBeginAusrueckeOrdnungGetAllDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndAusrueckeOrdnungGetAllDelegate, this.onAusrueckeOrdnungGetAllCompletedDelegate, userState);
+  }
+
+  public WCFAusrueckeOrdnung[] AusrueckeOrdnungGetByEinsatzTyp(string typName, Guid TicketID)
+  {
+    return this.Channel.AusrueckeOrdnungGetByEinsatzTyp(typName, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginAusrueckeOrdnungGetByEinsatzTyp(
+    string typName,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginAusrueckeOrdnungGetByEinsatzTyp(typName, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFAusrueckeOrdnung[] EndAusrueckeOrdnungGetByEinsatzTyp(IAsyncResult result)
+  {
+    return this.Channel.EndAusrueckeOrdnungGetByEinsatzTyp(result);
+  }
+
+  private IAsyncResult OnBeginAusrueckeOrdnungGetByEinsatzTyp(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginAusrueckeOrdnungGetByEinsatzTyp((string) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndAusrueckeOrdnungGetByEinsatzTyp(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndAusrueckeOrdnungGetByEinsatzTyp(result)
+    };
+  }
+
+  private void OnAusrueckeOrdnungGetByEinsatzTypCompleted(object state)
+  {
+    if (this.AusrueckeOrdnungGetByEinsatzTypCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.AusrueckeOrdnungGetByEinsatzTypCompleted((object) this, new AusrueckeOrdnungGetByEinsatzTypCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void AusrueckeOrdnungGetByEinsatzTypAsync(string typName, Guid TicketID)
+  {
+    this.AusrueckeOrdnungGetByEinsatzTypAsync(typName, TicketID, (object) null);
+  }
+
+  public void AusrueckeOrdnungGetByEinsatzTypAsync(string typName, Guid TicketID, object userState)
+  {
+    if (this.onBeginAusrueckeOrdnungGetByEinsatzTypDelegate == null)
+      this.onBeginAusrueckeOrdnungGetByEinsatzTypDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginAusrueckeOrdnungGetByEinsatzTyp);
+    if (this.onEndAusrueckeOrdnungGetByEinsatzTypDelegate == null)
+      this.onEndAusrueckeOrdnungGetByEinsatzTypDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndAusrueckeOrdnungGetByEinsatzTyp);
+    if (this.onAusrueckeOrdnungGetByEinsatzTypCompletedDelegate == null)
+      this.onAusrueckeOrdnungGetByEinsatzTypCompletedDelegate = new SendOrPostCallback(this.OnAusrueckeOrdnungGetByEinsatzTypCompleted);
+    this.InvokeAsync(this.onBeginAusrueckeOrdnungGetByEinsatzTypDelegate, new object[2]
+    {
+      (object) typName,
+      (object) TicketID
+    }, this.onEndAusrueckeOrdnungGetByEinsatzTypDelegate, this.onAusrueckeOrdnungGetByEinsatzTypCompletedDelegate, userState);
+  }
+
+  public WCFAusrueckeOrdnung AusrueckeOrdnungPersist(WCFAusrueckeOrdnung ao, Guid TicketID)
+  {
+    return this.Channel.AusrueckeOrdnungPersist(ao, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginAusrueckeOrdnungPersist(
+    WCFAusrueckeOrdnung ao,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginAusrueckeOrdnungPersist(ao, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFAusrueckeOrdnung EndAusrueckeOrdnungPersist(IAsyncResult result)
+  {
+    return this.Channel.EndAusrueckeOrdnungPersist(result);
+  }
+
+  private IAsyncResult OnBeginAusrueckeOrdnungPersist(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginAusrueckeOrdnungPersist((WCFAusrueckeOrdnung) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndAusrueckeOrdnungPersist(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndAusrueckeOrdnungPersist(result)
+    };
+  }
+
+  private void OnAusrueckeOrdnungPersistCompleted(object state)
+  {
+    if (this.AusrueckeOrdnungPersistCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.AusrueckeOrdnungPersistCompleted((object) this, new AusrueckeOrdnungPersistCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void AusrueckeOrdnungPersistAsync(WCFAusrueckeOrdnung ao, Guid TicketID)
+  {
+    this.AusrueckeOrdnungPersistAsync(ao, TicketID, (object) null);
+  }
+
+  public void AusrueckeOrdnungPersistAsync(WCFAusrueckeOrdnung ao, Guid TicketID, object userState)
+  {
+    if (this.onBeginAusrueckeOrdnungPersistDelegate == null)
+      this.onBeginAusrueckeOrdnungPersistDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginAusrueckeOrdnungPersist);
+    if (this.onEndAusrueckeOrdnungPersistDelegate == null)
+      this.onEndAusrueckeOrdnungPersistDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndAusrueckeOrdnungPersist);
+    if (this.onAusrueckeOrdnungPersistCompletedDelegate == null)
+      this.onAusrueckeOrdnungPersistCompletedDelegate = new SendOrPostCallback(this.OnAusrueckeOrdnungPersistCompleted);
+    this.InvokeAsync(this.onBeginAusrueckeOrdnungPersistDelegate, new object[2]
+    {
+      (object) ao,
+      (object) TicketID
+    }, this.onEndAusrueckeOrdnungPersistDelegate, this.onAusrueckeOrdnungPersistCompletedDelegate, userState);
+  }
+
+  public bool AusrueckeOrdnungDelete(int id, Guid TicketID)
+  {
+    return this.Channel.AusrueckeOrdnungDelete(id, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginAusrueckeOrdnungDelete(
+    int id,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginAusrueckeOrdnungDelete(id, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndAusrueckeOrdnungDelete(IAsyncResult result)
+  {
+    return this.Channel.EndAusrueckeOrdnungDelete(result);
+  }
+
+  private IAsyncResult OnBeginAusrueckeOrdnungDelete(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginAusrueckeOrdnungDelete((int) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndAusrueckeOrdnungDelete(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndAusrueckeOrdnungDelete(result)
+    };
+  }
+
+  private void OnAusrueckeOrdnungDeleteCompleted(object state)
+  {
+    if (this.AusrueckeOrdnungDeleteCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.AusrueckeOrdnungDeleteCompleted((object) this, new AusrueckeOrdnungDeleteCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void AusrueckeOrdnungDeleteAsync(int id, Guid TicketID)
+  {
+    this.AusrueckeOrdnungDeleteAsync(id, TicketID, (object) null);
+  }
+
+  public void AusrueckeOrdnungDeleteAsync(int id, Guid TicketID, object userState)
+  {
+    if (this.onBeginAusrueckeOrdnungDeleteDelegate == null)
+      this.onBeginAusrueckeOrdnungDeleteDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginAusrueckeOrdnungDelete);
+    if (this.onEndAusrueckeOrdnungDeleteDelegate == null)
+      this.onEndAusrueckeOrdnungDeleteDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndAusrueckeOrdnungDelete);
+    if (this.onAusrueckeOrdnungDeleteCompletedDelegate == null)
+      this.onAusrueckeOrdnungDeleteCompletedDelegate = new SendOrPostCallback(this.OnAusrueckeOrdnungDeleteCompleted);
+    this.InvokeAsync(this.onBeginAusrueckeOrdnungDeleteDelegate, new object[2]
+    {
+      (object) id,
+      (object) TicketID
+    }, this.onEndAusrueckeOrdnungDeleteDelegate, this.onAusrueckeOrdnungDeleteCompletedDelegate, userState);
+  }
+
+  public WCFSondergeraet[] SondergeraeteGetAll(Guid TicketID)
+  {
+    return this.Channel.SondergeraeteGetAll(TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginSondergeraeteGetAll(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginSondergeraeteGetAll(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFSondergeraet[] EndSondergeraeteGetAll(IAsyncResult result)
+  {
+    return this.Channel.EndSondergeraeteGetAll(result);
+  }
+
+  private IAsyncResult OnBeginSondergeraeteGetAll(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginSondergeraeteGetAll((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndSondergeraeteGetAll(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndSondergeraeteGetAll(result)
+    };
+  }
+
+  private void OnSondergeraeteGetAllCompleted(object state)
+  {
+    if (this.SondergeraeteGetAllCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.SondergeraeteGetAllCompleted((object) this, new SondergeraeteGetAllCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void SondergeraeteGetAllAsync(Guid TicketID)
+  {
+    this.SondergeraeteGetAllAsync(TicketID, (object) null);
+  }
+
+  public void SondergeraeteGetAllAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginSondergeraeteGetAllDelegate == null)
+      this.onBeginSondergeraeteGetAllDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginSondergeraeteGetAll);
+    if (this.onEndSondergeraeteGetAllDelegate == null)
+      this.onEndSondergeraeteGetAllDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndSondergeraeteGetAll);
+    if (this.onSondergeraeteGetAllCompletedDelegate == null)
+      this.onSondergeraeteGetAllCompletedDelegate = new SendOrPostCallback(this.OnSondergeraeteGetAllCompleted);
+    this.InvokeAsync(this.onBeginSondergeraeteGetAllDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndSondergeraeteGetAllDelegate, this.onSondergeraeteGetAllCompletedDelegate, userState);
+  }
+
+  public WCFSondergeraet[] SondergeraeteGetByFeuerwehr(int fwId, Guid TicketID)
+  {
+    return this.Channel.SondergeraeteGetByFeuerwehr(fwId, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginSondergeraeteGetByFeuerwehr(
+    int fwId,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginSondergeraeteGetByFeuerwehr(fwId, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFSondergeraet[] EndSondergeraeteGetByFeuerwehr(IAsyncResult result)
+  {
+    return this.Channel.EndSondergeraeteGetByFeuerwehr(result);
+  }
+
+  private IAsyncResult OnBeginSondergeraeteGetByFeuerwehr(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginSondergeraeteGetByFeuerwehr((int) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndSondergeraeteGetByFeuerwehr(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndSondergeraeteGetByFeuerwehr(result)
+    };
+  }
+
+  private void OnSondergeraeteGetByFeuerwehrCompleted(object state)
+  {
+    if (this.SondergeraeteGetByFeuerwehrCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.SondergeraeteGetByFeuerwehrCompleted((object) this, new SondergeraeteGetByFeuerwehrCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void SondergeraeteGetByFeuerwehrAsync(int fwId, Guid TicketID)
+  {
+    this.SondergeraeteGetByFeuerwehrAsync(fwId, TicketID, (object) null);
+  }
+
+  public void SondergeraeteGetByFeuerwehrAsync(int fwId, Guid TicketID, object userState)
+  {
+    if (this.onBeginSondergeraeteGetByFeuerwehrDelegate == null)
+      this.onBeginSondergeraeteGetByFeuerwehrDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginSondergeraeteGetByFeuerwehr);
+    if (this.onEndSondergeraeteGetByFeuerwehrDelegate == null)
+      this.onEndSondergeraeteGetByFeuerwehrDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndSondergeraeteGetByFeuerwehr);
+    if (this.onSondergeraeteGetByFeuerwehrCompletedDelegate == null)
+      this.onSondergeraeteGetByFeuerwehrCompletedDelegate = new SendOrPostCallback(this.OnSondergeraeteGetByFeuerwehrCompleted);
+    this.InvokeAsync(this.onBeginSondergeraeteGetByFeuerwehrDelegate, new object[2]
+    {
+      (object) fwId,
+      (object) TicketID
+    }, this.onEndSondergeraeteGetByFeuerwehrDelegate, this.onSondergeraeteGetByFeuerwehrCompletedDelegate, userState);
+  }
+
+  public WCFSondergeraet SondergeraetPersist(WCFSondergeraet wsg, Guid TicketID)
+  {
+    return this.Channel.SondergeraetPersist(wsg, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginSondergeraetPersist(
+    WCFSondergeraet wsg,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginSondergeraetPersist(wsg, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFSondergeraet EndSondergeraetPersist(IAsyncResult result)
+  {
+    return this.Channel.EndSondergeraetPersist(result);
+  }
+
+  private IAsyncResult OnBeginSondergeraetPersist(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginSondergeraetPersist((WCFSondergeraet) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndSondergeraetPersist(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndSondergeraetPersist(result)
+    };
+  }
+
+  private void OnSondergeraetPersistCompleted(object state)
+  {
+    if (this.SondergeraetPersistCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.SondergeraetPersistCompleted((object) this, new SondergeraetPersistCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void SondergeraetPersistAsync(WCFSondergeraet wsg, Guid TicketID)
+  {
+    this.SondergeraetPersistAsync(wsg, TicketID, (object) null);
+  }
+
+  public void SondergeraetPersistAsync(WCFSondergeraet wsg, Guid TicketID, object userState)
+  {
+    if (this.onBeginSondergeraetPersistDelegate == null)
+      this.onBeginSondergeraetPersistDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginSondergeraetPersist);
+    if (this.onEndSondergeraetPersistDelegate == null)
+      this.onEndSondergeraetPersistDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndSondergeraetPersist);
+    if (this.onSondergeraetPersistCompletedDelegate == null)
+      this.onSondergeraetPersistCompletedDelegate = new SendOrPostCallback(this.OnSondergeraetPersistCompleted);
+    this.InvokeAsync(this.onBeginSondergeraetPersistDelegate, new object[2]
+    {
+      (object) wsg,
+      (object) TicketID
+    }, this.onEndSondergeraetPersistDelegate, this.onSondergeraetPersistCompletedDelegate, userState);
+  }
+
+  public bool SondergeraetDelete(int id, Guid TicketID)
+  {
+    return this.Channel.SondergeraetDelete(id, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginSondergeraetDelete(
+    int id,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginSondergeraetDelete(id, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndSondergeraetDelete(IAsyncResult result)
+  {
+    return this.Channel.EndSondergeraetDelete(result);
+  }
+
+  private IAsyncResult OnBeginSondergeraetDelete(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginSondergeraetDelete((int) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndSondergeraetDelete(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndSondergeraetDelete(result)
+    };
+  }
+
+  private void OnSondergeraetDeleteCompleted(object state)
+  {
+    if (this.SondergeraetDeleteCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.SondergeraetDeleteCompleted((object) this, new SondergeraetDeleteCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void SondergeraetDeleteAsync(int id, Guid TicketID)
+  {
+    this.SondergeraetDeleteAsync(id, TicketID, (object) null);
+  }
+
+  public void SondergeraetDeleteAsync(int id, Guid TicketID, object userState)
+  {
+    if (this.onBeginSondergeraetDeleteDelegate == null)
+      this.onBeginSondergeraetDeleteDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginSondergeraetDelete);
+    if (this.onEndSondergeraetDeleteDelegate == null)
+      this.onEndSondergeraetDeleteDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndSondergeraetDelete);
+    if (this.onSondergeraetDeleteCompletedDelegate == null)
+      this.onSondergeraetDeleteCompletedDelegate = new SendOrPostCallback(this.OnSondergeraetDeleteCompleted);
+    this.InvokeAsync(this.onBeginSondergeraetDeleteDelegate, new object[2]
+    {
+      (object) id,
+      (object) TicketID
+    }, this.onEndSondergeraetDeleteDelegate, this.onSondergeraetDeleteCompletedDelegate, userState);
+  }
+
+  public WCFFremdhilfeArt[] FremdhilfeArtenGetAll(Guid TicketID)
+  {
+    return this.Channel.FremdhilfeArtenGetAll(TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginFremdhilfeArtenGetAll(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginFremdhilfeArtenGetAll(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFFremdhilfeArt[] EndFremdhilfeArtenGetAll(IAsyncResult result)
+  {
+    return this.Channel.EndFremdhilfeArtenGetAll(result);
+  }
+
+  private IAsyncResult OnBeginFremdhilfeArtenGetAll(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginFremdhilfeArtenGetAll((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndFremdhilfeArtenGetAll(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndFremdhilfeArtenGetAll(result)
+    };
+  }
+
+  private void OnFremdhilfeArtenGetAllCompleted(object state)
+  {
+    if (this.FremdhilfeArtenGetAllCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.FremdhilfeArtenGetAllCompleted((object) this, new FremdhilfeArtenGetAllCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void FremdhilfeArtenGetAllAsync(Guid TicketID)
+  {
+    this.FremdhilfeArtenGetAllAsync(TicketID, (object) null);
+  }
+
+  public void FremdhilfeArtenGetAllAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginFremdhilfeArtenGetAllDelegate == null)
+      this.onBeginFremdhilfeArtenGetAllDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginFremdhilfeArtenGetAll);
+    if (this.onEndFremdhilfeArtenGetAllDelegate == null)
+      this.onEndFremdhilfeArtenGetAllDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndFremdhilfeArtenGetAll);
+    if (this.onFremdhilfeArtenGetAllCompletedDelegate == null)
+      this.onFremdhilfeArtenGetAllCompletedDelegate = new SendOrPostCallback(this.OnFremdhilfeArtenGetAllCompleted);
+    this.InvokeAsync(this.onBeginFremdhilfeArtenGetAllDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndFremdhilfeArtenGetAllDelegate, this.onFremdhilfeArtenGetAllCompletedDelegate, userState);
+  }
+
+  public WCFFremdhilfeArt FremdhilfeArtPersist(WCFFremdhilfeArt fha, Guid TicketID)
+  {
+    return this.Channel.FremdhilfeArtPersist(fha, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginFremdhilfeArtPersist(
+    WCFFremdhilfeArt fha,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginFremdhilfeArtPersist(fha, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFFremdhilfeArt EndFremdhilfeArtPersist(IAsyncResult result)
+  {
+    return this.Channel.EndFremdhilfeArtPersist(result);
+  }
+
+  private IAsyncResult OnBeginFremdhilfeArtPersist(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginFremdhilfeArtPersist((WCFFremdhilfeArt) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndFremdhilfeArtPersist(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndFremdhilfeArtPersist(result)
+    };
+  }
+
+  private void OnFremdhilfeArtPersistCompleted(object state)
+  {
+    if (this.FremdhilfeArtPersistCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.FremdhilfeArtPersistCompleted((object) this, new FremdhilfeArtPersistCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void FremdhilfeArtPersistAsync(WCFFremdhilfeArt fha, Guid TicketID)
+  {
+    this.FremdhilfeArtPersistAsync(fha, TicketID, (object) null);
+  }
+
+  public void FremdhilfeArtPersistAsync(WCFFremdhilfeArt fha, Guid TicketID, object userState)
+  {
+    if (this.onBeginFremdhilfeArtPersistDelegate == null)
+      this.onBeginFremdhilfeArtPersistDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginFremdhilfeArtPersist);
+    if (this.onEndFremdhilfeArtPersistDelegate == null)
+      this.onEndFremdhilfeArtPersistDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndFremdhilfeArtPersist);
+    if (this.onFremdhilfeArtPersistCompletedDelegate == null)
+      this.onFremdhilfeArtPersistCompletedDelegate = new SendOrPostCallback(this.OnFremdhilfeArtPersistCompleted);
+    this.InvokeAsync(this.onBeginFremdhilfeArtPersistDelegate, new object[2]
+    {
+      (object) fha,
+      (object) TicketID
+    }, this.onEndFremdhilfeArtPersistDelegate, this.onFremdhilfeArtPersistCompletedDelegate, userState);
+  }
+
+  public bool FremdhilfeArtDelete(int id, Guid TicketID)
+  {
+    return this.Channel.FremdhilfeArtDelete(id, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginFremdhilfeArtDelete(
+    int id,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginFremdhilfeArtDelete(id, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndFremdhilfeArtDelete(IAsyncResult result)
+  {
+    return this.Channel.EndFremdhilfeArtDelete(result);
+  }
+
+  private IAsyncResult OnBeginFremdhilfeArtDelete(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginFremdhilfeArtDelete((int) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndFremdhilfeArtDelete(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndFremdhilfeArtDelete(result)
+    };
+  }
+
+  private void OnFremdhilfeArtDeleteCompleted(object state)
+  {
+    if (this.FremdhilfeArtDeleteCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.FremdhilfeArtDeleteCompleted((object) this, new FremdhilfeArtDeleteCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void FremdhilfeArtDeleteAsync(int id, Guid TicketID)
+  {
+    this.FremdhilfeArtDeleteAsync(id, TicketID, (object) null);
+  }
+
+  public void FremdhilfeArtDeleteAsync(int id, Guid TicketID, object userState)
+  {
+    if (this.onBeginFremdhilfeArtDeleteDelegate == null)
+      this.onBeginFremdhilfeArtDeleteDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginFremdhilfeArtDelete);
+    if (this.onEndFremdhilfeArtDeleteDelegate == null)
+      this.onEndFremdhilfeArtDeleteDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndFremdhilfeArtDelete);
+    if (this.onFremdhilfeArtDeleteCompletedDelegate == null)
+      this.onFremdhilfeArtDeleteCompletedDelegate = new SendOrPostCallback(this.OnFremdhilfeArtDeleteCompleted);
+    this.InvokeAsync(this.onBeginFremdhilfeArtDeleteDelegate, new object[2]
+    {
+      (object) id,
+      (object) TicketID
+    }, this.onEndFremdhilfeArtDeleteDelegate, this.onFremdhilfeArtDeleteCompletedDelegate, userState);
+  }
+
+  public WCFFremdhilfeLeister[] FremdhilfeLeisterGetAll(Guid TicketID)
+  {
+    return this.Channel.FremdhilfeLeisterGetAll(TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginFremdhilfeLeisterGetAll(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginFremdhilfeLeisterGetAll(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFFremdhilfeLeister[] EndFremdhilfeLeisterGetAll(IAsyncResult result)
+  {
+    return this.Channel.EndFremdhilfeLeisterGetAll(result);
+  }
+
+  private IAsyncResult OnBeginFremdhilfeLeisterGetAll(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginFremdhilfeLeisterGetAll((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndFremdhilfeLeisterGetAll(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndFremdhilfeLeisterGetAll(result)
+    };
+  }
+
+  private void OnFremdhilfeLeisterGetAllCompleted(object state)
+  {
+    if (this.FremdhilfeLeisterGetAllCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.FremdhilfeLeisterGetAllCompleted((object) this, new FremdhilfeLeisterGetAllCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void FremdhilfeLeisterGetAllAsync(Guid TicketID)
+  {
+    this.FremdhilfeLeisterGetAllAsync(TicketID, (object) null);
+  }
+
+  public void FremdhilfeLeisterGetAllAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginFremdhilfeLeisterGetAllDelegate == null)
+      this.onBeginFremdhilfeLeisterGetAllDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginFremdhilfeLeisterGetAll);
+    if (this.onEndFremdhilfeLeisterGetAllDelegate == null)
+      this.onEndFremdhilfeLeisterGetAllDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndFremdhilfeLeisterGetAll);
+    if (this.onFremdhilfeLeisterGetAllCompletedDelegate == null)
+      this.onFremdhilfeLeisterGetAllCompletedDelegate = new SendOrPostCallback(this.OnFremdhilfeLeisterGetAllCompleted);
+    this.InvokeAsync(this.onBeginFremdhilfeLeisterGetAllDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndFremdhilfeLeisterGetAllDelegate, this.onFremdhilfeLeisterGetAllCompletedDelegate, userState);
+  }
+
+  public WCFFremdhilfeLeister[] FremdhilfeLeisterGetByArt(int artId, Guid TicketID)
+  {
+    return this.Channel.FremdhilfeLeisterGetByArt(artId, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginFremdhilfeLeisterGetByArt(
+    int artId,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginFremdhilfeLeisterGetByArt(artId, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFFremdhilfeLeister[] EndFremdhilfeLeisterGetByArt(IAsyncResult result)
+  {
+    return this.Channel.EndFremdhilfeLeisterGetByArt(result);
+  }
+
+  private IAsyncResult OnBeginFremdhilfeLeisterGetByArt(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginFremdhilfeLeisterGetByArt((int) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndFremdhilfeLeisterGetByArt(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndFremdhilfeLeisterGetByArt(result)
+    };
+  }
+
+  private void OnFremdhilfeLeisterGetByArtCompleted(object state)
+  {
+    if (this.FremdhilfeLeisterGetByArtCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.FremdhilfeLeisterGetByArtCompleted((object) this, new FremdhilfeLeisterGetByArtCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void FremdhilfeLeisterGetByArtAsync(int artId, Guid TicketID)
+  {
+    this.FremdhilfeLeisterGetByArtAsync(artId, TicketID, (object) null);
+  }
+
+  public void FremdhilfeLeisterGetByArtAsync(int artId, Guid TicketID, object userState)
+  {
+    if (this.onBeginFremdhilfeLeisterGetByArtDelegate == null)
+      this.onBeginFremdhilfeLeisterGetByArtDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginFremdhilfeLeisterGetByArt);
+    if (this.onEndFremdhilfeLeisterGetByArtDelegate == null)
+      this.onEndFremdhilfeLeisterGetByArtDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndFremdhilfeLeisterGetByArt);
+    if (this.onFremdhilfeLeisterGetByArtCompletedDelegate == null)
+      this.onFremdhilfeLeisterGetByArtCompletedDelegate = new SendOrPostCallback(this.OnFremdhilfeLeisterGetByArtCompleted);
+    this.InvokeAsync(this.onBeginFremdhilfeLeisterGetByArtDelegate, new object[2]
+    {
+      (object) artId,
+      (object) TicketID
+    }, this.onEndFremdhilfeLeisterGetByArtDelegate, this.onFremdhilfeLeisterGetByArtCompletedDelegate, userState);
+  }
+
+  public WCFFremdhilfeLeister FremdhilfeLeisterPersist(WCFFremdhilfeLeister wfhl, Guid TicketID)
+  {
+    return this.Channel.FremdhilfeLeisterPersist(wfhl, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginFremdhilfeLeisterPersist(
+    WCFFremdhilfeLeister wfhl,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginFremdhilfeLeisterPersist(wfhl, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFFremdhilfeLeister EndFremdhilfeLeisterPersist(IAsyncResult result)
+  {
+    return this.Channel.EndFremdhilfeLeisterPersist(result);
+  }
+
+  private IAsyncResult OnBeginFremdhilfeLeisterPersist(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginFremdhilfeLeisterPersist((WCFFremdhilfeLeister) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndFremdhilfeLeisterPersist(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndFremdhilfeLeisterPersist(result)
+    };
+  }
+
+  private void OnFremdhilfeLeisterPersistCompleted(object state)
+  {
+    if (this.FremdhilfeLeisterPersistCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.FremdhilfeLeisterPersistCompleted((object) this, new FremdhilfeLeisterPersistCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void FremdhilfeLeisterPersistAsync(WCFFremdhilfeLeister wfhl, Guid TicketID)
+  {
+    this.FremdhilfeLeisterPersistAsync(wfhl, TicketID, (object) null);
+  }
+
+  public void FremdhilfeLeisterPersistAsync(
+    WCFFremdhilfeLeister wfhl,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginFremdhilfeLeisterPersistDelegate == null)
+      this.onBeginFremdhilfeLeisterPersistDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginFremdhilfeLeisterPersist);
+    if (this.onEndFremdhilfeLeisterPersistDelegate == null)
+      this.onEndFremdhilfeLeisterPersistDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndFremdhilfeLeisterPersist);
+    if (this.onFremdhilfeLeisterPersistCompletedDelegate == null)
+      this.onFremdhilfeLeisterPersistCompletedDelegate = new SendOrPostCallback(this.OnFremdhilfeLeisterPersistCompleted);
+    this.InvokeAsync(this.onBeginFremdhilfeLeisterPersistDelegate, new object[2]
+    {
+      (object) wfhl,
+      (object) TicketID
+    }, this.onEndFremdhilfeLeisterPersistDelegate, this.onFremdhilfeLeisterPersistCompletedDelegate, userState);
+  }
+
+  public bool FremdhilfeLeisterDelete(WCFFremdhilfeLeister wfhl, Guid TicketID)
+  {
+    return this.Channel.FremdhilfeLeisterDelete(wfhl, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginFremdhilfeLeisterDelete(
+    WCFFremdhilfeLeister wfhl,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginFremdhilfeLeisterDelete(wfhl, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndFremdhilfeLeisterDelete(IAsyncResult result)
+  {
+    return this.Channel.EndFremdhilfeLeisterDelete(result);
+  }
+
+  private IAsyncResult OnBeginFremdhilfeLeisterDelete(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginFremdhilfeLeisterDelete((WCFFremdhilfeLeister) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndFremdhilfeLeisterDelete(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndFremdhilfeLeisterDelete(result)
+    };
+  }
+
+  private void OnFremdhilfeLeisterDeleteCompleted(object state)
+  {
+    if (this.FremdhilfeLeisterDeleteCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.FremdhilfeLeisterDeleteCompleted((object) this, new FremdhilfeLeisterDeleteCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void FremdhilfeLeisterDeleteAsync(WCFFremdhilfeLeister wfhl, Guid TicketID)
+  {
+    this.FremdhilfeLeisterDeleteAsync(wfhl, TicketID, (object) null);
+  }
+
+  public void FremdhilfeLeisterDeleteAsync(
+    WCFFremdhilfeLeister wfhl,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginFremdhilfeLeisterDeleteDelegate == null)
+      this.onBeginFremdhilfeLeisterDeleteDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginFremdhilfeLeisterDelete);
+    if (this.onEndFremdhilfeLeisterDeleteDelegate == null)
+      this.onEndFremdhilfeLeisterDeleteDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndFremdhilfeLeisterDelete);
+    if (this.onFremdhilfeLeisterDeleteCompletedDelegate == null)
+      this.onFremdhilfeLeisterDeleteCompletedDelegate = new SendOrPostCallback(this.OnFremdhilfeLeisterDeleteCompleted);
+    this.InvokeAsync(this.onBeginFremdhilfeLeisterDeleteDelegate, new object[2]
+    {
+      (object) wfhl,
+      (object) TicketID
+    }, this.onEndFremdhilfeLeisterDeleteDelegate, this.onFremdhilfeLeisterDeleteCompletedDelegate, userState);
+  }
+
+  public WCFTicket CreateTicket(string userName, string password)
+  {
+    return this.Channel.CreateTicket(userName, password);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginCreateTicket(
+    string userName,
+    string password,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginCreateTicket(userName, password, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFTicket EndCreateTicket(IAsyncResult result) => this.Channel.EndCreateTicket(result);
+
+  private IAsyncResult OnBeginCreateTicket(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginCreateTicket((string) inValues[0], (string) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndCreateTicket(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndCreateTicket(result)
+    };
+  }
+
+  private void OnCreateTicketCompleted(object state)
+  {
+    if (this.CreateTicketCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.CreateTicketCompleted((object) this, new CreateTicketCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void CreateTicketAsync(string userName, string password)
+  {
+    this.CreateTicketAsync(userName, password, (object) null);
+  }
+
+  public void CreateTicketAsync(string userName, string password, object userState)
+  {
+    if (this.onBeginCreateTicketDelegate == null)
+      this.onBeginCreateTicketDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginCreateTicket);
+    if (this.onEndCreateTicketDelegate == null)
+      this.onEndCreateTicketDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndCreateTicket);
+    if (this.onCreateTicketCompletedDelegate == null)
+      this.onCreateTicketCompletedDelegate = new SendOrPostCallback(this.OnCreateTicketCompleted);
+    this.InvokeAsync(this.onBeginCreateTicketDelegate, new object[2]
+    {
+      (object) userName,
+      (object) password
+    }, this.onEndCreateTicketDelegate, this.onCreateTicketCompletedDelegate, userState);
+  }
+
+  public WCFTicket CheckTicket(Guid queryTicketID, Guid TicketID)
+  {
+    return this.Channel.CheckTicket(queryTicketID, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginCheckTicket(
+    Guid queryTicketID,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginCheckTicket(queryTicketID, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFTicket EndCheckTicket(IAsyncResult result) => this.Channel.EndCheckTicket(result);
+
+  private IAsyncResult OnBeginCheckTicket(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginCheckTicket((Guid) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndCheckTicket(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndCheckTicket(result)
+    };
+  }
+
+  private void OnCheckTicketCompleted(object state)
+  {
+    if (this.CheckTicketCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.CheckTicketCompleted((object) this, new CheckTicketCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void CheckTicketAsync(Guid queryTicketID, Guid TicketID)
+  {
+    this.CheckTicketAsync(queryTicketID, TicketID, (object) null);
+  }
+
+  public void CheckTicketAsync(Guid queryTicketID, Guid TicketID, object userState)
+  {
+    if (this.onBeginCheckTicketDelegate == null)
+      this.onBeginCheckTicketDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginCheckTicket);
+    if (this.onEndCheckTicketDelegate == null)
+      this.onEndCheckTicketDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndCheckTicket);
+    if (this.onCheckTicketCompletedDelegate == null)
+      this.onCheckTicketCompletedDelegate = new SendOrPostCallback(this.OnCheckTicketCompleted);
+    this.InvokeAsync(this.onBeginCheckTicketDelegate, new object[2]
+    {
+      (object) queryTicketID,
+      (object) TicketID
+    }, this.onEndCheckTicketDelegate, this.onCheckTicketCompletedDelegate, userState);
+  }
+
+  public bool CloseTicket(Guid queryTicketID, Guid TicketID)
+  {
+    return this.Channel.CloseTicket(queryTicketID, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginCloseTicket(
+    Guid queryTicketID,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginCloseTicket(queryTicketID, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndCloseTicket(IAsyncResult result) => this.Channel.EndCloseTicket(result);
+
+  private IAsyncResult OnBeginCloseTicket(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginCloseTicket((Guid) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndCloseTicket(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndCloseTicket(result)
+    };
+  }
+
+  private void OnCloseTicketCompleted(object state)
+  {
+    if (this.CloseTicketCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.CloseTicketCompleted((object) this, new CloseTicketCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void CloseTicketAsync(Guid queryTicketID, Guid TicketID)
+  {
+    this.CloseTicketAsync(queryTicketID, TicketID, (object) null);
+  }
+
+  public void CloseTicketAsync(Guid queryTicketID, Guid TicketID, object userState)
+  {
+    if (this.onBeginCloseTicketDelegate == null)
+      this.onBeginCloseTicketDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginCloseTicket);
+    if (this.onEndCloseTicketDelegate == null)
+      this.onEndCloseTicketDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndCloseTicket);
+    if (this.onCloseTicketCompletedDelegate == null)
+      this.onCloseTicketCompletedDelegate = new SendOrPostCallback(this.OnCloseTicketCompleted);
+    this.InvokeAsync(this.onBeginCloseTicketDelegate, new object[2]
+    {
+      (object) queryTicketID,
+      (object) TicketID
+    }, this.onEndCloseTicketDelegate, this.onCloseTicketCompletedDelegate, userState);
+  }
+
+  public bool LogELISProgramUse(ELISProgram program, Guid TicketID)
+  {
+    return this.Channel.LogELISProgramUse(program, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginLogELISProgramUse(
+    ELISProgram program,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginLogELISProgramUse(program, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndLogELISProgramUse(IAsyncResult result)
+  {
+    return this.Channel.EndLogELISProgramUse(result);
+  }
+
+  private IAsyncResult OnBeginLogELISProgramUse(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginLogELISProgramUse((ELISProgram) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndLogELISProgramUse(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndLogELISProgramUse(result)
+    };
+  }
+
+  private void OnLogELISProgramUseCompleted(object state)
+  {
+    if (this.LogELISProgramUseCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.LogELISProgramUseCompleted((object) this, new LogELISProgramUseCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void LogELISProgramUseAsync(ELISProgram program, Guid TicketID)
+  {
+    this.LogELISProgramUseAsync(program, TicketID, (object) null);
+  }
+
+  public void LogELISProgramUseAsync(ELISProgram program, Guid TicketID, object userState)
+  {
+    if (this.onBeginLogELISProgramUseDelegate == null)
+      this.onBeginLogELISProgramUseDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginLogELISProgramUse);
+    if (this.onEndLogELISProgramUseDelegate == null)
+      this.onEndLogELISProgramUseDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndLogELISProgramUse);
+    if (this.onLogELISProgramUseCompletedDelegate == null)
+      this.onLogELISProgramUseCompletedDelegate = new SendOrPostCallback(this.OnLogELISProgramUseCompleted);
+    this.InvokeAsync(this.onBeginLogELISProgramUseDelegate, new object[2]
+    {
+      (object) program,
+      (object) TicketID
+    }, this.onEndLogELISProgramUseDelegate, this.onLogELISProgramUseCompletedDelegate, userState);
+  }
+
+  public bool CheckELISClientVersionValid(ELISProgram program, double clientVersion)
+  {
+    return this.Channel.CheckELISClientVersionValid(program, clientVersion);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginCheckELISClientVersionValid(
+    ELISProgram program,
+    double clientVersion,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginCheckELISClientVersionValid(program, clientVersion, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndCheckELISClientVersionValid(IAsyncResult result)
+  {
+    return this.Channel.EndCheckELISClientVersionValid(result);
+  }
+
+  private IAsyncResult OnBeginCheckELISClientVersionValid(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginCheckELISClientVersionValid((ELISProgram) inValues[0], (double) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndCheckELISClientVersionValid(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndCheckELISClientVersionValid(result)
+    };
+  }
+
+  private void OnCheckELISClientVersionValidCompleted(object state)
+  {
+    if (this.CheckELISClientVersionValidCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.CheckELISClientVersionValidCompleted((object) this, new CheckELISClientVersionValidCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void CheckELISClientVersionValidAsync(ELISProgram program, double clientVersion)
+  {
+    this.CheckELISClientVersionValidAsync(program, clientVersion, (object) null);
+  }
+
+  public void CheckELISClientVersionValidAsync(
+    ELISProgram program,
+    double clientVersion,
+    object userState)
+  {
+    if (this.onBeginCheckELISClientVersionValidDelegate == null)
+      this.onBeginCheckELISClientVersionValidDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginCheckELISClientVersionValid);
+    if (this.onEndCheckELISClientVersionValidDelegate == null)
+      this.onEndCheckELISClientVersionValidDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndCheckELISClientVersionValid);
+    if (this.onCheckELISClientVersionValidCompletedDelegate == null)
+      this.onCheckELISClientVersionValidCompletedDelegate = new SendOrPostCallback(this.OnCheckELISClientVersionValidCompleted);
+    this.InvokeAsync(this.onBeginCheckELISClientVersionValidDelegate, new object[2]
+    {
+      (object) program,
+      (object) clientVersion
+    }, this.onEndCheckELISClientVersionValidDelegate, this.onCheckELISClientVersionValidCompletedDelegate, userState);
+  }
+
+  public WCFBenutzer[] UserGetAll(Guid TicketID) => this.Channel.UserGetAll(TicketID);
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginUserGetAll(Guid TicketID, AsyncCallback callback, object asyncState)
+  {
+    return this.Channel.BeginUserGetAll(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFBenutzer[] EndUserGetAll(IAsyncResult result) => this.Channel.EndUserGetAll(result);
+
+  private IAsyncResult OnBeginUserGetAll(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginUserGetAll((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndUserGetAll(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndUserGetAll(result)
+    };
+  }
+
+  private void OnUserGetAllCompleted(object state)
+  {
+    if (this.UserGetAllCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.UserGetAllCompleted((object) this, new UserGetAllCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void UserGetAllAsync(Guid TicketID) => this.UserGetAllAsync(TicketID, (object) null);
+
+  public void UserGetAllAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginUserGetAllDelegate == null)
+      this.onBeginUserGetAllDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginUserGetAll);
+    if (this.onEndUserGetAllDelegate == null)
+      this.onEndUserGetAllDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndUserGetAll);
+    if (this.onUserGetAllCompletedDelegate == null)
+      this.onUserGetAllCompletedDelegate = new SendOrPostCallback(this.OnUserGetAllCompleted);
+    this.InvokeAsync(this.onBeginUserGetAllDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndUserGetAllDelegate, this.onUserGetAllCompletedDelegate, userState);
+  }
+
+  public WCFBenutzer UserGetByLoginAndPw(Guid TicketID, string login, string password)
+  {
+    return this.Channel.UserGetByLoginAndPw(TicketID, login, password);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginUserGetByLoginAndPw(
+    Guid TicketID,
+    string login,
+    string password,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginUserGetByLoginAndPw(TicketID, login, password, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFBenutzer EndUserGetByLoginAndPw(IAsyncResult result)
+  {
+    return this.Channel.EndUserGetByLoginAndPw(result);
+  }
+
+  private IAsyncResult OnBeginUserGetByLoginAndPw(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginUserGetByLoginAndPw((Guid) inValues[0], (string) inValues[1], (string) inValues[2], callback, asyncState);
+  }
+
+  private object[] OnEndUserGetByLoginAndPw(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndUserGetByLoginAndPw(result)
+    };
+  }
+
+  private void OnUserGetByLoginAndPwCompleted(object state)
+  {
+    if (this.UserGetByLoginAndPwCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.UserGetByLoginAndPwCompleted((object) this, new UserGetByLoginAndPwCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void UserGetByLoginAndPwAsync(Guid TicketID, string login, string password)
+  {
+    this.UserGetByLoginAndPwAsync(TicketID, login, password, (object) null);
+  }
+
+  public void UserGetByLoginAndPwAsync(
+    Guid TicketID,
+    string login,
+    string password,
+    object userState)
+  {
+    if (this.onBeginUserGetByLoginAndPwDelegate == null)
+      this.onBeginUserGetByLoginAndPwDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginUserGetByLoginAndPw);
+    if (this.onEndUserGetByLoginAndPwDelegate == null)
+      this.onEndUserGetByLoginAndPwDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndUserGetByLoginAndPw);
+    if (this.onUserGetByLoginAndPwCompletedDelegate == null)
+      this.onUserGetByLoginAndPwCompletedDelegate = new SendOrPostCallback(this.OnUserGetByLoginAndPwCompleted);
+    this.InvokeAsync(this.onBeginUserGetByLoginAndPwDelegate, new object[3]
+    {
+      (object) TicketID,
+      (object) login,
+      (object) password
+    }, this.onEndUserGetByLoginAndPwDelegate, this.onUserGetByLoginAndPwCompletedDelegate, userState);
+  }
+
+  public WCFBenutzer[] UserGetActive(Guid TicketID) => this.Channel.UserGetActive(TicketID);
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginUserGetActive(Guid TicketID, AsyncCallback callback, object asyncState)
+  {
+    return this.Channel.BeginUserGetActive(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFBenutzer[] EndUserGetActive(IAsyncResult result)
+  {
+    return this.Channel.EndUserGetActive(result);
+  }
+
+  private IAsyncResult OnBeginUserGetActive(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginUserGetActive((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndUserGetActive(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndUserGetActive(result)
+    };
+  }
+
+  private void OnUserGetActiveCompleted(object state)
+  {
+    if (this.UserGetActiveCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.UserGetActiveCompleted((object) this, new UserGetActiveCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void UserGetActiveAsync(Guid TicketID) => this.UserGetActiveAsync(TicketID, (object) null);
+
+  public void UserGetActiveAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginUserGetActiveDelegate == null)
+      this.onBeginUserGetActiveDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginUserGetActive);
+    if (this.onEndUserGetActiveDelegate == null)
+      this.onEndUserGetActiveDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndUserGetActive);
+    if (this.onUserGetActiveCompletedDelegate == null)
+      this.onUserGetActiveCompletedDelegate = new SendOrPostCallback(this.OnUserGetActiveCompleted);
+    this.InvokeAsync(this.onBeginUserGetActiveDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndUserGetActiveDelegate, this.onUserGetActiveCompletedDelegate, userState);
+  }
+
+  public bool UserPersist(WCFBenutzer benutzer, Guid TicketID)
+  {
+    return this.Channel.UserPersist(benutzer, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginUserPersist(
+    WCFBenutzer benutzer,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginUserPersist(benutzer, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndUserPersist(IAsyncResult result) => this.Channel.EndUserPersist(result);
+
+  private IAsyncResult OnBeginUserPersist(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginUserPersist((WCFBenutzer) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndUserPersist(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndUserPersist(result)
+    };
+  }
+
+  private void OnUserPersistCompleted(object state)
+  {
+    if (this.UserPersistCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.UserPersistCompleted((object) this, new UserPersistCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void UserPersistAsync(WCFBenutzer benutzer, Guid TicketID)
+  {
+    this.UserPersistAsync(benutzer, TicketID, (object) null);
+  }
+
+  public void UserPersistAsync(WCFBenutzer benutzer, Guid TicketID, object userState)
+  {
+    if (this.onBeginUserPersistDelegate == null)
+      this.onBeginUserPersistDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginUserPersist);
+    if (this.onEndUserPersistDelegate == null)
+      this.onEndUserPersistDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndUserPersist);
+    if (this.onUserPersistCompletedDelegate == null)
+      this.onUserPersistCompletedDelegate = new SendOrPostCallback(this.OnUserPersistCompleted);
+    this.InvokeAsync(this.onBeginUserPersistDelegate, new object[2]
+    {
+      (object) benutzer,
+      (object) TicketID
+    }, this.onEndUserPersistDelegate, this.onUserPersistCompletedDelegate, userState);
+  }
+
+  public bool UserDelete(WCFBenutzer benutzer, Guid TicketID)
+  {
+    return this.Channel.UserDelete(benutzer, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginUserDelete(
+    WCFBenutzer benutzer,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginUserDelete(benutzer, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndUserDelete(IAsyncResult result) => this.Channel.EndUserDelete(result);
+
+  private IAsyncResult OnBeginUserDelete(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginUserDelete((WCFBenutzer) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndUserDelete(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndUserDelete(result)
+    };
+  }
+
+  private void OnUserDeleteCompleted(object state)
+  {
+    if (this.UserDeleteCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.UserDeleteCompleted((object) this, new UserDeleteCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void UserDeleteAsync(WCFBenutzer benutzer, Guid TicketID)
+  {
+    this.UserDeleteAsync(benutzer, TicketID, (object) null);
+  }
+
+  public void UserDeleteAsync(WCFBenutzer benutzer, Guid TicketID, object userState)
+  {
+    if (this.onBeginUserDeleteDelegate == null)
+      this.onBeginUserDeleteDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginUserDelete);
+    if (this.onEndUserDeleteDelegate == null)
+      this.onEndUserDeleteDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndUserDelete);
+    if (this.onUserDeleteCompletedDelegate == null)
+      this.onUserDeleteCompletedDelegate = new SendOrPostCallback(this.OnUserDeleteCompleted);
+    this.InvokeAsync(this.onBeginUserDeleteDelegate, new object[2]
+    {
+      (object) benutzer,
+      (object) TicketID
+    }, this.onEndUserDeleteDelegate, this.onUserDeleteCompletedDelegate, userState);
+  }
+
+  public bool UserSendEMailLogin(WCFBenutzer benutzer, Guid TicketID)
+  {
+    return this.Channel.UserSendEMailLogin(benutzer, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginUserSendEMailLogin(
+    WCFBenutzer benutzer,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginUserSendEMailLogin(benutzer, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndUserSendEMailLogin(IAsyncResult result)
+  {
+    return this.Channel.EndUserSendEMailLogin(result);
+  }
+
+  private IAsyncResult OnBeginUserSendEMailLogin(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginUserSendEMailLogin((WCFBenutzer) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndUserSendEMailLogin(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndUserSendEMailLogin(result)
+    };
+  }
+
+  private void OnUserSendEMailLoginCompleted(object state)
+  {
+    if (this.UserSendEMailLoginCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.UserSendEMailLoginCompleted((object) this, new UserSendEMailLoginCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void UserSendEMailLoginAsync(WCFBenutzer benutzer, Guid TicketID)
+  {
+    this.UserSendEMailLoginAsync(benutzer, TicketID, (object) null);
+  }
+
+  public void UserSendEMailLoginAsync(WCFBenutzer benutzer, Guid TicketID, object userState)
+  {
+    if (this.onBeginUserSendEMailLoginDelegate == null)
+      this.onBeginUserSendEMailLoginDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginUserSendEMailLogin);
+    if (this.onEndUserSendEMailLoginDelegate == null)
+      this.onEndUserSendEMailLoginDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndUserSendEMailLogin);
+    if (this.onUserSendEMailLoginCompletedDelegate == null)
+      this.onUserSendEMailLoginCompletedDelegate = new SendOrPostCallback(this.OnUserSendEMailLoginCompleted);
+    this.InvokeAsync(this.onBeginUserSendEMailLoginDelegate, new object[2]
+    {
+      (object) benutzer,
+      (object) TicketID
+    }, this.onEndUserSendEMailLoginDelegate, this.onUserSendEMailLoginCompletedDelegate, userState);
+  }
+
+  public WCFBenutzer[] EmailSMSGetActive(Guid TicketID) => this.Channel.EmailSMSGetActive(TicketID);
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginEmailSMSGetActive(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginEmailSMSGetActive(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFBenutzer[] EndEmailSMSGetActive(IAsyncResult result)
+  {
+    return this.Channel.EndEmailSMSGetActive(result);
+  }
+
+  private IAsyncResult OnBeginEmailSMSGetActive(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginEmailSMSGetActive((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndEmailSMSGetActive(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndEmailSMSGetActive(result)
+    };
+  }
+
+  private void OnEmailSMSGetActiveCompleted(object state)
+  {
+    if (this.EmailSMSGetActiveCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.EmailSMSGetActiveCompleted((object) this, new EmailSMSGetActiveCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void EmailSMSGetActiveAsync(Guid TicketID)
+  {
+    this.EmailSMSGetActiveAsync(TicketID, (object) null);
+  }
+
+  public void EmailSMSGetActiveAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginEmailSMSGetActiveDelegate == null)
+      this.onBeginEmailSMSGetActiveDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginEmailSMSGetActive);
+    if (this.onEndEmailSMSGetActiveDelegate == null)
+      this.onEndEmailSMSGetActiveDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndEmailSMSGetActive);
+    if (this.onEmailSMSGetActiveCompletedDelegate == null)
+      this.onEmailSMSGetActiveCompletedDelegate = new SendOrPostCallback(this.OnEmailSMSGetActiveCompleted);
+    this.InvokeAsync(this.onBeginEmailSMSGetActiveDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndEmailSMSGetActiveDelegate, this.onEmailSMSGetActiveCompletedDelegate, userState);
+  }
+
+  public bool BenutzerGruppePersist(WCFBenutzerGruppe gruppe, Guid TicketID)
+  {
+    return this.Channel.BenutzerGruppePersist(gruppe, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginBenutzerGruppePersist(
+    WCFBenutzerGruppe gruppe,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginBenutzerGruppePersist(gruppe, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndBenutzerGruppePersist(IAsyncResult result)
+  {
+    return this.Channel.EndBenutzerGruppePersist(result);
+  }
+
+  private IAsyncResult OnBeginBenutzerGruppePersist(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginBenutzerGruppePersist((WCFBenutzerGruppe) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndBenutzerGruppePersist(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndBenutzerGruppePersist(result)
+    };
+  }
+
+  private void OnBenutzerGruppePersistCompleted(object state)
+  {
+    if (this.BenutzerGruppePersistCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.BenutzerGruppePersistCompleted((object) this, new BenutzerGruppePersistCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void BenutzerGruppePersistAsync(WCFBenutzerGruppe gruppe, Guid TicketID)
+  {
+    this.BenutzerGruppePersistAsync(gruppe, TicketID, (object) null);
+  }
+
+  public void BenutzerGruppePersistAsync(WCFBenutzerGruppe gruppe, Guid TicketID, object userState)
+  {
+    if (this.onBeginBenutzerGruppePersistDelegate == null)
+      this.onBeginBenutzerGruppePersistDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginBenutzerGruppePersist);
+    if (this.onEndBenutzerGruppePersistDelegate == null)
+      this.onEndBenutzerGruppePersistDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndBenutzerGruppePersist);
+    if (this.onBenutzerGruppePersistCompletedDelegate == null)
+      this.onBenutzerGruppePersistCompletedDelegate = new SendOrPostCallback(this.OnBenutzerGruppePersistCompleted);
+    this.InvokeAsync(this.onBeginBenutzerGruppePersistDelegate, new object[2]
+    {
+      (object) gruppe,
+      (object) TicketID
+    }, this.onEndBenutzerGruppePersistDelegate, this.onBenutzerGruppePersistCompletedDelegate, userState);
+  }
+
+  public bool BenutzerGruppeDelete(int gruppeID, Guid TicketID)
+  {
+    return this.Channel.BenutzerGruppeDelete(gruppeID, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginBenutzerGruppeDelete(
+    int gruppeID,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginBenutzerGruppeDelete(gruppeID, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndBenutzerGruppeDelete(IAsyncResult result)
+  {
+    return this.Channel.EndBenutzerGruppeDelete(result);
+  }
+
+  private IAsyncResult OnBeginBenutzerGruppeDelete(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginBenutzerGruppeDelete((int) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndBenutzerGruppeDelete(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndBenutzerGruppeDelete(result)
+    };
+  }
+
+  private void OnBenutzerGruppeDeleteCompleted(object state)
+  {
+    if (this.BenutzerGruppeDeleteCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.BenutzerGruppeDeleteCompleted((object) this, new BenutzerGruppeDeleteCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void BenutzerGruppeDeleteAsync(int gruppeID, Guid TicketID)
+  {
+    this.BenutzerGruppeDeleteAsync(gruppeID, TicketID, (object) null);
+  }
+
+  public void BenutzerGruppeDeleteAsync(int gruppeID, Guid TicketID, object userState)
+  {
+    if (this.onBeginBenutzerGruppeDeleteDelegate == null)
+      this.onBeginBenutzerGruppeDeleteDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginBenutzerGruppeDelete);
+    if (this.onEndBenutzerGruppeDeleteDelegate == null)
+      this.onEndBenutzerGruppeDeleteDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndBenutzerGruppeDelete);
+    if (this.onBenutzerGruppeDeleteCompletedDelegate == null)
+      this.onBenutzerGruppeDeleteCompletedDelegate = new SendOrPostCallback(this.OnBenutzerGruppeDeleteCompleted);
+    this.InvokeAsync(this.onBeginBenutzerGruppeDeleteDelegate, new object[2]
+    {
+      (object) gruppeID,
+      (object) TicketID
+    }, this.onEndBenutzerGruppeDeleteDelegate, this.onBenutzerGruppeDeleteCompletedDelegate, userState);
+  }
+
+  public bool BenutzerGruppeAddBenutzer(WCFBenutzer benutzer, int gruppeId, Guid TicketID)
+  {
+    return this.Channel.BenutzerGruppeAddBenutzer(benutzer, gruppeId, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginBenutzerGruppeAddBenutzer(
+    WCFBenutzer benutzer,
+    int gruppeId,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginBenutzerGruppeAddBenutzer(benutzer, gruppeId, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndBenutzerGruppeAddBenutzer(IAsyncResult result)
+  {
+    return this.Channel.EndBenutzerGruppeAddBenutzer(result);
+  }
+
+  private IAsyncResult OnBeginBenutzerGruppeAddBenutzer(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginBenutzerGruppeAddBenutzer((WCFBenutzer) inValues[0], (int) inValues[1], (Guid) inValues[2], callback, asyncState);
+  }
+
+  private object[] OnEndBenutzerGruppeAddBenutzer(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndBenutzerGruppeAddBenutzer(result)
+    };
+  }
+
+  private void OnBenutzerGruppeAddBenutzerCompleted(object state)
+  {
+    if (this.BenutzerGruppeAddBenutzerCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.BenutzerGruppeAddBenutzerCompleted((object) this, new BenutzerGruppeAddBenutzerCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void BenutzerGruppeAddBenutzerAsync(WCFBenutzer benutzer, int gruppeId, Guid TicketID)
+  {
+    this.BenutzerGruppeAddBenutzerAsync(benutzer, gruppeId, TicketID, (object) null);
+  }
+
+  public void BenutzerGruppeAddBenutzerAsync(
+    WCFBenutzer benutzer,
+    int gruppeId,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginBenutzerGruppeAddBenutzerDelegate == null)
+      this.onBeginBenutzerGruppeAddBenutzerDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginBenutzerGruppeAddBenutzer);
+    if (this.onEndBenutzerGruppeAddBenutzerDelegate == null)
+      this.onEndBenutzerGruppeAddBenutzerDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndBenutzerGruppeAddBenutzer);
+    if (this.onBenutzerGruppeAddBenutzerCompletedDelegate == null)
+      this.onBenutzerGruppeAddBenutzerCompletedDelegate = new SendOrPostCallback(this.OnBenutzerGruppeAddBenutzerCompleted);
+    this.InvokeAsync(this.onBeginBenutzerGruppeAddBenutzerDelegate, new object[3]
+    {
+      (object) benutzer,
+      (object) gruppeId,
+      (object) TicketID
+    }, this.onEndBenutzerGruppeAddBenutzerDelegate, this.onBenutzerGruppeAddBenutzerCompletedDelegate, userState);
+  }
+
+  public bool BenutzerGruppeRemoveBenutzer(WCFBenutzer benutzer, int gruppeId, Guid TicketID)
+  {
+    return this.Channel.BenutzerGruppeRemoveBenutzer(benutzer, gruppeId, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginBenutzerGruppeRemoveBenutzer(
+    WCFBenutzer benutzer,
+    int gruppeId,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginBenutzerGruppeRemoveBenutzer(benutzer, gruppeId, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndBenutzerGruppeRemoveBenutzer(IAsyncResult result)
+  {
+    return this.Channel.EndBenutzerGruppeRemoveBenutzer(result);
+  }
+
+  private IAsyncResult OnBeginBenutzerGruppeRemoveBenutzer(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginBenutzerGruppeRemoveBenutzer((WCFBenutzer) inValues[0], (int) inValues[1], (Guid) inValues[2], callback, asyncState);
+  }
+
+  private object[] OnEndBenutzerGruppeRemoveBenutzer(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndBenutzerGruppeRemoveBenutzer(result)
+    };
+  }
+
+  private void OnBenutzerGruppeRemoveBenutzerCompleted(object state)
+  {
+    if (this.BenutzerGruppeRemoveBenutzerCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.BenutzerGruppeRemoveBenutzerCompleted((object) this, new BenutzerGruppeRemoveBenutzerCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void BenutzerGruppeRemoveBenutzerAsync(WCFBenutzer benutzer, int gruppeId, Guid TicketID)
+  {
+    this.BenutzerGruppeRemoveBenutzerAsync(benutzer, gruppeId, TicketID, (object) null);
+  }
+
+  public void BenutzerGruppeRemoveBenutzerAsync(
+    WCFBenutzer benutzer,
+    int gruppeId,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginBenutzerGruppeRemoveBenutzerDelegate == null)
+      this.onBeginBenutzerGruppeRemoveBenutzerDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginBenutzerGruppeRemoveBenutzer);
+    if (this.onEndBenutzerGruppeRemoveBenutzerDelegate == null)
+      this.onEndBenutzerGruppeRemoveBenutzerDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndBenutzerGruppeRemoveBenutzer);
+    if (this.onBenutzerGruppeRemoveBenutzerCompletedDelegate == null)
+      this.onBenutzerGruppeRemoveBenutzerCompletedDelegate = new SendOrPostCallback(this.OnBenutzerGruppeRemoveBenutzerCompleted);
+    this.InvokeAsync(this.onBeginBenutzerGruppeRemoveBenutzerDelegate, new object[3]
+    {
+      (object) benutzer,
+      (object) gruppeId,
+      (object) TicketID
+    }, this.onEndBenutzerGruppeRemoveBenutzerDelegate, this.onBenutzerGruppeRemoveBenutzerCompletedDelegate, userState);
+  }
+
+  public WCFAppLog[] AppLogLastGPS(Guid TicketID) => this.Channel.AppLogLastGPS(TicketID);
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginAppLogLastGPS(Guid TicketID, AsyncCallback callback, object asyncState)
+  {
+    return this.Channel.BeginAppLogLastGPS(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFAppLog[] EndAppLogLastGPS(IAsyncResult result) => this.Channel.EndAppLogLastGPS(result);
+
+  private IAsyncResult OnBeginAppLogLastGPS(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginAppLogLastGPS((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndAppLogLastGPS(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndAppLogLastGPS(result)
+    };
+  }
+
+  private void OnAppLogLastGPSCompleted(object state)
+  {
+    if (this.AppLogLastGPSCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.AppLogLastGPSCompleted((object) this, new AppLogLastGPSCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void AppLogLastGPSAsync(Guid TicketID) => this.AppLogLastGPSAsync(TicketID, (object) null);
+
+  public void AppLogLastGPSAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginAppLogLastGPSDelegate == null)
+      this.onBeginAppLogLastGPSDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginAppLogLastGPS);
+    if (this.onEndAppLogLastGPSDelegate == null)
+      this.onEndAppLogLastGPSDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndAppLogLastGPS);
+    if (this.onAppLogLastGPSCompletedDelegate == null)
+      this.onAppLogLastGPSCompletedDelegate = new SendOrPostCallback(this.OnAppLogLastGPSCompleted);
+    this.InvokeAsync(this.onBeginAppLogLastGPSDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndAppLogLastGPSDelegate, this.onAppLogLastGPSCompletedDelegate, userState);
+  }
+
+  public WCFAppLog[] AppLogLastMonthGPS(Guid TicketID) => this.Channel.AppLogLastMonthGPS(TicketID);
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginAppLogLastMonthGPS(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginAppLogLastMonthGPS(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFAppLog[] EndAppLogLastMonthGPS(IAsyncResult result)
+  {
+    return this.Channel.EndAppLogLastMonthGPS(result);
+  }
+
+  private IAsyncResult OnBeginAppLogLastMonthGPS(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginAppLogLastMonthGPS((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndAppLogLastMonthGPS(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndAppLogLastMonthGPS(result)
+    };
+  }
+
+  private void OnAppLogLastMonthGPSCompleted(object state)
+  {
+    if (this.AppLogLastMonthGPSCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.AppLogLastMonthGPSCompleted((object) this, new AppLogLastMonthGPSCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void AppLogLastMonthGPSAsync(Guid TicketID)
+  {
+    this.AppLogLastMonthGPSAsync(TicketID, (object) null);
+  }
+
+  public void AppLogLastMonthGPSAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginAppLogLastMonthGPSDelegate == null)
+      this.onBeginAppLogLastMonthGPSDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginAppLogLastMonthGPS);
+    if (this.onEndAppLogLastMonthGPSDelegate == null)
+      this.onEndAppLogLastMonthGPSDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndAppLogLastMonthGPS);
+    if (this.onAppLogLastMonthGPSCompletedDelegate == null)
+      this.onAppLogLastMonthGPSCompletedDelegate = new SendOrPostCallback(this.OnAppLogLastMonthGPSCompleted);
+    this.InvokeAsync(this.onBeginAppLogLastMonthGPSDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndAppLogLastMonthGPSDelegate, this.onAppLogLastMonthGPSCompletedDelegate, userState);
+  }
+
+  public WCFSuchergebnis[] SucheDaten(
+    string query,
+    WCFSuchergebnis.WCFSuchergebnisTyp abfrageFilter,
+    Guid TicketID)
+  {
+    return this.Channel.SucheDaten(query, abfrageFilter, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginSucheDaten(
+    string query,
+    WCFSuchergebnis.WCFSuchergebnisTyp abfrageFilter,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginSucheDaten(query, abfrageFilter, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFSuchergebnis[] EndSucheDaten(IAsyncResult result) => this.Channel.EndSucheDaten(result);
+
+  private IAsyncResult OnBeginSucheDaten(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginSucheDaten((string) inValues[0], (WCFSuchergebnis.WCFSuchergebnisTyp) inValues[1], (Guid) inValues[2], callback, asyncState);
+  }
+
+  private object[] OnEndSucheDaten(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndSucheDaten(result)
+    };
+  }
+
+  private void OnSucheDatenCompleted(object state)
+  {
+    if (this.SucheDatenCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.SucheDatenCompleted((object) this, new SucheDatenCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void SucheDatenAsync(
+    string query,
+    WCFSuchergebnis.WCFSuchergebnisTyp abfrageFilter,
+    Guid TicketID)
+  {
+    this.SucheDatenAsync(query, abfrageFilter, TicketID, (object) null);
+  }
+
+  public void SucheDatenAsync(
+    string query,
+    WCFSuchergebnis.WCFSuchergebnisTyp abfrageFilter,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginSucheDatenDelegate == null)
+      this.onBeginSucheDatenDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginSucheDaten);
+    if (this.onEndSucheDatenDelegate == null)
+      this.onEndSucheDatenDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndSucheDaten);
+    if (this.onSucheDatenCompletedDelegate == null)
+      this.onSucheDatenCompletedDelegate = new SendOrPostCallback(this.OnSucheDatenCompleted);
+    this.InvokeAsync(this.onBeginSucheDatenDelegate, new object[3]
+    {
+      (object) query,
+      (object) abfrageFilter,
+      (object) TicketID
+    }, this.onEndSucheDatenDelegate, this.onSucheDatenCompletedDelegate, userState);
+  }
+
+  public void WasserentnahmestelleSave(
+    WCFWasserentnahmen wcfwe,
+    bool updateChangeDate,
+    Guid TicketID)
+  {
+    this.Channel.WasserentnahmestelleSave(wcfwe, updateChangeDate, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginWasserentnahmestelleSave(
+    WCFWasserentnahmen wcfwe,
+    bool updateChangeDate,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginWasserentnahmestelleSave(wcfwe, updateChangeDate, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public void EndWasserentnahmestelleSave(IAsyncResult result)
+  {
+    this.Channel.EndWasserentnahmestelleSave(result);
+  }
+
+  private IAsyncResult OnBeginWasserentnahmestelleSave(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginWasserentnahmestelleSave((WCFWasserentnahmen) inValues[0], (bool) inValues[1], (Guid) inValues[2], callback, asyncState);
+  }
+
+  private object[] OnEndWasserentnahmestelleSave(IAsyncResult result)
+  {
+    this.EndWasserentnahmestelleSave(result);
+    return (object[]) null;
+  }
+
+  private void OnWasserentnahmestelleSaveCompleted(object state)
+  {
+    if (this.WasserentnahmestelleSaveCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.WasserentnahmestelleSaveCompleted((object) this, new AsyncCompletedEventArgs(completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void WasserentnahmestelleSaveAsync(
+    WCFWasserentnahmen wcfwe,
+    bool updateChangeDate,
+    Guid TicketID)
+  {
+    this.WasserentnahmestelleSaveAsync(wcfwe, updateChangeDate, TicketID, (object) null);
+  }
+
+  public void WasserentnahmestelleSaveAsync(
+    WCFWasserentnahmen wcfwe,
+    bool updateChangeDate,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginWasserentnahmestelleSaveDelegate == null)
+      this.onBeginWasserentnahmestelleSaveDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginWasserentnahmestelleSave);
+    if (this.onEndWasserentnahmestelleSaveDelegate == null)
+      this.onEndWasserentnahmestelleSaveDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndWasserentnahmestelleSave);
+    if (this.onWasserentnahmestelleSaveCompletedDelegate == null)
+      this.onWasserentnahmestelleSaveCompletedDelegate = new SendOrPostCallback(this.OnWasserentnahmestelleSaveCompleted);
+    this.InvokeAsync(this.onBeginWasserentnahmestelleSaveDelegate, new object[3]
+    {
+      (object) wcfwe,
+      (object) updateChangeDate,
+      (object) TicketID
+    }, this.onEndWasserentnahmestelleSaveDelegate, this.onWasserentnahmestelleSaveCompletedDelegate, userState);
+  }
+
+  public int WasserentnahmestellenGetCount(Guid TicketID)
+  {
+    return this.Channel.WasserentnahmestellenGetCount(TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginWasserentnahmestellenGetCount(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginWasserentnahmestellenGetCount(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public int EndWasserentnahmestellenGetCount(IAsyncResult result)
+  {
+    return this.Channel.EndWasserentnahmestellenGetCount(result);
+  }
+
+  private IAsyncResult OnBeginWasserentnahmestellenGetCount(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginWasserentnahmestellenGetCount((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndWasserentnahmestellenGetCount(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndWasserentnahmestellenGetCount(result)
+    };
+  }
+
+  private void OnWasserentnahmestellenGetCountCompleted(object state)
+  {
+    if (this.WasserentnahmestellenGetCountCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.WasserentnahmestellenGetCountCompleted((object) this, new WasserentnahmestellenGetCountCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void WasserentnahmestellenGetCountAsync(Guid TicketID)
+  {
+    this.WasserentnahmestellenGetCountAsync(TicketID, (object) null);
+  }
+
+  public void WasserentnahmestellenGetCountAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginWasserentnahmestellenGetCountDelegate == null)
+      this.onBeginWasserentnahmestellenGetCountDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginWasserentnahmestellenGetCount);
+    if (this.onEndWasserentnahmestellenGetCountDelegate == null)
+      this.onEndWasserentnahmestellenGetCountDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndWasserentnahmestellenGetCount);
+    if (this.onWasserentnahmestellenGetCountCompletedDelegate == null)
+      this.onWasserentnahmestellenGetCountCompletedDelegate = new SendOrPostCallback(this.OnWasserentnahmestellenGetCountCompleted);
+    this.InvokeAsync(this.onBeginWasserentnahmestellenGetCountDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndWasserentnahmestellenGetCountDelegate, this.onWasserentnahmestellenGetCountCompletedDelegate, userState);
+  }
+
+  public WCFWasserentnahmen[] WasserentnahmestellenGetRange(
+    int startRowIndex,
+    int maximumRows,
+    Guid TicketID)
+  {
+    return this.Channel.WasserentnahmestellenGetRange(startRowIndex, maximumRows, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginWasserentnahmestellenGetRange(
+    int startRowIndex,
+    int maximumRows,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginWasserentnahmestellenGetRange(startRowIndex, maximumRows, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFWasserentnahmen[] EndWasserentnahmestellenGetRange(IAsyncResult result)
+  {
+    return this.Channel.EndWasserentnahmestellenGetRange(result);
+  }
+
+  private IAsyncResult OnBeginWasserentnahmestellenGetRange(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginWasserentnahmestellenGetRange((int) inValues[0], (int) inValues[1], (Guid) inValues[2], callback, asyncState);
+  }
+
+  private object[] OnEndWasserentnahmestellenGetRange(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndWasserentnahmestellenGetRange(result)
+    };
+  }
+
+  private void OnWasserentnahmestellenGetRangeCompleted(object state)
+  {
+    if (this.WasserentnahmestellenGetRangeCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.WasserentnahmestellenGetRangeCompleted((object) this, new WasserentnahmestellenGetRangeCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void WasserentnahmestellenGetRangeAsync(int startRowIndex, int maximumRows, Guid TicketID)
+  {
+    this.WasserentnahmestellenGetRangeAsync(startRowIndex, maximumRows, TicketID, (object) null);
+  }
+
+  public void WasserentnahmestellenGetRangeAsync(
+    int startRowIndex,
+    int maximumRows,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginWasserentnahmestellenGetRangeDelegate == null)
+      this.onBeginWasserentnahmestellenGetRangeDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginWasserentnahmestellenGetRange);
+    if (this.onEndWasserentnahmestellenGetRangeDelegate == null)
+      this.onEndWasserentnahmestellenGetRangeDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndWasserentnahmestellenGetRange);
+    if (this.onWasserentnahmestellenGetRangeCompletedDelegate == null)
+      this.onWasserentnahmestellenGetRangeCompletedDelegate = new SendOrPostCallback(this.OnWasserentnahmestellenGetRangeCompleted);
+    this.InvokeAsync(this.onBeginWasserentnahmestellenGetRangeDelegate, new object[3]
+    {
+      (object) startRowIndex,
+      (object) maximumRows,
+      (object) TicketID
+    }, this.onEndWasserentnahmestellenGetRangeDelegate, this.onWasserentnahmestellenGetRangeCompletedDelegate, userState);
+  }
+
+  public WCFWasserentnahmen[] WasserentnahmestelleSearch(string keyword, int typ, Guid TicketID)
+  {
+    return this.Channel.WasserentnahmestelleSearch(keyword, typ, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginWasserentnahmestelleSearch(
+    string keyword,
+    int typ,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginWasserentnahmestelleSearch(keyword, typ, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFWasserentnahmen[] EndWasserentnahmestelleSearch(IAsyncResult result)
+  {
+    return this.Channel.EndWasserentnahmestelleSearch(result);
+  }
+
+  private IAsyncResult OnBeginWasserentnahmestelleSearch(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginWasserentnahmestelleSearch((string) inValues[0], (int) inValues[1], (Guid) inValues[2], callback, asyncState);
+  }
+
+  private object[] OnEndWasserentnahmestelleSearch(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndWasserentnahmestelleSearch(result)
+    };
+  }
+
+  private void OnWasserentnahmestelleSearchCompleted(object state)
+  {
+    if (this.WasserentnahmestelleSearchCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.WasserentnahmestelleSearchCompleted((object) this, new WasserentnahmestelleSearchCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void WasserentnahmestelleSearchAsync(string keyword, int typ, Guid TicketID)
+  {
+    this.WasserentnahmestelleSearchAsync(keyword, typ, TicketID, (object) null);
+  }
+
+  public void WasserentnahmestelleSearchAsync(
+    string keyword,
+    int typ,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginWasserentnahmestelleSearchDelegate == null)
+      this.onBeginWasserentnahmestelleSearchDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginWasserentnahmestelleSearch);
+    if (this.onEndWasserentnahmestelleSearchDelegate == null)
+      this.onEndWasserentnahmestelleSearchDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndWasserentnahmestelleSearch);
+    if (this.onWasserentnahmestelleSearchCompletedDelegate == null)
+      this.onWasserentnahmestelleSearchCompletedDelegate = new SendOrPostCallback(this.OnWasserentnahmestelleSearchCompleted);
+    this.InvokeAsync(this.onBeginWasserentnahmestelleSearchDelegate, new object[3]
+    {
+      (object) keyword,
+      (object) typ,
+      (object) TicketID
+    }, this.onEndWasserentnahmestelleSearchDelegate, this.onWasserentnahmestelleSearchCompletedDelegate, userState);
+  }
+
+  public WCFWasserentnahmen WasserentnahmestelleGetByNumber(int number, Guid TicketID)
+  {
+    return this.Channel.WasserentnahmestelleGetByNumber(number, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginWasserentnahmestelleGetByNumber(
+    int number,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginWasserentnahmestelleGetByNumber(number, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFWasserentnahmen EndWasserentnahmestelleGetByNumber(IAsyncResult result)
+  {
+    return this.Channel.EndWasserentnahmestelleGetByNumber(result);
+  }
+
+  private IAsyncResult OnBeginWasserentnahmestelleGetByNumber(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginWasserentnahmestelleGetByNumber((int) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndWasserentnahmestelleGetByNumber(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndWasserentnahmestelleGetByNumber(result)
+    };
+  }
+
+  private void OnWasserentnahmestelleGetByNumberCompleted(object state)
+  {
+    if (this.WasserentnahmestelleGetByNumberCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.WasserentnahmestelleGetByNumberCompleted((object) this, new WasserentnahmestelleGetByNumberCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void WasserentnahmestelleGetByNumberAsync(int number, Guid TicketID)
+  {
+    this.WasserentnahmestelleGetByNumberAsync(number, TicketID, (object) null);
+  }
+
+  public void WasserentnahmestelleGetByNumberAsync(int number, Guid TicketID, object userState)
+  {
+    if (this.onBeginWasserentnahmestelleGetByNumberDelegate == null)
+      this.onBeginWasserentnahmestelleGetByNumberDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginWasserentnahmestelleGetByNumber);
+    if (this.onEndWasserentnahmestelleGetByNumberDelegate == null)
+      this.onEndWasserentnahmestelleGetByNumberDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndWasserentnahmestelleGetByNumber);
+    if (this.onWasserentnahmestelleGetByNumberCompletedDelegate == null)
+      this.onWasserentnahmestelleGetByNumberCompletedDelegate = new SendOrPostCallback(this.OnWasserentnahmestelleGetByNumberCompleted);
+    this.InvokeAsync(this.onBeginWasserentnahmestelleGetByNumberDelegate, new object[2]
+    {
+      (object) number,
+      (object) TicketID
+    }, this.onEndWasserentnahmestelleGetByNumberDelegate, this.onWasserentnahmestelleGetByNumberCompletedDelegate, userState);
+  }
+
+  public void WasserentnahmestelleDelete(WCFWasserentnahmen wcfwe, Guid TicketID)
+  {
+    this.Channel.WasserentnahmestelleDelete(wcfwe, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginWasserentnahmestelleDelete(
+    WCFWasserentnahmen wcfwe,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginWasserentnahmestelleDelete(wcfwe, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public void EndWasserentnahmestelleDelete(IAsyncResult result)
+  {
+    this.Channel.EndWasserentnahmestelleDelete(result);
+  }
+
+  private IAsyncResult OnBeginWasserentnahmestelleDelete(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginWasserentnahmestelleDelete((WCFWasserentnahmen) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndWasserentnahmestelleDelete(IAsyncResult result)
+  {
+    this.EndWasserentnahmestelleDelete(result);
+    return (object[]) null;
+  }
+
+  private void OnWasserentnahmestelleDeleteCompleted(object state)
+  {
+    if (this.WasserentnahmestelleDeleteCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.WasserentnahmestelleDeleteCompleted((object) this, new AsyncCompletedEventArgs(completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void WasserentnahmestelleDeleteAsync(WCFWasserentnahmen wcfwe, Guid TicketID)
+  {
+    this.WasserentnahmestelleDeleteAsync(wcfwe, TicketID, (object) null);
+  }
+
+  public void WasserentnahmestelleDeleteAsync(
+    WCFWasserentnahmen wcfwe,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginWasserentnahmestelleDeleteDelegate == null)
+      this.onBeginWasserentnahmestelleDeleteDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginWasserentnahmestelleDelete);
+    if (this.onEndWasserentnahmestelleDeleteDelegate == null)
+      this.onEndWasserentnahmestelleDeleteDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndWasserentnahmestelleDelete);
+    if (this.onWasserentnahmestelleDeleteCompletedDelegate == null)
+      this.onWasserentnahmestelleDeleteCompletedDelegate = new SendOrPostCallback(this.OnWasserentnahmestelleDeleteCompleted);
+    this.InvokeAsync(this.onBeginWasserentnahmestelleDeleteDelegate, new object[2]
+    {
+      (object) wcfwe,
+      (object) TicketID
+    }, this.onEndWasserentnahmestelleDeleteDelegate, this.onWasserentnahmestelleDeleteCompletedDelegate, userState);
+  }
+
+  public int WasserentnahmestelleIconRefresh(Guid TicketID)
+  {
+    return this.Channel.WasserentnahmestelleIconRefresh(TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginWasserentnahmestelleIconRefresh(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginWasserentnahmestelleIconRefresh(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public int EndWasserentnahmestelleIconRefresh(IAsyncResult result)
+  {
+    return this.Channel.EndWasserentnahmestelleIconRefresh(result);
+  }
+
+  private IAsyncResult OnBeginWasserentnahmestelleIconRefresh(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginWasserentnahmestelleIconRefresh((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndWasserentnahmestelleIconRefresh(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndWasserentnahmestelleIconRefresh(result)
+    };
+  }
+
+  private void OnWasserentnahmestelleIconRefreshCompleted(object state)
+  {
+    if (this.WasserentnahmestelleIconRefreshCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.WasserentnahmestelleIconRefreshCompleted((object) this, new WasserentnahmestelleIconRefreshCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void WasserentnahmestelleIconRefreshAsync(Guid TicketID)
+  {
+    this.WasserentnahmestelleIconRefreshAsync(TicketID, (object) null);
+  }
+
+  public void WasserentnahmestelleIconRefreshAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginWasserentnahmestelleIconRefreshDelegate == null)
+      this.onBeginWasserentnahmestelleIconRefreshDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginWasserentnahmestelleIconRefresh);
+    if (this.onEndWasserentnahmestelleIconRefreshDelegate == null)
+      this.onEndWasserentnahmestelleIconRefreshDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndWasserentnahmestelleIconRefresh);
+    if (this.onWasserentnahmestelleIconRefreshCompletedDelegate == null)
+      this.onWasserentnahmestelleIconRefreshCompletedDelegate = new SendOrPostCallback(this.OnWasserentnahmestelleIconRefreshCompleted);
+    this.InvokeAsync(this.onBeginWasserentnahmestelleIconRefreshDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndWasserentnahmestelleIconRefreshDelegate, this.onWasserentnahmestelleIconRefreshCompletedDelegate, userState);
+  }
+
+  public WCFWEBild[] WasserentnahmestellenBilderGetAll(Guid TicketID)
+  {
+    return this.Channel.WasserentnahmestellenBilderGetAll(TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginWasserentnahmestellenBilderGetAll(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginWasserentnahmestellenBilderGetAll(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFWEBild[] EndWasserentnahmestellenBilderGetAll(IAsyncResult result)
+  {
+    return this.Channel.EndWasserentnahmestellenBilderGetAll(result);
+  }
+
+  private IAsyncResult OnBeginWasserentnahmestellenBilderGetAll(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginWasserentnahmestellenBilderGetAll((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndWasserentnahmestellenBilderGetAll(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndWasserentnahmestellenBilderGetAll(result)
+    };
+  }
+
+  private void OnWasserentnahmestellenBilderGetAllCompleted(object state)
+  {
+    if (this.WasserentnahmestellenBilderGetAllCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.WasserentnahmestellenBilderGetAllCompleted((object) this, new WasserentnahmestellenBilderGetAllCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void WasserentnahmestellenBilderGetAllAsync(Guid TicketID)
+  {
+    this.WasserentnahmestellenBilderGetAllAsync(TicketID, (object) null);
+  }
+
+  public void WasserentnahmestellenBilderGetAllAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginWasserentnahmestellenBilderGetAllDelegate == null)
+      this.onBeginWasserentnahmestellenBilderGetAllDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginWasserentnahmestellenBilderGetAll);
+    if (this.onEndWasserentnahmestellenBilderGetAllDelegate == null)
+      this.onEndWasserentnahmestellenBilderGetAllDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndWasserentnahmestellenBilderGetAll);
+    if (this.onWasserentnahmestellenBilderGetAllCompletedDelegate == null)
+      this.onWasserentnahmestellenBilderGetAllCompletedDelegate = new SendOrPostCallback(this.OnWasserentnahmestellenBilderGetAllCompleted);
+    this.InvokeAsync(this.onBeginWasserentnahmestellenBilderGetAllDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndWasserentnahmestellenBilderGetAllDelegate, this.onWasserentnahmestellenBilderGetAllCompletedDelegate, userState);
+  }
+
+  public WCFWEBild[] WasserentnahmestellenBilderGetByWasserentnahmestelle(
+    WCFWasserentnahmen we,
+    Guid TicketID)
+  {
+    return this.Channel.WasserentnahmestellenBilderGetByWasserentnahmestelle(we, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginWasserentnahmestellenBilderGetByWasserentnahmestelle(
+    WCFWasserentnahmen we,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginWasserentnahmestellenBilderGetByWasserentnahmestelle(we, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFWEBild[] EndWasserentnahmestellenBilderGetByWasserentnahmestelle(IAsyncResult result)
+  {
+    return this.Channel.EndWasserentnahmestellenBilderGetByWasserentnahmestelle(result);
+  }
+
+  private IAsyncResult OnBeginWasserentnahmestellenBilderGetByWasserentnahmestelle(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginWasserentnahmestellenBilderGetByWasserentnahmestelle((WCFWasserentnahmen) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndWasserentnahmestellenBilderGetByWasserentnahmestelle(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndWasserentnahmestellenBilderGetByWasserentnahmestelle(result)
+    };
+  }
+
+  private void OnWasserentnahmestellenBilderGetByWasserentnahmestelleCompleted(object state)
+  {
+    if (this.WasserentnahmestellenBilderGetByWasserentnahmestelleCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.WasserentnahmestellenBilderGetByWasserentnahmestelleCompleted((object) this, new WasserentnahmestellenBilderGetByWasserentnahmestelleCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void WasserentnahmestellenBilderGetByWasserentnahmestelleAsync(
+    WCFWasserentnahmen we,
+    Guid TicketID)
+  {
+    this.WasserentnahmestellenBilderGetByWasserentnahmestelleAsync(we, TicketID, (object) null);
+  }
+
+  public void WasserentnahmestellenBilderGetByWasserentnahmestelleAsync(
+    WCFWasserentnahmen we,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginWasserentnahmestellenBilderGetByWasserentnahmestelleDelegate == null)
+      this.onBeginWasserentnahmestellenBilderGetByWasserentnahmestelleDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginWasserentnahmestellenBilderGetByWasserentnahmestelle);
+    if (this.onEndWasserentnahmestellenBilderGetByWasserentnahmestelleDelegate == null)
+      this.onEndWasserentnahmestellenBilderGetByWasserentnahmestelleDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndWasserentnahmestellenBilderGetByWasserentnahmestelle);
+    if (this.onWasserentnahmestellenBilderGetByWasserentnahmestelleCompletedDelegate == null)
+      this.onWasserentnahmestellenBilderGetByWasserentnahmestelleCompletedDelegate = new SendOrPostCallback(this.OnWasserentnahmestellenBilderGetByWasserentnahmestelleCompleted);
+    this.InvokeAsync(this.onBeginWasserentnahmestellenBilderGetByWasserentnahmestelleDelegate, new object[2]
+    {
+      (object) we,
+      (object) TicketID
+    }, this.onEndWasserentnahmestellenBilderGetByWasserentnahmestelleDelegate, this.onWasserentnahmestellenBilderGetByWasserentnahmestelleCompletedDelegate, userState);
+  }
+
+  public WCFWEBild WasserentnahmestellenBildPersist(WCFWEBild b, Guid TicketID)
+  {
+    return this.Channel.WasserentnahmestellenBildPersist(b, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginWasserentnahmestellenBildPersist(
+    WCFWEBild b,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginWasserentnahmestellenBildPersist(b, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFWEBild EndWasserentnahmestellenBildPersist(IAsyncResult result)
+  {
+    return this.Channel.EndWasserentnahmestellenBildPersist(result);
+  }
+
+  private IAsyncResult OnBeginWasserentnahmestellenBildPersist(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginWasserentnahmestellenBildPersist((WCFWEBild) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndWasserentnahmestellenBildPersist(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndWasserentnahmestellenBildPersist(result)
+    };
+  }
+
+  private void OnWasserentnahmestellenBildPersistCompleted(object state)
+  {
+    if (this.WasserentnahmestellenBildPersistCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.WasserentnahmestellenBildPersistCompleted((object) this, new WasserentnahmestellenBildPersistCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void WasserentnahmestellenBildPersistAsync(WCFWEBild b, Guid TicketID)
+  {
+    this.WasserentnahmestellenBildPersistAsync(b, TicketID, (object) null);
+  }
+
+  public void WasserentnahmestellenBildPersistAsync(WCFWEBild b, Guid TicketID, object userState)
+  {
+    if (this.onBeginWasserentnahmestellenBildPersistDelegate == null)
+      this.onBeginWasserentnahmestellenBildPersistDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginWasserentnahmestellenBildPersist);
+    if (this.onEndWasserentnahmestellenBildPersistDelegate == null)
+      this.onEndWasserentnahmestellenBildPersistDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndWasserentnahmestellenBildPersist);
+    if (this.onWasserentnahmestellenBildPersistCompletedDelegate == null)
+      this.onWasserentnahmestellenBildPersistCompletedDelegate = new SendOrPostCallback(this.OnWasserentnahmestellenBildPersistCompleted);
+    this.InvokeAsync(this.onBeginWasserentnahmestellenBildPersistDelegate, new object[2]
+    {
+      (object) b,
+      (object) TicketID
+    }, this.onEndWasserentnahmestellenBildPersistDelegate, this.onWasserentnahmestellenBildPersistCompletedDelegate, userState);
+  }
+
+  public bool WasserentnahmestellenBildDelete(WCFWEBild b, Guid TicketID)
+  {
+    return this.Channel.WasserentnahmestellenBildDelete(b, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginWasserentnahmestellenBildDelete(
+    WCFWEBild b,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginWasserentnahmestellenBildDelete(b, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndWasserentnahmestellenBildDelete(IAsyncResult result)
+  {
+    return this.Channel.EndWasserentnahmestellenBildDelete(result);
+  }
+
+  private IAsyncResult OnBeginWasserentnahmestellenBildDelete(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginWasserentnahmestellenBildDelete((WCFWEBild) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndWasserentnahmestellenBildDelete(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndWasserentnahmestellenBildDelete(result)
+    };
+  }
+
+  private void OnWasserentnahmestellenBildDeleteCompleted(object state)
+  {
+    if (this.WasserentnahmestellenBildDeleteCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.WasserentnahmestellenBildDeleteCompleted((object) this, new WasserentnahmestellenBildDeleteCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void WasserentnahmestellenBildDeleteAsync(WCFWEBild b, Guid TicketID)
+  {
+    this.WasserentnahmestellenBildDeleteAsync(b, TicketID, (object) null);
+  }
+
+  public void WasserentnahmestellenBildDeleteAsync(WCFWEBild b, Guid TicketID, object userState)
+  {
+    if (this.onBeginWasserentnahmestellenBildDeleteDelegate == null)
+      this.onBeginWasserentnahmestellenBildDeleteDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginWasserentnahmestellenBildDelete);
+    if (this.onEndWasserentnahmestellenBildDeleteDelegate == null)
+      this.onEndWasserentnahmestellenBildDeleteDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndWasserentnahmestellenBildDelete);
+    if (this.onWasserentnahmestellenBildDeleteCompletedDelegate == null)
+      this.onWasserentnahmestellenBildDeleteCompletedDelegate = new SendOrPostCallback(this.OnWasserentnahmestellenBildDeleteCompleted);
+    this.InvokeAsync(this.onBeginWasserentnahmestellenBildDeleteDelegate, new object[2]
+    {
+      (object) b,
+      (object) TicketID
+    }, this.onEndWasserentnahmestellenBildDeleteDelegate, this.onWasserentnahmestellenBildDeleteCompletedDelegate, userState);
+  }
+
+  public bool WasserentnahmestellenGMLAttributUpdate(
+    WCFWasserentnahmen we,
+    WCFWEGMLAttribut[] attribute,
+    Guid TicketID)
+  {
+    return this.Channel.WasserentnahmestellenGMLAttributUpdate(we, attribute, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginWasserentnahmestellenGMLAttributUpdate(
+    WCFWasserentnahmen we,
+    WCFWEGMLAttribut[] attribute,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginWasserentnahmestellenGMLAttributUpdate(we, attribute, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndWasserentnahmestellenGMLAttributUpdate(IAsyncResult result)
+  {
+    return this.Channel.EndWasserentnahmestellenGMLAttributUpdate(result);
+  }
+
+  private IAsyncResult OnBeginWasserentnahmestellenGMLAttributUpdate(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginWasserentnahmestellenGMLAttributUpdate((WCFWasserentnahmen) inValues[0], (WCFWEGMLAttribut[]) inValues[1], (Guid) inValues[2], callback, asyncState);
+  }
+
+  private object[] OnEndWasserentnahmestellenGMLAttributUpdate(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndWasserentnahmestellenGMLAttributUpdate(result)
+    };
+  }
+
+  private void OnWasserentnahmestellenGMLAttributUpdateCompleted(object state)
+  {
+    if (this.WasserentnahmestellenGMLAttributUpdateCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.WasserentnahmestellenGMLAttributUpdateCompleted((object) this, new WasserentnahmestellenGMLAttributUpdateCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void WasserentnahmestellenGMLAttributUpdateAsync(
+    WCFWasserentnahmen we,
+    WCFWEGMLAttribut[] attribute,
+    Guid TicketID)
+  {
+    this.WasserentnahmestellenGMLAttributUpdateAsync(we, attribute, TicketID, (object) null);
+  }
+
+  public void WasserentnahmestellenGMLAttributUpdateAsync(
+    WCFWasserentnahmen we,
+    WCFWEGMLAttribut[] attribute,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginWasserentnahmestellenGMLAttributUpdateDelegate == null)
+      this.onBeginWasserentnahmestellenGMLAttributUpdateDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginWasserentnahmestellenGMLAttributUpdate);
+    if (this.onEndWasserentnahmestellenGMLAttributUpdateDelegate == null)
+      this.onEndWasserentnahmestellenGMLAttributUpdateDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndWasserentnahmestellenGMLAttributUpdate);
+    if (this.onWasserentnahmestellenGMLAttributUpdateCompletedDelegate == null)
+      this.onWasserentnahmestellenGMLAttributUpdateCompletedDelegate = new SendOrPostCallback(this.OnWasserentnahmestellenGMLAttributUpdateCompleted);
+    this.InvokeAsync(this.onBeginWasserentnahmestellenGMLAttributUpdateDelegate, new object[3]
+    {
+      (object) we,
+      (object) attribute,
+      (object) TicketID
+    }, this.onEndWasserentnahmestellenGMLAttributUpdateDelegate, this.onWasserentnahmestellenGMLAttributUpdateCompletedDelegate, userState);
+  }
+
+  public bool ConfigNeuEinlesen(Guid TicketID) => this.Channel.ConfigNeuEinlesen(TicketID);
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginConfigNeuEinlesen(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginConfigNeuEinlesen(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndConfigNeuEinlesen(IAsyncResult result)
+  {
+    return this.Channel.EndConfigNeuEinlesen(result);
+  }
+
+  private IAsyncResult OnBeginConfigNeuEinlesen(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginConfigNeuEinlesen((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndConfigNeuEinlesen(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndConfigNeuEinlesen(result)
+    };
+  }
+
+  private void OnConfigNeuEinlesenCompleted(object state)
+  {
+    if (this.ConfigNeuEinlesenCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.ConfigNeuEinlesenCompleted((object) this, new ConfigNeuEinlesenCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void ConfigNeuEinlesenAsync(Guid TicketID)
+  {
+    this.ConfigNeuEinlesenAsync(TicketID, (object) null);
+  }
+
+  public void ConfigNeuEinlesenAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginConfigNeuEinlesenDelegate == null)
+      this.onBeginConfigNeuEinlesenDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginConfigNeuEinlesen);
+    if (this.onEndConfigNeuEinlesenDelegate == null)
+      this.onEndConfigNeuEinlesenDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndConfigNeuEinlesen);
+    if (this.onConfigNeuEinlesenCompletedDelegate == null)
+      this.onConfigNeuEinlesenCompletedDelegate = new SendOrPostCallback(this.OnConfigNeuEinlesenCompleted);
+    this.InvokeAsync(this.onBeginConfigNeuEinlesenDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndConfigNeuEinlesenDelegate, this.onConfigNeuEinlesenCompletedDelegate, userState);
+  }
+
+  public bool FeuerwehrhausKoordinatenSet(double GPSLatitude, double GPSLongitude, Guid TicketID)
+  {
+    return this.Channel.FeuerwehrhausKoordinatenSet(GPSLatitude, GPSLongitude, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginFeuerwehrhausKoordinatenSet(
+    double GPSLatitude,
+    double GPSLongitude,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginFeuerwehrhausKoordinatenSet(GPSLatitude, GPSLongitude, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndFeuerwehrhausKoordinatenSet(IAsyncResult result)
+  {
+    return this.Channel.EndFeuerwehrhausKoordinatenSet(result);
+  }
+
+  private IAsyncResult OnBeginFeuerwehrhausKoordinatenSet(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginFeuerwehrhausKoordinatenSet((double) inValues[0], (double) inValues[1], (Guid) inValues[2], callback, asyncState);
+  }
+
+  private object[] OnEndFeuerwehrhausKoordinatenSet(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndFeuerwehrhausKoordinatenSet(result)
+    };
+  }
+
+  private void OnFeuerwehrhausKoordinatenSetCompleted(object state)
+  {
+    if (this.FeuerwehrhausKoordinatenSetCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.FeuerwehrhausKoordinatenSetCompleted((object) this, new FeuerwehrhausKoordinatenSetCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void FeuerwehrhausKoordinatenSetAsync(
+    double GPSLatitude,
+    double GPSLongitude,
+    Guid TicketID)
+  {
+    this.FeuerwehrhausKoordinatenSetAsync(GPSLatitude, GPSLongitude, TicketID, (object) null);
+  }
+
+  public void FeuerwehrhausKoordinatenSetAsync(
+    double GPSLatitude,
+    double GPSLongitude,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginFeuerwehrhausKoordinatenSetDelegate == null)
+      this.onBeginFeuerwehrhausKoordinatenSetDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginFeuerwehrhausKoordinatenSet);
+    if (this.onEndFeuerwehrhausKoordinatenSetDelegate == null)
+      this.onEndFeuerwehrhausKoordinatenSetDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndFeuerwehrhausKoordinatenSet);
+    if (this.onFeuerwehrhausKoordinatenSetCompletedDelegate == null)
+      this.onFeuerwehrhausKoordinatenSetCompletedDelegate = new SendOrPostCallback(this.OnFeuerwehrhausKoordinatenSetCompleted);
+    this.InvokeAsync(this.onBeginFeuerwehrhausKoordinatenSetDelegate, new object[3]
+    {
+      (object) GPSLatitude,
+      (object) GPSLongitude,
+      (object) TicketID
+    }, this.onEndFeuerwehrhausKoordinatenSetDelegate, this.onFeuerwehrhausKoordinatenSetCompletedDelegate, userState);
+  }
+
+  public int DokumenteBereinigen(Guid TicketID) => this.Channel.DokumenteBereinigen(TicketID);
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginDokumenteBereinigen(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginDokumenteBereinigen(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public int EndDokumenteBereinigen(IAsyncResult result)
+  {
+    return this.Channel.EndDokumenteBereinigen(result);
+  }
+
+  private IAsyncResult OnBeginDokumenteBereinigen(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginDokumenteBereinigen((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndDokumenteBereinigen(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndDokumenteBereinigen(result)
+    };
+  }
+
+  private void OnDokumenteBereinigenCompleted(object state)
+  {
+    if (this.DokumenteBereinigenCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.DokumenteBereinigenCompleted((object) this, new DokumenteBereinigenCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void DokumenteBereinigenAsync(Guid TicketID)
+  {
+    this.DokumenteBereinigenAsync(TicketID, (object) null);
+  }
+
+  public void DokumenteBereinigenAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginDokumenteBereinigenDelegate == null)
+      this.onBeginDokumenteBereinigenDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginDokumenteBereinigen);
+    if (this.onEndDokumenteBereinigenDelegate == null)
+      this.onEndDokumenteBereinigenDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndDokumenteBereinigen);
+    if (this.onDokumenteBereinigenCompletedDelegate == null)
+      this.onDokumenteBereinigenCompletedDelegate = new SendOrPostCallback(this.OnDokumenteBereinigenCompleted);
+    this.InvokeAsync(this.onBeginDokumenteBereinigenDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndDokumenteBereinigenDelegate, this.onDokumenteBereinigenCompletedDelegate, userState);
+  }
+
+  public string[] DokumenteValidieren(Guid TicketID) => this.Channel.DokumenteValidieren(TicketID);
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginDokumenteValidieren(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginDokumenteValidieren(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public string[] EndDokumenteValidieren(IAsyncResult result)
+  {
+    return this.Channel.EndDokumenteValidieren(result);
+  }
+
+  private IAsyncResult OnBeginDokumenteValidieren(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginDokumenteValidieren((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndDokumenteValidieren(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndDokumenteValidieren(result)
+    };
+  }
+
+  private void OnDokumenteValidierenCompleted(object state)
+  {
+    if (this.DokumenteValidierenCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.DokumenteValidierenCompleted((object) this, new DokumenteValidierenCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void DokumenteValidierenAsync(Guid TicketID)
+  {
+    this.DokumenteValidierenAsync(TicketID, (object) null);
+  }
+
+  public void DokumenteValidierenAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginDokumenteValidierenDelegate == null)
+      this.onBeginDokumenteValidierenDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginDokumenteValidieren);
+    if (this.onEndDokumenteValidierenDelegate == null)
+      this.onEndDokumenteValidierenDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndDokumenteValidieren);
+    if (this.onDokumenteValidierenCompletedDelegate == null)
+      this.onDokumenteValidierenCompletedDelegate = new SendOrPostCallback(this.OnDokumenteValidierenCompleted);
+    this.InvokeAsync(this.onBeginDokumenteValidierenDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndDokumenteValidierenDelegate, this.onDokumenteValidierenCompletedDelegate, userState);
+  }
+
+  public WCFTimerService[] TimerServicesGetAll(Guid TicketID)
+  {
+    return this.Channel.TimerServicesGetAll(TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginTimerServicesGetAll(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginTimerServicesGetAll(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFTimerService[] EndTimerServicesGetAll(IAsyncResult result)
+  {
+    return this.Channel.EndTimerServicesGetAll(result);
+  }
+
+  private IAsyncResult OnBeginTimerServicesGetAll(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginTimerServicesGetAll((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndTimerServicesGetAll(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndTimerServicesGetAll(result)
+    };
+  }
+
+  private void OnTimerServicesGetAllCompleted(object state)
+  {
+    if (this.TimerServicesGetAllCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.TimerServicesGetAllCompleted((object) this, new TimerServicesGetAllCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void TimerServicesGetAllAsync(Guid TicketID)
+  {
+    this.TimerServicesGetAllAsync(TicketID, (object) null);
+  }
+
+  public void TimerServicesGetAllAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginTimerServicesGetAllDelegate == null)
+      this.onBeginTimerServicesGetAllDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginTimerServicesGetAll);
+    if (this.onEndTimerServicesGetAllDelegate == null)
+      this.onEndTimerServicesGetAllDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndTimerServicesGetAll);
+    if (this.onTimerServicesGetAllCompletedDelegate == null)
+      this.onTimerServicesGetAllCompletedDelegate = new SendOrPostCallback(this.OnTimerServicesGetAllCompleted);
+    this.InvokeAsync(this.onBeginTimerServicesGetAllDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndTimerServicesGetAllDelegate, this.onTimerServicesGetAllCompletedDelegate, userState);
+  }
+
+  public bool TimerServicesPersist(WCFTimerService ts, Guid TicketID)
+  {
+    return this.Channel.TimerServicesPersist(ts, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginTimerServicesPersist(
+    WCFTimerService ts,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginTimerServicesPersist(ts, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndTimerServicesPersist(IAsyncResult result)
+  {
+    return this.Channel.EndTimerServicesPersist(result);
+  }
+
+  private IAsyncResult OnBeginTimerServicesPersist(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginTimerServicesPersist((WCFTimerService) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndTimerServicesPersist(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndTimerServicesPersist(result)
+    };
+  }
+
+  private void OnTimerServicesPersistCompleted(object state)
+  {
+    if (this.TimerServicesPersistCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.TimerServicesPersistCompleted((object) this, new TimerServicesPersistCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void TimerServicesPersistAsync(WCFTimerService ts, Guid TicketID)
+  {
+    this.TimerServicesPersistAsync(ts, TicketID, (object) null);
+  }
+
+  public void TimerServicesPersistAsync(WCFTimerService ts, Guid TicketID, object userState)
+  {
+    if (this.onBeginTimerServicesPersistDelegate == null)
+      this.onBeginTimerServicesPersistDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginTimerServicesPersist);
+    if (this.onEndTimerServicesPersistDelegate == null)
+      this.onEndTimerServicesPersistDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndTimerServicesPersist);
+    if (this.onTimerServicesPersistCompletedDelegate == null)
+      this.onTimerServicesPersistCompletedDelegate = new SendOrPostCallback(this.OnTimerServicesPersistCompleted);
+    this.InvokeAsync(this.onBeginTimerServicesPersistDelegate, new object[2]
+    {
+      (object) ts,
+      (object) TicketID
+    }, this.onEndTimerServicesPersistDelegate, this.onTimerServicesPersistCompletedDelegate, userState);
+  }
+
+  public bool TimerServicesDelete(WCFTimerService ts, Guid TicketID)
+  {
+    return this.Channel.TimerServicesDelete(ts, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginTimerServicesDelete(
+    WCFTimerService ts,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginTimerServicesDelete(ts, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndTimerServicesDelete(IAsyncResult result)
+  {
+    return this.Channel.EndTimerServicesDelete(result);
+  }
+
+  private IAsyncResult OnBeginTimerServicesDelete(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginTimerServicesDelete((WCFTimerService) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndTimerServicesDelete(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndTimerServicesDelete(result)
+    };
+  }
+
+  private void OnTimerServicesDeleteCompleted(object state)
+  {
+    if (this.TimerServicesDeleteCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.TimerServicesDeleteCompleted((object) this, new TimerServicesDeleteCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void TimerServicesDeleteAsync(WCFTimerService ts, Guid TicketID)
+  {
+    this.TimerServicesDeleteAsync(ts, TicketID, (object) null);
+  }
+
+  public void TimerServicesDeleteAsync(WCFTimerService ts, Guid TicketID, object userState)
+  {
+    if (this.onBeginTimerServicesDeleteDelegate == null)
+      this.onBeginTimerServicesDeleteDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginTimerServicesDelete);
+    if (this.onEndTimerServicesDeleteDelegate == null)
+      this.onEndTimerServicesDeleteDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndTimerServicesDelete);
+    if (this.onTimerServicesDeleteCompletedDelegate == null)
+      this.onTimerServicesDeleteCompletedDelegate = new SendOrPostCallback(this.OnTimerServicesDeleteCompleted);
+    this.InvokeAsync(this.onBeginTimerServicesDeleteDelegate, new object[2]
+    {
+      (object) ts,
+      (object) TicketID
+    }, this.onEndTimerServicesDeleteDelegate, this.onTimerServicesDeleteCompletedDelegate, userState);
+  }
+
+  public bool TimerServicesExecuteJobManual(WCFTimerService ts, Guid TicketID)
+  {
+    return this.Channel.TimerServicesExecuteJobManual(ts, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginTimerServicesExecuteJobManual(
+    WCFTimerService ts,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginTimerServicesExecuteJobManual(ts, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndTimerServicesExecuteJobManual(IAsyncResult result)
+  {
+    return this.Channel.EndTimerServicesExecuteJobManual(result);
+  }
+
+  private IAsyncResult OnBeginTimerServicesExecuteJobManual(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginTimerServicesExecuteJobManual((WCFTimerService) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndTimerServicesExecuteJobManual(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndTimerServicesExecuteJobManual(result)
+    };
+  }
+
+  private void OnTimerServicesExecuteJobManualCompleted(object state)
+  {
+    if (this.TimerServicesExecuteJobManualCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.TimerServicesExecuteJobManualCompleted((object) this, new TimerServicesExecuteJobManualCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void TimerServicesExecuteJobManualAsync(WCFTimerService ts, Guid TicketID)
+  {
+    this.TimerServicesExecuteJobManualAsync(ts, TicketID, (object) null);
+  }
+
+  public void TimerServicesExecuteJobManualAsync(
+    WCFTimerService ts,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginTimerServicesExecuteJobManualDelegate == null)
+      this.onBeginTimerServicesExecuteJobManualDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginTimerServicesExecuteJobManual);
+    if (this.onEndTimerServicesExecuteJobManualDelegate == null)
+      this.onEndTimerServicesExecuteJobManualDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndTimerServicesExecuteJobManual);
+    if (this.onTimerServicesExecuteJobManualCompletedDelegate == null)
+      this.onTimerServicesExecuteJobManualCompletedDelegate = new SendOrPostCallback(this.OnTimerServicesExecuteJobManualCompleted);
+    this.InvokeAsync(this.onBeginTimerServicesExecuteJobManualDelegate, new object[2]
+    {
+      (object) ts,
+      (object) TicketID
+    }, this.onEndTimerServicesExecuteJobManualDelegate, this.onTimerServicesExecuteJobManualCompletedDelegate, userState);
+  }
+
+  public bool WakeOnLanClientPersist(WCFWakeOnLanClientObj client, Guid TicketID)
+  {
+    return this.Channel.WakeOnLanClientPersist(client, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginWakeOnLanClientPersist(
+    WCFWakeOnLanClientObj client,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginWakeOnLanClientPersist(client, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndWakeOnLanClientPersist(IAsyncResult result)
+  {
+    return this.Channel.EndWakeOnLanClientPersist(result);
+  }
+
+  private IAsyncResult OnBeginWakeOnLanClientPersist(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginWakeOnLanClientPersist((WCFWakeOnLanClientObj) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndWakeOnLanClientPersist(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndWakeOnLanClientPersist(result)
+    };
+  }
+
+  private void OnWakeOnLanClientPersistCompleted(object state)
+  {
+    if (this.WakeOnLanClientPersistCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.WakeOnLanClientPersistCompleted((object) this, new WakeOnLanClientPersistCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void WakeOnLanClientPersistAsync(WCFWakeOnLanClientObj client, Guid TicketID)
+  {
+    this.WakeOnLanClientPersistAsync(client, TicketID, (object) null);
+  }
+
+  public void WakeOnLanClientPersistAsync(
+    WCFWakeOnLanClientObj client,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginWakeOnLanClientPersistDelegate == null)
+      this.onBeginWakeOnLanClientPersistDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginWakeOnLanClientPersist);
+    if (this.onEndWakeOnLanClientPersistDelegate == null)
+      this.onEndWakeOnLanClientPersistDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndWakeOnLanClientPersist);
+    if (this.onWakeOnLanClientPersistCompletedDelegate == null)
+      this.onWakeOnLanClientPersistCompletedDelegate = new SendOrPostCallback(this.OnWakeOnLanClientPersistCompleted);
+    this.InvokeAsync(this.onBeginWakeOnLanClientPersistDelegate, new object[2]
+    {
+      (object) client,
+      (object) TicketID
+    }, this.onEndWakeOnLanClientPersistDelegate, this.onWakeOnLanClientPersistCompletedDelegate, userState);
+  }
+
+  public bool WakeOnLanClientDelete(WCFWakeOnLanClientObj client, Guid TicketID)
+  {
+    return this.Channel.WakeOnLanClientDelete(client, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginWakeOnLanClientDelete(
+    WCFWakeOnLanClientObj client,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginWakeOnLanClientDelete(client, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndWakeOnLanClientDelete(IAsyncResult result)
+  {
+    return this.Channel.EndWakeOnLanClientDelete(result);
+  }
+
+  private IAsyncResult OnBeginWakeOnLanClientDelete(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginWakeOnLanClientDelete((WCFWakeOnLanClientObj) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndWakeOnLanClientDelete(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndWakeOnLanClientDelete(result)
+    };
+  }
+
+  private void OnWakeOnLanClientDeleteCompleted(object state)
+  {
+    if (this.WakeOnLanClientDeleteCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.WakeOnLanClientDeleteCompleted((object) this, new WakeOnLanClientDeleteCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void WakeOnLanClientDeleteAsync(WCFWakeOnLanClientObj client, Guid TicketID)
+  {
+    this.WakeOnLanClientDeleteAsync(client, TicketID, (object) null);
+  }
+
+  public void WakeOnLanClientDeleteAsync(
+    WCFWakeOnLanClientObj client,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginWakeOnLanClientDeleteDelegate == null)
+      this.onBeginWakeOnLanClientDeleteDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginWakeOnLanClientDelete);
+    if (this.onEndWakeOnLanClientDeleteDelegate == null)
+      this.onEndWakeOnLanClientDeleteDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndWakeOnLanClientDelete);
+    if (this.onWakeOnLanClientDeleteCompletedDelegate == null)
+      this.onWakeOnLanClientDeleteCompletedDelegate = new SendOrPostCallback(this.OnWakeOnLanClientDeleteCompleted);
+    this.InvokeAsync(this.onBeginWakeOnLanClientDeleteDelegate, new object[2]
+    {
+      (object) client,
+      (object) TicketID
+    }, this.onEndWakeOnLanClientDeleteDelegate, this.onWakeOnLanClientDeleteCompletedDelegate, userState);
+  }
+
+  public bool WakeOnLanClientWAKEClient(WCFWakeOnLanClientObj client, Guid TicketID)
+  {
+    return this.Channel.WakeOnLanClientWAKEClient(client, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginWakeOnLanClientWAKEClient(
+    WCFWakeOnLanClientObj client,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginWakeOnLanClientWAKEClient(client, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndWakeOnLanClientWAKEClient(IAsyncResult result)
+  {
+    return this.Channel.EndWakeOnLanClientWAKEClient(result);
+  }
+
+  private IAsyncResult OnBeginWakeOnLanClientWAKEClient(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginWakeOnLanClientWAKEClient((WCFWakeOnLanClientObj) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndWakeOnLanClientWAKEClient(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndWakeOnLanClientWAKEClient(result)
+    };
+  }
+
+  private void OnWakeOnLanClientWAKEClientCompleted(object state)
+  {
+    if (this.WakeOnLanClientWAKEClientCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.WakeOnLanClientWAKEClientCompleted((object) this, new WakeOnLanClientWAKEClientCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void WakeOnLanClientWAKEClientAsync(WCFWakeOnLanClientObj client, Guid TicketID)
+  {
+    this.WakeOnLanClientWAKEClientAsync(client, TicketID, (object) null);
+  }
+
+  public void WakeOnLanClientWAKEClientAsync(
+    WCFWakeOnLanClientObj client,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginWakeOnLanClientWAKEClientDelegate == null)
+      this.onBeginWakeOnLanClientWAKEClientDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginWakeOnLanClientWAKEClient);
+    if (this.onEndWakeOnLanClientWAKEClientDelegate == null)
+      this.onEndWakeOnLanClientWAKEClientDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndWakeOnLanClientWAKEClient);
+    if (this.onWakeOnLanClientWAKEClientCompletedDelegate == null)
+      this.onWakeOnLanClientWAKEClientCompletedDelegate = new SendOrPostCallback(this.OnWakeOnLanClientWAKEClientCompleted);
+    this.InvokeAsync(this.onBeginWakeOnLanClientWAKEClientDelegate, new object[2]
+    {
+      (object) client,
+      (object) TicketID
+    }, this.onEndWakeOnLanClientWAKEClientDelegate, this.onWakeOnLanClientWAKEClientCompletedDelegate, userState);
+  }
+
+  public WCFWakeOnLanClientObj[] WakeOnLanClientGetAll(Guid TicketID)
+  {
+    return this.Channel.WakeOnLanClientGetAll(TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginWakeOnLanClientGetAll(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginWakeOnLanClientGetAll(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFWakeOnLanClientObj[] EndWakeOnLanClientGetAll(IAsyncResult result)
+  {
+    return this.Channel.EndWakeOnLanClientGetAll(result);
+  }
+
+  private IAsyncResult OnBeginWakeOnLanClientGetAll(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginWakeOnLanClientGetAll((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndWakeOnLanClientGetAll(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndWakeOnLanClientGetAll(result)
+    };
+  }
+
+  private void OnWakeOnLanClientGetAllCompleted(object state)
+  {
+    if (this.WakeOnLanClientGetAllCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.WakeOnLanClientGetAllCompleted((object) this, new WakeOnLanClientGetAllCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void WakeOnLanClientGetAllAsync(Guid TicketID)
+  {
+    this.WakeOnLanClientGetAllAsync(TicketID, (object) null);
+  }
+
+  public void WakeOnLanClientGetAllAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginWakeOnLanClientGetAllDelegate == null)
+      this.onBeginWakeOnLanClientGetAllDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginWakeOnLanClientGetAll);
+    if (this.onEndWakeOnLanClientGetAllDelegate == null)
+      this.onEndWakeOnLanClientGetAllDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndWakeOnLanClientGetAll);
+    if (this.onWakeOnLanClientGetAllCompletedDelegate == null)
+      this.onWakeOnLanClientGetAllCompletedDelegate = new SendOrPostCallback(this.OnWakeOnLanClientGetAllCompleted);
+    this.InvokeAsync(this.onBeginWakeOnLanClientGetAllDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndWakeOnLanClientGetAllDelegate, this.onWakeOnLanClientGetAllCompletedDelegate, userState);
+  }
+
+  public WCFSirenenprogramm[] SirenenprogrammGetAll(Guid TicketID)
+  {
+    return this.Channel.SirenenprogrammGetAll(TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginSirenenprogrammGetAll(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginSirenenprogrammGetAll(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFSirenenprogramm[] EndSirenenprogrammGetAll(IAsyncResult result)
+  {
+    return this.Channel.EndSirenenprogrammGetAll(result);
+  }
+
+  private IAsyncResult OnBeginSirenenprogrammGetAll(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginSirenenprogrammGetAll((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndSirenenprogrammGetAll(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndSirenenprogrammGetAll(result)
+    };
+  }
+
+  private void OnSirenenprogrammGetAllCompleted(object state)
+  {
+    if (this.SirenenprogrammGetAllCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.SirenenprogrammGetAllCompleted((object) this, new SirenenprogrammGetAllCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void SirenenprogrammGetAllAsync(Guid TicketID)
+  {
+    this.SirenenprogrammGetAllAsync(TicketID, (object) null);
+  }
+
+  public void SirenenprogrammGetAllAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginSirenenprogrammGetAllDelegate == null)
+      this.onBeginSirenenprogrammGetAllDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginSirenenprogrammGetAll);
+    if (this.onEndSirenenprogrammGetAllDelegate == null)
+      this.onEndSirenenprogrammGetAllDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndSirenenprogrammGetAll);
+    if (this.onSirenenprogrammGetAllCompletedDelegate == null)
+      this.onSirenenprogrammGetAllCompletedDelegate = new SendOrPostCallback(this.OnSirenenprogrammGetAllCompleted);
+    this.InvokeAsync(this.onBeginSirenenprogrammGetAllDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndSirenenprogrammGetAllDelegate, this.onSirenenprogrammGetAllCompletedDelegate, userState);
+  }
+
+  public bool SirenenprogrammPersist(WCFSirenenprogramm sp, Guid TicketID)
+  {
+    return this.Channel.SirenenprogrammPersist(sp, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginSirenenprogrammPersist(
+    WCFSirenenprogramm sp,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginSirenenprogrammPersist(sp, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndSirenenprogrammPersist(IAsyncResult result)
+  {
+    return this.Channel.EndSirenenprogrammPersist(result);
+  }
+
+  private IAsyncResult OnBeginSirenenprogrammPersist(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginSirenenprogrammPersist((WCFSirenenprogramm) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndSirenenprogrammPersist(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndSirenenprogrammPersist(result)
+    };
+  }
+
+  private void OnSirenenprogrammPersistCompleted(object state)
+  {
+    if (this.SirenenprogrammPersistCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.SirenenprogrammPersistCompleted((object) this, new SirenenprogrammPersistCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void SirenenprogrammPersistAsync(WCFSirenenprogramm sp, Guid TicketID)
+  {
+    this.SirenenprogrammPersistAsync(sp, TicketID, (object) null);
+  }
+
+  public void SirenenprogrammPersistAsync(WCFSirenenprogramm sp, Guid TicketID, object userState)
+  {
+    if (this.onBeginSirenenprogrammPersistDelegate == null)
+      this.onBeginSirenenprogrammPersistDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginSirenenprogrammPersist);
+    if (this.onEndSirenenprogrammPersistDelegate == null)
+      this.onEndSirenenprogrammPersistDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndSirenenprogrammPersist);
+    if (this.onSirenenprogrammPersistCompletedDelegate == null)
+      this.onSirenenprogrammPersistCompletedDelegate = new SendOrPostCallback(this.OnSirenenprogrammPersistCompleted);
+    this.InvokeAsync(this.onBeginSirenenprogrammPersistDelegate, new object[2]
+    {
+      (object) sp,
+      (object) TicketID
+    }, this.onEndSirenenprogrammPersistDelegate, this.onSirenenprogrammPersistCompletedDelegate, userState);
+  }
+
+  public string[] DatenValidieren(Guid TicketID) => this.Channel.DatenValidieren(TicketID);
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginDatenValidieren(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginDatenValidieren(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public string[] EndDatenValidieren(IAsyncResult result)
+  {
+    return this.Channel.EndDatenValidieren(result);
+  }
+
+  private IAsyncResult OnBeginDatenValidieren(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginDatenValidieren((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndDatenValidieren(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndDatenValidieren(result)
+    };
+  }
+
+  private void OnDatenValidierenCompleted(object state)
+  {
+    if (this.DatenValidierenCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.DatenValidierenCompleted((object) this, new DatenValidierenCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void DatenValidierenAsync(Guid TicketID)
+  {
+    this.DatenValidierenAsync(TicketID, (object) null);
+  }
+
+  public void DatenValidierenAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginDatenValidierenDelegate == null)
+      this.onBeginDatenValidierenDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginDatenValidieren);
+    if (this.onEndDatenValidierenDelegate == null)
+      this.onEndDatenValidierenDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndDatenValidieren);
+    if (this.onDatenValidierenCompletedDelegate == null)
+      this.onDatenValidierenCompletedDelegate = new SendOrPostCallback(this.OnDatenValidierenCompleted);
+    this.InvokeAsync(this.onBeginDatenValidierenDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndDatenValidierenDelegate, this.onDatenValidierenCompletedDelegate, userState);
+  }
+
+  public string[] DatenReparieren(Guid TicketID) => this.Channel.DatenReparieren(TicketID);
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginDatenReparieren(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginDatenReparieren(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public string[] EndDatenReparieren(IAsyncResult result)
+  {
+    return this.Channel.EndDatenReparieren(result);
+  }
+
+  private IAsyncResult OnBeginDatenReparieren(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginDatenReparieren((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndDatenReparieren(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndDatenReparieren(result)
+    };
+  }
+
+  private void OnDatenReparierenCompleted(object state)
+  {
+    if (this.DatenReparierenCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.DatenReparierenCompleted((object) this, new DatenReparierenCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void DatenReparierenAsync(Guid TicketID)
+  {
+    this.DatenReparierenAsync(TicketID, (object) null);
+  }
+
+  public void DatenReparierenAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginDatenReparierenDelegate == null)
+      this.onBeginDatenReparierenDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginDatenReparieren);
+    if (this.onEndDatenReparierenDelegate == null)
+      this.onEndDatenReparierenDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndDatenReparieren);
+    if (this.onDatenReparierenCompletedDelegate == null)
+      this.onDatenReparierenCompletedDelegate = new SendOrPostCallback(this.OnDatenReparierenCompleted);
+    this.InvokeAsync(this.onBeginDatenReparierenDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndDatenReparierenDelegate, this.onDatenReparierenCompletedDelegate, userState);
+  }
+
+  public int KarteiBlattGetCount(Guid TicketID) => this.Channel.KarteiBlattGetCount(TicketID);
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginKarteiBlattGetCount(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginKarteiBlattGetCount(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public int EndKarteiBlattGetCount(IAsyncResult result)
+  {
+    return this.Channel.EndKarteiBlattGetCount(result);
+  }
+
+  private IAsyncResult OnBeginKarteiBlattGetCount(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginKarteiBlattGetCount((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndKarteiBlattGetCount(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndKarteiBlattGetCount(result)
+    };
+  }
+
+  private void OnKarteiBlattGetCountCompleted(object state)
+  {
+    if (this.KarteiBlattGetCountCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.KarteiBlattGetCountCompleted((object) this, new KarteiBlattGetCountCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void KarteiBlattGetCountAsync(Guid TicketID)
+  {
+    this.KarteiBlattGetCountAsync(TicketID, (object) null);
+  }
+
+  public void KarteiBlattGetCountAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginKarteiBlattGetCountDelegate == null)
+      this.onBeginKarteiBlattGetCountDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginKarteiBlattGetCount);
+    if (this.onEndKarteiBlattGetCountDelegate == null)
+      this.onEndKarteiBlattGetCountDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndKarteiBlattGetCount);
+    if (this.onKarteiBlattGetCountCompletedDelegate == null)
+      this.onKarteiBlattGetCountCompletedDelegate = new SendOrPostCallback(this.OnKarteiBlattGetCountCompleted);
+    this.InvokeAsync(this.onBeginKarteiBlattGetCountDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndKarteiBlattGetCountDelegate, this.onKarteiBlattGetCountCompletedDelegate, userState);
+  }
+
+  public int ObjektKarteiGetCount(Guid TicketID) => this.Channel.ObjektKarteiGetCount(TicketID);
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginObjektKarteiGetCount(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginObjektKarteiGetCount(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public int EndObjektKarteiGetCount(IAsyncResult result)
+  {
+    return this.Channel.EndObjektKarteiGetCount(result);
+  }
+
+  private IAsyncResult OnBeginObjektKarteiGetCount(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginObjektKarteiGetCount((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndObjektKarteiGetCount(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndObjektKarteiGetCount(result)
+    };
+  }
+
+  private void OnObjektKarteiGetCountCompleted(object state)
+  {
+    if (this.ObjektKarteiGetCountCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.ObjektKarteiGetCountCompleted((object) this, new ObjektKarteiGetCountCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void ObjektKarteiGetCountAsync(Guid TicketID)
+  {
+    this.ObjektKarteiGetCountAsync(TicketID, (object) null);
+  }
+
+  public void ObjektKarteiGetCountAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginObjektKarteiGetCountDelegate == null)
+      this.onBeginObjektKarteiGetCountDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginObjektKarteiGetCount);
+    if (this.onEndObjektKarteiGetCountDelegate == null)
+      this.onEndObjektKarteiGetCountDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndObjektKarteiGetCount);
+    if (this.onObjektKarteiGetCountCompletedDelegate == null)
+      this.onObjektKarteiGetCountCompletedDelegate = new SendOrPostCallback(this.OnObjektKarteiGetCountCompleted);
+    this.InvokeAsync(this.onBeginObjektKarteiGetCountDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndObjektKarteiGetCountDelegate, this.onObjektKarteiGetCountCompletedDelegate, userState);
+  }
+
+  public WCFKarteiBlatt[] KarteiBlattGetRange(int startRowIndex, int maximumRows, Guid TicketID)
+  {
+    return this.Channel.KarteiBlattGetRange(startRowIndex, maximumRows, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginKarteiBlattGetRange(
+    int startRowIndex,
+    int maximumRows,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginKarteiBlattGetRange(startRowIndex, maximumRows, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFKarteiBlatt[] EndKarteiBlattGetRange(IAsyncResult result)
+  {
+    return this.Channel.EndKarteiBlattGetRange(result);
+  }
+
+  private IAsyncResult OnBeginKarteiBlattGetRange(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginKarteiBlattGetRange((int) inValues[0], (int) inValues[1], (Guid) inValues[2], callback, asyncState);
+  }
+
+  private object[] OnEndKarteiBlattGetRange(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndKarteiBlattGetRange(result)
+    };
+  }
+
+  private void OnKarteiBlattGetRangeCompleted(object state)
+  {
+    if (this.KarteiBlattGetRangeCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.KarteiBlattGetRangeCompleted((object) this, new KarteiBlattGetRangeCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void KarteiBlattGetRangeAsync(int startRowIndex, int maximumRows, Guid TicketID)
+  {
+    this.KarteiBlattGetRangeAsync(startRowIndex, maximumRows, TicketID, (object) null);
+  }
+
+  public void KarteiBlattGetRangeAsync(
+    int startRowIndex,
+    int maximumRows,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginKarteiBlattGetRangeDelegate == null)
+      this.onBeginKarteiBlattGetRangeDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginKarteiBlattGetRange);
+    if (this.onEndKarteiBlattGetRangeDelegate == null)
+      this.onEndKarteiBlattGetRangeDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndKarteiBlattGetRange);
+    if (this.onKarteiBlattGetRangeCompletedDelegate == null)
+      this.onKarteiBlattGetRangeCompletedDelegate = new SendOrPostCallback(this.OnKarteiBlattGetRangeCompleted);
+    this.InvokeAsync(this.onBeginKarteiBlattGetRangeDelegate, new object[3]
+    {
+      (object) startRowIndex,
+      (object) maximumRows,
+      (object) TicketID
+    }, this.onEndKarteiBlattGetRangeDelegate, this.onKarteiBlattGetRangeCompletedDelegate, userState);
+  }
+
+  public WCFObjektKartei[] ObjektKarteiGetRange(int startRowIndex, int maximumRows, Guid TicketID)
+  {
+    return this.Channel.ObjektKarteiGetRange(startRowIndex, maximumRows, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginObjektKarteiGetRange(
+    int startRowIndex,
+    int maximumRows,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginObjektKarteiGetRange(startRowIndex, maximumRows, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFObjektKartei[] EndObjektKarteiGetRange(IAsyncResult result)
+  {
+    return this.Channel.EndObjektKarteiGetRange(result);
+  }
+
+  private IAsyncResult OnBeginObjektKarteiGetRange(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginObjektKarteiGetRange((int) inValues[0], (int) inValues[1], (Guid) inValues[2], callback, asyncState);
+  }
+
+  private object[] OnEndObjektKarteiGetRange(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndObjektKarteiGetRange(result)
+    };
+  }
+
+  private void OnObjektKarteiGetRangeCompleted(object state)
+  {
+    if (this.ObjektKarteiGetRangeCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.ObjektKarteiGetRangeCompleted((object) this, new ObjektKarteiGetRangeCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void ObjektKarteiGetRangeAsync(int startRowIndex, int maximumRows, Guid TicketID)
+  {
+    this.ObjektKarteiGetRangeAsync(startRowIndex, maximumRows, TicketID, (object) null);
+  }
+
+  public void ObjektKarteiGetRangeAsync(
+    int startRowIndex,
+    int maximumRows,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginObjektKarteiGetRangeDelegate == null)
+      this.onBeginObjektKarteiGetRangeDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginObjektKarteiGetRange);
+    if (this.onEndObjektKarteiGetRangeDelegate == null)
+      this.onEndObjektKarteiGetRangeDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndObjektKarteiGetRange);
+    if (this.onObjektKarteiGetRangeCompletedDelegate == null)
+      this.onObjektKarteiGetRangeCompletedDelegate = new SendOrPostCallback(this.OnObjektKarteiGetRangeCompleted);
+    this.InvokeAsync(this.onBeginObjektKarteiGetRangeDelegate, new object[3]
+    {
+      (object) startRowIndex,
+      (object) maximumRows,
+      (object) TicketID
+    }, this.onEndObjektKarteiGetRangeDelegate, this.onObjektKarteiGetRangeCompletedDelegate, userState);
+  }
+
+  public bool KarteiBlattCheckAlternativName(string name, Guid TicketID)
+  {
+    return this.Channel.KarteiBlattCheckAlternativName(name, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginKarteiBlattCheckAlternativName(
+    string name,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginKarteiBlattCheckAlternativName(name, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndKarteiBlattCheckAlternativName(IAsyncResult result)
+  {
+    return this.Channel.EndKarteiBlattCheckAlternativName(result);
+  }
+
+  private IAsyncResult OnBeginKarteiBlattCheckAlternativName(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginKarteiBlattCheckAlternativName((string) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndKarteiBlattCheckAlternativName(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndKarteiBlattCheckAlternativName(result)
+    };
+  }
+
+  private void OnKarteiBlattCheckAlternativNameCompleted(object state)
+  {
+    if (this.KarteiBlattCheckAlternativNameCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.KarteiBlattCheckAlternativNameCompleted((object) this, new KarteiBlattCheckAlternativNameCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void KarteiBlattCheckAlternativNameAsync(string name, Guid TicketID)
+  {
+    this.KarteiBlattCheckAlternativNameAsync(name, TicketID, (object) null);
+  }
+
+  public void KarteiBlattCheckAlternativNameAsync(string name, Guid TicketID, object userState)
+  {
+    if (this.onBeginKarteiBlattCheckAlternativNameDelegate == null)
+      this.onBeginKarteiBlattCheckAlternativNameDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginKarteiBlattCheckAlternativName);
+    if (this.onEndKarteiBlattCheckAlternativNameDelegate == null)
+      this.onEndKarteiBlattCheckAlternativNameDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndKarteiBlattCheckAlternativName);
+    if (this.onKarteiBlattCheckAlternativNameCompletedDelegate == null)
+      this.onKarteiBlattCheckAlternativNameCompletedDelegate = new SendOrPostCallback(this.OnKarteiBlattCheckAlternativNameCompleted);
+    this.InvokeAsync(this.onBeginKarteiBlattCheckAlternativNameDelegate, new object[2]
+    {
+      (object) name,
+      (object) TicketID
+    }, this.onEndKarteiBlattCheckAlternativNameDelegate, this.onKarteiBlattCheckAlternativNameCompletedDelegate, userState);
+  }
+
+  public WCFKarteiBlatt KarteiblattSave(WCFKarteiBlatt wkb, Guid TicketID)
+  {
+    return this.Channel.KarteiblattSave(wkb, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginKarteiblattSave(
+    WCFKarteiBlatt wkb,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginKarteiblattSave(wkb, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFKarteiBlatt EndKarteiblattSave(IAsyncResult result)
+  {
+    return this.Channel.EndKarteiblattSave(result);
+  }
+
+  private IAsyncResult OnBeginKarteiblattSave(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginKarteiblattSave((WCFKarteiBlatt) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndKarteiblattSave(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndKarteiblattSave(result)
+    };
+  }
+
+  private void OnKarteiblattSaveCompleted(object state)
+  {
+    if (this.KarteiblattSaveCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.KarteiblattSaveCompleted((object) this, new KarteiblattSaveCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void KarteiblattSaveAsync(WCFKarteiBlatt wkb, Guid TicketID)
+  {
+    this.KarteiblattSaveAsync(wkb, TicketID, (object) null);
+  }
+
+  public void KarteiblattSaveAsync(WCFKarteiBlatt wkb, Guid TicketID, object userState)
+  {
+    if (this.onBeginKarteiblattSaveDelegate == null)
+      this.onBeginKarteiblattSaveDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginKarteiblattSave);
+    if (this.onEndKarteiblattSaveDelegate == null)
+      this.onEndKarteiblattSaveDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndKarteiblattSave);
+    if (this.onKarteiblattSaveCompletedDelegate == null)
+      this.onKarteiblattSaveCompletedDelegate = new SendOrPostCallback(this.OnKarteiblattSaveCompleted);
+    this.InvokeAsync(this.onBeginKarteiblattSaveDelegate, new object[2]
+    {
+      (object) wkb,
+      (object) TicketID
+    }, this.onEndKarteiblattSaveDelegate, this.onKarteiblattSaveCompletedDelegate, userState);
+  }
+
+  public WCFObjektKartei ObjektKarteiPersist(WCFObjektKartei wkb, Guid TicketID)
+  {
+    return this.Channel.ObjektKarteiPersist(wkb, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginObjektKarteiPersist(
+    WCFObjektKartei wkb,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginObjektKarteiPersist(wkb, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFObjektKartei EndObjektKarteiPersist(IAsyncResult result)
+  {
+    return this.Channel.EndObjektKarteiPersist(result);
+  }
+
+  private IAsyncResult OnBeginObjektKarteiPersist(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginObjektKarteiPersist((WCFObjektKartei) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndObjektKarteiPersist(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndObjektKarteiPersist(result)
+    };
+  }
+
+  private void OnObjektKarteiPersistCompleted(object state)
+  {
+    if (this.ObjektKarteiPersistCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.ObjektKarteiPersistCompleted((object) this, new ObjektKarteiPersistCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void ObjektKarteiPersistAsync(WCFObjektKartei wkb, Guid TicketID)
+  {
+    this.ObjektKarteiPersistAsync(wkb, TicketID, (object) null);
+  }
+
+  public void ObjektKarteiPersistAsync(WCFObjektKartei wkb, Guid TicketID, object userState)
+  {
+    if (this.onBeginObjektKarteiPersistDelegate == null)
+      this.onBeginObjektKarteiPersistDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginObjektKarteiPersist);
+    if (this.onEndObjektKarteiPersistDelegate == null)
+      this.onEndObjektKarteiPersistDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndObjektKarteiPersist);
+    if (this.onObjektKarteiPersistCompletedDelegate == null)
+      this.onObjektKarteiPersistCompletedDelegate = new SendOrPostCallback(this.OnObjektKarteiPersistCompleted);
+    this.InvokeAsync(this.onBeginObjektKarteiPersistDelegate, new object[2]
+    {
+      (object) wkb,
+      (object) TicketID
+    }, this.onEndObjektKarteiPersistDelegate, this.onObjektKarteiPersistCompletedDelegate, userState);
+  }
+
+  public void KarteiblattDelete(int id, Guid TicketID)
+  {
+    this.Channel.KarteiblattDelete(id, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginKarteiblattDelete(
+    int id,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginKarteiblattDelete(id, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public void EndKarteiblattDelete(IAsyncResult result)
+  {
+    this.Channel.EndKarteiblattDelete(result);
+  }
+
+  private IAsyncResult OnBeginKarteiblattDelete(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginKarteiblattDelete((int) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndKarteiblattDelete(IAsyncResult result)
+  {
+    this.EndKarteiblattDelete(result);
+    return (object[]) null;
+  }
+
+  private void OnKarteiblattDeleteCompleted(object state)
+  {
+    if (this.KarteiblattDeleteCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.KarteiblattDeleteCompleted((object) this, new AsyncCompletedEventArgs(completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void KarteiblattDeleteAsync(int id, Guid TicketID)
+  {
+    this.KarteiblattDeleteAsync(id, TicketID, (object) null);
+  }
+
+  public void KarteiblattDeleteAsync(int id, Guid TicketID, object userState)
+  {
+    if (this.onBeginKarteiblattDeleteDelegate == null)
+      this.onBeginKarteiblattDeleteDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginKarteiblattDelete);
+    if (this.onEndKarteiblattDeleteDelegate == null)
+      this.onEndKarteiblattDeleteDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndKarteiblattDelete);
+    if (this.onKarteiblattDeleteCompletedDelegate == null)
+      this.onKarteiblattDeleteCompletedDelegate = new SendOrPostCallback(this.OnKarteiblattDeleteCompleted);
+    this.InvokeAsync(this.onBeginKarteiblattDeleteDelegate, new object[2]
+    {
+      (object) id,
+      (object) TicketID
+    }, this.onEndKarteiblattDeleteDelegate, this.onKarteiblattDeleteCompletedDelegate, userState);
+  }
+
+  public void ObjektKarteiDelete(int id, Guid TicketID)
+  {
+    this.Channel.ObjektKarteiDelete(id, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginObjektKarteiDelete(
+    int id,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginObjektKarteiDelete(id, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public void EndObjektKarteiDelete(IAsyncResult result)
+  {
+    this.Channel.EndObjektKarteiDelete(result);
+  }
+
+  private IAsyncResult OnBeginObjektKarteiDelete(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginObjektKarteiDelete((int) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndObjektKarteiDelete(IAsyncResult result)
+  {
+    this.EndObjektKarteiDelete(result);
+    return (object[]) null;
+  }
+
+  private void OnObjektKarteiDeleteCompleted(object state)
+  {
+    if (this.ObjektKarteiDeleteCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.ObjektKarteiDeleteCompleted((object) this, new AsyncCompletedEventArgs(completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void ObjektKarteiDeleteAsync(int id, Guid TicketID)
+  {
+    this.ObjektKarteiDeleteAsync(id, TicketID, (object) null);
+  }
+
+  public void ObjektKarteiDeleteAsync(int id, Guid TicketID, object userState)
+  {
+    if (this.onBeginObjektKarteiDeleteDelegate == null)
+      this.onBeginObjektKarteiDeleteDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginObjektKarteiDelete);
+    if (this.onEndObjektKarteiDeleteDelegate == null)
+      this.onEndObjektKarteiDeleteDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndObjektKarteiDelete);
+    if (this.onObjektKarteiDeleteCompletedDelegate == null)
+      this.onObjektKarteiDeleteCompletedDelegate = new SendOrPostCallback(this.OnObjektKarteiDeleteCompleted);
+    this.InvokeAsync(this.onBeginObjektKarteiDeleteDelegate, new object[2]
+    {
+      (object) id,
+      (object) TicketID
+    }, this.onEndObjektKarteiDeleteDelegate, this.onObjektKarteiDeleteCompletedDelegate, userState);
+  }
+
+  public bool KarteiblattCopy(WCFKarteiBlatt wkb, Guid TicketID)
+  {
+    return this.Channel.KarteiblattCopy(wkb, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginKarteiblattCopy(
+    WCFKarteiBlatt wkb,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginKarteiblattCopy(wkb, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndKarteiblattCopy(IAsyncResult result) => this.Channel.EndKarteiblattCopy(result);
+
+  private IAsyncResult OnBeginKarteiblattCopy(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginKarteiblattCopy((WCFKarteiBlatt) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndKarteiblattCopy(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndKarteiblattCopy(result)
+    };
+  }
+
+  private void OnKarteiblattCopyCompleted(object state)
+  {
+    if (this.KarteiblattCopyCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.KarteiblattCopyCompleted((object) this, new KarteiblattCopyCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void KarteiblattCopyAsync(WCFKarteiBlatt wkb, Guid TicketID)
+  {
+    this.KarteiblattCopyAsync(wkb, TicketID, (object) null);
+  }
+
+  public void KarteiblattCopyAsync(WCFKarteiBlatt wkb, Guid TicketID, object userState)
+  {
+    if (this.onBeginKarteiblattCopyDelegate == null)
+      this.onBeginKarteiblattCopyDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginKarteiblattCopy);
+    if (this.onEndKarteiblattCopyDelegate == null)
+      this.onEndKarteiblattCopyDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndKarteiblattCopy);
+    if (this.onKarteiblattCopyCompletedDelegate == null)
+      this.onKarteiblattCopyCompletedDelegate = new SendOrPostCallback(this.OnKarteiblattCopyCompleted);
+    this.InvokeAsync(this.onBeginKarteiblattCopyDelegate, new object[2]
+    {
+      (object) wkb,
+      (object) TicketID
+    }, this.onEndKarteiblattCopyDelegate, this.onKarteiblattCopyCompletedDelegate, userState);
+  }
+
+  public bool ObjektKarteiCopy(WCFObjektKartei wok, Guid TicketID)
+  {
+    return this.Channel.ObjektKarteiCopy(wok, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginObjektKarteiCopy(
+    WCFObjektKartei wok,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginObjektKarteiCopy(wok, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndObjektKarteiCopy(IAsyncResult result) => this.Channel.EndObjektKarteiCopy(result);
+
+  private IAsyncResult OnBeginObjektKarteiCopy(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginObjektKarteiCopy((WCFObjektKartei) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndObjektKarteiCopy(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndObjektKarteiCopy(result)
+    };
+  }
+
+  private void OnObjektKarteiCopyCompleted(object state)
+  {
+    if (this.ObjektKarteiCopyCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.ObjektKarteiCopyCompleted((object) this, new ObjektKarteiCopyCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void ObjektKarteiCopyAsync(WCFObjektKartei wok, Guid TicketID)
+  {
+    this.ObjektKarteiCopyAsync(wok, TicketID, (object) null);
+  }
+
+  public void ObjektKarteiCopyAsync(WCFObjektKartei wok, Guid TicketID, object userState)
+  {
+    if (this.onBeginObjektKarteiCopyDelegate == null)
+      this.onBeginObjektKarteiCopyDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginObjektKarteiCopy);
+    if (this.onEndObjektKarteiCopyDelegate == null)
+      this.onEndObjektKarteiCopyDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndObjektKarteiCopy);
+    if (this.onObjektKarteiCopyCompletedDelegate == null)
+      this.onObjektKarteiCopyCompletedDelegate = new SendOrPostCallback(this.OnObjektKarteiCopyCompleted);
+    this.InvokeAsync(this.onBeginObjektKarteiCopyDelegate, new object[2]
+    {
+      (object) wok,
+      (object) TicketID
+    }, this.onEndObjektKarteiCopyDelegate, this.onObjektKarteiCopyCompletedDelegate, userState);
+  }
+
+  public int KarteiDokumentPersist(WCFKarteiDokument kd, Guid TicketID)
+  {
+    return this.Channel.KarteiDokumentPersist(kd, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginKarteiDokumentPersist(
+    WCFKarteiDokument kd,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginKarteiDokumentPersist(kd, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public int EndKarteiDokumentPersist(IAsyncResult result)
+  {
+    return this.Channel.EndKarteiDokumentPersist(result);
+  }
+
+  private IAsyncResult OnBeginKarteiDokumentPersist(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginKarteiDokumentPersist((WCFKarteiDokument) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndKarteiDokumentPersist(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndKarteiDokumentPersist(result)
+    };
+  }
+
+  private void OnKarteiDokumentPersistCompleted(object state)
+  {
+    if (this.KarteiDokumentPersistCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.KarteiDokumentPersistCompleted((object) this, new KarteiDokumentPersistCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void KarteiDokumentPersistAsync(WCFKarteiDokument kd, Guid TicketID)
+  {
+    this.KarteiDokumentPersistAsync(kd, TicketID, (object) null);
+  }
+
+  public void KarteiDokumentPersistAsync(WCFKarteiDokument kd, Guid TicketID, object userState)
+  {
+    if (this.onBeginKarteiDokumentPersistDelegate == null)
+      this.onBeginKarteiDokumentPersistDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginKarteiDokumentPersist);
+    if (this.onEndKarteiDokumentPersistDelegate == null)
+      this.onEndKarteiDokumentPersistDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndKarteiDokumentPersist);
+    if (this.onKarteiDokumentPersistCompletedDelegate == null)
+      this.onKarteiDokumentPersistCompletedDelegate = new SendOrPostCallback(this.OnKarteiDokumentPersistCompleted);
+    this.InvokeAsync(this.onBeginKarteiDokumentPersistDelegate, new object[2]
+    {
+      (object) kd,
+      (object) TicketID
+    }, this.onEndKarteiDokumentPersistDelegate, this.onKarteiDokumentPersistCompletedDelegate, userState);
+  }
+
+  public bool KarteiDokumentDelete(WCFKarteiDokument kd, Guid TicketID)
+  {
+    return this.Channel.KarteiDokumentDelete(kd, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginKarteiDokumentDelete(
+    WCFKarteiDokument kd,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginKarteiDokumentDelete(kd, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndKarteiDokumentDelete(IAsyncResult result)
+  {
+    return this.Channel.EndKarteiDokumentDelete(result);
+  }
+
+  private IAsyncResult OnBeginKarteiDokumentDelete(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginKarteiDokumentDelete((WCFKarteiDokument) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndKarteiDokumentDelete(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndKarteiDokumentDelete(result)
+    };
+  }
+
+  private void OnKarteiDokumentDeleteCompleted(object state)
+  {
+    if (this.KarteiDokumentDeleteCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.KarteiDokumentDeleteCompleted((object) this, new KarteiDokumentDeleteCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void KarteiDokumentDeleteAsync(WCFKarteiDokument kd, Guid TicketID)
+  {
+    this.KarteiDokumentDeleteAsync(kd, TicketID, (object) null);
+  }
+
+  public void KarteiDokumentDeleteAsync(WCFKarteiDokument kd, Guid TicketID, object userState)
+  {
+    if (this.onBeginKarteiDokumentDeleteDelegate == null)
+      this.onBeginKarteiDokumentDeleteDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginKarteiDokumentDelete);
+    if (this.onEndKarteiDokumentDeleteDelegate == null)
+      this.onEndKarteiDokumentDeleteDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndKarteiDokumentDelete);
+    if (this.onKarteiDokumentDeleteCompletedDelegate == null)
+      this.onKarteiDokumentDeleteCompletedDelegate = new SendOrPostCallback(this.OnKarteiDokumentDeleteCompleted);
+    this.InvokeAsync(this.onBeginKarteiDokumentDeleteDelegate, new object[2]
+    {
+      (object) kd,
+      (object) TicketID
+    }, this.onEndKarteiDokumentDeleteDelegate, this.onKarteiDokumentDeleteCompletedDelegate, userState);
+  }
+
+  public bool KarteiDokumentAddEinsatzTyp(WCFKarteiDokument dok, string et, Guid TicketID)
+  {
+    return this.Channel.KarteiDokumentAddEinsatzTyp(dok, et, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginKarteiDokumentAddEinsatzTyp(
+    WCFKarteiDokument dok,
+    string et,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginKarteiDokumentAddEinsatzTyp(dok, et, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndKarteiDokumentAddEinsatzTyp(IAsyncResult result)
+  {
+    return this.Channel.EndKarteiDokumentAddEinsatzTyp(result);
+  }
+
+  private IAsyncResult OnBeginKarteiDokumentAddEinsatzTyp(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginKarteiDokumentAddEinsatzTyp((WCFKarteiDokument) inValues[0], (string) inValues[1], (Guid) inValues[2], callback, asyncState);
+  }
+
+  private object[] OnEndKarteiDokumentAddEinsatzTyp(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndKarteiDokumentAddEinsatzTyp(result)
+    };
+  }
+
+  private void OnKarteiDokumentAddEinsatzTypCompleted(object state)
+  {
+    if (this.KarteiDokumentAddEinsatzTypCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.KarteiDokumentAddEinsatzTypCompleted((object) this, new KarteiDokumentAddEinsatzTypCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void KarteiDokumentAddEinsatzTypAsync(WCFKarteiDokument dok, string et, Guid TicketID)
+  {
+    this.KarteiDokumentAddEinsatzTypAsync(dok, et, TicketID, (object) null);
+  }
+
+  public void KarteiDokumentAddEinsatzTypAsync(
+    WCFKarteiDokument dok,
+    string et,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginKarteiDokumentAddEinsatzTypDelegate == null)
+      this.onBeginKarteiDokumentAddEinsatzTypDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginKarteiDokumentAddEinsatzTyp);
+    if (this.onEndKarteiDokumentAddEinsatzTypDelegate == null)
+      this.onEndKarteiDokumentAddEinsatzTypDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndKarteiDokumentAddEinsatzTyp);
+    if (this.onKarteiDokumentAddEinsatzTypCompletedDelegate == null)
+      this.onKarteiDokumentAddEinsatzTypCompletedDelegate = new SendOrPostCallback(this.OnKarteiDokumentAddEinsatzTypCompleted);
+    this.InvokeAsync(this.onBeginKarteiDokumentAddEinsatzTypDelegate, new object[3]
+    {
+      (object) dok,
+      (object) et,
+      (object) TicketID
+    }, this.onEndKarteiDokumentAddEinsatzTypDelegate, this.onKarteiDokumentAddEinsatzTypCompletedDelegate, userState);
+  }
+
+  public bool KarteiDokumentRemoveEinsatzTyp(WCFKarteiDokument dok, string et, Guid TicketID)
+  {
+    return this.Channel.KarteiDokumentRemoveEinsatzTyp(dok, et, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginKarteiDokumentRemoveEinsatzTyp(
+    WCFKarteiDokument dok,
+    string et,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginKarteiDokumentRemoveEinsatzTyp(dok, et, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndKarteiDokumentRemoveEinsatzTyp(IAsyncResult result)
+  {
+    return this.Channel.EndKarteiDokumentRemoveEinsatzTyp(result);
+  }
+
+  private IAsyncResult OnBeginKarteiDokumentRemoveEinsatzTyp(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginKarteiDokumentRemoveEinsatzTyp((WCFKarteiDokument) inValues[0], (string) inValues[1], (Guid) inValues[2], callback, asyncState);
+  }
+
+  private object[] OnEndKarteiDokumentRemoveEinsatzTyp(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndKarteiDokumentRemoveEinsatzTyp(result)
+    };
+  }
+
+  private void OnKarteiDokumentRemoveEinsatzTypCompleted(object state)
+  {
+    if (this.KarteiDokumentRemoveEinsatzTypCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.KarteiDokumentRemoveEinsatzTypCompleted((object) this, new KarteiDokumentRemoveEinsatzTypCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void KarteiDokumentRemoveEinsatzTypAsync(WCFKarteiDokument dok, string et, Guid TicketID)
+  {
+    this.KarteiDokumentRemoveEinsatzTypAsync(dok, et, TicketID, (object) null);
+  }
+
+  public void KarteiDokumentRemoveEinsatzTypAsync(
+    WCFKarteiDokument dok,
+    string et,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginKarteiDokumentRemoveEinsatzTypDelegate == null)
+      this.onBeginKarteiDokumentRemoveEinsatzTypDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginKarteiDokumentRemoveEinsatzTyp);
+    if (this.onEndKarteiDokumentRemoveEinsatzTypDelegate == null)
+      this.onEndKarteiDokumentRemoveEinsatzTypDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndKarteiDokumentRemoveEinsatzTyp);
+    if (this.onKarteiDokumentRemoveEinsatzTypCompletedDelegate == null)
+      this.onKarteiDokumentRemoveEinsatzTypCompletedDelegate = new SendOrPostCallback(this.OnKarteiDokumentRemoveEinsatzTypCompleted);
+    this.InvokeAsync(this.onBeginKarteiDokumentRemoveEinsatzTypDelegate, new object[3]
+    {
+      (object) dok,
+      (object) et,
+      (object) TicketID
+    }, this.onEndKarteiDokumentRemoveEinsatzTypDelegate, this.onKarteiDokumentRemoveEinsatzTypCompletedDelegate, userState);
+  }
+
+  public string[] KarteiDokumentGetEinsatzTypen(WCFKarteiDokument dok, Guid TicketID)
+  {
+    return this.Channel.KarteiDokumentGetEinsatzTypen(dok, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginKarteiDokumentGetEinsatzTypen(
+    WCFKarteiDokument dok,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginKarteiDokumentGetEinsatzTypen(dok, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public string[] EndKarteiDokumentGetEinsatzTypen(IAsyncResult result)
+  {
+    return this.Channel.EndKarteiDokumentGetEinsatzTypen(result);
+  }
+
+  private IAsyncResult OnBeginKarteiDokumentGetEinsatzTypen(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginKarteiDokumentGetEinsatzTypen((WCFKarteiDokument) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndKarteiDokumentGetEinsatzTypen(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndKarteiDokumentGetEinsatzTypen(result)
+    };
+  }
+
+  private void OnKarteiDokumentGetEinsatzTypenCompleted(object state)
+  {
+    if (this.KarteiDokumentGetEinsatzTypenCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.KarteiDokumentGetEinsatzTypenCompleted((object) this, new KarteiDokumentGetEinsatzTypenCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void KarteiDokumentGetEinsatzTypenAsync(WCFKarteiDokument dok, Guid TicketID)
+  {
+    this.KarteiDokumentGetEinsatzTypenAsync(dok, TicketID, (object) null);
+  }
+
+  public void KarteiDokumentGetEinsatzTypenAsync(
+    WCFKarteiDokument dok,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginKarteiDokumentGetEinsatzTypenDelegate == null)
+      this.onBeginKarteiDokumentGetEinsatzTypenDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginKarteiDokumentGetEinsatzTypen);
+    if (this.onEndKarteiDokumentGetEinsatzTypenDelegate == null)
+      this.onEndKarteiDokumentGetEinsatzTypenDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndKarteiDokumentGetEinsatzTypen);
+    if (this.onKarteiDokumentGetEinsatzTypenCompletedDelegate == null)
+      this.onKarteiDokumentGetEinsatzTypenCompletedDelegate = new SendOrPostCallback(this.OnKarteiDokumentGetEinsatzTypenCompleted);
+    this.InvokeAsync(this.onBeginKarteiDokumentGetEinsatzTypenDelegate, new object[2]
+    {
+      (object) dok,
+      (object) TicketID
+    }, this.onEndKarteiDokumentGetEinsatzTypenDelegate, this.onKarteiDokumentGetEinsatzTypenCompletedDelegate, userState);
+  }
+
+  public WCFObjektKategorie[] ObjektKategorieGet() => this.Channel.ObjektKategorieGet();
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginObjektKategorieGet(AsyncCallback callback, object asyncState)
+  {
+    return this.Channel.BeginObjektKategorieGet(callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFObjektKategorie[] EndObjektKategorieGet(IAsyncResult result)
+  {
+    return this.Channel.EndObjektKategorieGet(result);
+  }
+
+  private IAsyncResult OnBeginObjektKategorieGet(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginObjektKategorieGet(callback, asyncState);
+  }
+
+  private object[] OnEndObjektKategorieGet(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndObjektKategorieGet(result)
+    };
+  }
+
+  private void OnObjektKategorieGetCompleted(object state)
+  {
+    if (this.ObjektKategorieGetCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.ObjektKategorieGetCompleted((object) this, new ObjektKategorieGetCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void ObjektKategorieGetAsync() => this.ObjektKategorieGetAsync((object) null);
+
+  public void ObjektKategorieGetAsync(object userState)
+  {
+    if (this.onBeginObjektKategorieGetDelegate == null)
+      this.onBeginObjektKategorieGetDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginObjektKategorieGet);
+    if (this.onEndObjektKategorieGetDelegate == null)
+      this.onEndObjektKategorieGetDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndObjektKategorieGet);
+    if (this.onObjektKategorieGetCompletedDelegate == null)
+      this.onObjektKategorieGetCompletedDelegate = new SendOrPostCallback(this.OnObjektKategorieGetCompleted);
+    this.InvokeAsync(this.onBeginObjektKategorieGetDelegate, (object[]) null, this.onEndObjektKategorieGetDelegate, this.onObjektKategorieGetCompletedDelegate, userState);
+  }
+
+  public WCFObjektKategorie ObjektKategoriePersist(WCFObjektKategorie ok, Guid TicketID)
+  {
+    return this.Channel.ObjektKategoriePersist(ok, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginObjektKategoriePersist(
+    WCFObjektKategorie ok,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginObjektKategoriePersist(ok, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFObjektKategorie EndObjektKategoriePersist(IAsyncResult result)
+  {
+    return this.Channel.EndObjektKategoriePersist(result);
+  }
+
+  private IAsyncResult OnBeginObjektKategoriePersist(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginObjektKategoriePersist((WCFObjektKategorie) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndObjektKategoriePersist(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndObjektKategoriePersist(result)
+    };
+  }
+
+  private void OnObjektKategoriePersistCompleted(object state)
+  {
+    if (this.ObjektKategoriePersistCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.ObjektKategoriePersistCompleted((object) this, new ObjektKategoriePersistCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void ObjektKategoriePersistAsync(WCFObjektKategorie ok, Guid TicketID)
+  {
+    this.ObjektKategoriePersistAsync(ok, TicketID, (object) null);
+  }
+
+  public void ObjektKategoriePersistAsync(WCFObjektKategorie ok, Guid TicketID, object userState)
+  {
+    if (this.onBeginObjektKategoriePersistDelegate == null)
+      this.onBeginObjektKategoriePersistDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginObjektKategoriePersist);
+    if (this.onEndObjektKategoriePersistDelegate == null)
+      this.onEndObjektKategoriePersistDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndObjektKategoriePersist);
+    if (this.onObjektKategoriePersistCompletedDelegate == null)
+      this.onObjektKategoriePersistCompletedDelegate = new SendOrPostCallback(this.OnObjektKategoriePersistCompleted);
+    this.InvokeAsync(this.onBeginObjektKategoriePersistDelegate, new object[2]
+    {
+      (object) ok,
+      (object) TicketID
+    }, this.onEndObjektKategoriePersistDelegate, this.onObjektKategoriePersistCompletedDelegate, userState);
+  }
+
+  public bool ObjektKategorieDelete(WCFObjektKategorie ok, Guid TicketID)
+  {
+    return this.Channel.ObjektKategorieDelete(ok, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginObjektKategorieDelete(
+    WCFObjektKategorie ok,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginObjektKategorieDelete(ok, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndObjektKategorieDelete(IAsyncResult result)
+  {
+    return this.Channel.EndObjektKategorieDelete(result);
+  }
+
+  private IAsyncResult OnBeginObjektKategorieDelete(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginObjektKategorieDelete((WCFObjektKategorie) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndObjektKategorieDelete(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndObjektKategorieDelete(result)
+    };
+  }
+
+  private void OnObjektKategorieDeleteCompleted(object state)
+  {
+    if (this.ObjektKategorieDeleteCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.ObjektKategorieDeleteCompleted((object) this, new ObjektKategorieDeleteCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void ObjektKategorieDeleteAsync(WCFObjektKategorie ok, Guid TicketID)
+  {
+    this.ObjektKategorieDeleteAsync(ok, TicketID, (object) null);
+  }
+
+  public void ObjektKategorieDeleteAsync(WCFObjektKategorie ok, Guid TicketID, object userState)
+  {
+    if (this.onBeginObjektKategorieDeleteDelegate == null)
+      this.onBeginObjektKategorieDeleteDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginObjektKategorieDelete);
+    if (this.onEndObjektKategorieDeleteDelegate == null)
+      this.onEndObjektKategorieDeleteDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndObjektKategorieDelete);
+    if (this.onObjektKategorieDeleteCompletedDelegate == null)
+      this.onObjektKategorieDeleteCompletedDelegate = new SendOrPostCallback(this.OnObjektKategorieDeleteCompleted);
+    this.InvokeAsync(this.onBeginObjektKategorieDeleteDelegate, new object[2]
+    {
+      (object) ok,
+      (object) TicketID
+    }, this.onEndObjektKategorieDeleteDelegate, this.onObjektKategorieDeleteCompletedDelegate, userState);
+  }
+
+  public WCFCheckliste[] CheckListeGetAll(Guid TicketID) => this.Channel.CheckListeGetAll(TicketID);
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginCheckListeGetAll(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginCheckListeGetAll(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFCheckliste[] EndCheckListeGetAll(IAsyncResult result)
+  {
+    return this.Channel.EndCheckListeGetAll(result);
+  }
+
+  private IAsyncResult OnBeginCheckListeGetAll(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginCheckListeGetAll((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndCheckListeGetAll(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndCheckListeGetAll(result)
+    };
+  }
+
+  private void OnCheckListeGetAllCompleted(object state)
+  {
+    if (this.CheckListeGetAllCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.CheckListeGetAllCompleted((object) this, new CheckListeGetAllCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void CheckListeGetAllAsync(Guid TicketID)
+  {
+    this.CheckListeGetAllAsync(TicketID, (object) null);
+  }
+
+  public void CheckListeGetAllAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginCheckListeGetAllDelegate == null)
+      this.onBeginCheckListeGetAllDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginCheckListeGetAll);
+    if (this.onEndCheckListeGetAllDelegate == null)
+      this.onEndCheckListeGetAllDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndCheckListeGetAll);
+    if (this.onCheckListeGetAllCompletedDelegate == null)
+      this.onCheckListeGetAllCompletedDelegate = new SendOrPostCallback(this.OnCheckListeGetAllCompleted);
+    this.InvokeAsync(this.onBeginCheckListeGetAllDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndCheckListeGetAllDelegate, this.onCheckListeGetAllCompletedDelegate, userState);
+  }
+
+  public WCFCheckliste CheckListePersist(WCFCheckliste ch, Guid TicketID)
+  {
+    return this.Channel.CheckListePersist(ch, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginCheckListePersist(
+    WCFCheckliste ch,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginCheckListePersist(ch, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFCheckliste EndCheckListePersist(IAsyncResult result)
+  {
+    return this.Channel.EndCheckListePersist(result);
+  }
+
+  private IAsyncResult OnBeginCheckListePersist(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginCheckListePersist((WCFCheckliste) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndCheckListePersist(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndCheckListePersist(result)
+    };
+  }
+
+  private void OnCheckListePersistCompleted(object state)
+  {
+    if (this.CheckListePersistCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.CheckListePersistCompleted((object) this, new CheckListePersistCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void CheckListePersistAsync(WCFCheckliste ch, Guid TicketID)
+  {
+    this.CheckListePersistAsync(ch, TicketID, (object) null);
+  }
+
+  public void CheckListePersistAsync(WCFCheckliste ch, Guid TicketID, object userState)
+  {
+    if (this.onBeginCheckListePersistDelegate == null)
+      this.onBeginCheckListePersistDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginCheckListePersist);
+    if (this.onEndCheckListePersistDelegate == null)
+      this.onEndCheckListePersistDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndCheckListePersist);
+    if (this.onCheckListePersistCompletedDelegate == null)
+      this.onCheckListePersistCompletedDelegate = new SendOrPostCallback(this.OnCheckListePersistCompleted);
+    this.InvokeAsync(this.onBeginCheckListePersistDelegate, new object[2]
+    {
+      (object) ch,
+      (object) TicketID
+    }, this.onEndCheckListePersistDelegate, this.onCheckListePersistCompletedDelegate, userState);
+  }
+
+  public bool CheckListeDelete(WCFCheckliste ch, Guid TicketID)
+  {
+    return this.Channel.CheckListeDelete(ch, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginCheckListeDelete(
+    WCFCheckliste ch,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginCheckListeDelete(ch, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndCheckListeDelete(IAsyncResult result) => this.Channel.EndCheckListeDelete(result);
+
+  private IAsyncResult OnBeginCheckListeDelete(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginCheckListeDelete((WCFCheckliste) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndCheckListeDelete(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndCheckListeDelete(result)
+    };
+  }
+
+  private void OnCheckListeDeleteCompleted(object state)
+  {
+    if (this.CheckListeDeleteCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.CheckListeDeleteCompleted((object) this, new CheckListeDeleteCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void CheckListeDeleteAsync(WCFCheckliste ch, Guid TicketID)
+  {
+    this.CheckListeDeleteAsync(ch, TicketID, (object) null);
+  }
+
+  public void CheckListeDeleteAsync(WCFCheckliste ch, Guid TicketID, object userState)
+  {
+    if (this.onBeginCheckListeDeleteDelegate == null)
+      this.onBeginCheckListeDeleteDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginCheckListeDelete);
+    if (this.onEndCheckListeDeleteDelegate == null)
+      this.onEndCheckListeDeleteDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndCheckListeDelete);
+    if (this.onCheckListeDeleteCompletedDelegate == null)
+      this.onCheckListeDeleteCompletedDelegate = new SendOrPostCallback(this.OnCheckListeDeleteCompleted);
+    this.InvokeAsync(this.onBeginCheckListeDeleteDelegate, new object[2]
+    {
+      (object) ch,
+      (object) TicketID
+    }, this.onEndCheckListeDeleteDelegate, this.onCheckListeDeleteCompletedDelegate, userState);
+  }
+
+  public bool CheckListeAddEinsatzTyp(WCFCheckliste ch, string et, Guid TicketID)
+  {
+    return this.Channel.CheckListeAddEinsatzTyp(ch, et, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginCheckListeAddEinsatzTyp(
+    WCFCheckliste ch,
+    string et,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginCheckListeAddEinsatzTyp(ch, et, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndCheckListeAddEinsatzTyp(IAsyncResult result)
+  {
+    return this.Channel.EndCheckListeAddEinsatzTyp(result);
+  }
+
+  private IAsyncResult OnBeginCheckListeAddEinsatzTyp(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginCheckListeAddEinsatzTyp((WCFCheckliste) inValues[0], (string) inValues[1], (Guid) inValues[2], callback, asyncState);
+  }
+
+  private object[] OnEndCheckListeAddEinsatzTyp(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndCheckListeAddEinsatzTyp(result)
+    };
+  }
+
+  private void OnCheckListeAddEinsatzTypCompleted(object state)
+  {
+    if (this.CheckListeAddEinsatzTypCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.CheckListeAddEinsatzTypCompleted((object) this, new CheckListeAddEinsatzTypCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void CheckListeAddEinsatzTypAsync(WCFCheckliste ch, string et, Guid TicketID)
+  {
+    this.CheckListeAddEinsatzTypAsync(ch, et, TicketID, (object) null);
+  }
+
+  public void CheckListeAddEinsatzTypAsync(
+    WCFCheckliste ch,
+    string et,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginCheckListeAddEinsatzTypDelegate == null)
+      this.onBeginCheckListeAddEinsatzTypDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginCheckListeAddEinsatzTyp);
+    if (this.onEndCheckListeAddEinsatzTypDelegate == null)
+      this.onEndCheckListeAddEinsatzTypDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndCheckListeAddEinsatzTyp);
+    if (this.onCheckListeAddEinsatzTypCompletedDelegate == null)
+      this.onCheckListeAddEinsatzTypCompletedDelegate = new SendOrPostCallback(this.OnCheckListeAddEinsatzTypCompleted);
+    this.InvokeAsync(this.onBeginCheckListeAddEinsatzTypDelegate, new object[3]
+    {
+      (object) ch,
+      (object) et,
+      (object) TicketID
+    }, this.onEndCheckListeAddEinsatzTypDelegate, this.onCheckListeAddEinsatzTypCompletedDelegate, userState);
+  }
+
+  public bool CheckListeRemoveEinsatzTyp(WCFCheckliste ch, string et, Guid TicketID)
+  {
+    return this.Channel.CheckListeRemoveEinsatzTyp(ch, et, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginCheckListeRemoveEinsatzTyp(
+    WCFCheckliste ch,
+    string et,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginCheckListeRemoveEinsatzTyp(ch, et, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndCheckListeRemoveEinsatzTyp(IAsyncResult result)
+  {
+    return this.Channel.EndCheckListeRemoveEinsatzTyp(result);
+  }
+
+  private IAsyncResult OnBeginCheckListeRemoveEinsatzTyp(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginCheckListeRemoveEinsatzTyp((WCFCheckliste) inValues[0], (string) inValues[1], (Guid) inValues[2], callback, asyncState);
+  }
+
+  private object[] OnEndCheckListeRemoveEinsatzTyp(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndCheckListeRemoveEinsatzTyp(result)
+    };
+  }
+
+  private void OnCheckListeRemoveEinsatzTypCompleted(object state)
+  {
+    if (this.CheckListeRemoveEinsatzTypCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.CheckListeRemoveEinsatzTypCompleted((object) this, new CheckListeRemoveEinsatzTypCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void CheckListeRemoveEinsatzTypAsync(WCFCheckliste ch, string et, Guid TicketID)
+  {
+    this.CheckListeRemoveEinsatzTypAsync(ch, et, TicketID, (object) null);
+  }
+
+  public void CheckListeRemoveEinsatzTypAsync(
+    WCFCheckliste ch,
+    string et,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginCheckListeRemoveEinsatzTypDelegate == null)
+      this.onBeginCheckListeRemoveEinsatzTypDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginCheckListeRemoveEinsatzTyp);
+    if (this.onEndCheckListeRemoveEinsatzTypDelegate == null)
+      this.onEndCheckListeRemoveEinsatzTypDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndCheckListeRemoveEinsatzTyp);
+    if (this.onCheckListeRemoveEinsatzTypCompletedDelegate == null)
+      this.onCheckListeRemoveEinsatzTypCompletedDelegate = new SendOrPostCallback(this.OnCheckListeRemoveEinsatzTypCompleted);
+    this.InvokeAsync(this.onBeginCheckListeRemoveEinsatzTypDelegate, new object[3]
+    {
+      (object) ch,
+      (object) et,
+      (object) TicketID
+    }, this.onEndCheckListeRemoveEinsatzTypDelegate, this.onCheckListeRemoveEinsatzTypCompletedDelegate, userState);
+  }
+
+  public Guid FremdSystemGetEinsatzkarteiByEinsatz(WCFEinsatzdaten ed, Guid TicketID)
+  {
+    return this.Channel.FremdSystemGetEinsatzkarteiByEinsatz(ed, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginFremdSystemGetEinsatzkarteiByEinsatz(
+    WCFEinsatzdaten ed,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginFremdSystemGetEinsatzkarteiByEinsatz(ed, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public Guid EndFremdSystemGetEinsatzkarteiByEinsatz(IAsyncResult result)
+  {
+    return this.Channel.EndFremdSystemGetEinsatzkarteiByEinsatz(result);
+  }
+
+  private IAsyncResult OnBeginFremdSystemGetEinsatzkarteiByEinsatz(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginFremdSystemGetEinsatzkarteiByEinsatz((WCFEinsatzdaten) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndFremdSystemGetEinsatzkarteiByEinsatz(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndFremdSystemGetEinsatzkarteiByEinsatz(result)
+    };
+  }
+
+  private void OnFremdSystemGetEinsatzkarteiByEinsatzCompleted(object state)
+  {
+    if (this.FremdSystemGetEinsatzkarteiByEinsatzCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.FremdSystemGetEinsatzkarteiByEinsatzCompleted((object) this, new FremdSystemGetEinsatzkarteiByEinsatzCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void FremdSystemGetEinsatzkarteiByEinsatzAsync(WCFEinsatzdaten ed, Guid TicketID)
+  {
+    this.FremdSystemGetEinsatzkarteiByEinsatzAsync(ed, TicketID, (object) null);
+  }
+
+  public void FremdSystemGetEinsatzkarteiByEinsatzAsync(
+    WCFEinsatzdaten ed,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginFremdSystemGetEinsatzkarteiByEinsatzDelegate == null)
+      this.onBeginFremdSystemGetEinsatzkarteiByEinsatzDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginFremdSystemGetEinsatzkarteiByEinsatz);
+    if (this.onEndFremdSystemGetEinsatzkarteiByEinsatzDelegate == null)
+      this.onEndFremdSystemGetEinsatzkarteiByEinsatzDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndFremdSystemGetEinsatzkarteiByEinsatz);
+    if (this.onFremdSystemGetEinsatzkarteiByEinsatzCompletedDelegate == null)
+      this.onFremdSystemGetEinsatzkarteiByEinsatzCompletedDelegate = new SendOrPostCallback(this.OnFremdSystemGetEinsatzkarteiByEinsatzCompleted);
+    this.InvokeAsync(this.onBeginFremdSystemGetEinsatzkarteiByEinsatzDelegate, new object[2]
+    {
+      (object) ed,
+      (object) TicketID
+    }, this.onEndFremdSystemGetEinsatzkarteiByEinsatzDelegate, this.onFremdSystemGetEinsatzkarteiByEinsatzCompletedDelegate, userState);
+  }
+
+  public Dictionary<Guid, DateTime> FremdSystemGetEinsatzkarteiListe(Guid TicketID)
+  {
+    return this.Channel.FremdSystemGetEinsatzkarteiListe(TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginFremdSystemGetEinsatzkarteiListe(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginFremdSystemGetEinsatzkarteiListe(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public Dictionary<Guid, DateTime> EndFremdSystemGetEinsatzkarteiListe(IAsyncResult result)
+  {
+    return this.Channel.EndFremdSystemGetEinsatzkarteiListe(result);
+  }
+
+  private IAsyncResult OnBeginFremdSystemGetEinsatzkarteiListe(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginFremdSystemGetEinsatzkarteiListe((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndFremdSystemGetEinsatzkarteiListe(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndFremdSystemGetEinsatzkarteiListe(result)
+    };
+  }
+
+  private void OnFremdSystemGetEinsatzkarteiListeCompleted(object state)
+  {
+    if (this.FremdSystemGetEinsatzkarteiListeCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.FremdSystemGetEinsatzkarteiListeCompleted((object) this, new FremdSystemGetEinsatzkarteiListeCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void FremdSystemGetEinsatzkarteiListeAsync(Guid TicketID)
+  {
+    this.FremdSystemGetEinsatzkarteiListeAsync(TicketID, (object) null);
+  }
+
+  public void FremdSystemGetEinsatzkarteiListeAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginFremdSystemGetEinsatzkarteiListeDelegate == null)
+      this.onBeginFremdSystemGetEinsatzkarteiListeDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginFremdSystemGetEinsatzkarteiListe);
+    if (this.onEndFremdSystemGetEinsatzkarteiListeDelegate == null)
+      this.onEndFremdSystemGetEinsatzkarteiListeDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndFremdSystemGetEinsatzkarteiListe);
+    if (this.onFremdSystemGetEinsatzkarteiListeCompletedDelegate == null)
+      this.onFremdSystemGetEinsatzkarteiListeCompletedDelegate = new SendOrPostCallback(this.OnFremdSystemGetEinsatzkarteiListeCompleted);
+    this.InvokeAsync(this.onBeginFremdSystemGetEinsatzkarteiListeDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndFremdSystemGetEinsatzkarteiListeDelegate, this.onFremdSystemGetEinsatzkarteiListeCompletedDelegate, userState);
+  }
+
+  public Dictionary<Guid, DateTime> FremdSystemGetObjektKarteiListe(Guid TicketID)
+  {
+    return this.Channel.FremdSystemGetObjektKarteiListe(TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginFremdSystemGetObjektKarteiListe(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginFremdSystemGetObjektKarteiListe(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public Dictionary<Guid, DateTime> EndFremdSystemGetObjektKarteiListe(IAsyncResult result)
+  {
+    return this.Channel.EndFremdSystemGetObjektKarteiListe(result);
+  }
+
+  private IAsyncResult OnBeginFremdSystemGetObjektKarteiListe(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginFremdSystemGetObjektKarteiListe((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndFremdSystemGetObjektKarteiListe(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndFremdSystemGetObjektKarteiListe(result)
+    };
+  }
+
+  private void OnFremdSystemGetObjektKarteiListeCompleted(object state)
+  {
+    if (this.FremdSystemGetObjektKarteiListeCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.FremdSystemGetObjektKarteiListeCompleted((object) this, new FremdSystemGetObjektKarteiListeCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void FremdSystemGetObjektKarteiListeAsync(Guid TicketID)
+  {
+    this.FremdSystemGetObjektKarteiListeAsync(TicketID, (object) null);
+  }
+
+  public void FremdSystemGetObjektKarteiListeAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginFremdSystemGetObjektKarteiListeDelegate == null)
+      this.onBeginFremdSystemGetObjektKarteiListeDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginFremdSystemGetObjektKarteiListe);
+    if (this.onEndFremdSystemGetObjektKarteiListeDelegate == null)
+      this.onEndFremdSystemGetObjektKarteiListeDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndFremdSystemGetObjektKarteiListe);
+    if (this.onFremdSystemGetObjektKarteiListeCompletedDelegate == null)
+      this.onFremdSystemGetObjektKarteiListeCompletedDelegate = new SendOrPostCallback(this.OnFremdSystemGetObjektKarteiListeCompleted);
+    this.InvokeAsync(this.onBeginFremdSystemGetObjektKarteiListeDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndFremdSystemGetObjektKarteiListeDelegate, this.onFremdSystemGetObjektKarteiListeCompletedDelegate, userState);
+  }
+
+  public Dictionary<Guid, DateTime> FremdSystemGetWasserEntnahmenListe(Guid TicketID)
+  {
+    return this.Channel.FremdSystemGetWasserEntnahmenListe(TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginFremdSystemGetWasserEntnahmenListe(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginFremdSystemGetWasserEntnahmenListe(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public Dictionary<Guid, DateTime> EndFremdSystemGetWasserEntnahmenListe(IAsyncResult result)
+  {
+    return this.Channel.EndFremdSystemGetWasserEntnahmenListe(result);
+  }
+
+  private IAsyncResult OnBeginFremdSystemGetWasserEntnahmenListe(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginFremdSystemGetWasserEntnahmenListe((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndFremdSystemGetWasserEntnahmenListe(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndFremdSystemGetWasserEntnahmenListe(result)
+    };
+  }
+
+  private void OnFremdSystemGetWasserEntnahmenListeCompleted(object state)
+  {
+    if (this.FremdSystemGetWasserEntnahmenListeCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.FremdSystemGetWasserEntnahmenListeCompleted((object) this, new FremdSystemGetWasserEntnahmenListeCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void FremdSystemGetWasserEntnahmenListeAsync(Guid TicketID)
+  {
+    this.FremdSystemGetWasserEntnahmenListeAsync(TicketID, (object) null);
+  }
+
+  public void FremdSystemGetWasserEntnahmenListeAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginFremdSystemGetWasserEntnahmenListeDelegate == null)
+      this.onBeginFremdSystemGetWasserEntnahmenListeDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginFremdSystemGetWasserEntnahmenListe);
+    if (this.onEndFremdSystemGetWasserEntnahmenListeDelegate == null)
+      this.onEndFremdSystemGetWasserEntnahmenListeDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndFremdSystemGetWasserEntnahmenListe);
+    if (this.onFremdSystemGetWasserEntnahmenListeCompletedDelegate == null)
+      this.onFremdSystemGetWasserEntnahmenListeCompletedDelegate = new SendOrPostCallback(this.OnFremdSystemGetWasserEntnahmenListeCompleted);
+    this.InvokeAsync(this.onBeginFremdSystemGetWasserEntnahmenListeDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndFremdSystemGetWasserEntnahmenListeDelegate, this.onFremdSystemGetWasserEntnahmenListeCompletedDelegate, userState);
+  }
+
+  public WCFKarteiBlatt FremdSystemGetKarteiByKBGuid(Guid karteiGuid, Guid TicketID)
+  {
+    return this.Channel.FremdSystemGetKarteiByKBGuid(karteiGuid, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginFremdSystemGetKarteiByKBGuid(
+    Guid karteiGuid,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginFremdSystemGetKarteiByKBGuid(karteiGuid, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFKarteiBlatt EndFremdSystemGetKarteiByKBGuid(IAsyncResult result)
+  {
+    return this.Channel.EndFremdSystemGetKarteiByKBGuid(result);
+  }
+
+  private IAsyncResult OnBeginFremdSystemGetKarteiByKBGuid(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginFremdSystemGetKarteiByKBGuid((Guid) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndFremdSystemGetKarteiByKBGuid(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndFremdSystemGetKarteiByKBGuid(result)
+    };
+  }
+
+  private void OnFremdSystemGetKarteiByKBGuidCompleted(object state)
+  {
+    if (this.FremdSystemGetKarteiByKBGuidCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.FremdSystemGetKarteiByKBGuidCompleted((object) this, new FremdSystemGetKarteiByKBGuidCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void FremdSystemGetKarteiByKBGuidAsync(Guid karteiGuid, Guid TicketID)
+  {
+    this.FremdSystemGetKarteiByKBGuidAsync(karteiGuid, TicketID, (object) null);
+  }
+
+  public void FremdSystemGetKarteiByKBGuidAsync(Guid karteiGuid, Guid TicketID, object userState)
+  {
+    if (this.onBeginFremdSystemGetKarteiByKBGuidDelegate == null)
+      this.onBeginFremdSystemGetKarteiByKBGuidDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginFremdSystemGetKarteiByKBGuid);
+    if (this.onEndFremdSystemGetKarteiByKBGuidDelegate == null)
+      this.onEndFremdSystemGetKarteiByKBGuidDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndFremdSystemGetKarteiByKBGuid);
+    if (this.onFremdSystemGetKarteiByKBGuidCompletedDelegate == null)
+      this.onFremdSystemGetKarteiByKBGuidCompletedDelegate = new SendOrPostCallback(this.OnFremdSystemGetKarteiByKBGuidCompleted);
+    this.InvokeAsync(this.onBeginFremdSystemGetKarteiByKBGuidDelegate, new object[2]
+    {
+      (object) karteiGuid,
+      (object) TicketID
+    }, this.onEndFremdSystemGetKarteiByKBGuidDelegate, this.onFremdSystemGetKarteiByKBGuidCompletedDelegate, userState);
+  }
+
+  public WCFObjektKartei FremdSystemGetObjektKarteiByKBGuid(Guid karteiGuid, Guid TicketID)
+  {
+    return this.Channel.FremdSystemGetObjektKarteiByKBGuid(karteiGuid, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginFremdSystemGetObjektKarteiByKBGuid(
+    Guid karteiGuid,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginFremdSystemGetObjektKarteiByKBGuid(karteiGuid, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFObjektKartei EndFremdSystemGetObjektKarteiByKBGuid(IAsyncResult result)
+  {
+    return this.Channel.EndFremdSystemGetObjektKarteiByKBGuid(result);
+  }
+
+  private IAsyncResult OnBeginFremdSystemGetObjektKarteiByKBGuid(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginFremdSystemGetObjektKarteiByKBGuid((Guid) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndFremdSystemGetObjektKarteiByKBGuid(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndFremdSystemGetObjektKarteiByKBGuid(result)
+    };
+  }
+
+  private void OnFremdSystemGetObjektKarteiByKBGuidCompleted(object state)
+  {
+    if (this.FremdSystemGetObjektKarteiByKBGuidCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.FremdSystemGetObjektKarteiByKBGuidCompleted((object) this, new FremdSystemGetObjektKarteiByKBGuidCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void FremdSystemGetObjektKarteiByKBGuidAsync(Guid karteiGuid, Guid TicketID)
+  {
+    this.FremdSystemGetObjektKarteiByKBGuidAsync(karteiGuid, TicketID, (object) null);
+  }
+
+  public void FremdSystemGetObjektKarteiByKBGuidAsync(
+    Guid karteiGuid,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginFremdSystemGetObjektKarteiByKBGuidDelegate == null)
+      this.onBeginFremdSystemGetObjektKarteiByKBGuidDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginFremdSystemGetObjektKarteiByKBGuid);
+    if (this.onEndFremdSystemGetObjektKarteiByKBGuidDelegate == null)
+      this.onEndFremdSystemGetObjektKarteiByKBGuidDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndFremdSystemGetObjektKarteiByKBGuid);
+    if (this.onFremdSystemGetObjektKarteiByKBGuidCompletedDelegate == null)
+      this.onFremdSystemGetObjektKarteiByKBGuidCompletedDelegate = new SendOrPostCallback(this.OnFremdSystemGetObjektKarteiByKBGuidCompleted);
+    this.InvokeAsync(this.onBeginFremdSystemGetObjektKarteiByKBGuidDelegate, new object[2]
+    {
+      (object) karteiGuid,
+      (object) TicketID
+    }, this.onEndFremdSystemGetObjektKarteiByKBGuidDelegate, this.onFremdSystemGetObjektKarteiByKBGuidCompletedDelegate, userState);
+  }
+
+  public WCFWasserentnahmen FremdSystemGetWasserEntnahmeByWEGuid(Guid wasserGuid, Guid TicketID)
+  {
+    return this.Channel.FremdSystemGetWasserEntnahmeByWEGuid(wasserGuid, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginFremdSystemGetWasserEntnahmeByWEGuid(
+    Guid wasserGuid,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginFremdSystemGetWasserEntnahmeByWEGuid(wasserGuid, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFWasserentnahmen EndFremdSystemGetWasserEntnahmeByWEGuid(IAsyncResult result)
+  {
+    return this.Channel.EndFremdSystemGetWasserEntnahmeByWEGuid(result);
+  }
+
+  private IAsyncResult OnBeginFremdSystemGetWasserEntnahmeByWEGuid(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginFremdSystemGetWasserEntnahmeByWEGuid((Guid) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndFremdSystemGetWasserEntnahmeByWEGuid(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndFremdSystemGetWasserEntnahmeByWEGuid(result)
+    };
+  }
+
+  private void OnFremdSystemGetWasserEntnahmeByWEGuidCompleted(object state)
+  {
+    if (this.FremdSystemGetWasserEntnahmeByWEGuidCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.FremdSystemGetWasserEntnahmeByWEGuidCompleted((object) this, new FremdSystemGetWasserEntnahmeByWEGuidCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void FremdSystemGetWasserEntnahmeByWEGuidAsync(Guid wasserGuid, Guid TicketID)
+  {
+    this.FremdSystemGetWasserEntnahmeByWEGuidAsync(wasserGuid, TicketID, (object) null);
+  }
+
+  public void FremdSystemGetWasserEntnahmeByWEGuidAsync(
+    Guid wasserGuid,
+    Guid TicketID,
+    object userState)
+  {
+    if (this.onBeginFremdSystemGetWasserEntnahmeByWEGuidDelegate == null)
+      this.onBeginFremdSystemGetWasserEntnahmeByWEGuidDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginFremdSystemGetWasserEntnahmeByWEGuid);
+    if (this.onEndFremdSystemGetWasserEntnahmeByWEGuidDelegate == null)
+      this.onEndFremdSystemGetWasserEntnahmeByWEGuidDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndFremdSystemGetWasserEntnahmeByWEGuid);
+    if (this.onFremdSystemGetWasserEntnahmeByWEGuidCompletedDelegate == null)
+      this.onFremdSystemGetWasserEntnahmeByWEGuidCompletedDelegate = new SendOrPostCallback(this.OnFremdSystemGetWasserEntnahmeByWEGuidCompleted);
+    this.InvokeAsync(this.onBeginFremdSystemGetWasserEntnahmeByWEGuidDelegate, new object[2]
+    {
+      (object) wasserGuid,
+      (object) TicketID
+    }, this.onEndFremdSystemGetWasserEntnahmeByWEGuidDelegate, this.onFremdSystemGetWasserEntnahmeByWEGuidCompletedDelegate, userState);
+  }
+
+  public WCFFremdSystem[] FremdSystemeGetAll(Guid TicketID)
+  {
+    return this.Channel.FremdSystemeGetAll(TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginFremdSystemeGetAll(
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginFremdSystemeGetAll(TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public WCFFremdSystem[] EndFremdSystemeGetAll(IAsyncResult result)
+  {
+    return this.Channel.EndFremdSystemeGetAll(result);
+  }
+
+  private IAsyncResult OnBeginFremdSystemeGetAll(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginFremdSystemeGetAll((Guid) inValues[0], callback, asyncState);
+  }
+
+  private object[] OnEndFremdSystemeGetAll(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndFremdSystemeGetAll(result)
+    };
+  }
+
+  private void OnFremdSystemeGetAllCompleted(object state)
+  {
+    if (this.FremdSystemeGetAllCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.FremdSystemeGetAllCompleted((object) this, new FremdSystemeGetAllCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void FremdSystemeGetAllAsync(Guid TicketID)
+  {
+    this.FremdSystemeGetAllAsync(TicketID, (object) null);
+  }
+
+  public void FremdSystemeGetAllAsync(Guid TicketID, object userState)
+  {
+    if (this.onBeginFremdSystemeGetAllDelegate == null)
+      this.onBeginFremdSystemeGetAllDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginFremdSystemeGetAll);
+    if (this.onEndFremdSystemeGetAllDelegate == null)
+      this.onEndFremdSystemeGetAllDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndFremdSystemeGetAll);
+    if (this.onFremdSystemeGetAllCompletedDelegate == null)
+      this.onFremdSystemeGetAllCompletedDelegate = new SendOrPostCallback(this.OnFremdSystemeGetAllCompleted);
+    this.InvokeAsync(this.onBeginFremdSystemeGetAllDelegate, new object[1]
+    {
+      (object) TicketID
+    }, this.onEndFremdSystemeGetAllDelegate, this.onFremdSystemeGetAllCompletedDelegate, userState);
+  }
+
+  public bool FremdSystemPersist(WCFFremdSystem fs, Guid TicketID)
+  {
+    return this.Channel.FremdSystemPersist(fs, TicketID);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public IAsyncResult BeginFremdSystemPersist(
+    WCFFremdSystem fs,
+    Guid TicketID,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.Channel.BeginFremdSystemPersist(fs, TicketID, callback, asyncState);
+  }
+
+  [EditorBrowsable(EditorBrowsableState.Advanced)]
+  public bool EndFremdSystemPersist(IAsyncResult result)
+  {
+    return this.Channel.EndFremdSystemPersist(result);
+  }
+
+  private IAsyncResult OnBeginFremdSystemPersist(
+    object[] inValues,
+    AsyncCallback callback,
+    object asyncState)
+  {
+    return this.BeginFremdSystemPersist((WCFFremdSystem) inValues[0], (Guid) inValues[1], callback, asyncState);
+  }
+
+  private object[] OnEndFremdSystemPersist(IAsyncResult result)
+  {
+    return new object[1]
+    {
+      (object) this.EndFremdSystemPersist(result)
+    };
+  }
+
+  private void OnFremdSystemPersistCompleted(object state)
+  {
+    if (this.FremdSystemPersistCompleted == null)
+      return;
+    ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs completedEventArgs = (ClientBase<IELISWCFService>.InvokeAsyncCompletedEventArgs) state;
+    this.FremdSystemPersistCompleted((object) this, new FremdSystemPersistCompletedEventArgs(completedEventArgs.Results, completedEventArgs.Error, completedEventArgs.Cancelled, completedEventArgs.UserState));
+  }
+
+  public void FremdSystemPersistAsync(WCFFremdSystem fs, Guid TicketID)
+  {
+    this.FremdSystemPersistAsync(fs, TicketID, (object) null);
+  }
+
+  public void FremdSystemPersistAsync(WCFFremdSystem fs, Guid TicketID, object userState)
+  {
+    if (this.onBeginFremdSystemPersistDelegate == null)
+      this.onBeginFremdSystemPersistDelegate = new ClientBase<IELISWCFService>.BeginOperationDelegate(this.OnBeginFremdSystemPersist);
+    if (this.onEndFremdSystemPersistDelegate == null)
+      this.onEndFremdSystemPersistDelegate = new ClientBase<IELISWCFService>.EndOperationDelegate(this.OnEndFremdSystemPersist);
+    if (this.onFremdSystemPersistCompletedDelegate == null)
+      this.onFremdSystemPersistCompletedDelegate = new SendOrPostCallback(this.OnFremdSystemPersistCompleted);
+    this.InvokeAsync(this.onBeginFremdSystemPersistDelegate, new object[2]
+    {
+      (object) fs,
+      (object) TicketID
+    }, this.onEndFremdSystemPersistDelegate, this.onFremdSystemPersistCompletedDelegate, userState);
+  }
+}
