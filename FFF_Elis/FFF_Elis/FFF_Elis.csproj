@@ -8,6 +8,7 @@
 
 
     <ItemGroup>
+        <PackageReference Include="CrystalDecisions.CrystalReports.Engine" Version="1.0.0" />
         <PackageReference Include="MudBlazor" Version="6.*"/>
     </ItemGroup>
 
@@ -19,6 +20,12 @@
       <Reference Include="ELISWCFClient">
         <HintPath>..\libs\ELISWCFClient.dll</HintPath>
       </Reference>
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <ProjectReference Include="..\elis_client\ELISConfigBase\ELISConfigBase.csproj" />
+      <ProjectReference Include="..\elis_client\ELISWCFClient\ELISWCFClient.csproj" />
     </ItemGroup>
 
 </Project>

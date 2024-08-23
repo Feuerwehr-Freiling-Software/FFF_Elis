@@ -21,7 +21,9 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Net.Mime;
 using System.ServiceModel;
+using ELISWCFClient.ELIS.LogBase;
 
 #nullable disable
 namespace ELIS.ELISWCFClient
@@ -298,7 +300,7 @@ namespace ELIS.ELISWCFClient
         Guid TicketID1 = TicketID;
         if (clientFileTransfer.FileDownload(filePath, fileName1, WCFFileTyp.Document, TicketID1))
         {
-          Image.FromFile(tempFolder + fileName).Save(tempFolder + fileName + "_tmp2.jpg", ImageFormat.Jpeg);
+          MediaTypeNames.Image.FromFile(tempFolder + fileName).Save(tempFolder + fileName + "_tmp2.jpg", ImageFormat.Jpeg);
           using (FileStream fileStream = new FileStream(tempFolder + fileName + "_tmp2.jpg", FileMode.Open, FileAccess.Read))
           {
             buffer = new byte[fileStream.Length];

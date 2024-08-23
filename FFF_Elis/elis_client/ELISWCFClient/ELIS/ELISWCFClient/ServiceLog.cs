@@ -5,7 +5,7 @@
 // Assembly location: C:\Users\Haunschmied.Bastian\Documents\GitHub\Feuerwehr-Tools\FFF_Elis\FFF_Elis\libs\ELISWCFClient.dll
 
 using ELIS.ELISWCF;
-using ELIS.LogBase;
+using ELISWCFClient.ELIS.LogBase;
 using System;
 using System.Diagnostics;
 using System.ServiceModel;

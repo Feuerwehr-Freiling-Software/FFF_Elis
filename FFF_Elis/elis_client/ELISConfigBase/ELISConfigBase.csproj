@@ -12,6 +12,7 @@
     <AssemblyVersion>3.3.7468.42109</AssemblyVersion>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="CrystalDecisions.CrystalReports.Engine" Version="1.0.0" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.0" />
   </ItemGroup>
 </Project>
