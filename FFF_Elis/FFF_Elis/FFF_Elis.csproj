@@ -11,21 +11,5 @@
         <PackageReference Include="CrystalDecisions.CrystalReports.Engine" Version="1.0.0" />
         <PackageReference Include="MudBlazor" Version="6.*"/>
     </ItemGroup>
-
-
-    <ItemGroup>
-      <Reference Include="ELISConfigBase">
-        <HintPath>..\libs\ELISConfigBase.dll</HintPath>
-      </Reference>
-      <Reference Include="ELISWCFClient">
-        <HintPath>..\libs\ELISWCFClient.dll</HintPath>
-      </Reference>
-    </ItemGroup>
-
-
-    <ItemGroup>
-      <ProjectReference Include="..\elis_client\ELISConfigBase\ELISConfigBase.csproj" />
-      <ProjectReference Include="..\elis_client\ELISWCFClient\ELISWCFClient.csproj" />
-    </ItemGroup>
-
+    
 </Project>
