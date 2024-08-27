@@ -5,13 +5,13 @@
 // Assembly location: C:\Users\Haunschmied.Bastian\Documents\GitHub\Feuerwehr-Tools\FFF_Elis\FFF_Elis\libs\ELISWCFClient.dll
 
 using CrystalDecisions.CrystalReports.Engine;
-using ELIS.ELISConfiguration;
+//using ELIS.ELISConfiguration;
 using ELIS.ELISWCF;
 using ELIS.ELISWCF.ApDataContracts;
-using ELIS.GeoTools;
-using ELIS.LogBase;
-using ELIS.Reports;
-using ELIS.Reports.Berichte;
+//using ELIS.GeoTools;
+//using ELIS.LogBase;
+//using ELIS.Reports;
+//using ELIS.Reports.Berichte;
 using System;
 using System.Collections;
 using System.Collections.Generic;
