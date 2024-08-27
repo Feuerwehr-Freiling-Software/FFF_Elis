@@ -63,7 +63,8 @@ namespace ELIS.ELISWCFClient
           }
           catch (Exception ex)
           {
-            ELIS.ELISWCFClient.Berichte.log.writelogfile(EventLogEntryType.Error, (LogCategory) 107, ex.Message);
+            // TODO: Custom Logging
+            // ELIS.ELISWCFClient.Berichte.log.writelogfile(EventLogEntryType.Error, (LogCategory) 107, ex.Message);
           }
           try
           {
@@ -113,7 +114,8 @@ namespace ELIS.ELISWCFClient
           }
           catch (Exception ex)
           {
-            ELIS.ELISWCFClient.Berichte.log.writelogfile(ex, EventLogEntryType.Error, (LogCategory) 107);
+            // TODO: Custom Logging
+            // ELIS.ELISWCFClient.Berichte.log.writelogfile(ex, EventLogEntryType.Error, (LogCategory) 107);
           }
           bool flag1 = string.IsNullOrEmpty(wkb.Anfahrt);
           bool flag2 = string.IsNullOrEmpty(wkb.Besonderheiten);

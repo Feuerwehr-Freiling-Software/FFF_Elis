@@ -5,7 +5,7 @@
 // Assembly location: C:\Users\Haunschmied.Bastian\Documents\GitHub\Feuerwehr-Tools\FFF_Elis\FFF_Elis\libs\ELISWCFClient.dll
 
 using ELIS.ELISWCF;
-using ELIS.LogBase;
+// using ELIS.LogBase;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -17,15 +17,15 @@ namespace ELIS.ELISWCFClient
 {
   public class WCFClientFileTransfer
   {
-    private static Logfile log;
+    //private static Logfile log;
     private string wcfIp;
     private string wcfPort;
 
-    public WCFClientFileTransfer(Logfile logFile, string wcfIp, string wcfPort)
+    public WCFClientFileTransfer(/*Logfile logFile,*/ string wcfIp, string wcfPort)
     {
       this.wcfIp = wcfIp;
       this.wcfPort = wcfPort;
-      WCFClientFileTransfer.log = logFile;
+      //log = logFile;
     }
 
     public bool FileUpload(string filePath, string fileName, WCFFileTyp ft, Guid TicketID)
@@ -50,7 +50,9 @@ namespace ELIS.ELISWCFClient
       }
       catch (Exception ex)
       {
-        WCFClientFileTransfer.log.writelogfile(EventLogEntryType.Error, (LogCategory) 110, ex.Message);
+        // ISSUE: variable of a compiler-generated type
+        // TODO: Custom Logging
+        // WCFClientFileTransfer.log.writelogfile(EventLogEntryType.Error, (LogCategory) 110, ex.Message);
         return false;
       }
     }
@@ -87,7 +89,8 @@ namespace ELIS.ELISWCFClient
       }
       catch (Exception ex)
       {
-        WCFClientFileTransfer.log.writelogfile(EventLogEntryType.Error, (LogCategory) 111, ex.Message);
+        // TODO: Custom Logging
+        // WCFClientFileTransfer.log.writelogfile(EventLogEntryType.Error, (LogCategory) 111, ex.Message);
         return false;
       }
     }

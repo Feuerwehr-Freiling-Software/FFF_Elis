@@ -26,44 +26,9 @@ namespace ELIS.ELISWCFClient
       this.wcfIp = wcfIp;
       this.wcfPort = wcfPort;
     }
+  }
 
-    public void writelogfile(Exception ex, EventLogEntryType typ, LogCategory location)
-    {
-      string info = "Fehler: " + ex.Message;
-      if (ex.InnerException != null)
-        info = info + " - InnerExc: " + ex.InnerException.Message;
-      if (!string.IsNullOrEmpty(ex.StackTrace))
-        info = info + " - Stack: " + ex.StackTrace;
-      this.writelogfile(typ, location, info);
-    }
-
-    public void writelogfile(EventLogEntryType typ, LogCategory location, string info)
-    {
-      ServiceLog.log.writelogfile(typ, location, info);
-      try
-      {
-        using (ChannelFactory<IELISWCFService> wcfService = new ELISWCFClientFunctions(this.wcfIp, this.wcfPort).GetWCFService())
-        {
-          IELISWCFService channel = wcfService.CreateChannel();
-          try
-          {
-            channel.SystemLogWrite(new WCFSystemLog()
-            {
-              EventType = typ.ToString(),
-              Location = location.ToString(),
-              Info = info
-            });
-          }
-          catch (Exception ex)
-          {
-            ServiceLog.log.writelogfile(ex, EventLogEntryType.Error, (LogCategory) 154);
-          }
-        }
-      }
-      catch (Exception ex)
-      {
-        ServiceLog.log.writelogfile(EventLogEntryType.Error, (LogCategory) 154, "Keine Verbindung zum ELIS Service Log.");
-      }
-    }
+  public interface ILogfile
+  {
   }
 }

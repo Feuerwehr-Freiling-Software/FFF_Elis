@@ -114,7 +114,9 @@ namespace ELIS.ELISWCFClient
       NetTcpBinding binding = new NetTcpBinding();
       try
       {
-        return new NetTcpBinding("ELISWCFTcpBindingCustom");
+        // TODO: Workaround
+        return new NetTcpBinding(SecurityMode.Transport);
+        // return new NetTcpBinding("ELISWCFTcpBindingCustom");
       }
       catch (Exception ex)
       {
@@ -124,8 +126,6 @@ namespace ELIS.ELISWCFClient
       binding.OpenTimeout = new TimeSpan(0, 1, 0);
       binding.ReceiveTimeout = new TimeSpan(0, 10, 0);
       binding.SendTimeout = new TimeSpan(0, 1, 0);
-      binding.ListenBacklog = 10;
-      binding.HostNameComparisonMode = HostNameComparisonMode.StrongWildcard;
       binding.MaxBufferPoolSize = 62914560L;
       binding.MaxBufferSize = 62914560;
       binding.MaxConnections = 10;
@@ -144,12 +144,6 @@ namespace ELIS.ELISWCFClient
       return binding;
     }
 
-    private EndpointAddress Endpoint
-    {
-      get
-      {
-        return new EndpointAddress("net.tcp://" + this.wcfIP + ":" + this.wcfPort + "/ELISWCFService");
-      }
-    }
+    private EndpointAddress Endpoint => new("net.tcp://" + this.wcfIP + ":" + this.wcfPort + "/ELISWCFService");
   }
 }
