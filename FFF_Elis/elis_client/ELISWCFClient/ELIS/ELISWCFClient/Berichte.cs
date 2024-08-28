@@ -23,6 +23,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Mime;
 using System.ServiceModel;
+using ELIS.ELISWCFClient.BusinessObjects;
 using ELISWCFClient.ELIS.LogBase;
 
 #nullable disable
@@ -142,7 +143,8 @@ namespace ELIS.ELISWCFClient
       }
       catch (Exception ex)
       {
-        ELIS.ELISWCFClient.Berichte.log.writelogfile(ex, EventLogEntryType.Error, (LogCategory) 107);
+        // TODO: Custom Logging
+        // ELIS.ELISWCFClient.Berichte.log.writelogfile(ex, EventLogEntryType.Error, (LogCategory) 107);
         return new BerKarteiStraße();
       }
     }
@@ -168,7 +170,9 @@ namespace ELIS.ELISWCFClient
           }
           catch (Exception ex)
           {
-            ELIS.ELISWCFClient.Berichte.log.writelogfile(ex, EventLogEntryType.Error, (LogCategory) 107);
+            // TODO: Custom Logging
+            // ELIS.ELISWCFClient.Berichte.log.writelogfile(ex, EventLogEntryType.Error, (LogCategory) 107);
+            Console.WriteLine(ex.Message);
           }
           try
           {
@@ -253,7 +257,9 @@ namespace ELIS.ELISWCFClient
           }
           catch (Exception ex)
           {
-            ELIS.ELISWCFClient.Berichte.log.writelogfile(ex, EventLogEntryType.Error, (LogCategory) 107);
+            // TODO: Custom Logging
+            // ELIS.ELISWCFClient.Berichte.log.writelogfile(ex, EventLogEntryType.Error, (LogCategory) 107);
+            Console.WriteLine(ex.Message);
           }
           bool flag1 = string.IsNullOrEmpty(wok.Anfahrt);
           bool flag2 = string.IsNullOrEmpty(wok.Besonderheiten);
@@ -284,7 +290,9 @@ namespace ELIS.ELISWCFClient
       }
       catch (Exception ex)
       {
-        ELIS.ELISWCFClient.Berichte.log.writelogfile(ex, EventLogEntryType.Error, (LogCategory) 107);
+        // TODO: Custom Logging
+        // ELIS.ELISWCFClient.Berichte.log.writelogfile(ex, EventLogEntryType.Error, (LogCategory) 107);
+        Console.WriteLine(ex.Message);
         return new BerKarteiObjekt();
       }
     }
@@ -294,7 +302,7 @@ namespace ELIS.ELISWCFClient
       byte[] buffer = new byte[0];
       try
       {
-        WCFClientFileTransfer clientFileTransfer = new WCFClientFileTransfer(ELIS.ELISWCFClient.Berichte.log, this.wcfIp, this.wcfPort);
+        WCFClientFileTransfer clientFileTransfer = new WCFClientFileTransfer(wcfIp, wcfPort);
         if (!tempFolder.EndsWith("\\"))
           tempFolder += "\\";
         string filePath = tempFolder + fileName;
@@ -310,12 +318,16 @@ namespace ELIS.ELISWCFClient
           }
         }
         else
-          ELIS.ELISWCFClient.Berichte.log.writelogfile(EventLogEntryType.Warning, (LogCategory) 109, "GetImagefromWCF: Datei " + fileName + " konnte nicht von ELIS Service übermittelt werden.");
+        // TODO: Custom Logging
+        //  ELIS.ELISWCFClient.Berichte.log.writelogfile(EventLogEntryType.Warning, (LogCategory) 109, "GetImagefromWCF: Datei " + fileName + " konnte nicht von ELIS Service übermittelt werden.");
+        Console.WriteLine("GetImagefromWCF: Datei " + fileName + " konnte nicht von ELIS Service übermittelt werden.");
       }
       catch (Exception ex)
       {
-        ELIS.ELISWCFClient.Berichte.log.writelogfile(EventLogEntryType.Error, (LogCategory) 109, "GetImagefromWCF: " + ex.Message);
-        ELIS.ELISWCFClient.Berichte.log.writelogfile(ex, EventLogEntryType.Error, (LogCategory) 109);
+        // TODO: Custom Logging
+        // ELIS.ELISWCFClient.Berichte.log.writelogfile(EventLogEntryType.Error, (LogCategory) 109, "GetImagefromWCF: " + ex.Message);
+        // ELIS.ELISWCFClient.Berichte.log.writelogfile(ex, EventLogEntryType.Error, (LogCategory) 109);
+        Console.WriteLine("GetImagefromWCF: " + ex.Message);
       }
       return buffer;
     }

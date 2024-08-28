@@ -1,10 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FFF_Elis", "FFF_Elis\FFF_Elis.csproj", "{4EA056AA-72D3-410A-B20A-DDBC64712655}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ELISWCFClient", "elis_client\ELISWCFClient\ELISWCFClient.csproj", "{9B6890CA-3DDB-4258-A869-C4A32137AED1}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ELISConfigBase", "elis_client\ELISConfigBase\ELISConfigBase.csproj", "{11930212-CEE2-4D68-BE7E-05FBEF8B6DD6}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FFF_Elis", "FFF_Elis\FFF_Elis.csproj", "{4EA056AA-72D3-410A-B20A-DDBC64712655}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,13 +15,8 @@ Global
 		{4EA056AA-72D3-410A-B20A-DDBC64712655}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EA056AA-72D3-410A-B20A-DDBC64712655}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EA056AA-72D3-410A-B20A-DDBC64712655}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9B6890CA-3DDB-4258-A869-C4A32137AED1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9B6890CA-3DDB-4258-A869-C4A32137AED1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9B6890CA-3DDB-4258-A869-C4A32137AED1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9B6890CA-3DDB-4258-A869-C4A32137AED1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{11930212-CEE2-4D68-BE7E-05FBEF8B6DD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{11930212-CEE2-4D68-BE7E-05FBEF8B6DD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{11930212-CEE2-4D68-BE7E-05FBEF8B6DD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{11930212-CEE2-4D68-BE7E-05FBEF8B6DD6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal

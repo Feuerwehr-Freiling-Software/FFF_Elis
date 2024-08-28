@@ -1,5 +1,4 @@
-﻿/*using ELIS.ELISWCF;
-using ELIS.ELISWCFClient;
+﻿using ELISWCFService;
 
 namespace FFF_Elis.ELIS_Services;
 
@@ -7,8 +6,8 @@ public class ElisClient
 {
     private ELISWCFServiceClient serviceClient;
 
-    private const string URL_ELISServer = "elisfreiling.ddns.net";
-    private const string PORT_ELISServer = "9001";
+    private const string URL_ELISServer = "127.0.0.1";
+    private const string PORT_ELISServer = "8001";
     private const string ELISLogin = "admin";
     private const string ELISPasswort = "admin";
     
@@ -35,4 +34,4 @@ public class ElisClient
         }
     }
 
-}*/
+}
