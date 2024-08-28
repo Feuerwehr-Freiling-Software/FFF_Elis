@@ -1,4 +1,5 @@
 using FFF_Elis.Components;
+using FFF_Elis.ELIS_Services;
 using MudBlazor.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +19,8 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+var client = new ElisClient();
 
 app.UseHttpsRedirection();
 

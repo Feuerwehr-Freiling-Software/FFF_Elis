@@ -1,4 +1,5 @@
-﻿using ELISWCFService;
+﻿using System.ServiceModel;
+using ELISWCFService;
 
 namespace FFF_Elis.ELIS_Services;
 
@@ -7,7 +8,7 @@ public class ElisClient
     private ELISWCFServiceClient serviceClient;
 
     private const string URL_ELISServer = "127.0.0.1";
-    private const string PORT_ELISServer = "8001";
+    private const string PORT_ELISServer = "8010";
     private const string ELISLogin = "admin";
     private const string ELISPasswort = "admin";
     
@@ -15,10 +16,7 @@ public class ElisClient
     {
         get
         {
-            var cs = new
-                ELISWCFClientFunctions(URL_ELISServer,PORT_ELISServer);
-            var isSecured=false;
-            serviceClient = cs.getWCFServiceClient(ref isSecured);
+            serviceClient = new ELISWCFServiceClient(ELISWCFServiceClient.EndpointConfiguration.ELISWCFTcpBinding_IELISWCFService, new EndpointAddress("net.tcp://"+URL_ELISServer + ":" + PORT_ELISServer));
             return serviceClient;
         }
     }
@@ -27,10 +25,8 @@ public class ElisClient
     {
         get
         {
-            ELISWCFClientFunctions cs = new
-                ELISWCFClientFunctions(URL_ELISServer,PORT_ELISServer);
-            WCFTicket _ticket = cs.getTicket(ELISLogin, ELISPasswort);
-            return _ticket;
+            var _ticket = Client.CreateTicket(new CreateTicketRequest(ELISLogin, ELISPasswort));
+            return _ticket.CreateTicketResult;
         }
     }
 
