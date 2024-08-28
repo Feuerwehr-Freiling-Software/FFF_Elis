@@ -4,17 +4,12 @@
 
 <PageTitle>Home</PageTitle>
 
-
-<MudContainer>
-    <Row>
-        <h1>Welcome to FFF_Elis</h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <p class="lead">
-            <Button Color="Color.Primary">Learn More</Button>
-        </p>
-    </Row>
-</MudContainer>
+<h1>Welcome to FFF_Elis</h1>
+<p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+<p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+<p class="lead">
+    <Button Color="Color.Primary">Learn More</Button>
+</p>
 
 @if (Users.Any())
 {
@@ -35,6 +30,7 @@ else
 
     protected override void OnInitialized()
     {
-        Users = Client.Client.UserGetAll(new UserGetAllRequest(Client.Ticket.TicketID)).UserGetAllResult.ToList();
+        // Users = Client.Client.UserGetAll(new UserGetAllRequest(Client.Ticket.TicketID)).UserGetAllResult.ToList();
+        var tmp = Client.Client.EinsatzPersonGetByEinsatz(new EinsatzPersonGetByEinsatzRequest("einsatzNr", Client.Ticket.TicketID));
     }
 }
