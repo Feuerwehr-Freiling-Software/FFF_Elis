@@ -30,7 +30,10 @@ else
 
     protected override void OnInitialized()
     {
-        // Users = Client.Client.UserGetAll(new UserGetAllRequest(Client.Ticket.TicketID)).UserGetAllResult.ToList();
-        var tmp = Client.Client.EinsatzPersonGetByEinsatz(new EinsatzPersonGetByEinsatzRequest("einsatzNr", Client.Ticket.TicketID));
+        //Users = Client.Client.UserGetAll(new UserGetAllRequest(Client.Ticket.TicketID)).UserGetAllResult.ToList();
+        //var tmp = Client.Client.EinsatzPersonGetByEinsatz(new EinsatzPersonGetByEinsatzRequest("einsatzNr", Client.Ticket.TicketID));
+        //var tmp1 = Client.Client.EinsatzDataGetAll(new EinsatzDataGetAllRequest(Client.Ticket.TicketID));
+         
+        //var coordinates = (tmp1.EinsatzDataGetAllResult.First().Fahrzeuge.First().LFKLongitude, tmp1.EinsatzDataGetAllResult.First().Fahrzeuge.First().LFKLatitude);
     }
 }

@@ -125,3 +125,5 @@ body {
     left: 0;
     padding: 10px;
 }
+
+#map { height: 1000px; }

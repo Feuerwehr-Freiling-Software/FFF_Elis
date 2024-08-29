@@ -1,0 +1,32 @@
+﻿@namespace FFF_Elis.Components.Dialogs
+@using ELISWCFService
+@code {
+    
+    [CascadingParameter]
+    private MudDialogInstance MudDialog { get; set; }
+    
+    public WCFFahrzeug Fahrzeug { get; set; }
+    
+    private void AddVehicle()
+    {
+        MudDialog.Close(DialogResult.Ok(Fahrzeug));
+    }
+
+    private void Cancel() => MudDialog.Cancel();
+
+}
+<MudDialog>
+    <TitleContent>
+        <h3>Add Vehicle</h3>
+    </TitleContent>
+    <DialogContent>
+        <MudTextField @bind-Value="Fahrzeug.Bezeichnung" Label="Vehicle Name" />
+        <MudTextField @bind-Value="Fahrzeug.StatusInfo" Label="Status" />
+        <MudNumericField @bind-Value="Fahrzeug.LFKLatitude" Label="Latitude" />
+        <MudNumericField @bind-Value="Fahrzeug.LFKLongitude" Label="Longitude" />
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="AddVehicle" Variant="Variant.Filled">Add</MudButton>
+        <MudButton OnClick="Cancel" Variant="Variant.Filled">Cancel</MudButton>
+    </DialogActions>
+</MudDialog>
