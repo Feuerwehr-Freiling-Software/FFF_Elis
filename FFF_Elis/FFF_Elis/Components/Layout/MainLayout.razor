@@ -6,12 +6,29 @@
 <MudSnackbarProvider/>
 
 <MudLayout>
-    <MudAppBar Elevation="1">
-        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())"/>
-        <MudText Typo="Typo.h5" Class="ml-3">2.0</MudText>
-        <MudSpacer/>
-        <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End"/>
-    </MudAppBar>
+    <header class="fro-header fro-header--with-border" style="z-index: 9000; position: fixed; top: 0; width: 100%">
+        <div class="fro-header__left-wrapper">
+            <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())"/>
+            <div class="fro-header__title">Elis Visualisierung 2.0</div>
+        </div>
+        <div class="fro-header__menu-wrapper">
+        </div>
+        <div
+            class="fro-header__search-wrapper fro-input-group fro-input-group--x-small"
+        >
+            <i class="fro-icon">magnifying-glass</i>
+            <input
+                type="search"
+                class="fro-input fro-input--fluid fro-input-group__fro-input"
+                placeholder="Search"
+            />
+            <button
+                class="fro-button fro-button--x-small fro-button--no-min-width fro-button--pill fro-button--icon-only fro-input-group__fro-button"
+            >
+                <i class="fro-icon">xmark</i>
+            </button>
+        </div>
+    </header>
     <MudDrawer @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2">
         <NavMenu/>
     </MudDrawer>
@@ -21,7 +38,7 @@
 </MudLayout>
 
 @code {
-    private bool _drawerOpen = true;
+    private bool _drawerOpen = false;
 
     private void DrawerToggle()
     {

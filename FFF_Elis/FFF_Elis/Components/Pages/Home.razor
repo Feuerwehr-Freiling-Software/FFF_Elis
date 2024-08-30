@@ -1,10 +1,18 @@
 ﻿@page "/"
 @using ELISWCFService
+@using FFF_Elis.Components.BusinessObjects
 @using FFF_Elis.ELIS_Services
 @using FFF_Elis.Components.Components
 
-<div style="height: 1000px">
-    <MapComponent />
+<div class="home-container">
+    <div class="Infotext" style="margin-top: 3%;">
+        <div class="Einsatzgrund"><strong>Einsatzgrund:</strong> Brandmeldealarm</div>
+        <div class="Ort"><strong>Ort:</strong> Hörschingerstraße 1, 4064 Oftering  Almi GmbH</div>
+        <div class="Anrufer"><strong>Anrufer:</strong> 0664/88387154</div>
+        <div class="Info" style="margin-left: 10%"><strong>Info:</strong></div>
+    </div>
+    <div class="Rueckmeldungen" style="overflow-y: scroll"><RueckmeldeListe Rueckmeldungen="Rueckmeldungen"/></div>
+    <div class="Karte"><MapComponent Waypoints="Waypoints" /></div>
 </div>
 
 @code
@@ -12,12 +20,33 @@
     public List<WCFBenutzer> Users { get; set; } = new();
     public ElisClient Client { get; set; } = new (); 
 
+    public List<Einsatzrueckmeldung> Rueckmeldungen { get; set; } = new List<Einsatzrueckmeldung>()
+    {
+        {new Einsatzrueckmeldung(){Name = "Haunschmied Bastian", Status = RueckmeldungsStatus.Komme}},
+        {new Einsatzrueckmeldung(){Name = "Haunschmied Bastian", Status = RueckmeldungsStatus.Komme}},
+        {new Einsatzrueckmeldung(){Name = "Haunschmied Bastian", Status = RueckmeldungsStatus.Komme}},
+        {new Einsatzrueckmeldung(){Name = "Haunschmied Bastian", Status = RueckmeldungsStatus.Komme}},
+        {new Einsatzrueckmeldung(){Name = "Leutgöb Fabian", Status = RueckmeldungsStatus.Verfuegbar}},
+        {new Einsatzrueckmeldung(){Name = "Leutgöb Fabian", Status = RueckmeldungsStatus.Verfuegbar}},
+        {new Einsatzrueckmeldung(){Name = "Leutgöb Fabian", Status = RueckmeldungsStatus.Verfuegbar}},
+        {new Einsatzrueckmeldung(){Name = "Leutgöb Lukas", Status = RueckmeldungsStatus.NichtVerfuegbar}},
+        {new Einsatzrueckmeldung(){Name = "Leutgöb Lukas", Status = RueckmeldungsStatus.NichtVerfuegbar}},
+        {new Einsatzrueckmeldung(){Name = "Leutgöb Lukas", Status = RueckmeldungsStatus.NichtVerfuegbar}},
+        {new Einsatzrueckmeldung(){Name = "Leutgöb Lukas", Status = RueckmeldungsStatus.NichtVerfuegbar}},
+    };
+
+    public List<Waypoint> Waypoints { get; set; } = new List<Waypoint>()
+    {
+        new Waypoint() { lat = 48.236121, lon = 14.123097 },
+        new Waypoint() { lat = 48.226862, lon = 14.161580 },
+    };
+    
     protected override void OnInitialized()
     {
         //Users = Client.Client.UserGetAll(new UserGetAllRequest(Client.Ticket.TicketID)).UserGetAllResult.ToList();
         //var tmp = Client.Client.EinsatzPersonGetByEinsatz(new EinsatzPersonGetByEinsatzRequest("einsatzNr", Client.Ticket.TicketID));
         //var tmp1 = Client.Client.EinsatzDataGetAll(new EinsatzDataGetAllRequest(Client.Ticket.TicketID));
-         
+        //var rueckmeldungen = Client.Client.EinsatzPersonGetByEinsatz(new EinsatzPersonGetByEinsatzRequest(tmp1.EinsatzDataGetAllResult.First().EinsatzNr, Client.Ticket.TicketID));
         //var coordinates = (tmp1.EinsatzDataGetAllResult.First().Fahrzeuge.First().LFKLongitude, tmp1.EinsatzDataGetAllResult.First().Fahrzeuge.First().LFKLatitude);
         //var arlamierteFFs = tmp1.EinsatzDataGetAllResult.First().Alarmierungen;
     }

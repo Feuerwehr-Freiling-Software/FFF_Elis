@@ -1,0 +1,43 @@
+﻿@using FFF_Elis.Components.BusinessObjects
+<div class="fro-list">
+    <div class="fro-list__headline">Rückmeldungen</div>
+
+    @foreach (var item in Rueckmeldungen)
+    {
+        switch (item.Status)
+        {
+            case RueckmeldungsStatus.Komme:
+                <a class="fro-list-item rueckmeldung-ja">
+                    <i class="fro-icon fro-icon--fixed fro-list-item__icon" translate="no"
+                    >user</i>
+                    <div class="fro-list-item__label">@item.Name</div>
+                    <span class="fro-chip fro-chip--small fro-chip--mini fro-chip--pill">
+                      <span class="fro-chip__label">GRKDT</span>
+                    </span>
+                </a>
+                break;
+            case RueckmeldungsStatus.Verfuegbar:
+                <a class="fro-list-item rueckmeldung-verfuegbar">
+                    <i class="fro-icon fro-icon--fixed fro-list-item__icon" translate="no"
+                    >user</i>
+                    <div class="fro-list-item__label">@item.Name</div>
+                    <span class="fro-chip fro-chip--small fro-chip--mini fro-chip--pill">
+                      <span class="fro-chip__label">GRKDT</span>
+                    </span>
+                </a>
+                break;
+            case RueckmeldungsStatus.NichtVerfuegbar:
+                <a class="fro-list-item rueckmeldung-nein">
+                    <i class="fro-icon fro-icon--fixed fro-list-item__icon" translate="no"
+                    >user</i>
+                    <div class="fro-list-item__label">@item.Name</div>
+                    <span class="fro-chip fro-chip--small fro-chip--mini fro-chip--pill">
+                      <span class="fro-chip__label">GRKDT</span>
+                    </span>
+                </a>
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+    }
+</div>
