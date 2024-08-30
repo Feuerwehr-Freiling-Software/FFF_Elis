@@ -1,27 +1,11 @@
 ﻿@page "/"
 @using ELISWCFService
 @using FFF_Elis.ELIS_Services
+@using FFF_Elis.Components.Components
 
-<PageTitle>Home</PageTitle>
-
-<h1>Welcome to FFF_Elis</h1>
-<p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-<p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-<p class="lead">
-    <Button Color="Color.Primary">Learn More</Button>
-</p>
-
-@if (Users.Any())
-{
-    foreach(var user in Users)
-    {
-        <p>@(user.Vorname + " " + user.Nachname)</p>
-    }
-}
-else
-{
-    <p>Keine Benutzer gefunden...</p>
-}
+<div style="height: 1000px">
+    <MapComponent />
+</div>
 
 @code
 {
@@ -35,5 +19,6 @@ else
         //var tmp1 = Client.Client.EinsatzDataGetAll(new EinsatzDataGetAllRequest(Client.Ticket.TicketID));
          
         //var coordinates = (tmp1.EinsatzDataGetAllResult.First().Fahrzeuge.First().LFKLongitude, tmp1.EinsatzDataGetAllResult.First().Fahrzeuge.First().LFKLatitude);
+        //var arlamierteFFs = tmp1.EinsatzDataGetAllResult.First().Alarmierungen;
     }
 }

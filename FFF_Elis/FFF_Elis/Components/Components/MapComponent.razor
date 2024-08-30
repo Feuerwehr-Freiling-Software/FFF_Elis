@@ -1,0 +1,56 @@
+﻿<h3>Map</h3>
+<div id="map" style="height: 100%"></div>
+
+<script>
+    var FWIcon = L.Icon.extend({
+        options:{
+            iconSize:     [95, 38], // size of the icon
+            iconAnchor:   [40, 20], // point of the icon which will correspond to marker's location
+            popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
+        }
+    });        
+
+    var EinsatzIcon = L.Icon.extend({
+        options:{
+            iconUrl: './img/einsatz.jpg',
+            iconSize:     [38, 38], // size of the icon
+            iconAnchor:   [19, 19], // point of the icon which will correspond to marker's location
+            popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
+        }
+    });
+
+    var map = L.map('map').setView([48.236121, 14.123097], 13);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    AddEinsatzToMap(48.236121, 14.123097, 'Einsatz 1');
+
+    function AddWaypointsToMap(waypoints) {
+        waypoints.forEach(waypoint => {
+            L.Routing.control({
+                waypoints: [
+                    L.latLng(waypoint.lat, waypoint.lon)
+                ],
+                routeWhileDragging: true
+            }).addTo(map);
+        });
+    }
+
+    function AddEinsatzToMap(lat, long, name) {
+        L.marker([lat, long], {icon: new EinsatzIcon}).addTo(map)
+            .bindPopup('<b>' + name + '</b></br> ' + lat + ', ' + long)
+            .openPopup();
+    }
+
+    function AddVehicleToMap(lat, long, status, name, imgPath) {
+    // './img/LFB_Freiling.png'
+        var vehicleIcon = new FWIcon({iconUrl: imgPath});
+
+        L.marker([lat, long], {icon: vehicleIcon}).addTo(map)
+            .bindPopup('<b>' + name + '</b></br> ' + lat + ', ' + long + '</br> Status: <b>' + status + '</b>')
+            .openPopup();
+    }
+
+</script>
