@@ -2,6 +2,6 @@
 
 public class Waypoint
 {
-    public double lat { get; set; } 
-    public double lon { get; set; }
+    public float lat { get; set; } 
+    public float lon { get; set; }
 }

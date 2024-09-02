@@ -4,22 +4,43 @@
 @using FFF_Elis.ELIS_Services
 @using FFF_Elis.Components.Components
 
-<div class="home-container">
-    <div class="Infotext" style="margin-top: 3%;">
-        <div class="Einsatzgrund"><strong>Einsatzgrund:</strong> Brandmeldealarm</div>
-        <div class="Ort"><strong>Ort:</strong> Hörschingerstraße 1, 4064 Oftering  Almi GmbH</div>
-        <div class="Anrufer"><strong>Anrufer:</strong> 0664/88387154</div>
-        <div class="Info" style="margin-left: 10%"><strong>Info:</strong></div>
+<EinsatzTimerComponent OnNewEinsatz="OnNewEinsatz"/>
+
+@if (EinsatzAnzeigen)
+{
+    <div class="home-container">
+        <div class="Infotext" style="margin-top: 3%;">
+            <div class="Einsatzgrund"><strong>Einsatzgrund:</strong> @Einsatz.Einsatzgrund</div>
+            <div class="Ort"><strong>Ort:</strong> @Einsatz.Adresse</div>
+            <div class="Anrufer"><strong>Anrufer:</strong> @Einsatz.Anrufer</div>
+            <div class="Info" style="margin-left: 10%"><strong>Info:</strong>
+                <p>@Einsatz.Information</p>
+            </div>
+        </div>
+        <div class="Rueckmeldungen" style="overflow-y: scroll"><RueckmeldeListe Rueckmeldungen="Rueckmeldungen"/></div>
+        <div class="Karte"><MapComponent Waypoints="Waypoints" /></div>
     </div>
-    <div class="Rueckmeldungen" style="overflow-y: scroll"><RueckmeldeListe Rueckmeldungen="Rueckmeldungen"/></div>
-    <div class="Karte"><MapComponent Waypoints="Waypoints" /></div>
-</div>
+}
+else
+{
+    <VisualItemComponent Items="VisualItems" />
+}
 
 @code
 {
-    public List<WCFBenutzer> Users { get; set; } = new();
-    public ElisClient Client { get; set; } = new (); 
-
+    public List<WCFBenutzer> Users { get; set; } = [];
+    public ElisClient Client { get; set; } = new ();
+    public WCFEinsatzdaten Einsatz { get; set; } = new ();
+    
+    public List<VisualItem> VisualItems { get; set; } = new List<VisualItem>()
+    {
+        new VisualItem() { Name = "PDF File", Type = VisualItemType.File, Url = "visualizationFiles/PRAT0118_SCAN_240709_105543.pdf", Duration = 30, Description = "Beispiel für PDF Datei" },
+        new VisualItem() { Name = "Wetterbericht", Type = VisualItemType.Webpage, Url = "https://meteoblue.com/de/meteotv/af27d5", Duration = 10, Description = "Wetterbericht Freiling" },
+        new VisualItem() { Name = "Homepage", Type = VisualItemType.Webpage, Url = "https://feuerwehr-freiling.at", Duration = 10, Description = "Homepage der FFF" },
+    };
+    
+    private bool EinsatzAnzeigen { get; set; } = false;
+    
     public List<Einsatzrueckmeldung> Rueckmeldungen { get; set; } = new List<Einsatzrueckmeldung>()
     {
         {new Einsatzrueckmeldung(){Name = "Haunschmied Bastian", Status = RueckmeldungsStatus.Komme}},
@@ -35,17 +56,29 @@
         {new Einsatzrueckmeldung(){Name = "Leutgöb Lukas", Status = RueckmeldungsStatus.NichtVerfuegbar}},
     };
 
-    public List<Waypoint> Waypoints { get; set; } = new List<Waypoint>()
+    public List<Waypoint> Waypoints { get; set; } = new();
+    
+    private async Task AddRueckmeldung()
     {
-        new Waypoint() { lat = 48.236121, lon = 14.123097 },
-        new Waypoint() { lat = 48.226862, lon = 14.161580 },
-    };
+        var random = new Random();
+        Rueckmeldungen.Add(new Einsatzrueckmeldung() { Name = "Haunschmied Bastian", Status = (RueckmeldungsStatus)random.Next(1,3) });
+    }
+
+    private void OnNewEinsatz(WCFEinsatzdaten einsatzdaten)
+    {
+        Waypoints = new List<Waypoint>()
+        {
+            new Waypoint() { lat = 48.236121f, lon = 14.123097f },
+            new Waypoint() { lat = Convert.ToSingle(einsatzdaten.GPSLatitude), lon = Convert.ToSingle(einsatzdaten.GPSLatitude) },
+        };
+        EinsatzAnzeigen = true;
+    }
     
     protected override void OnInitialized()
     {
-        //Users = Client.Client.UserGetAll(new UserGetAllRequest(Client.Ticket.TicketID)).UserGetAllResult.ToList();
+        Users = Client.Client.UserGetAll(new UserGetAllRequest(Client.Ticket.TicketID)).UserGetAllResult.ToList();
         //var tmp = Client.Client.EinsatzPersonGetByEinsatz(new EinsatzPersonGetByEinsatzRequest("einsatzNr", Client.Ticket.TicketID));
-        //var tmp1 = Client.Client.EinsatzDataGetAll(new EinsatzDataGetAllRequest(Client.Ticket.TicketID));
+        var tmp1 = Client.Client.EinsatzDataGetAll(new EinsatzDataGetAllRequest(Client.Ticket.TicketID));
         //var rueckmeldungen = Client.Client.EinsatzPersonGetByEinsatz(new EinsatzPersonGetByEinsatzRequest(tmp1.EinsatzDataGetAllResult.First().EinsatzNr, Client.Ticket.TicketID));
         //var coordinates = (tmp1.EinsatzDataGetAllResult.First().Fahrzeuge.First().LFKLongitude, tmp1.EinsatzDataGetAllResult.First().Fahrzeuge.First().LFKLatitude);
         //var arlamierteFFs = tmp1.EinsatzDataGetAllResult.First().Alarmierungen;

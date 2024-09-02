@@ -1,4 +1,5 @@
 using FFF_Elis.Components;
+using FFF_Elis.Components.Services;
 using FFF_Elis.ELIS_Services;
 using MudBlazor.Services;
 
@@ -9,6 +10,8 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 builder.Services.AddMudServices();
+
+builder.Services.AddSingleton<GoogleService>();
 
 var app = builder.Build();
 

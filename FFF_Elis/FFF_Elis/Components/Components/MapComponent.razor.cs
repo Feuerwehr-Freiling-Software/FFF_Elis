@@ -12,9 +12,16 @@ public partial class MapComponent : ComponentBase
 
     protected override async Task OnParametersSetAsync()
     {
-        if (Waypoints.Any())
-        {
-            JS.InvokeVoidAsync("AddWaypointsToMap", Waypoints);
-        }
+        await Task.CompletedTask;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await AddRouteAsync(Waypoints);
+    }
+
+    private async Task AddRouteAsync(List<Waypoint> waypoints)
+    {
+        await JS.InvokeVoidAsync("addRoute", waypoints);
     }
 }

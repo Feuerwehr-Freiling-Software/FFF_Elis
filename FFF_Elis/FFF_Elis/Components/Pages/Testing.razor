@@ -1,0 +1,26 @@
+﻿@page "/Testing"
+@using ELISWCFService
+@using FFF_Elis.ELIS_Services
+<h3>Testing</h3>
+
+<p>This is a test page.</p>
+
+@foreach(var einsatz in einsaetze)
+{
+    
+}
+
+<table></table>
+
+
+@code {
+    public ElisClient ElisClient { get; set; } = new ElisClient();
+
+    public List<WCFEinsatzdaten> einsaetze { get; set; } = new List<WCFEinsatzdaten>();
+    
+    protected override void OnInitialized()
+    {
+        var einsaetze = ElisClient.Client.EinsatzDataGetAll(new EinsatzDataGetAllRequest(ElisClient.Ticket.TicketID)).EinsatzDataGetAllResult.ToList();
+        var fahrzeuge = ElisClient.Client.FahrzeugeGetByFeuerwehr(new FahrzeugeGetByFeuerwehrRequest(49219, ElisClient.Ticket.TicketID)).FahrzeugeGetByFeuerwehrResult;
+    }
+}

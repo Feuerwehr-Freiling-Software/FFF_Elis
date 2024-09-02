@@ -1,0 +1,24 @@
+﻿@using FFF_Elis.Components.BusinessObjects
+<div style="height: 90vh;">
+    @switch(_currentVisualItem.Type)
+    {
+        case VisualItemType.Webpage:
+            <iframe src="@_currentVisualItem.Url"></iframe>
+            break;
+        case VisualItemType.File:
+            <embed width="100%" height="100%" src="@_currentVisualItem.Url" alt="@_currentVisualItem.Description"/>
+            break;
+        case VisualItemType.Image:
+            <img src="@_currentVisualItem.Url" alt="@_currentVisualItem.Description" />
+            break;
+        case VisualItemType.Video:
+            <video src="@_currentVisualItem.Url" controls></video>
+            break;
+        case VisualItemType.Text:
+            <p>@_currentVisualItem.Description</p>
+            break;
+        default:
+            Console.WriteLine("Unknown VisualItemType");
+            break;
+    }
+</div>

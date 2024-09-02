@@ -79,3 +79,7 @@
     background-color: var(--fro-dialog-color-warning) !important;
 }
 
+.h-90{
+    height: 90vh;
+}
+

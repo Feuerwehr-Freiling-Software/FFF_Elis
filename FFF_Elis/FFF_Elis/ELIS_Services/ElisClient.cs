@@ -16,7 +16,7 @@ public class ElisClient
     {
         get
         {
-            serviceClient = new ELISWCFServiceClient(ELISWCFServiceClient.EndpointConfiguration.ELISWCFTcpBinding_IELISWCFService, new EndpointAddress("net.tcp://127.0.0.1:8010/ELISWCFService"));
+            serviceClient = new ELISWCFServiceClient(ELISWCFServiceClient.EndpointConfiguration.ELISWCFTcpBinding_IELISWCFService, new EndpointAddress("net.tcp://127.0.0.1:8000/ELISWCFService"));
             return serviceClient;
         }
     }
