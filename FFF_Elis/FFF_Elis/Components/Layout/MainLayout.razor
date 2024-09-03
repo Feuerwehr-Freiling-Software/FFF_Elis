@@ -28,8 +28,13 @@
                 <i class="fro-icon">xmark</i>
             </button>
         </div>
+        <div class="fro-header__icon-wrapper">
+            <a href="/visuSettings">
+                <div class="fro-header__icon fro-icon">gear</div>
+            </a>
+        </div>
     </header>
-    <MudDrawer @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2">
+    <MudDrawer Style="background-color: var(--fro-background); color: var(--fro-text);" @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Docked" Variant="DrawerVariant.Mini" Elevation="3">
         <NavMenu/>
     </MudDrawer>
     <MudMainContent Class="mt-16 pa-4">

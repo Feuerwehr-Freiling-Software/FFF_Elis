@@ -20,8 +20,39 @@
 
 
     <ItemGroup>
+      <Folder Include="wwwroot\js\" />
       <Folder Include="wwwroot\leaflet\" />
+      <Folder Include="wwwroot\NpmJs\" />
       <Folder Include="wwwroot\visualizationFiles\" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <Content Include="..\node_modules\.package-lock.json">
+        <Link>node_modules\.package-lock.json</Link>
+      </Content>
+      <Content Include="..\node_modules\swapy\dist\swapy.js">
+        <Link>node_modules\swapy\dist\swapy.js</Link>
+      </Content>
+      <Content Include="..\node_modules\swapy\dist\swapy.min.js">
+        <Link>node_modules\swapy\dist\swapy.min.js</Link>
+      </Content>
+      <Content Include="..\node_modules\swapy\LICENSE">
+        <Link>node_modules\swapy\LICENSE</Link>
+      </Content>
+      <Content Include="..\node_modules\swapy\package.json">
+        <Link>node_modules\swapy\package.json</Link>
+      </Content>
+      <Content Include="..\node_modules\swapy\README.md">
+        <Link>node_modules\swapy\README.md</Link>
+      </Content>
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <TypeScriptCompile Include="..\node_modules\swapy\dist\swapy.d.ts">
+        <Link>node_modules\swapy\dist\swapy.d.ts</Link>
+      </TypeScriptCompile>
     </ItemGroup>
     
 </Project>
