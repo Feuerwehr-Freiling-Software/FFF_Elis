@@ -21,6 +21,6 @@
     protected override void OnInitialized()
     {
         var einsaetze = ElisClient.Client.EinsatzDataGetAll(new EinsatzDataGetAllRequest(ElisClient.Ticket.TicketID)).EinsatzDataGetAllResult.ToList();
-        var fahrzeuge = ElisClient.Client.FahrzeugeGetByFeuerwehr(new FahrzeugeGetByFeuerwehrRequest(49219, ElisClient.Ticket.TicketID)).FahrzeugeGetByFeuerwehrResult;
+        var fahrzeuge = ElisClient.Client.FahrzeugeGetByFeuerwehr(new FahrzeugeGetByFeuerwehrRequest(00123, ElisClient.Ticket.TicketID)).FahrzeugeGetByFeuerwehrResult;
     }
 }
