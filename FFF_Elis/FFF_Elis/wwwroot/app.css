@@ -17,8 +17,69 @@
 .nav {
     --bs-nav-link-color: var(--mud-palette-primary) !important;
     --bs-nav-link-hover-color: var(--mud-palette-primary-darken) !important;
+    text-decoration: none;
 }
 
 * {
     box-sizing: border-box;
 }
+
+:root{
+    --mud-palette-text-primary: var(--fro-text) !important;
+    --mud-palette-action-default: var(--fro-text) !important;
+    --mud-palette-background: var(--fro-background) !important;
+    --mud-palette-surface: var(--fro-background) !important;
+    --mud-palette-action-disabled: var(--fro-input-disabled-text) !important;
+    --mud-palette-text-secondary: var(--fro-text) !important;
+    --mud-zindex-popover: 10000 !important;
+    --mud-typography-button-family: var(--fro-font-rational) !important;
+    --mud-palette-primary: var(--fro-text) !important;
+}
+
+/* Home Page */
+.home-container {  
+    height: 90vh;
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-template-columns: 25% 75%;
+    grid-template-rows: 70% 30%;
+    gap: 0px 0px;
+    grid-template-areas: 
+    "Rueckmeldungen Karte"
+    "Rueckmeldungen Infotext";
+}
+
+.Infotext {
+    display: grid;
+    grid-template-columns: 0.7fr 1.3fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas: 
+    "Einsatzgrund Info"
+    "Anrufer Info"
+    "Ort Info";
+    grid-area: Infotext;
+}
+.Info { grid-area: Info; }
+.Einsatzgrund { grid-area: Einsatzgrund; }
+.Anrufer { grid-area: Anrufer; }
+.Ort { grid-area: Ort; }
+.Rueckmeldungen { grid-area: Rueckmeldungen; }
+.Karte { grid-area: Karte; }
+
+.rueckmeldung-ja{
+    background-color: var(--fro-success) !important;
+}
+
+.rueckmeldung-nein{
+    background-color: var(--fro-error) !important;
+}
+
+.rueckmeldung-verfuegbar{
+    background-color: var(--fro-dialog-color-warning) !important;
+}
+
+.h-90{
+    height: 90vh;
+}
+
