@@ -1,3 +1,4 @@
+using Blazored.LocalStorage;
 using FFF_Elis.Components;
 using FFF_Elis.Components.Services;
 using FFF_Elis.ELIS_Services;
@@ -12,6 +13,7 @@ builder.Services.AddRazorComponents()
 builder.Services.AddMudServices();
 
 builder.Services.AddSingleton<GoogleService>();
+builder.Services.AddBlazoredLocalStorage();
 
 var app = builder.Build();
 

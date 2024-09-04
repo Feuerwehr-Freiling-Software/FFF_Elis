@@ -10,7 +10,7 @@
         var reference = await DialogService.ShowAsync<AddVehicleDialog>("Add Vehicle");
         var result = await reference.Result;
         
-        if (!result.Cancelled)
+        if (!result.Canceled)
         {
             var vehicle = result.Data as WCFFahrzeug;
             await JS.InvokeVoidAsync("AddVehicleToMap", vehicle.LFKLatitude, vehicle.LFKLongitude, vehicle.StatusInfo, vehicle.Bezeichnung);

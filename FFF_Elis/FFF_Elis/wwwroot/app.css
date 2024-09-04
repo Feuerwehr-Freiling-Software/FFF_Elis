@@ -89,7 +89,6 @@
     flex-direction: column;
     gap: 5px;
     width: 100%;
-    max-width: 500px;
     padding: 10px;
 }
 
@@ -156,5 +155,9 @@
     top: 50px;
     left: 0;
     padding: 10px;
+}
+
+.swapy-item{
+    width: 100%;
 }
 

@@ -1,0 +1,39 @@
+﻿@using FFF_Elis.Components.BusinessObjects
+@code {
+    
+    [CascadingParameter]
+    private MudDialogInstance MudDialog { get; set; }
+    
+    public VisualItem VisualItem { get; set; } = new ();
+    
+    private void AddVehicle()
+    {
+        MudDialog.Close(DialogResult.Ok(VisualItem));
+    }
+
+    private void Cancel() => MudDialog.Cancel();
+
+}
+
+<MudDialog>
+    <TitleContent>
+        <h3>Add Vehicle</h3>
+    </TitleContent>
+    <DialogContent>
+        <MudTextField @bind-Value="VisualItem.Name" Label="Name" />
+        <MudSelect T="VisualItem">
+            <MudSelectItem Value="VisualItemType.Webpage">Webseite</MudSelectItem>
+            <MudSelectItem Value="VisualItemType.Image">Foto</MudSelectItem>
+            <MudSelectItem Value="VisualItemType.Video">Video</MudSelectItem>
+            <MudSelectItem Value="VisualItemType.Text">Text</MudSelectItem>
+            <MudSelectItem Value="VisualItemType.File">Datei</MudSelectItem>
+        </MudSelect>
+        <MudTextField @bind-Value="VisualItem.Url" Label="Url" />
+        <MudTextField @bind-Value="VisualItem.Description" Label="Beschreibung" />
+        <MudNumericField @bind-Value="VisualItem.Duration" Label="Anzeigedauer in Sekunden" />
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="AddVehicle" Variant="Variant.Filled">Add</MudButton>
+        <MudButton OnClick="Cancel" Variant="Variant.Filled">Cancel</MudButton>
+    </DialogActions>
+</MudDialog>

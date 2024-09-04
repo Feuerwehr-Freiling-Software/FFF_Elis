@@ -1,8 +1,11 @@
 ﻿@page "/"
+@using Blazored.LocalStorage
 @using ELISWCFService
 @using FFF_Elis.Components.BusinessObjects
 @using FFF_Elis.ELIS_Services
 @using FFF_Elis.Components.Components
+
+@inject ILocalStorageService LocalStorage
 
 <EinsatzTimerComponent OnEinsatzClosed="OnEinsatzClosed" OnNewEinsatz="OnNewEinsatz"/>
 
@@ -23,7 +26,7 @@
 }
 else
 {
-    <VisualItemComponent Items="VisualItems" />
+    <VisualItemComponent Items="ClientSettings.VisualItems" />
 }
 
 @code
@@ -31,12 +34,8 @@ else
     public List<WCFBenutzer> Users { get; set; } = [];
     public ElisClient Client { get; set; } = new ();
     public WCFEinsatzdaten Einsatz { get; set; } = new ();
-    
-    public List<VisualItem> VisualItems { get; set; } = new List<VisualItem>()
-    {
-        new VisualItem() { Name = "Wetterbericht", Type = VisualItemType.Webpage, Url = "https://meteoblue.com/de/meteotv/af27d5", Duration = 10, Description = "Wetterbericht Freiling" },
-        new VisualItem() { Name = "Homepage", Type = VisualItemType.Webpage, Url = "https://feuerwehr-freiling.at", Duration = 10, Description = "Homepage der FFF" },
-    };
+
+    public ClientSettings ClientSettings { get; set; } = new();
     
     private bool EinsatzAnzeigen { get; set; } = false;
     
@@ -87,5 +86,22 @@ else
         //var rueckmeldungen = Client.Client.EinsatzPersonGetByEinsatz(new EinsatzPersonGetByEinsatzRequest(tmp1.EinsatzDataGetAllResult.First().EinsatzNr, Client.Ticket.TicketID));
         //var coordinates = (tmp1.EinsatzDataGetAllResult.First().Fahrzeuge.First().LFKLongitude, tmp1.EinsatzDataGetAllResult.First().Fahrzeuge.First().LFKLatitude);
         //var arlamierteFFs = tmp1.EinsatzDataGetAllResult.First().Alarmierungen;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        var exists = await LocalStorage.ContainKeyAsync("ClientSettings");
+
+        if (!exists)
+        {
+            await LocalStorage.SetItemAsync("ClientSettings", new ClientSettings());
+            ClientSettings.VisualItems = (await LocalStorage.GetItemAsync<ClientSettings>("ClientSettings")).VisualItems;
+        }
+        else
+        {
+            ClientSettings.VisualItems =  (await LocalStorage.GetItemAsync<ClientSettings>("ClientSettings")).VisualItems;
+        }
+        
+        await InvokeAsync(StateHasChanged);
     }
 }
