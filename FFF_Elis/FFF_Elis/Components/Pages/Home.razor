@@ -4,8 +4,10 @@
 @using FFF_Elis.Components.BusinessObjects
 @using FFF_Elis.ELIS_Services
 @using FFF_Elis.Components.Components
+@using FFF_Elis.Components.Services
 
 @inject ILocalStorageService LocalStorage
+@inject GeocodingService GeocodingService
 
 <EinsatzTimerComponent OnEinsatzClosed="OnEinsatzClosed" OnNewEinsatz="OnNewEinsatz"/>
 
@@ -67,15 +69,31 @@ else
         EinsatzAnzeigen = false;
     }
     
-    private void OnNewEinsatz(WCFEinsatzdaten einsatzdaten)
+    private async Task OnNewEinsatz(WCFEinsatzdaten einsatzdaten)
     {
-        Waypoints = new List<Waypoint>()
-        {
-            new Waypoint() { lat = 48.236121f, lon = 14.123097f },
-            new Waypoint() { lat = Convert.ToSingle(einsatzdaten.GPSLatitude), lon = Convert.ToSingle(einsatzdaten.GPSLatitude) },
-        };
         Einsatz = einsatzdaten;
         EinsatzAnzeigen = true;
+
+        Waypoint? coords = null;
+        
+        try
+        {
+            coords = await GeocodingService.GetWaypointAsync(einsatzdaten.Adresse);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+
+        Waypoints = [new Waypoint { lat = 48.236121f, lon= 14.123097f }];
+
+        if (coords != null)
+        {
+            Waypoints.Add(new Waypoint { lat = coords.lat, lon = coords.lon });
+        }
+        
+        await InvokeAsync(StateHasChanged);
     }
     
     protected override void OnInitialized()
@@ -90,17 +108,7 @@ else
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        var exists = await LocalStorage.ContainKeyAsync("ClientSettings");
-
-        if (!exists)
-        {
-            await LocalStorage.SetItemAsync("ClientSettings", new ClientSettings());
-            ClientSettings.VisualItems = (await LocalStorage.GetItemAsync<ClientSettings>("ClientSettings")).VisualItems;
-        }
-        else
-        {
-            ClientSettings.VisualItems =  (await LocalStorage.GetItemAsync<ClientSettings>("ClientSettings")).VisualItems;
-        }
+        ClientSettings.VisualItems = (await LocalStorage.GetItemAsync<ClientSettings>("ClientSettings"))?.VisualItems ?? new List<VisualItem>();
         
         await InvokeAsync(StateHasChanged);
     }

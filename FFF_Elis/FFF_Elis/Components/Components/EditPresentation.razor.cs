@@ -89,7 +89,7 @@ public partial class EditPresentation : ComponentBase
             var duration = Convert.ToInt32(data?.FirstOrDefault(x => x.Key == "Dauer")?.AsNumber);
             var dialogType = (string?)data?.FirstOrDefault(x => x.Key == "Typ")?.ReturnValue ?? string.Empty;
 
-            VisualItemType visualType = VisualItemType.Text;
+            var visualType = VisualItemType.Text;
             
             switch (dialogType)
             {
