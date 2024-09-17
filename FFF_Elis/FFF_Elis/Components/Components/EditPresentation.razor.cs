@@ -39,17 +39,22 @@ public partial class EditPresentation : ComponentBase
     {
         var res = await LocalStorage.GetItemAsync<List<swapyPresentationItem>>("swapyPresentationItems");
         _clientSettings = await GetClientSettings();
+
+        res ??= [];
         
         // reorder items
+        
+        var items = new VisualItem[res.Count];        
         foreach (var item in res)
         {
             var visualItem = _clientSettings.VisualItems.FirstOrDefault(x => x.Name == item.item);
             if (visualItem != null)
             {
-                _clientSettings.VisualItems.Remove(visualItem);
-                _clientSettings.VisualItems.Insert(int.Parse(item.slot) - 1, visualItem);
+                items[int.Parse(item.slot) - 1] = visualItem;
             }
         }
+
+        _clientSettings.VisualItems = items.ToList();
         
         await InvokeAsync(StateHasChanged);
     }
@@ -260,5 +265,23 @@ public partial class EditPresentation : ComponentBase
     private async Task SaveSettings()
     {
         await LocalStorage.SetItemAsync("ClientSettings", _clientSettings);
+
+        var swapyOrder = new List<swapyPresentationItem>();
+        
+        foreach (var visitem in _clientSettings.VisualItems)
+        {
+            swapyOrder.Add(new swapyPresentationItem()
+            {
+                item = visitem.Name,
+                slot = (_clientSettings.VisualItems.IndexOf(visitem) + 1).ToString()
+            });
+        }
+
+        await LocalStorage.SetItemAsync("swapyPresentationItems", swapyOrder);
+    }
+
+    private async Task UpdateSettings()
+    {
+        await SaveSettings();
     }
 }

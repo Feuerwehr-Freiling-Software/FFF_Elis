@@ -25,7 +25,7 @@ builder.Services.AddScoped<IReverseGeocoder, ReverseGeocoder>();
 builder.Services.AddSingleton<GoogleService>();
 builder.Services.AddScoped<GeocodingService>();
 
-
+builder.Services.AddHttpClient();
 
 
 builder.Services.AddBlazoredLocalStorage();

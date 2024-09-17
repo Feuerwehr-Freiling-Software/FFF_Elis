@@ -1,0 +1,55 @@
+﻿@using FFF_Elis.Components.BusinessObjects
+
+
+
+<div style="height: 100%">
+    <MudGrid Justify="Justify.Center">
+        <MudItem xs="5">
+            @if (Einsatz != null)
+            {
+                <div id="einsatzcard-container" class="einsatzcard-container">
+                    @foreach (var item in Einsatz.Einsaetze.Einsatz.Where(x => x.Einsatzart != "SELBST"))
+                    {
+                        <EinsatzCardComponent Einsatz="item" />
+                    }
+                </div>
+            }
+            else
+            {
+                <p>Kein Einsatz...</p>
+            }
+        </MudItem>
+        <!-- Image -->
+        <MudItem xs="6" Style="width: 100%">
+            <img width="100%" src="https://cf-einsaetze.ooelfv.at/webext2/img/karte_laufend_tn400.jpg" alt="Einsätze OÖ" />
+        </MudItem>
+    </MudGrid>
+</div>
+
+<script>
+    startAutoScroll = function (elementId) {
+        const element = document.getElementById(elementId);
+        if (!element) return;
+
+        let scrollHeight = element.scrollHeight;
+        let clientHeight = element.clientHeight;
+        let scrollStep = 1; // Adjust the scroll step as needed
+        let scrollInterval = 50; // Adjust the interval as needed
+
+        function scroll() {
+            if (element.scrollTop + clientHeight >= scrollHeight) {
+                element.scrollTop = 0;
+            } else {
+                element.scrollTop += scrollStep;
+            }
+        }
+
+        setInterval(scroll, scrollInterval);
+    };
+
+    const sleep = ms => new Promise(r => setTimeout(r, ms));
+    
+    sleep(1000).then(() => {
+        startAutoScroll('einsatzcard-container');
+    });
+</script>

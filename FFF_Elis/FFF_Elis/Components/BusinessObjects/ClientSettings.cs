@@ -2,6 +2,8 @@
 
 public class ClientSettings
 {
+    public bool ShowEinsaetze { get; set; } = false;
+    public bool ShowCalendar { get; set; } = false;
     public List<VisualItem> VisualItems { get; set; } = 
     [
         new VisualItem() {Description = "Example Weatherpage", Duration = 20, Type = VisualItemType.Webpage, Url = "https://meteoblue.com/de/meteotv/af27d5", Name = "Weatherpage"},
