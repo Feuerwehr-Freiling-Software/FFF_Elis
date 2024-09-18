@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FFF_Elis", "FFF_Elis\FFF_Elis.csproj", "{4EA056AA-72D3-410A-B20A-DDBC64712655}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWASConnection", "TestWASConnection\TestWASConnection.csproj", "{9CA91D16-488E-400D-80FB-6B38ADB3AE94}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{4EA056AA-72D3-410A-B20A-DDBC64712655}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EA056AA-72D3-410A-B20A-DDBC64712655}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EA056AA-72D3-410A-B20A-DDBC64712655}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CA91D16-488E-400D-80FB-6B38ADB3AE94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CA91D16-488E-400D-80FB-6B38ADB3AE94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CA91D16-488E-400D-80FB-6B38ADB3AE94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CA91D16-488E-400D-80FB-6B38ADB3AE94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
