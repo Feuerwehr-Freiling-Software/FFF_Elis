@@ -1,8 +1,13 @@
 ﻿@page "/"
+@using Blazored.LocalStorage
 @using ELISWCFService
 @using FFF_Elis.Components.BusinessObjects
 @using FFF_Elis.ELIS_Services
 @using FFF_Elis.Components.Components
+@using FFF_Elis.Components.Services
+
+@inject ILocalStorageService LocalStorage
+@inject GeocodingService GeocodingService
 
 <EinsatzTimerComponent OnEinsatzClosed="OnEinsatzClosed" OnNewEinsatz="OnNewEinsatz"/>
 
@@ -23,7 +28,7 @@
 }
 else
 {
-    <VisualItemComponent Items="VisualItems" />
+    <VisualItemComponent Items="ClientSettings.VisualItems" />
 }
 
 @code
@@ -31,12 +36,8 @@ else
     public List<WCFBenutzer> Users { get; set; } = [];
     public ElisClient Client { get; set; } = new ();
     public WCFEinsatzdaten Einsatz { get; set; } = new ();
-    
-    public List<VisualItem> VisualItems { get; set; } = new List<VisualItem>()
-    {
-        new VisualItem() { Name = "Wetterbericht", Type = VisualItemType.Webpage, Url = "https://meteoblue.com/de/meteotv/af27d5", Duration = 10, Description = "Wetterbericht Freiling" },
-        new VisualItem() { Name = "Homepage", Type = VisualItemType.Webpage, Url = "https://feuerwehr-freiling.at", Duration = 10, Description = "Homepage der FFF" },
-    };
+
+    public ClientSettings ClientSettings { get; set; } = new();
     
     private bool EinsatzAnzeigen { get; set; } = false;
     
@@ -68,15 +69,31 @@ else
         EinsatzAnzeigen = false;
     }
     
-    private void OnNewEinsatz(WCFEinsatzdaten einsatzdaten)
+    private async Task OnNewEinsatz(WCFEinsatzdaten einsatzdaten)
     {
-        Waypoints = new List<Waypoint>()
-        {
-            new Waypoint() { lat = 48.236121f, lon = 14.123097f },
-            new Waypoint() { lat = Convert.ToSingle(einsatzdaten.GPSLatitude), lon = Convert.ToSingle(einsatzdaten.GPSLatitude) },
-        };
         Einsatz = einsatzdaten;
         EinsatzAnzeigen = true;
+
+        Waypoint? coords = null;
+        
+        try
+        {
+            coords = await GeocodingService.GetWaypointAsync(einsatzdaten.Adresse);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+
+        Waypoints = [new Waypoint { lat = 48.236121f, lon= 14.123097f }];
+
+        if (coords != null)
+        {
+            Waypoints.Add(new Waypoint { lat = coords.lat, lon = coords.lon });
+        }
+        
+        await InvokeAsync(StateHasChanged);
     }
     
     protected override void OnInitialized()
@@ -87,5 +104,20 @@ else
         //var rueckmeldungen = Client.Client.EinsatzPersonGetByEinsatz(new EinsatzPersonGetByEinsatzRequest(tmp1.EinsatzDataGetAllResult.First().EinsatzNr, Client.Ticket.TicketID));
         //var coordinates = (tmp1.EinsatzDataGetAllResult.First().Fahrzeuge.First().LFKLongitude, tmp1.EinsatzDataGetAllResult.First().Fahrzeuge.First().LFKLatitude);
         //var arlamierteFFs = tmp1.EinsatzDataGetAllResult.First().Alarmierungen;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            ClientSettings = (await LocalStorage.GetItemAsync<ClientSettings>("ClientSettings")) ?? new ();
+
+            if (ClientSettings.ShowEinsaetze == true)
+            {
+                ClientSettings.VisualItems.Add(new VisualItem { Type = VisualItemType.EinsatzOOE, Duration = 30, Name = "Einsätze OÖ", Description = "Aktuelle Einsätze in Oberösterreich"});       
+            }
+        
+            await InvokeAsync(StateHasChanged);
+        }
     }
 }
