@@ -127,10 +127,10 @@ public class Einsatz {
 }
 
 [XmlRoot(ElementName="einsaetze")]
-public class Einsaetze { 
+public class Einsaetze
+{
 
-	[XmlElement(ElementName="einsatz")] 
-	public List<Einsatz> Einsatz { get; set; } 
+	[XmlElement(ElementName = "einsatz")] public List<Einsatz> Einsatz { get; set; } = new();
 }
 
 [XmlRoot(ElementName="usedat")]
@@ -191,10 +191,10 @@ public class Webext2 {
 	public string? Scope { get; set; } 
 
 	[XmlElement(ElementName="pubDate")] 
-	public string? PubDate { get; set; } 
+	public string? PubDate { get; set; }
 
-	[XmlElement(ElementName="einsaetze")] 
-	public Einsaetze Einsaetze { get; set; } 
+	[XmlElement(ElementName = "einsaetze")]
+	public Einsaetze Einsaetze { get; set; } = new();
 
 	[XmlElement(ElementName="resources")] 
 	public Resources Resources { get; set; } 

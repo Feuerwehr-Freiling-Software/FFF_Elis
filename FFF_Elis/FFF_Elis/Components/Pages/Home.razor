@@ -108,8 +108,16 @@ else
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        ClientSettings.VisualItems = (await LocalStorage.GetItemAsync<ClientSettings>("ClientSettings"))?.VisualItems ?? new List<VisualItem>();
+        if (firstRender)
+        {
+            ClientSettings = (await LocalStorage.GetItemAsync<ClientSettings>("ClientSettings")) ?? new ();
+
+            if (ClientSettings.ShowEinsaetze == true)
+            {
+                ClientSettings.VisualItems.Add(new VisualItem { Type = VisualItemType.EinsatzOOE, Duration = 30, Name = "Einsätze OÖ", Description = "Aktuelle Einsätze in Oberösterreich"});       
+            }
         
-        await InvokeAsync(StateHasChanged);
+            await InvokeAsync(StateHasChanged);
+        }
     }
 }

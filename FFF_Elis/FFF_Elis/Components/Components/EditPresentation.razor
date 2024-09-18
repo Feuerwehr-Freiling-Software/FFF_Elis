@@ -7,25 +7,31 @@
 
 <MudExpansionPanels>
     <MudExpansionPanel Text="Einstellungen">
-        <span class="fro-toggle">
-            <input type="checkbox" @bind="MoveMode" id="enable" class="fro-toggle__checkbox" />
-            <label for="enable" class="fro-label fro-toggle__label"
-            >Reihenfolge Ändern</label>
-        </span>
-        <button type="button" class="fro-button fro-button--primary" @onclick="AddNewItem">Neues item</button>
-        <!-- Show Einsätze -->
-        <span class="fro-toggle">
-            <input type="checkbox" @bind="_clientSettings.ShowEinsaetze" id="einsaetze" class="fro-toggle__checkbox" />
-            <label for="einsaetze" class="fro-label fro-toggle__label"
-            >aktuelle Einsätze OÖ anzeigen</label>
-        </span>
+        <MudGrid>
+            <MudItem Class="align-center justify-center">
+                <span class="fro-toggle">
+                    <input type="checkbox" @bind="MoveMode" id="enable" class="fro-toggle__checkbox" />
+                    <label for="enable" class="fro-label fro-toggle__label"
+                    >Reihenfolge Ändern</label>
+                </span>
+                <button type="button" class="fro-button fro-button--primary" @onclick="AddNewItem">Neues item</button>
+                <!-- Show Einsätze -->
+                <span class="fro-toggle">
+                    <input type="checkbox" @bind="_clientSettings.ShowEinsaetze" id="einsaetze" class="fro-toggle__checkbox" />
+                    <label for="einsaetze" class="fro-label fro-toggle__label"
+                    >aktuelle Einsätze OÖ anzeigen</label>
+                </span>
+                <button type="button" class="fro-button fro-button--primary" @onclick="UpdateSettings">Einstellungen speichern</button>
+            </MudItem>
+        </MudGrid>
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="Kalender">
         <!-- Show Kalender -->
         <span class="fro-toggle">
             <input type="checkbox" @bind="_clientSettings.ShowCalendar" id="calendar" class="fro-toggle__checkbox" />
             <label for="calendar" class="fro-label fro-toggle__label"
             >Kalender Anzeigen</label>
         </span>
-        <button type="button" class="fro-button fro-button--primary" @onclick="UpdateSettings">Einstellungen speichern</button>
     </MudExpansionPanel>
 </MudExpansionPanels>
 

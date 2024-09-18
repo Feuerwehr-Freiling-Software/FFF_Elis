@@ -23,7 +23,6 @@
 
 
     <ItemGroup>
-      <Folder Include="wwwroot\js\" />
       <Folder Include="wwwroot\leaflet\" />
       <Folder Include="wwwroot\NpmJs\" />
       <Folder Include="wwwroot\visualizationFiles\" />

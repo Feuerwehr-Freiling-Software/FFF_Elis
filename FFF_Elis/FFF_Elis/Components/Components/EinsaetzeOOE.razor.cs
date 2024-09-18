@@ -10,8 +10,8 @@ public partial class EinsaetzeOOE : ComponentBase
     [Inject] public IJSRuntime JS { get; set; }
     [Inject] public HttpClient HttpClient { get; set; }
 
-    public Webext2 Einsatz { get; set; }
-    
+    public Webext2 Einsatz { get; set; } = new Webext2();
+
     protected override async Task OnInitializedAsync()
     {
         XmlSerializer serializer = new XmlSerializer(typeof(Webext2));
@@ -25,12 +25,30 @@ public partial class EinsaetzeOOE : ComponentBase
     {
         if (firstRender)
         {
-            await InvokeAsync(StartScroll);
+            await InvokeAsync(ShowMap);
         }
     }
-
-    private async void StartScroll()
+    
+    public async Task ShowMap()
     {
-        await JS.InvokeVoidAsync("startAutoScroll", "einsatzcard-container");
+        XmlSerializer serializer = new XmlSerializer(typeof(Webext2));
+        using (StringReader reader = new StringReader(await HttpClient.GetStringAsync("https://cf-einsaetze.ooelfv.at/webext2/rss/webext2_laufend.xml")))
+        {
+            Einsatz = (Webext2)serializer.Deserialize(reader);
+        }
+        
+        List<EinsatzMapEntry> mapEntries = new();
+        foreach (var item in Einsatz.Einsaetze.Einsatz.Where(x => x.Einsatzart != "SELBST"))
+        {
+            mapEntries.Add(new EinsatzMapEntry
+            {
+                EinsatzTyp = item?.Einsatzart ?? "SONSTIGE",
+                Alarmstufe = item?.Alarmstufe ?? 0,
+                lat = (float)item.Lat,
+                lon = (float)item.Lng
+            });
+        }
+        
+        await JS.InvokeVoidAsync("RegisterMap", mapEntries);
     }
 }

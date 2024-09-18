@@ -13,18 +13,4 @@ public partial class VisuSettings : ComponentBase
     
     private List<VisualItem> VisualItems { get; set; } = [];
     private int SelectedIndex { get; set; } = 0;
-
-    #region Präsentation
-
-    private async Task AddPresentationItem()
-    {
-        
-    }
-    
-    private void RemovePresentationItem(VisualItem item)
-    {
-        VisualItems.Remove(item);
-    }
-
-    #endregion
 }
