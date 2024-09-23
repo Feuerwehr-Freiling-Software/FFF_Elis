@@ -7,6 +7,7 @@ namespace FFF_Elis.Components.Components;
 
 public partial class MapComponent : ComponentBase
 {
+    [Inject] public IJSRuntime JS { get; set; }
     [Parameter] public List<Waypoint> Waypoints { get; set; } = new ();
     [Parameter] public List<WCFFahrzeug> Fahrzeuge { get; set; } = new ();
 

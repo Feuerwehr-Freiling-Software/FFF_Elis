@@ -7,8 +7,11 @@ using Nominatim.API.Address;
 using Nominatim.API.Geocoders;
 using Nominatim.API.Interfaces;
 using Nominatim.API.Web;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("FElisContextConnection") ?? throw new InvalidOperationException("Connection string 'FElisContextConnection' not found.");
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
