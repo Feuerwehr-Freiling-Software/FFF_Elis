@@ -3,7 +3,7 @@
 namespace TestWASConnection;
 
 [XmlRoot(ElementName="origin")]
-public class Origin { 
+public class WASOrigin { 
 
 	[XmlAttribute(AttributeName="tid")] 
 	public int Tid { get; set; } 
@@ -45,7 +45,7 @@ public class Order {
 	public string Key { get; set; } 
 
 	[XmlElement(ElementName="origin")] 
-	public Origin Origin { get; set; } 
+	public WASOrigin WasOrigin { get; set; } 
 
 	[XmlElement(ElementName="receive-tad")] 
 	public string Receivetad { get; set; } 

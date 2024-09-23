@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
 using EPAS.Components.Account.Pages;
 using EPAS.Components.Account.Pages.Manage;
+using EPAS.Core.Models;
 using EPAS.Data;
 
 namespace Microsoft.AspNetCore.Routing;

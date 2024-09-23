@@ -1,3 +1,4 @@
+using EPAS.Core.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using EPAS.Data;

@@ -1,9 +1,9 @@
 using System.Security.Claims;
+using EPAS.Core.Models;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Server;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
-using EPAS.Data;
 
 namespace EPAS.Components.Account;
 
