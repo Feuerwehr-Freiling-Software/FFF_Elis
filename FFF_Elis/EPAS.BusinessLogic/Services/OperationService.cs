@@ -25,7 +25,7 @@ public class OperationService : IOperationService
         return res;
     }
 
-    public async Task<bool> AddOperationAsync(Operation operation, string apiKey)
+    public async Task<bool> AddOperationAsync(Pdu pdu)
     {
         throw new NotImplementedException();
     }

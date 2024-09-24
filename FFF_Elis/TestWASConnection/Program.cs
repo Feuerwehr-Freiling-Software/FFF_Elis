@@ -1,21 +1,28 @@
-﻿using System.Globalization;
+﻿using System.Net.Http.Json;
 using System.Net.Sockets;
-using System.Text;
 using System.Xml.Serialization;
+using EPAS.Core.Models;
 using Serilog;
 using Serilog.Core;
-using TestWASConnection;
+using Microsoft.Extensions.Configuration;
 
-bool useXml = true;
 
 Logger? Log = null;
 
+// get API url from config
+var builder = new ConfigurationBuilder()
+    .AddJsonFile($"appsettings.json", true, true);
+
+var config = builder.Build();
 
 Log = new LoggerConfiguration()
     .WriteTo.Console()
     .WriteTo.Seq("http://localhost:54341", apiKey: "Z9WtdEfPYecaDOd7h4iY")
     .WriteTo.File("log.txt")
     .CreateLogger();
+
+var clearString = Convert.ToBoolean(config["Testing:ClearString"]);
+var useXml = true;
 
 Log.Information("Starting WAS Connector");
 
@@ -47,15 +54,21 @@ while (true)
     {
         var tmpString = streamReader.ReadLine();
         tmpSave += tmpString + "\n";
-        if (useXml == true && tmpString.StartsWith("</pdu>"))
+        if (clearString)
         {
+            
+        }
+        if (useXml && tmpString.StartsWith("</pdu>"))
+        {
+            Log.Information("Reading data from WAS");
             // Serialize the XML
             var serializer = new XmlSerializer(typeof(Pdu));
             var reader = new StringReader(tmpSave);
             var pdu = (Pdu) serializer.Deserialize(reader);
             
             File.WriteAllText(filePath, tmpSave);
-            // TODO: Send data to API
+            
+            Task.Run(() => SendDataToApi(pdu));
             
             Log.Information("Anzahl Auftragsliste: {OrderlistCount}", pdu.Orderlist.Order.Count);
             tmpSave = "";
@@ -71,3 +84,18 @@ while (true)
     Thread.Sleep(15000);
     Log.Information("Waiting for new data");
 }
+
+async Task SendDataToApi(Pdu pdu)
+{
+    try
+    {
+        var client = new HttpClient();
+        var res = await client.PostAsJsonAsync(config["API:URL"], new WASMessage(pdu, config["API:Key"]));
+        Log.Information("Response: {Response}", res);
+    }
+    catch (Exception e)
+    {
+        Log.Error("Error sending data to API: {ErrorMessage}", e.Message);
+    }
+}
+

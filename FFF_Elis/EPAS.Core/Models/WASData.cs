@@ -1,6 +1,6 @@
 ﻿using System.Xml.Serialization;
 
-namespace TestWASConnection;
+namespace EPAS.Core.Models;
 
 [XmlRoot(ElementName="origin")]
 public class WASOrigin { 
