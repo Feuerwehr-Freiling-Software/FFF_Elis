@@ -5,6 +5,8 @@ using EPAS.Components;
 using EPAS.Components.Account;
 using EPAS.Core.Models;
 using EPAS.Data;
+using Serilog;
+using Serilog.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +18,16 @@ builder.Services.AddCascadingAuthenticationState();
 builder.Services.AddScoped<IdentityUserAccessor>();
 builder.Services.AddScoped<IdentityRedirectManager>();
 builder.Services.AddScoped<AuthenticationStateProvider, IdentityRevalidatingAuthenticationStateProvider>();
+
+var logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .WriteTo.Seq("http://localhost:54341", apiKey: "hcg2fR1GTS92dTgvjw66")
+    .CreateLogger();
+
+builder.Logging.ClearProviders();
+builder.Logging.AddSerilog(logger);
+
+logger.Information("Starting EPAS API");
 
 builder.Services.AddAuthentication(options =>
     {
@@ -85,4 +97,11 @@ app.MapRazorComponents<App>()
 // Add additional endpoints required by the Identity /Account Razor components.
 app.MapAdditionalIdentityEndpoints();
 
-app.Run();
+try
+{
+    app.Run();
+}
+catch (Exception e)
+{
+    logger.Fatal(e, "Application terminated unexpectedly");
+}

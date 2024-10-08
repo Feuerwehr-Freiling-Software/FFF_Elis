@@ -23,12 +23,14 @@ Log = new LoggerConfiguration()
 
 var clearString = Convert.ToBoolean(config["Testing:ClearString"]);
 var useXml = true;
+var wasHost = config["WAS:Url"];
+var wasPort = Convert.ToInt32(config["WAS:Port"]);
 
 Log.Information("Starting WAS Connector");
 
 var dateString1 = DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss");
 var filePath =
-    @"C:\Users\Haunschmied.Bastian\Documents\GitHub\Feuerwehr-Tools\FFF_Elis\FFF_Elis\TestWASConnection\TestFiles\WASConnectorComplete " +
+    "WASConnectorComplete-" +
     dateString1 + " .xml";
 
 while (true)
@@ -36,7 +38,7 @@ while (true)
     TcpClient tcpClient = new TcpClient();
     try
     {
-        tcpClient = new TcpClient("127.0.0.1", 4321);
+        tcpClient = new TcpClient(wasHost, wasPort);
     }
     catch (Exception e)
     {
@@ -50,15 +52,21 @@ while (true)
     var now = DateTime.Now;
     var tmpSave = "";
     
+    Log.Information("Starting Reading from WAS");
+    
     while (!streamReader.EndOfStream && now.AddSeconds((double) (15 * 4)) > DateTime.Now)
     {
         var tmpString = streamReader.ReadLine();
         tmpSave += tmpString + "\n";
         if (clearString)
         {
-            
+            Log.Information("Writing Clear String...");
+            using (var clearStringWriter = new StreamWriter(File.Open("WasConnectorCompleteClear"+ dateString1 +".txt", FileMode.Append)))
+            {
+                clearStringWriter.WriteLine(tmpString);
+            }
         }
-        if (useXml && tmpString.StartsWith("</pdu>"))
+        else if (useXml && tmpString.StartsWith("</pdu>"))
         {
             Log.Information("Reading data from WAS");
             // Serialize the XML
@@ -67,8 +75,11 @@ while (true)
             var pdu = (Pdu) serializer.Deserialize(reader);
             
             File.WriteAllText(filePath, tmpSave);
-            
-            Task.Run(() => SendDataToApi(pdu));
+
+            if (Convert.ToBoolean(config["API:ApiLogging"]))
+            {
+                Task.Run(() => SendDataToApi(pdu));
+            }
             
             Log.Information("Anzahl Auftragsliste: {OrderlistCount}", pdu.Orderlist.Order.Count);
             tmpSave = "";

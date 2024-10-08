@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-15"?>
+<pdu xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <order-list count="1">
+    <order index="0">
+      <key>0xS240924133840</key>
+      <origin tid="99999">SIMULATOR</origin>
+      <receive-tad>24.09.2024 13:38:40</receive-tad>
+      <operation-id>E240905133632</operation-id>
+      <level>1</level>
+      <name>Fam. Haunschmied</name>
+      <operation-name>Verkehrsunfall</operation-name>
+      <caller>066488387154</caller>
+      <location>Tischlerweg 2, 4064 Oftering</location>
+      <info>Mehrere PKW ineinander gefahren</info>
+      <program>FEUER</program>
+      <status>Alarmiert</status>
+      <watch-out-tad>01.01.0001 00:00:00</watch-out-tad>
+      <finished-tad>01.01.0001 00:00:00</finished-tad>
+      <destination-list count="5">
+        <destination index="1" id="49219">PUCHENAU</destination>
+        <destination index="2" id="49218">OTTENSHEIM</destination>
+        <destination index="3" id="49221">WALDING</destination>
+        <destination index="4" id="49211">LACKEN</destination>
+        <destination index="5" id="41016">FREILING</destination>
+      </destination-list>
+    </order>
+  </order-list>
+</pdu>
