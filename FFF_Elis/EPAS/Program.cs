@@ -1,10 +1,20 @@
+using Blazored.LocalStorage;
+using EPAS.BusinessLogic.Services;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using EPAS.Components;
 using EPAS.Components.Account;
+using EPAS.Controllers;
 using EPAS.Core.Models;
 using EPAS.Data;
+using EPAS.Shared.Services;
+using FFF_Elis.Components.Services;
+using MudBlazor.Services;
+using Nominatim.API.Address;
+using Nominatim.API.Geocoders;
+using Nominatim.API.Interfaces;
+using Nominatim.API.Web;
 using Serilog;
 using Serilog.Extensions.Logging;
 
@@ -13,6 +23,21 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+builder.Services.AddHttpClient();
+builder.Services.AddScoped<INominatimWebInterface, NominatimWebInterface>();
+builder.Services.AddScoped<IAddressSearcher, AddressSearcher>();
+builder.Services.AddScoped<IForwardGeocoder, ForwardGeocoder>();
+builder.Services.AddScoped<IReverseGeocoder, ReverseGeocoder>();
+
+builder.Services.AddScoped<IOperationService, OperationService>();
+
+builder.Services.AddSingleton<GoogleService>();
+builder.Services.AddScoped<GeocodingService>();
+
+builder.Services.AddBlazoredLocalStorage();
+
+builder.Services.AddMudServices();
 
 builder.Services.AddCascadingAuthenticationState();
 builder.Services.AddScoped<IdentityUserAccessor>();
@@ -46,17 +71,6 @@ builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddSignInManager()
     .AddDefaultTokenProviders();
-
-builder.Services.Configure<IdentityOptions>(options =>
-{
-    // Default Password settings.
-    options.Password.RequireDigit = false;
-    options.Password.RequireLowercase = false;
-    options.Password.RequireNonAlphanumeric = false;
-    options.Password.RequireUppercase = false;
-    options.Password.RequiredLength = 5;
-    options.Password.RequiredUniqueChars = 0;
-});
 
 builder.Services.AddControllers();
 

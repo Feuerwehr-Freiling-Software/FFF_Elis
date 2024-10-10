@@ -1,4 +1,6 @@
-﻿namespace EPAS.Core.Models;
+﻿using EPAS.Core.Enums;
+
+namespace EPAS.Core.Models;
 
 public class OperationResponse
 {
@@ -9,4 +11,6 @@ public class OperationResponse
     
     public string UserId { get; set; }
     public ApplicationUser User { get; set; }
+
+    public OperationResponseEnum Response { get; set; }
 }

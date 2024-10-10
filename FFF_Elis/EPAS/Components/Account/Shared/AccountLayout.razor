@@ -1,4 +1,6 @@
-﻿@inherits LayoutComponentBase
+﻿@using Microsoft.AspNetCore.Authorization
+@attribute [AllowAnonymous]
+@inherits LayoutComponentBase
 @layout EPAS.Components.Layout.MainLayout
 @inject NavigationManager NavigationManager
 

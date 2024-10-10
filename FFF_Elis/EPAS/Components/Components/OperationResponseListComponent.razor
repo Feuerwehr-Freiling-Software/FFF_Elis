@@ -1,0 +1,57 @@
+﻿@namespace EPAS.Components.Components
+@using EPAS.Core.Enums
+<div class="fro-list">
+    <div class="fro-list__headline">Rückmeldungen</div>
+
+    @foreach (var item in Responses)
+    {
+        switch (item.Response)
+        {
+            case OperationResponseEnum.Coming:
+                <a class="fro-list-item rueckmeldung-ja" style="margin-bottom: 0px;">
+                    <i class="fro-icon fro-icon--fixed fro-list-item__icon" translate="no"
+                    >user</i>
+                    <div class="fro-list-item__label">@item.Username</div>
+                    <span class="fro-chip fro-chip--small fro-chip--mini fro-chip--pill">
+                        <span class="fro-chip__label">GRKDT</span>
+                    </span>
+                </a>
+                break;
+            case OperationResponseEnum.Available:
+                <a class="fro-list-item rueckmeldung-verfuegbar" style="margin-bottom: 0px;">
+                    <i class="fro-icon fro-icon--fixed fro-list-item__icon" translate="no"
+                    >user</i>
+                    <div class="fro-list-item__label">@item.Username</div>
+                    <span class="fro-chip fro-chip--small fro-chip--mini fro-chip--pill">
+                        <span class="fro-chip__label">GRKDT</span>
+                    </span>
+                </a>
+                break;
+            case OperationResponseEnum.NotAvailable:
+                <a class="fro-list-item rueckmeldung-nein" style="margin-bottom: 0px;">
+                    <i class="fro-icon fro-icon--fixed fro-list-item__icon" translate="no"
+                    >user</i>
+                    <div class="fro-list-item__label">@item.Username</div>
+                    <span class="fro-chip fro-chip--small fro-chip--mini fro-chip--pill">
+                        <span class="fro-chip__label">GRKDT</span>
+                    </span>
+                </a>
+                break;
+            case OperationResponseEnum.Read:
+                <a class="fro-list-item rueckmeldung-nein" style="margin-bottom: 0px;">
+                    <i class="fro-icon fro-icon--fixed fro-list-item__icon" translate="no"
+                    >user</i>
+                    <div class="fro-list-item__label">@item.Username</div>
+                    @foreach (var qualification in item.Qualifications)
+                    {
+                        <span class="fro-chip fro-chip--small fro-chip--mini fro-chip--pill" style="background-color: @qualification.ChipColor">
+                            <span class="fro-chip__label">@qualification.Name</span>
+                        </span>
+                    }
+                </a>
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+    }
+</div>

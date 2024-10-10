@@ -2,5 +2,5 @@
 
 public interface IAPIKeyService
 {
-    
+    Task<bool> ValidateKey(string fireBrigadeName, string key);
 }

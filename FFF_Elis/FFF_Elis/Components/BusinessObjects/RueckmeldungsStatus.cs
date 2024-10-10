@@ -2,7 +2,9 @@
 
 public enum RueckmeldungsStatus
 {
-    Komme = 1,
-    Verfuegbar = 2,
-    NichtVerfuegbar = 3,
+    Coming = 1,
+    Available = 2,
+    NotAvailable = 3,
+    Read = -1
+
 }

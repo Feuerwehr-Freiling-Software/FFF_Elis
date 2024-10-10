@@ -1,10 +1,12 @@
 ﻿using System.Net.Http.Json;
 using System.Net.Sockets;
 using System.Xml.Serialization;
+using EPAS.BusinessLogic.Services;
 using EPAS.Core.Models;
 using Serilog;
 using Serilog.Core;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.SignalR.Client;
 
 
 Logger? Log = null;
@@ -25,6 +27,29 @@ var clearString = Convert.ToBoolean(config["Testing:ClearString"]);
 var useXml = true;
 var wasHost = config["WAS:Url"];
 var wasPort = Convert.ToInt32(config["WAS:Port"]);
+var sendToApi = Convert.ToBoolean(config["API:ApiLogging"]);
+var serverUrl = config["API:Url"];
+var firebrigadeName = config["API:FireBrigadeName"];
+var apiKey = config["API:ApiKey"];
+// SignalR Connection
+
+
+var connection = new HubConnectionBuilder()
+    .WithUrl($"{serverUrl}/OperationHub")
+    .WithAutomaticReconnect()
+    .Build();
+
+connection.Closed += async (error) =>
+{
+    await Task.Delay(new Random().Next(0,5) * 1000);
+    Log.Error("Error in Websocket connection: {ErrorMessage}", error.Message);
+    await connection.StartAsync();
+};
+
+var proxy = new OperationHubProxy(connection, apiKey, firebrigadeName);
+
+await connection.StartAsync();
+
 
 Log.Information("Starting WAS Connector");
 
@@ -76,7 +101,7 @@ while (true)
             
             File.WriteAllText(filePath, tmpSave);
 
-            if (Convert.ToBoolean(config["API:ApiLogging"]))
+            if (sendToApi)
             {
                 Task.Run(() => SendDataToApi(pdu));
             }
@@ -88,9 +113,9 @@ while (true)
     now = DateTime.Now;
     tcpClient?.Close();
     networkStream?.Close();
-    tcpClient = (TcpClient) null;
-    networkStream = (NetworkStream) null;
-    streamReader = (StreamReader) null;
+    tcpClient = null;
+    networkStream = null;
+    streamReader = null;
     
     Thread.Sleep(15000);
     Log.Information("Waiting for new data");
@@ -100,8 +125,7 @@ async Task SendDataToApi(Pdu pdu)
 {
     try
     {
-        var client = new HttpClient();
-        var res = await client.PostAsJsonAsync(config["API:URL"], new WASMessage(pdu, config["API:Key"]));
+        var res = await proxy.NewOperation(new WASMessage(pdu));
         Log.Information("Response: {Response}", res);
     }
     catch (Exception e)

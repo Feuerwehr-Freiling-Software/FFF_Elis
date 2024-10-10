@@ -16,6 +16,8 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
     public DbSet<Origin> Origins { get; set; }
     public DbSet<Program> Programs { get; set; }
     public DbSet<Application> Applications { get; set; }
+    public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+    public DbSet<Qualifications> Qualifications { get; set; }
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder.Entity<ApplicationUser>().ToTable("Users");

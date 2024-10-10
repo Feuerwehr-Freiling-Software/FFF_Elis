@@ -1,7 +1,130 @@
 ﻿@page "/"
+@using Blazored.LocalStorage
+@using EPAS.BusinessLogic.Dtos
+@using EPAS.Core.BusinessObjects
+@using EPAS.Core.Enums
+@using EPAS.Shared.Services
+@using FFF_Elis.Components.BusinessObjects
+@using FFF_Elis.Components.Services
+@using EPAS.Components.Components
 
-<PageTitle>Home</PageTitle>
+@inject ILocalStorageService LocalStorage
+@inject GeocodingService GeocodingService
 
-<h1>Hello, world!</h1>
+<EinsatzTimerComponent OnOperationUpdate="OnOperationUpdate" />
 
-Welcome to your new app.
+@if (EinsatzAnzeigen)
+{
+    <div class="home-container">
+        <div class="Infotext" style="margin-top: 3%;">
+            <div class="Einsatzgrund"><strong>Einsatzgrund:</strong> @Einsatz.OperationName</div>
+            <div class="Ort"><strong>Ort:</strong> @Einsatz.Adress</div>
+            <div class="Anrufer"><strong>Anrufer:</strong> @Einsatz.CallerName</div>
+            <div class="Info" style="margin-left: 10%"><strong>Info:</strong>
+                <p>@Einsatz.Info</p>
+            </div>
+        </div>
+        <div class="Rueckmeldungen" style="overflow-y: scroll"><OperationResponseListComponent Responses="Rueckmeldungen"/></div>
+        <div class="Karte"><MapComponent Waypoints="Waypoints" /></div>
+    </div>
+}
+else
+{
+    <VisualItemComponent Items="ClientSettings.VisualItems" />
+}
+
+@code
+{
+    public OperationDto Einsatz { get; set; } = new ();
+
+    public ClientSettings ClientSettings { get; set; } = new();
+    
+    private bool EinsatzAnzeigen { get; set; } = false;
+    
+    public List<OperationResponseDto> Rueckmeldungen { get; set; } =
+    [
+        new OperationResponseDto() { Username = "Haunschmied Bastian", Response = OperationResponseEnum.Coming },
+        new OperationResponseDto() { Username =  "Haunschmied Bastian", Response = OperationResponseEnum.Coming },
+        new OperationResponseDto() { Username =  "Haunschmied Bastian", Response = OperationResponseEnum.Coming },
+        new OperationResponseDto() { Username =  "Haunschmied Bastian", Response = OperationResponseEnum.Coming },
+        new OperationResponseDto() { Username =  "Leutgöb Fabian", Response = OperationResponseEnum.Available },
+        new OperationResponseDto() { Username =  "Leutgöb Fabian", Response = OperationResponseEnum.Available },
+        new OperationResponseDto() { Username =  "Leutgöb Fabian", Response = OperationResponseEnum.Available },
+        new OperationResponseDto() { Username =  "Leutgöb Lukas", Response = OperationResponseEnum.NotAvailable },
+        new OperationResponseDto() { Username =  "Leutgöb Lukas", Response = OperationResponseEnum.NotAvailable },
+        new OperationResponseDto() { Username =  "Leutgöb Lukas", Response = OperationResponseEnum.NotAvailable },
+        new OperationResponseDto() { Username =  "Leutgöb Lukas", Response = OperationResponseEnum.NotAvailable },
+        new OperationResponseDto() { Username =  "Leutgöb Lukas", Response = OperationResponseEnum.Read },
+        new OperationResponseDto() { Username =  "Leutgöb Lukas", Response = OperationResponseEnum.Read },
+    ];
+
+    public List<Waypoint> Waypoints { get; set; } = new();
+    
+    private async Task AddRueckmeldung()
+    {
+        var random = new Random();
+        Rueckmeldungen.Add(new OperationResponseDto() { Username = "Haunschmied Bastian", Response = (OperationResponseEnum)random.Next(-1,3) });
+    }
+
+    private void OnEinsatzClosed()
+    {
+        EinsatzAnzeigen = false;
+    }
+
+    private async Task OnOperationUpdate(List<OperationDto> operationDtos)
+    {
+        await OnNewEinsatz(operationDtos.First());
+    }
+    
+    private async Task OnNewEinsatz(OperationDto einsatzdaten)
+    {
+        Einsatz = einsatzdaten;
+        EinsatzAnzeigen = true;
+
+        Waypoint? coords = null;
+        
+        try
+        {
+            coords = await GeocodingService.GetWaypointAsync(einsatzdaten.Adress);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+
+        Waypoints = [new Waypoint { lat = 48.236121f, lon= 14.123097f }];
+
+        if (coords != null)
+        {
+            Waypoints.Add(new Waypoint { lat = coords.lat, lon = coords.lon });
+        }
+        
+        await InvokeAsync(StateHasChanged);
+    }
+    
+    protected override void OnInitialized()
+    {
+        //Users = Client.Client.UserGetAll(new UserGetAllRequest(Client.Ticket.TicketID)).UserGetAllResult.ToList();
+        //var tmp = Client.Client.EinsatzPersonGetByEinsatz(new EinsatzPersonGetByEinsatzRequest("einsatzNr", Client.Ticket.TicketID));
+        //var tmp1 = Client.Client.EinsatzDataGetAll(new EinsatzDataGetAllRequest(Client.Ticket.TicketID));
+        //var rueckmeldungen = Client.Client.EinsatzPersonGetByEinsatz(new EinsatzPersonGetByEinsatzRequest(tmp1.EinsatzDataGetAllResult.First().EinsatzNr, Client.Ticket.TicketID));
+        //var coordinates = (tmp1.EinsatzDataGetAllResult.First().Fahrzeuge.First().LFKLongitude, tmp1.EinsatzDataGetAllResult.First().Fahrzeuge.First().LFKLatitude);
+        //var arlamierteFFs = tmp1.EinsatzDataGetAllResult.First().Alarmierungen;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            ClientSettings = (await LocalStorage.GetItemAsync<ClientSettings>("ClientSettings")) ?? new ();
+
+            if (ClientSettings.ShowEinsaetze == true)
+            {
+                ClientSettings.VisualItems.Add(new VisualItem { Type = VisualItemType.EinsatzOOE, Duration = 30, Name = "Einsätze OÖ", Description = "Aktuelle Einsätze in Oberösterreich"});       
+            }
+        
+            await InvokeAsync(StateHasChanged);
+        }
+    }
+}

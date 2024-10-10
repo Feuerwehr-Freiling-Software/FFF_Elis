@@ -17,6 +17,21 @@ namespace EPAS.BusinessLogic.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.8");
 
+            modelBuilder.Entity("ApplicationUserQualifications", b =>
+                {
+                    b.Property<int>("QualificationsId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("UsersId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("QualificationsId", "UsersId");
+
+                    b.HasIndex("UsersId");
+
+                    b.ToTable("ApplicationUserQualifications");
+                });
+
             modelBuilder.Entity("EPAS.Core.Models.Application", b =>
                 {
                     b.Property<int>("Id")
@@ -255,6 +270,9 @@ namespace EPAS.BusinessLogic.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("Response")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -296,6 +314,25 @@ namespace EPAS.BusinessLogic.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Programs");
+                });
+
+            modelBuilder.Entity("EPAS.Core.Models.Qualifications", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ChipColor")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Qualifications");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -424,6 +461,21 @@ namespace EPAS.BusinessLogic.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("ApplicationUserQualifications", b =>
+                {
+                    b.HasOne("EPAS.Core.Models.Qualifications", null)
+                        .WithMany()
+                        .HasForeignKey("QualificationsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EPAS.Core.Models.ApplicationUser", null)
+                        .WithMany()
+                        .HasForeignKey("UsersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("EPAS.Core.Models.Application", b =>

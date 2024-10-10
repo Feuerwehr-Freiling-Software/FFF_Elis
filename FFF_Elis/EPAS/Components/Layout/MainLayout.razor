@@ -1,23 +1,53 @@
-﻿@inherits LayoutComponentBase
+﻿@using MudBlazor
+@inherits LayoutComponentBase
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu/>
-    </div>
+<MudThemeProvider/>
+<MudPopoverProvider/>
+<MudDialogProvider/>
+<MudSnackbarProvider/>
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+<MudLayout>
+    <header class="fro-header fro-header--with-border" style="z-index: 9000; position: fixed; top: 0; width: 100%">
+        <div class="fro-header__left-wrapper">
+            <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())"/>
+            <div class="fro-header__title">Elis Visualisierung 2.0</div>
         </div>
+        <div class="fro-header__menu-wrapper">
+        </div>
+        <div
+            class="fro-header__search-wrapper fro-input-group fro-input-group--x-small"
+        >
+            <i class="fro-icon">magnifying-glass</i>
+            <input
+                type="search"
+                class="fro-input fro-input--fluid fro-input-group__fro-input"
+                placeholder="Search"
+            />
+            <button
+                class="fro-button fro-button--x-small fro-button--no-min-width fro-button--pill fro-button--icon-only fro-input-group__fro-button"
+            >
+                <i class="fro-icon">xmark</i>
+            </button>
+        </div>
+        <div class="fro-header__icon-wrapper">
+            <a href="/visuSettings">
+                <div class="fro-header__icon fro-icon">gear</div>
+            </a>
+        </div>
+    </header>
+    <MudDrawer Style="background-color: var(); color: var(--fro-text);" @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Docked" Variant="DrawerVariant.Mini" Elevation="3">
+        <NavMenu/>
+    </MudDrawer>
+    <MudMainContent Class="mt-16 pa-4">
+        @Body
+    </MudMainContent>
+</MudLayout>
 
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
-</div>
+@code {
+private bool _drawerOpen = false;
 
-<div id="blazor-error-ui">
-    An unhandled error has occurred.
-    <a href="" class="reload">Reload</a>
-    <a class="dismiss">🗙</a>
-</div>
+private void DrawerToggle()
+    {
+        _drawerOpen = !_drawerOpen;
+    }
+}

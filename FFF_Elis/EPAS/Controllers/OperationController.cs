@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EPAS.Controllers;
 
-[ApiController]
+[ApiController, AllowAnonymous]
 [Route("api/[controller]/[action]")]
 public class OperationController(IOperationService operationService) : Controller
 {
