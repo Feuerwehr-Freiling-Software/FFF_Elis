@@ -2,6 +2,7 @@
 using System.Net.Sockets;
 using System.Xml.Serialization;
 using EPAS.BusinessLogic.Services;
+using EPAS.Core.BusinessObjects;
 using EPAS.Core.Models;
 using Serilog;
 using Serilog.Core;
@@ -30,7 +31,7 @@ var wasPort = Convert.ToInt32(config["WAS:Port"]);
 var sendToApi = Convert.ToBoolean(config["API:ApiLogging"]);
 var serverUrl = config["API:Url"];
 var firebrigadeName = config["API:FireBrigadeName"];
-var apiKey = config["API:ApiKey"];
+var apiKey = config["API:Key"];
 // SignalR Connection
 
 
@@ -126,11 +127,18 @@ async Task SendDataToApi(Pdu pdu)
     try
     {
         var res = await proxy.NewOperation(new WASMessage(pdu));
-        Log.Information("Response: {Response}", res);
+        if (res.ResultCode == EpasResultCode.NoError)
+        {
+            Log.Information("Operation successfully sent to Api");
+        }
+        else
+        {
+            Log.Error("Error sending data to API: {ErrorMessage}", res.ErrorText);
+        }
     }
     catch (Exception e)
     {
-        Log.Error("Error sending data to API: {ErrorMessage}", e.Message);
+        Log.Error("Error while sending data to API: {ErrorMessage}", e.Message);
     }
 }
 

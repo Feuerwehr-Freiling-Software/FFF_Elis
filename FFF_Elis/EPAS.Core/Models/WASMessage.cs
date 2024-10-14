@@ -2,6 +2,11 @@
 
 public class WASMessage
 {
+    public WASMessage()
+    {
+        
+    }
+    
     public WASMessage(Pdu pdu, string apiKey)
     {
         Pdu = pdu;

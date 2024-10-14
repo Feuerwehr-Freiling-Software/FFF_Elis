@@ -22,6 +22,7 @@ public class GeocodingService
     
    public async Task<Waypoint?> GetWaypointAsync(string address)
    {
+       if(string.IsNullOrWhiteSpace(address)) return null;
        var splitAdress = address.Replace(",", "").Split(' ');
 
        Console.WriteLine("Address: " + address);

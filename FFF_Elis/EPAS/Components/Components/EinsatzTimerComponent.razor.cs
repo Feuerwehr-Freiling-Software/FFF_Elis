@@ -35,12 +35,13 @@ public partial class EinsatzTimerComponent : ComponentBase
             .WithAutomaticReconnect()
             .Build();
         
-        _settings = await LocalStorageService.GetItemAsync<ClientSettings>("_settings") ?? new ClientSettings();
+        _settings = await LocalStorageService.GetItemAsync<ClientSettings>("ClientSettings") ?? new ClientSettings();
         
         _connection.On("OperationUpdate", async (OperationDto operation) => await UpdateOperation(operation));
         
         await _connection.StartAsync();
         Client = new OperationHubProxy(_connection, _settings.ApiKey, _settings.FirebrigadeName);
+        await Client.RegisterClient();
     }
 
     private async Task UpdateOperation(OperationDto operation)

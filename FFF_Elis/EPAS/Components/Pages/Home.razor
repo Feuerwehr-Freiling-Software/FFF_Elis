@@ -5,7 +5,6 @@
 @using EPAS.Core.Enums
 @using EPAS.Shared.Services
 @using FFF_Elis.Components.BusinessObjects
-@using FFF_Elis.Components.Services
 @using EPAS.Components.Components
 
 @inject ILocalStorageService LocalStorage
@@ -30,7 +29,9 @@
 }
 else
 {
-    <VisualItemComponent Items="ClientSettings.VisualItems" />
+    <div style="margin-left: 4rem;">
+        <VisualItemComponent Items="ClientSettings.VisualItems" />
+    </div>
 }
 
 @code
@@ -43,19 +44,19 @@ else
     
     public List<OperationResponseDto> Rueckmeldungen { get; set; } =
     [
-        new OperationResponseDto() { Username = "Haunschmied Bastian", Response = OperationResponseEnum.Coming },
-        new OperationResponseDto() { Username =  "Haunschmied Bastian", Response = OperationResponseEnum.Coming },
-        new OperationResponseDto() { Username =  "Haunschmied Bastian", Response = OperationResponseEnum.Coming },
-        new OperationResponseDto() { Username =  "Haunschmied Bastian", Response = OperationResponseEnum.Coming },
-        new OperationResponseDto() { Username =  "Leutgöb Fabian", Response = OperationResponseEnum.Available },
-        new OperationResponseDto() { Username =  "Leutgöb Fabian", Response = OperationResponseEnum.Available },
-        new OperationResponseDto() { Username =  "Leutgöb Fabian", Response = OperationResponseEnum.Available },
-        new OperationResponseDto() { Username =  "Leutgöb Lukas", Response = OperationResponseEnum.NotAvailable },
-        new OperationResponseDto() { Username =  "Leutgöb Lukas", Response = OperationResponseEnum.NotAvailable },
-        new OperationResponseDto() { Username =  "Leutgöb Lukas", Response = OperationResponseEnum.NotAvailable },
-        new OperationResponseDto() { Username =  "Leutgöb Lukas", Response = OperationResponseEnum.NotAvailable },
-        new OperationResponseDto() { Username =  "Leutgöb Lukas", Response = OperationResponseEnum.Read },
-        new OperationResponseDto() { Username =  "Leutgöb Lukas", Response = OperationResponseEnum.Read },
+        new () { Username = "Haunschmied Bastian", Response = OperationResponseEnum.Coming },
+        new () { Username =  "Haunschmied Bastian", Response = OperationResponseEnum.Coming },
+        new () { Username =  "Haunschmied Bastian", Response = OperationResponseEnum.Coming },
+        new () { Username =  "Haunschmied Bastian", Response = OperationResponseEnum.Coming },
+        new () { Username =  "Leutgöb Fabian", Response = OperationResponseEnum.Available },
+        new () { Username =  "Leutgöb Fabian", Response = OperationResponseEnum.Available },
+        new () { Username =  "Leutgöb Fabian", Response = OperationResponseEnum.Available },
+        new () { Username =  "Leutgöb Lukas", Response = OperationResponseEnum.NotAvailable },
+        new () { Username =  "Leutgöb Lukas", Response = OperationResponseEnum.NotAvailable },
+        new () { Username =  "Leutgöb Lukas", Response = OperationResponseEnum.NotAvailable },
+        new () { Username =  "Leutgöb Lukas", Response = OperationResponseEnum.NotAvailable },
+        new () { Username =  "Leutgöb Lukas", Response = OperationResponseEnum.Read },
+        new () { Username =  "Leutgöb Lukas", Response = OperationResponseEnum.Read },
     ];
 
     public List<Waypoint> Waypoints { get; set; } = new();

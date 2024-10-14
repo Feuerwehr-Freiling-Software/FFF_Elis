@@ -7,6 +7,7 @@ public class Application
     public int Id { get; set; }
     public string Name { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
+    // Hash Method: MD5
     [Required]
     public string ApiKey { get; set; } = string.Empty;
 

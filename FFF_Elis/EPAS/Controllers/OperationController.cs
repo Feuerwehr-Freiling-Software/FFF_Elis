@@ -1,4 +1,5 @@
-﻿using EPAS.Core.Models;
+﻿using EPAS.Core.Interfaces;
+using EPAS.Core.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,13 +7,13 @@ namespace EPAS.Controllers;
 
 [ApiController, AllowAnonymous]
 [Route("api/[controller]/[action]")]
-public class OperationController(IOperationService operationService) : Controller
+public class OperationController(Logger<OperationController> logger,IOperationService operationService, IFirebrigadeService firebrigadeService) : Controller
 {
     [HttpGet]
     [Authorize]
-    public async Task<IActionResult> GetOperation(string id, int firebrigadeId)
+    public async Task<IActionResult> GetOperation(string id)
     {
-        var operation = await operationService.GetOperationAsync(id, firebrigadeId);
+        var operation = await operationService.GetOperationAsync(id);
         return operation == null ? NotFound() : Ok(operation);
     }
 
@@ -27,8 +28,9 @@ public class OperationController(IOperationService operationService) : Controlle
     [HttpPost]
     public async Task<IActionResult> AddOperation(WASMessage message)
     {
-        var success = await operationService.AddOperationAsync(message.Pdu);
-        return success ? Ok() : BadRequest();
+        // var success = await operationService.AddOperationAsync(message.Pdu);
+        logger.LogInformation("Invoked Empty AddOperation Endpoint");
+        return Ok();
     }
 
     [HttpPut]
@@ -37,5 +39,20 @@ public class OperationController(IOperationService operationService) : Controlle
     {
         var success = await operationService.UpdateOperationAsync(operation, apiKey);
         return success ? Ok() : BadRequest();
+    }
+    
+    [HttpGet]
+    public async Task<IActionResult> GetOpenOperations(string apiKey)
+    {
+        var operations = await operationService.GetOpenOperationsByFirebrigade(apiKey);
+        return Ok(operations);
+    }
+    
+    [HttpGet]
+    public async Task<IActionResult> AddOrUpdateOperation(WASMessage message)
+    {
+        
+        
+        return Ok();
     }
 }

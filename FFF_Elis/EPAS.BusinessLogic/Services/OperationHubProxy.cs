@@ -15,6 +15,8 @@ public class OperationHubProxy(HubConnection connection, string apiKey, string f
     public async Task<EpasResult<bool>> NewOperation(WASMessage operation)
     {
         operation.APIKey = apiKey;
-        return await connection.InvokeAsync<EpasResult<bool>>("AddNewOperation", fireBrigadeName, operation);
+        var res = await connection.InvokeAsync<EpasResult<bool>>(methodName: "newoperation", arg1: fireBrigadeName, arg2: operation);
+
+        return res;
     }
 }

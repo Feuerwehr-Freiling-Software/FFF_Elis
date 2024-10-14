@@ -1,4 +1,5 @@
-﻿using EPAS.Core.Models;
+﻿using EPAS.Core.BusinessObjects;
+using EPAS.Core.Models;
 using EPAS.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -21,5 +22,11 @@ public class APIKeyService(ApplicationDbContext db, ILogger<APIKeyService> logge
         
         Logger.LogInformation("Valid API key for {FireBrigadeName}", fireBrigadeName);
         return true;
+    }
+
+    public async Task<EpasResult<List<Firebrigade>>> GetAllFireBrigades()
+    {
+        var res = db.Firebrigades.ToList();
+        return new EpasResult<List<Firebrigade>>("Success", res, EpasResultCode.NoError);
     }
 }

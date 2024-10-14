@@ -1,0 +1,53 @@
+﻿@using EPAS.Core.BusinessObjects
+<div class="fro-card">
+    <div style="border-left: 15px solid @color; margin-bottom: 10px;">
+        <div style="padding-left: 10px;"><strong>@Einsatz.Adresse.Default</strong>@($" ({Einsatz.Bezirk.Text}): {Einsatz.Alarmtext}") </div>
+        <div>Alarmiert: </div>
+        @foreach(var item in Einsatz.Einheiten.Einheit)
+        {
+            <div style="padding-left: 20px;">@(GetCleanFFName(item.Text))</div>
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter] public Einsatz Einsatz { get; set; } = new();
+    
+    string color = "#FFF";
+
+    protected override void OnInitialized()
+    {
+        if (Einsatz.Einsatzart == "BRAND")
+        {
+            color = "#FF0000";
+        }
+        else if (Einsatz.Einsatzart == "PERSON")
+        {
+            color = "#00F";
+        }else if(Einsatz.Einsatzart == "TEE")
+        {
+            color = "#080";
+        }
+        else if (Einsatz.Einsatzart == "SONSTIGE")
+        {
+            color = "#000";
+        }
+    }
+
+    private string GetCleanFFName(string? name)
+    {
+        if(name == null) return string.Empty;
+        // Step 1: Split by '/' and take the second part
+        var parts = name.Split('/');
+        if (parts.Length < 2) return string.Empty;
+
+        // Step 2: Split by '(' and take the first part
+        var cleanName = parts[1].Split('(')[0];
+
+        cleanName = cleanName.Remove(0, 7);
+        
+        // Step 3: Trim any leading or trailing whitespace
+        return "Feuerwehr " + cleanName.Trim();
+    }
+    
+}

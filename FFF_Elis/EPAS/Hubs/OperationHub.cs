@@ -3,33 +3,25 @@ using EPAS.Core.BusinessObjects;
 using EPAS.Core.Interfaces;
 using EPAS.Core.Models;
 using Microsoft.AspNetCore.SignalR;
+using Serilog;
 using Serilog.Context;
 
 namespace EPAS.Hubs;
 
-public class OperationHub : Hub<IOperationHub>, IOperationHub
+public class OperationHub(ILogger<OperationHub> logger, IAPIKeyService apiKeyService, IOperationService operationService) : Hub
 {
-    private readonly ILogger<OperationHub> _logger;
-    private readonly APIKeyService _apiKeyService;
-
-    public OperationHub(ILogger<OperationHub> logger, APIKeyService apiKeyService)
-    {
-        _logger = logger;
-        _apiKeyService = apiKeyService;
-    }
-    
     
     public async Task<EpasResult<bool>> RegisterClient(string fireBrigadeName, string apiKey)
     {
-        if (!await _apiKeyService.ValidateKey(fireBrigadeName, apiKey))
+        if (!await apiKeyService.ValidateKey(fireBrigadeName, apiKey))
         {
-            _logger.LogInformation("Registering client {FireBrigadeName} failed. API Key invalid.", fireBrigadeName);
+            logger.LogInformation("Registering client {FireBrigadeName} failed. API Key invalid.", fireBrigadeName);
             return new EpasResult<bool>("Invalid Api Key", false, EpasResultCode.InvalidApiKey);
         }
         
         using (LogContext.PushProperty("FireBrigade", fireBrigadeName))
         {
-            _logger.LogInformation("Registering client {FireBrigadeName} with connection {ConnectionId}", fireBrigadeName, Context.ConnectionId);
+            logger.LogInformation("Registering client {FireBrigadeName} with connection {ConnectionId}", fireBrigadeName, Context.ConnectionId);
         }
         await Groups.AddToGroupAsync(Context.ConnectionId, fireBrigadeName);
         return new EpasResult<bool>("Successfully registered", true, EpasResultCode.NoError);
@@ -37,18 +29,30 @@ public class OperationHub : Hub<IOperationHub>, IOperationHub
 
     public async Task<EpasResult<bool>> NewOperation(string fireBrigadeName, WASMessage operation)
     {
+        logger.LogInformation("Did something");
         using (LogContext.PushProperty("FireBrigade", fireBrigadeName))
         {
-            if (!await _apiKeyService.ValidateKey(fireBrigadeName, operation.APIKey))
+            if (!await apiKeyService.ValidateKey(fireBrigadeName, operation.APIKey))
             {
-                _logger.LogInformation("Registering client {FireBrigadeName} failed. API Key invalid.", fireBrigadeName);
+                logger.LogInformation("Registering client {FireBrigadeName} failed. API Key invalid.", fireBrigadeName);
                 return new EpasResult<bool>("Invalid Api Key", false, EpasResultCode.InvalidApiKey);
             }
             
-            _logger.LogInformation("New operation received from {FireBrigadeName} with connection {ConnectionId}", fireBrigadeName, Context.ConnectionId);
+            logger.LogInformation("New operation received from {FireBrigadeName} with connection {ConnectionId}", fireBrigadeName, Context.ConnectionId);
             
-            await Clients.Group(fireBrigadeName).NewOperation(fireBrigadeName, operation);
-            return new EpasResult<bool>("Operation sent", true, EpasResultCode.NoError);
+            var res = await operationService.AddOrUpdateOperationAsync(operation);
+            if (res.ResultCode != EpasResultCode.NoError)
+            {
+                logger.LogError("Failed to add operation {OperationId}", operation.Pdu.Xsd);
+                return new EpasResult<bool>("Failed to add operation", false, EpasResultCode.CouldntAddOperation);
+            }
+            else
+            {
+                await Clients.Group(fireBrigadeName).SendAsync("OperationUpdate", operation);
+                logger.LogInformation("Operation {OperationId} added", operation.Pdu.Xsd);
+                return new EpasResult<bool>("Operation sent", true, EpasResultCode.NoError);
+            }
+            
         }
     }
 }

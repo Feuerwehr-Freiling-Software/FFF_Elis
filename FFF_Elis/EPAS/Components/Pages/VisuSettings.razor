@@ -1,0 +1,21 @@
+﻿@page "/VisuSettings"
+@using FFF_Elis.Components.BusinessObjects
+@using FFF_Elis.Components.Components
+@using EPAS.Components.Components
+
+<MudGrid Justify="Justify.Center">
+    <MudItem>
+        <div role="tablist" aria-orientation="horizontal" class="fro-tabs">
+            <button role="tab" @onclick="() => { SelectedIndex = 0;}" class="fro-tab fro-tabs__fro-tab @(SelectedIndex == 0 ? "fro-tab--is-active" : "")">Präsentation</button>
+            <button role="tab" @onclick="() => { SelectedIndex = 1;}" class="fro-tab fro-tabs__fro-tab @(SelectedIndex == 1 ? "fro-tab--is-active" : "")">Anordnung</button>
+            <button role="tab" @onclick="() => { SelectedIndex = 2;}" class="fro-tab fro-tabs__fro-tab @(SelectedIndex == 2 ? "fro-tab--is-active" : "")">Tab C</button>
+            <button role="tab" @onclick="() => { SelectedIndex = 3;}" class="fro-tab fro-tabs__fro-tab @(SelectedIndex == 3 ? "fro-tab--is-active" : "")">Tab D</button>
+        </div>
+    </MudItem>
+</MudGrid>
+<MudContainer>
+    @if(SelectedIndex == 0)
+    {
+        <EditPresentation />
+    }
+</MudContainer>

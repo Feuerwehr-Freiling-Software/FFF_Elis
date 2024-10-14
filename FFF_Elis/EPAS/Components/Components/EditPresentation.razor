@@ -1,0 +1,114 @@
+﻿@using System.Reflection
+@inject IJSRuntime JS
+
+<script src="https://unpkg.com/swapy/dist/swapy.min.js"></script>
+<h3>Visualisierung Bearbeiten</h3>
+
+<MudExpansionPanels>
+    <MudExpansionPanel Text="Basis Einstellungen">
+        <MudGrid>
+            <MudItem Class="align-center justify-center">
+                <button type="button" class="fro-button fro-button--primary" @onclick="SetFirebrigade">Feuerwehr setzen</button>
+                <span class="fro-chip @(_apiKeyIsValid ? "mud-success" : "mud-error")">
+                    <span class="fro-chip__icon">
+                        @if (_apiKeyIsValid == true)
+                        {
+                            <i class="fro-icon" translate="no">check</i>
+                        }
+                        else
+                        {
+                            <i class="fro-icon" translate="no">xmark-large</i>
+                        }
+                    </span>
+                  <span class="fro-chip__label">API Key Status</span>
+                </span>
+            </MudItem>
+        </MudGrid>
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="Einstellungen">
+        <MudGrid>
+            <MudItem Class="align-center justify-center">
+                <span class="fro-toggle">
+                    <input type="checkbox" @bind="MoveMode" id="enable" class="fro-toggle__checkbox"/>
+                    <label for="enable" class="fro-label fro-toggle__label">Reihenfolge Ändern</label>
+                </span>
+                <button type="button" class="fro-button fro-button--primary" @onclick="AddNewItem">Neues item</button>
+                <!-- Show Einsätze -->
+                <span class="fro-toggle">
+                    <input type="checkbox" @bind="_clientSettings.ShowEinsaetze" id="einsaetze" class="fro-toggle__checkbox"/>
+                    <label for="einsaetze" class="fro-label fro-toggle__label">aktuelle Einsätze OÖ anzeigen</label>
+                </span>
+                <button type="button" class="fro-button fro-button--primary" @onclick="UpdateSettings">Einstellungen speichern</button>
+            </MudItem>
+        </MudGrid>
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="Kalender">
+        <!-- Show Kalender -->
+        <span class="fro-toggle">
+            <input type="checkbox" @bind="_clientSettings.ShowCalendar" id="calendar" class="fro-toggle__checkbox"/>
+            <label for="calendar" class="fro-label fro-toggle__label">Kalender Anzeigen</label>
+        </span>
+    </MudExpansionPanel>
+</MudExpansionPanels>
+
+@if (MoveMode)
+{
+    <div id="swapy-container" class="swapy-container container-1" style="width: 100%;">
+        @foreach(var item in _clientSettings.VisualItems)
+        {
+            <div class="swapy-item" data-swapy-slot="@(_clientSettings.VisualItems.IndexOf(item)+1)">
+                <div class="item__content" data-swapy-item="@item.Name">
+                    <div class="fro-panel swapy-item" style="display: inline-flex; width: 100%; justify-content: space-around; align-items: center;">
+                        <div>@item.Name</div>
+                        <div>@item.Type</div>
+                        <div>@item.Duration s</div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    
+    <script type="module">
+    const container = document.getElementById('swapy-container');
+    const enableInput = document.querySelector('#enable');
+
+    const swapy = Swapy.createSwapy(container, {
+        animation: 'dynamic',
+        continuousMode: false
+    });
+
+    swapy.onSwap((event) => {
+        localStorage.setItem('swapyPresentationItems', JSON.stringify(event.data.array));
+    });
+    </script>
+}
+else
+{
+    <div class="swapy-container">
+        @foreach(var item in _clientSettings.VisualItems)
+        {
+            if(item == null)
+            {
+                continue;
+            }
+            else
+            {
+                <div class="swapy-item" data-swapy-slot="@(_clientSettings.VisualItems.IndexOf(item)+1)">
+                    <div class="item__content" data-swapy-item="@item.Name">
+                        <div class="fro-panel" style="display: inline-flex; width: 100%; justify-content: space-around; align-items: center;">
+                            <div>@item.Name</div>
+                            <div>@item.Type</div>
+                            <div>@item.Duration s</div>
+                            <div>
+                                <div class="fro-button-group">
+                                    <button type="button" class="fro-button fro-button--primary fro-button-group__fro-button" @onclick="@(() => EditItem(item))">Bearbeiten</button>
+                                    <button type="button" class="fro-button fro-button--error fro-button-group__fro-button" @onclick="@(() => RemoveItem(item))">Löschen</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+}
