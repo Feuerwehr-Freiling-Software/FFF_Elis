@@ -22,4 +22,17 @@ public class FirebrigadeService(ApplicationDbContext db) : IFirebrigadeService
             return new EpasResult<Firebrigade>("Firebrigade found", firebrigade, EpasResultCode.NoError);
         }
     }
+
+    public async Task<EpasResult<Firebrigade>> GetFirebrigadeAsync(string name)
+    {
+        var firebrigade = await db.Firebrigades.FirstOrDefaultAsync(x => x.Name == name);
+        if (firebrigade == null)
+        {
+            return new EpasResult<Firebrigade>("Firebrigade not found", new Firebrigade(), EpasResultCode.CouldntFindFirebrigade);
+        }
+        else
+        {
+            return new EpasResult<Firebrigade>("Firebrigade found", firebrigade, EpasResultCode.NoError);
+        }
+    }
 }

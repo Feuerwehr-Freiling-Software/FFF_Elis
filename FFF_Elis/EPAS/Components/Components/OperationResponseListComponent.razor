@@ -12,9 +12,15 @@
                     <i class="fro-icon fro-icon--fixed fro-list-item__icon" translate="no"
                     >user</i>
                     <div class="fro-list-item__label">@item.Username</div>
-                    <span class="fro-chip fro-chip--small fro-chip--mini fro-chip--pill">
-                        <span class="fro-chip__label">GRKDT</span>
-                    </span>
+                    @if (Settings.QualificationsVisible)
+                    {
+                        foreach(var qualification in item.Qualifications)
+                        {
+                            <span class="fro-chip fro-chip--small fro-chip--mini fro-chip--pill" style="background-color: @qualification.ChipColor">
+                                <span class="fro-chip__label">@qualification.Name</span>
+                            </span>
+                        }
+                    }
                 </a>
                 break;
             case OperationResponseEnum.Available:
@@ -22,9 +28,15 @@
                     <i class="fro-icon fro-icon--fixed fro-list-item__icon" translate="no"
                     >user</i>
                     <div class="fro-list-item__label">@item.Username</div>
-                    <span class="fro-chip fro-chip--small fro-chip--mini fro-chip--pill">
-                        <span class="fro-chip__label">GRKDT</span>
-                    </span>
+                    @if (Settings.QualificationsVisible)
+                    {
+                    foreach(var qualification in item.Qualifications)
+                    {
+                    <span class="fro-chip fro-chip--small fro-chip--mini fro-chip--pill" style="background-color: @qualification.ChipColor">
+                                <span class="fro-chip__label">@qualification.Name</span>
+                            </span>
+                    }
+                    }
                 </a>
                 break;
             case OperationResponseEnum.NotAvailable:
@@ -32,9 +44,15 @@
                     <i class="fro-icon fro-icon--fixed fro-list-item__icon" translate="no"
                     >user</i>
                     <div class="fro-list-item__label">@item.Username</div>
-                    <span class="fro-chip fro-chip--small fro-chip--mini fro-chip--pill">
-                        <span class="fro-chip__label">GRKDT</span>
-                    </span>
+                    @if (Settings.QualificationsVisible)
+                    {
+                    foreach(var qualification in item.Qualifications)
+                    {
+                    <span class="fro-chip fro-chip--small fro-chip--mini fro-chip--pill" style="background-color: @qualification.ChipColor">
+                                <span class="fro-chip__label">@qualification.Name</span>
+                            </span>
+                    }
+                    }
                 </a>
                 break;
             case OperationResponseEnum.Read:

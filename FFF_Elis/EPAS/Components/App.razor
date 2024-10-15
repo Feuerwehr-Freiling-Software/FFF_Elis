@@ -25,10 +25,14 @@
 
     <body class="fro-dark-context">
         <Routes @rendermode="@InteractiveServer"/>
-        <!-- Fehler gfundn oba wtf?????? BUG: HAAAA???? -->
         <script src="_framework/blazor.web.js"></script>
         <script src="_content/MudBlazor/MudBlazor.min.js"></script>
         <script src="index.js"></script>
+        <script>
+            window.SetCoordinates = function(lat, long) {
+                DotNet.invokeMethodAsync('EPAS', 'SetCoordinates', lat, long);
+            }
+        </script>
     </body>
 
 </html>

@@ -4,7 +4,7 @@ using FFF_Elis.Components.BusinessObjects;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
-namespace FFF_Elis.Components.Components;
+namespace EPAS.Components.Components;
 
 public partial class MapComponent : ComponentBase
 {

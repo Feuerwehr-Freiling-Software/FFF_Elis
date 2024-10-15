@@ -1,4 +1,5 @@
-﻿using EPAS.BusinessLogic.Services;
+﻿using EPAS.BusinessLogic.Helper;
+using EPAS.BusinessLogic.Services;
 using EPAS.Core.BusinessObjects;
 using EPAS.Core.Interfaces;
 using EPAS.Core.Models;
@@ -29,7 +30,6 @@ public class OperationHub(ILogger<OperationHub> logger, IAPIKeyService apiKeySer
 
     public async Task<EpasResult<bool>> NewOperation(string fireBrigadeName, WASMessage operation)
     {
-        logger.LogInformation("Did something");
         using (LogContext.PushProperty("FireBrigade", fireBrigadeName))
         {
             if (!await apiKeyService.ValidateKey(fireBrigadeName, operation.APIKey))
@@ -39,6 +39,23 @@ public class OperationHub(ILogger<OperationHub> logger, IAPIKeyService apiKeySer
             }
             
             logger.LogInformation("New operation received from {FireBrigadeName} with connection {ConnectionId}", fireBrigadeName, Context.ConnectionId);
+
+            if (operation.Pdu.Orderlist.Count == 0)
+            {
+                logger.LogInformation("Finished all Operations");
+                var finishResult = await operationService.FinishAllOperationsAsync(operation.APIKey);
+                if (!finishResult)
+                {
+                    logger.LogError("Failed to finish all operations");
+                    return new EpasResult<bool>("Failed to finish all operations", false, EpasResultCode.CouldntFinishOperations);
+                }
+                else
+                {
+                    var openOperations = await operationService.GetOpenOperationsByFirebrigade(operation.APIKey);
+                    await Clients.Group(fireBrigadeName).SendAsync("OperationUpdate", openOperations.ToOperationDto());
+                    return new EpasResult<bool>("All operations finished", true, EpasResultCode.NoError);
+                }
+            }
             
             var res = await operationService.AddOrUpdateOperationAsync(operation);
             if (res.ResultCode != EpasResultCode.NoError)
@@ -48,11 +65,11 @@ public class OperationHub(ILogger<OperationHub> logger, IAPIKeyService apiKeySer
             }
             else
             {
-                await Clients.Group(fireBrigadeName).SendAsync("OperationUpdate", operation);
-                logger.LogInformation("Operation {OperationId} added", operation.Pdu.Xsd);
+                var openOperations = (await operationService.GetOpenOperationsByFirebrigade(operation.APIKey)).ToOperationDto();
+                await Clients.Group(fireBrigadeName).SendAsync("OperationUpdate", openOperations);
+                logger.LogInformation("Operation {OperationId} added", operation.Pdu.Orderlist.Order.First().Key);
                 return new EpasResult<bool>("Operation sent", true, EpasResultCode.NoError);
             }
-            
         }
     }
 }

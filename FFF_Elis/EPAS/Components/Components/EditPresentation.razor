@@ -20,8 +20,10 @@
                             <i class="fro-icon" translate="no">xmark-large</i>
                         }
                     </span>
-                  <span class="fro-chip__label">API Key Status</span>
+                    <span class="fro-chip__label">API Key Status</span>
                 </span>
+                <span>Aktuelle Koordinaten: @_clientSettings.FirebrigadeCoords.ToString()</span>
+                <button type="button" class="fro-button fro-button--primary" @onclick="SetFirebrigadeCoordinates">Feuerwehrkoordinaten setzen</button>
             </MudItem>
         </MudGrid>
     </MudExpansionPanel>
@@ -29,7 +31,7 @@
         <MudGrid>
             <MudItem Class="align-center justify-center">
                 <span class="fro-toggle">
-                    <input type="checkbox" @bind="MoveMode" id="enable" class="fro-toggle__checkbox"/>
+                    <input type="checkbox" @bind="MoveMode" id="enable" class="fro-toggle__checkbox" />
                     <label for="enable" class="fro-label fro-toggle__label">Reihenfolge Ändern</label>
                 </span>
                 <button type="button" class="fro-button fro-button--primary" @onclick="AddNewItem">Neues item</button>
@@ -37,6 +39,10 @@
                 <span class="fro-toggle">
                     <input type="checkbox" @bind="_clientSettings.ShowEinsaetze" id="einsaetze" class="fro-toggle__checkbox"/>
                     <label for="einsaetze" class="fro-label fro-toggle__label">aktuelle Einsätze OÖ anzeigen</label>
+                </span>
+                <span class="fro-toggle">
+                    <input type="checkbox" @bind="_clientSettings.QualificationsVisible" id="showqualifications" class="fro-toggle__checkbox"/>
+                    <label for="showqualifications" class="fro-label fro-toggle__label">Funktionen bei Rückmeldung anzeigen</label>
                 </span>
                 <button type="button" class="fro-button fro-button--primary" @onclick="UpdateSettings">Einstellungen speichern</button>
             </MudItem>
@@ -87,28 +93,21 @@ else
     <div class="swapy-container">
         @foreach(var item in _clientSettings.VisualItems)
         {
-            if(item == null)
-            {
-                continue;
-            }
-            else
-            {
-                <div class="swapy-item" data-swapy-slot="@(_clientSettings.VisualItems.IndexOf(item)+1)">
-                    <div class="item__content" data-swapy-item="@item.Name">
-                        <div class="fro-panel" style="display: inline-flex; width: 100%; justify-content: space-around; align-items: center;">
-                            <div>@item.Name</div>
-                            <div>@item.Type</div>
-                            <div>@item.Duration s</div>
-                            <div>
-                                <div class="fro-button-group">
-                                    <button type="button" class="fro-button fro-button--primary fro-button-group__fro-button" @onclick="@(() => EditItem(item))">Bearbeiten</button>
-                                    <button type="button" class="fro-button fro-button--error fro-button-group__fro-button" @onclick="@(() => RemoveItem(item))">Löschen</button>
-                                </div>
+            <div class="swapy-item" data-swapy-slot="@(_clientSettings.VisualItems.IndexOf(item)+1)">
+                <div class="item__content" data-swapy-item="@item.Name">
+                    <div class="fro-panel" style="display: inline-flex; width: 100%; justify-content: space-around; align-items: center;">
+                        <div>@item.Name</div>
+                        <div>@item.Type</div>
+                        <div>@item.Duration s</div>
+                        <div>
+                            <div class="fro-button-group">
+                                <button type="button" class="fro-button fro-button--primary fro-button-group__fro-button" @onclick="@(() => EditItem(item))">Bearbeiten</button>
+                                <button type="button" class="fro-button fro-button--error fro-button-group__fro-button" @onclick="@(() => RemoveItem(item))">Löschen</button>
                             </div>
                         </div>
                     </div>
                 </div>
-            }
+            </div>
         }
     </div>
 }

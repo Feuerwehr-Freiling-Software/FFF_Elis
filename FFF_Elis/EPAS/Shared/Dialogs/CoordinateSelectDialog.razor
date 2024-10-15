@@ -1,0 +1,68 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.JSInterop
+@using MudBlazor
+<MudDialog @rendermode="@RenderMode.InteractiveServer" Style="background: transparent; box-shadow: none">
+    <DialogContent>
+        @if (_isDialogOpen)
+        {
+            <div class="story-wrapper" style="min-height: 500px; position: relative; box-shadow: none;">
+                <dialog class="fro-dialog fro-dialog--position-center fro-dialog--information" style="background: rgba(0, 0, 0, 0);" open>
+                    <div class="fro-dialog__panel" style="height: 100%; width: 100%;">
+                        <i class="fro-dialog__icon fro-icon">circle-info</i>
+                        <header class="fro-dialog__header mb-5">@Message</header>
+                        <article class="fro-dialog__body">
+                            <!-- Content goes here -->
+                            <div id="map" style="height: 100%; color: black"></div>
+                        </article>
+                        <footer class="fro-dialog__footer">
+                            <button id="cancelCoordinates" @onclick="@(Cancel)" class="fro-button fro-button--secondary fro-button--no-min-width fro-button--small">
+                                Abbrechen
+                            </button>
+                            <button id="submitCoordinates" @onclick="@(Submit)" class="fro-button fro-button--primary fro-button--no-min-width fro-button--small">
+                                Speichern
+                            </button>
+                        </footer>
+                    </div>
+                </dialog>
+            </div>
+            <div style="display: none">
+                <p id="saveCoordinates"></p>
+            </div>
+            <script>
+            // Initialize the map and routing control
+            var houseIcon = L.icon({
+                iconUrl: '/img/feuerwehr-haus.png',
+                iconSize: [50, 50],
+                iconAnchor: [25, 25],
+            });
+            
+            var map = L.map('map').setView([48.236121, 14.123097], 15);
+                L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 19,
+                    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
+            
+            var marker;
+            
+            map.on('click', function(e) {
+                AddHouseToMap(e.latlng.lat, e.latlng.lng, 'Feuerwehrhaus');
+                document.getElementById('saveCoordinates').innerText = e.latlng;
+            });
+            
+            function getCoordinates() {
+                return document.getElementById('saveCoordinates').innerText;
+            }
+            
+            function AddHouseToMap(lat, long, name) {
+                if (marker){
+                    map.removeLayer(marker);
+                }
+                
+                marker = L.marker([lat, long], {icon: houseIcon}).addTo(map)
+                    .bindPopup('<b>' + name + '</b></br> ' + lat + ', ' + long);
+            }
+                
+            </script>
+        }
+    </DialogContent>
+</MudDialog>

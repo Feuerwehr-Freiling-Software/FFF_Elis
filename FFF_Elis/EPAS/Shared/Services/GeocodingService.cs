@@ -30,8 +30,8 @@ public class GeocodingService
        var waypoint = new Waypoint();
        var request = new ForwardGeocodeRequest()
        {
-            StreetAddress = splitAdress[0] + " " + splitAdress[1],
-            PostalCode = splitAdress[2],
+           BreakdownAddressElements = true,
+            StreetAddress = address
        };
         var response = await ForwardGeocoder.Geocode(request);
 

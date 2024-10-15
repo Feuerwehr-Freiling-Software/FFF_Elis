@@ -6,5 +6,8 @@ public enum EpasResultCode
     InvalidApiKey = 1,
     InvalidFireBrigade = 2,
     CouldntAddOperation = 3,
-    CouldntFindFirebrigade = 4
+    CouldntFindFirebrigade = 4,
+    ProgramNotFound = 5,
+    AlreadyExists = 6,
+    CouldntFinishOperations = 7
 }

@@ -1,4 +1,6 @@
-﻿namespace EPAS.Core.Models;
+﻿using System.Text.Json.Serialization;
+
+namespace EPAS.Core.Models;
 
 public class Firebrigade
 {
@@ -13,6 +15,8 @@ public class Firebrigade
     public float Lat { get; set; } = 0;
     public float Lng { get; set; } = 0;
     public List<ApplicationUser> Users { get; set; } = new();
+    [JsonIgnore]
     public List<Operation> Operations { get; set; } = new();
+    [JsonIgnore]
     public List<Application> Applications { get; set; } = new();
 }

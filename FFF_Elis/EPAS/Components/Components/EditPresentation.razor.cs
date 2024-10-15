@@ -1,6 +1,7 @@
 ﻿using Blazored.LocalStorage;
 using EPAS.Core.BusinessObjects;
 using EPAS.Core.Models;
+using EPAS.Shared.Dialogs;
 using FFF_Elis.Components.BusinessObjects;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
@@ -52,6 +53,7 @@ private async Task ReloadItems()
     var items = new VisualItem[res.Count];        
     foreach (var item in res)
     {
+        if(item.item == null) continue;
         var visualItem = _clientSettings.VisualItems.FirstOrDefault(x => x.Name == item.item);
         if (visualItem != null)
         {
@@ -346,5 +348,30 @@ private async Task ReloadItems()
         var fireBrigadeNames = fireBrigades.Result.Select(x => x.Name).ToList();
         
         return fireBrigadeNames.Where(x => x.ToLower().Contains(search.ToLower()));
+    }
+
+    private async Task SetFirebrigadeCoordinates()
+    {
+        var parameters = new DialogParameters()
+        {
+            { "Message", "Koordinaten auswählen" },
+            { "CurrentCoordinates", _clientSettings.FirebrigadeCoords },
+        };
+        
+        var settings = new DialogOptions()
+        {
+            FullWidth = true,
+            MaxWidth = MaxWidth.Large
+        };
+        
+        var reference = await DialogService.ShowAsync<CoordinateSelectDialog>("", parameters, settings);
+        var result = await reference.Result;
+        
+        if (result is {Canceled: false})
+        {
+            var data = (Waypoint)result.Data;
+            _clientSettings.FirebrigadeCoords = data;
+            await SaveSettings();
+        }
     }
 }

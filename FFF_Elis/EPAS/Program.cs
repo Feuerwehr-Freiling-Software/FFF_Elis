@@ -33,9 +33,13 @@ builder.Services.AddScoped<IAddressSearcher, AddressSearcher>();
 builder.Services.AddScoped<IForwardGeocoder, ForwardGeocoder>();
 builder.Services.AddScoped<IReverseGeocoder, ReverseGeocoder>();
 
+builder.Services.AddScoped<IFirebrigadeService, FirebrigadeService>();
 builder.Services.AddScoped<IOperationService, OperationService>();
-
 builder.Services.AddScoped<IAPIKeyService, APIKeyService>();
+builder.Services.AddScoped<IOriginService, OriginService>();
+builder.Services.AddScoped<IProgramService, ProgramService>();
+builder.Services.AddScoped<ICallerService, CallerService>();
+
 builder.Services.AddSingleton<GoogleService>();
 builder.Services.AddScoped<GeocodingService>();
 

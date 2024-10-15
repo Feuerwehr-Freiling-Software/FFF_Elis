@@ -1,14 +1,17 @@
 ﻿@page "/"
 @using Blazored.LocalStorage
 @using EPAS.BusinessLogic.Dtos
+@using EPAS.BusinessLogic.Helper
 @using EPAS.Core.BusinessObjects
 @using EPAS.Core.Enums
 @using EPAS.Shared.Services
 @using FFF_Elis.Components.BusinessObjects
 @using EPAS.Components.Components
+@using EPAS.Core.Interfaces
 
 @inject ILocalStorageService LocalStorage
 @inject GeocodingService GeocodingService
+@inject IOperationService OperationService
 
 <EinsatzTimerComponent OnOperationUpdate="OnOperationUpdate" />
 
@@ -59,7 +62,10 @@ else
         new () { Username =  "Leutgöb Lukas", Response = OperationResponseEnum.Read },
     ];
 
-    public List<Waypoint> Waypoints { get; set; } = new();
+    public List<Waypoint> Waypoints { get; set; } = new()
+    {
+        new Waypoint { lat = 48.236121f, lon= 14.123097f }
+    };
     
     private async Task AddRueckmeldung()
     {
@@ -74,6 +80,12 @@ else
 
     private async Task OnOperationUpdate(List<OperationDto> operationDtos)
     {
+        if (operationDtos.Count == 0)
+        {
+            EinsatzAnzeigen = false;
+            return;
+        }
+        
         await OnNewEinsatz(operationDtos.First());
     }
     
@@ -91,7 +103,6 @@ else
         catch (Exception e)
         {
             Console.WriteLine(e);
-            throw;
         }
 
         Waypoints = [new Waypoint { lat = 48.236121f, lon= 14.123097f }];
@@ -102,16 +113,6 @@ else
         }
         
         await InvokeAsync(StateHasChanged);
-    }
-    
-    protected override void OnInitialized()
-    {
-        //Users = Client.Client.UserGetAll(new UserGetAllRequest(Client.Ticket.TicketID)).UserGetAllResult.ToList();
-        //var tmp = Client.Client.EinsatzPersonGetByEinsatz(new EinsatzPersonGetByEinsatzRequest("einsatzNr", Client.Ticket.TicketID));
-        //var tmp1 = Client.Client.EinsatzDataGetAll(new EinsatzDataGetAllRequest(Client.Ticket.TicketID));
-        //var rueckmeldungen = Client.Client.EinsatzPersonGetByEinsatz(new EinsatzPersonGetByEinsatzRequest(tmp1.EinsatzDataGetAllResult.First().EinsatzNr, Client.Ticket.TicketID));
-        //var coordinates = (tmp1.EinsatzDataGetAllResult.First().Fahrzeuge.First().LFKLongitude, tmp1.EinsatzDataGetAllResult.First().Fahrzeuge.First().LFKLatitude);
-        //var arlamierteFFs = tmp1.EinsatzDataGetAllResult.First().Alarmierungen;
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -124,7 +125,14 @@ else
             {
                 ClientSettings.VisualItems.Add(new VisualItem { Type = VisualItemType.EinsatzOOE, Duration = 30, Name = "Einsätze OÖ", Description = "Aktuelle Einsätze in Oberösterreich"});       
             }
-        
+
+            var openOperations = (await OperationService.GetOpenOperationsByFirebrigade(ClientSettings.ApiKey)).ToOperationDto().OrderByDescending(x => x.Recieved);
+            
+            if (openOperations.Any())
+            {
+                await OnNewEinsatz(openOperations.First());
+            }
+            
             await InvokeAsync(StateHasChanged);
         }
     }
