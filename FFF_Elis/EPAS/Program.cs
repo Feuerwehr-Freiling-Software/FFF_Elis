@@ -69,12 +69,14 @@ builder.Logging.AddSerilog(logger);
 
 logger.Information("Starting EPAS API");
 
-builder.Services.AddAuthentication(options =>
+/*
+ * builder.Services.AddAuthentication(options =>
     {
         options.DefaultScheme = IdentityConstants.ApplicationScheme;
         options.DefaultSignInScheme = IdentityConstants.ExternalScheme;
     })
     .AddIdentityCookies();
+ */
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ??
                        throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
@@ -82,10 +84,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ApplicationDbContext>()
-    .AddSignInManager()
-    .AddDefaultTokenProviders();
+builder.Services.AddIdentityApiEndpoints<ApplicationUser>()
+    .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddControllers();
 
@@ -120,6 +120,8 @@ app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 app.UseAntiforgery();
+
+app.MapIdentityApi<ApplicationUser>();
 
 app.UseEndpoints(x =>
 {
