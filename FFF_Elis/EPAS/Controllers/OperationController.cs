@@ -1,4 +1,5 @@
-﻿using EPAS.BusinessLogic.Services;
+﻿using EPAS.BusinessLogic.Helper;
+using EPAS.BusinessLogic.Services;
 using EPAS.Core.Interfaces;
 using EPAS.Core.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -58,12 +59,17 @@ public class OperationController(ILogger<OperationController> logger,IOperationS
         var operations = await operationService.GetOpenOperationsByFirebrigade(apiKey);
         return Ok(operations);
     }
+
+    [HttpGet]
+    public async Task<IActionResult> GetOpenOperationsDto(string apiKey)
+    {
+        var operations = (await operationService.GetOpenOperationsByFirebrigade(apiKey)).ToOperationDto();
+        return Ok(operations);
+    }
     
     [HttpGet]
     public async Task<IActionResult> AddOrUpdateOperation(WASMessage message)
     {
-        
-        
         return Ok();
     }
 }
