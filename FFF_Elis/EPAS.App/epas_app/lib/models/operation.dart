@@ -1,3 +1,5 @@
+import 'package:epas_app/models/Dtos/OperationResponseDto.dart';
+
 class Operation {
   String operationId;
   String originName;
@@ -10,18 +12,19 @@ class Operation {
   int level;
   String info;
   String adress;
+  List<OperationResponseDto> operationResponses;
 
   Operation(
-    this.operationId,
-    this.originName,
-    this.programName,
-    this.callerName,
-    this.injured,
-    this.operationName,
-    this.recieved,
-    this.completed,
-    this.level,
-    this.info,
-    this.adress,
-  );
+      this.operationId,
+      this.originName,
+      this.programName,
+      this.callerName,
+      this.injured,
+      this.operationName,
+      this.recieved,
+      this.completed,
+      this.level,
+      this.info,
+      this.adress,
+      this.operationResponses);
 }

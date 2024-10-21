@@ -1,5 +1,8 @@
 import 'dart:io';
 
+import 'package:epas_app/models/Dtos/OperationResponseDto.dart';
+import 'package:epas_app/models/Enums/OperationResponseEnum.dart';
+import 'package:epas_app/models/Qualifications.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -16,5 +19,95 @@ class operation_service {
 
   static Future<List<Operation>> fetchOperations_MOCK() async {
     sleep(const Duration(seconds: 5));
+
+    List<Operation> mockOperations = [];
+
+    List<OperationResponseDto> responses = [];
+    List<Qualification> qualifications = [];
+    qualifications.add(Qualification(1, 'EL', 'FEB800'));
+    qualifications.add(Qualification(2, 'GRKDT', 'D73237'));
+    qualifications.add(Qualification(3, 'FMD', '6E323A'));
+    qualifications.add(Qualification(4, 'AS', '404B9A'));
+    qualifications.add(Qualification(5, 'C', '02A28A'));
+
+    responses.add(OperationResponseDto('E123', "Haunschmied.Bastian",
+        OperationResponseEnum.Available, qualifications));
+    responses.add(OperationResponseDto('E123', "Leutgöb Fabian",
+        OperationResponseEnum.NotAvailable, qualifications));
+    responses.add(OperationResponseDto('E123', "Leutgöb Lukas",
+        OperationResponseEnum.Available, qualifications));
+    responses.add(OperationResponseDto('E123', "Eisenmann Liliane",
+        OperationResponseEnum.Coming, qualifications));
+
+    mockOperations.add(Operation(
+        "E123",
+        "SIMULATOR",
+        "FEUER",
+        "133",
+        "Bamsti",
+        "BMA Almi",
+        DateTime.parse("2024-10-21 13:56:00"),
+        null,
+        1,
+        "Rauch sichtbar",
+        "Hörschingerstraße 1, 4064 Oftering",
+        responses));
+
+    mockOperations.add(Operation(
+        "E456",
+        "SIMULATOR",
+        "Technisch",
+        "133",
+        "Bamsti",
+        "VU Eingeklemmt",
+        DateTime.parse("2024-09-20 20:27:00"),
+        DateTime.parse("2024-09-20 20:27:00"),
+        2,
+        "Rauch sichtbar",
+        "Tischlerweg 2, 4064 Oftering",
+        responses));
+
+    mockOperations.add(Operation(
+        "E123",
+        "SIMULATOR",
+        "FEUER",
+        "133",
+        "Bamsti",
+        "BMA Almi",
+        DateTime.parse("2024-10-20 13:27:00"),
+        DateTime.parse("2024-10-20 20:27:00"),
+        3,
+        "Rauch sichtbar",
+        "Freilingerstraße 3a, 4064 Oftering",
+        responses));
+
+    mockOperations.add(Operation(
+        "E123",
+        "SIMULATOR",
+        "FEUER",
+        "133",
+        "Bamsti",
+        "BMA Almi",
+        DateTime.parse("2024-10-20 13:27:00"),
+        DateTime.parse("2024-10-20 20:27:00"),
+        3,
+        "Rauch sichtbar",
+        "Freilingerstraße 3a, 4064 Oftering",
+        responses));
+
+    mockOperations.add(Operation(
+        "E123",
+        "SIMULATOR",
+        "FEUER",
+        "133",
+        "Bamsti",
+        "BMA Almi",
+        DateTime.parse("2024-10-20 13:27:00"),
+        DateTime.parse("2024-10-20 20:27:00"),
+        3,
+        "Rauch sichtbar",
+        "Freilingerstraße 3a, 4064 Oftering",
+        responses));
+    return mockOperations;
   }
 }

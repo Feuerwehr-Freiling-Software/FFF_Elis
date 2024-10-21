@@ -1,5 +1,5 @@
 name: epas_app
-description: A new Flutter project.
+description: EPAS ( Einsatzplanungs- und Alarmierungssystem ) App für Einsatzrückmeldungen
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -36,6 +36,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   http: ^1.1.0
+  intl: ^0.19.0
 
 dev_dependencies:
   flutter_test:
@@ -76,17 +77,17 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: mirador-medium
+    - family: Fronius-Symbols
       fonts:
         - asset: fonts/Fronius-Symbols.ttf
     - family: mirador
       fonts:        
         - asset: fonts/mirador-medium.ttf
-    - family: rationaldisplay
+    - family: rationaldisplay-book
       fonts:
         - asset: fonts/rationaldisplay-book.ttf
-        - asset: fonts/rationaldisplay-italic.ttf
-        - style: italic
+    - family: rationaldisplay-semibold
+      fonts:
         - asset: fonts/rationaldisplay-semibold.ttf
   #
   # For details regarding fonts from package dependencies,
