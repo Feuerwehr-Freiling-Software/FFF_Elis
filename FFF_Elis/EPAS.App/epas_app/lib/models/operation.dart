@@ -13,18 +13,23 @@ class Operation {
   String info;
   String adress;
   List<OperationResponseDto> operationResponses;
+  double lat;
+  double lon;
 
   Operation(
-      this.operationId,
-      this.originName,
-      this.programName,
-      this.callerName,
-      this.injured,
-      this.operationName,
-      this.recieved,
-      this.completed,
-      this.level,
-      this.info,
-      this.adress,
-      this.operationResponses);
+    this.operationId,
+    this.originName,
+    this.programName,
+    this.callerName,
+    this.injured,
+    this.operationName,
+    this.recieved,
+    this.completed,
+    this.level,
+    this.info,
+    this.adress,
+    this.operationResponses,
+    this.lat,
+    this.lon,
+  );
 }

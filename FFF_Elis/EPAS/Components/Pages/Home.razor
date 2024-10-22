@@ -120,10 +120,11 @@ else
         if (firstRender)
         {
             ClientSettings = (await LocalStorage.GetItemAsync<ClientSettings>("ClientSettings")) ?? new ();
-
+            Waypoints = new List<Waypoint>(){ClientSettings.FirebrigadeCoords};
             if (ClientSettings.ShowEinsaetze == true)
             {
-                ClientSettings.VisualItems.Add(new VisualItem { Type = VisualItemType.EinsatzOOE, Duration = 30, Name = "Einsätze OÖ", Description = "Aktuelle Einsätze in Oberösterreich"});       
+                ClientSettings.VisualItems.Add(new VisualItem { Type = VisualItemType.EinsatzOOE, Duration = 30, Name = "Einsätze OÖ", Description = "Aktuelle Einsätze in Oberösterreich"});    
+                
             }
 
             var openOperations = (await OperationService.GetOpenOperationsByFirebrigade(ClientSettings.ApiKey)).ToOperationDto().OrderByDescending(x => x.Recieved);

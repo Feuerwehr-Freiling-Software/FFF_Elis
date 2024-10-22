@@ -1,14 +1,23 @@
-import 'package:epas_app/models/Dtos/OperationResponseDto.dart';
+import 'package:epas_app/extensions/ColorExtension.dart';
 import 'package:epas_app/models/Enums/OperationResponseEnum.dart';
+import 'package:epas_app/models/Qualifications.dart';
 import 'package:epas_app/models/operation.dart';
+import 'package:epas_app/pageAnimations.dart';
+import 'package:epas_app/pages/operation_responses.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
 import 'package:intl/intl.dart';
+import 'package:latlong2/latlong.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:maps_launcher/maps_launcher.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AlarmPage extends StatefulWidget {
   final Operation operation;
   OperationResponseEnum response = OperationResponseEnum.Read;
 
-  final String username = "Haunschmied Bastian";
+  final String username = "Haunschmied.Bastian";
   AlarmPage({super.key, required this.operation}) {
     final list = operation.operationResponses
         .where((element) => element.username == username);
@@ -23,35 +32,186 @@ class AlarmPage extends StatefulWidget {
 }
 
 class _AlarmPageState extends State<AlarmPage> {
+  var textStyle = const TextStyle(
+      color: Colors.white, fontFamily: 'rationaldisplay-book', fontSize: 15);
+
+  var headingStyle = const TextStyle(
+      color: Colors.white, fontFamily: 'rationaldisplay-book', fontSize: 25);
+
+  late Future<List<Location>> location;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: _appBar(context),
-        body: Container(
-          height: MediaQuery.sizeOf(context).height,
-          color: const Color.fromRGBO(40, 50, 60, 1),
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                children: [
-                  _getOperationWidget(context, widget.operation),
-                  const SizedBox(height: 5),
-                  _getAlarmInfoWidget(context),
-                  const SizedBox(height: 10),
-                  _getResponseButtons(context),
-                  const SizedBox(height: 20),
-                  GestureDetector(
+      appBar: _appBar(context),
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        color: const Color.fromRGBO(40, 50, 60, 1),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              children: [
+                _getOperationWidget(context, widget.operation),
+                const SizedBox(height: 5),
+                _getAlarmInfoWidget(context),
+                const SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Visibility(
+                      visible: widget.operation.completed == null,
+                      child: _getResponseButtons(context),
+                    ),
+                    Visibility(
+                      visible: widget.operation.completed != null,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Rückmeldestatus',
+                                style: headingStyle,
+                              ),
+                            ],
+                          ),
+                          Center(
+                            widthFactor: 1,
+                            child: Container(
+                              width: MediaQuery.of(context).size.width * 0.8,
+                              child: Text(
+                                'Einsatz abgeschlossen. Rückmeldung nicht mehr möglich',
+                                style: textStyle,
+                                softWrap: true,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                Container(
+                  child: GestureDetector(
                     onTap: () {
-                      // TODO: Add navigation to total Responses Page
+                      Navigator.push(
+                          context,
+                          SlideRightRoute(
+                              page: OperationResponses(
+                            operationResponses:
+                                widget.operation.operationResponses,
+                          )));
                     },
-                    child: _getTotalResponseButtons(context),
-                  )
-                ],
-              ),
+                    child: Container(child: _getTotalResponseButtons(context)),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                _getMap(context)
+              ],
             ),
           ),
-        ));
+        ),
+      ),
+    );
+  }
+
+  _getMap(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          children: [
+            Text(
+              "Einsatzort",
+              style: headingStyle,
+            )
+          ],
+        ),
+        Row(
+          children: [
+            Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                FittedBox(
+                  fit: BoxFit.contain,
+                  child: Center(
+                    child: SizedBox(
+                      height: 400,
+                      // HIER
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      child: FlutterMap(
+                        mapController: MapController(),
+                        options: MapOptions(
+                          keepAlive: true,
+                          initialCenter: LatLng(
+                              widget.operation.lat, widget.operation.lon),
+                        ),
+                        children: [
+                          TileLayer(
+                            urlTemplate:
+                                'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                          ),
+                          MarkerLayer(
+                            markers: [
+                              Marker(
+                                  point: LatLng(widget.operation.lat,
+                                      widget.operation.lon),
+                                  child: const Icon(
+                                    CupertinoIcons.flame_fill,
+                                    color: Colors.red,
+                                    size: 30,
+                                  ),
+                                  alignment: Alignment.topCenter),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Column(
+              children: [
+                Text(
+                  widget.operation.adress,
+                  style: textStyle,
+                ),
+              ],
+            ),
+            Column(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    MapsLauncher.launchCoordinates(
+                        widget.operation.lat, widget.operation.lon);
+                  },
+                  child: Text(
+                    "Route öffnen",
+                    style: textStyle.apply(color: Colors.blue),
+                  ),
+                )
+              ],
+            )
+          ],
+        )
+      ],
+    );
   }
 
   _getTotalResponseButtons(BuildContext context) {
@@ -71,28 +231,102 @@ class _AlarmPageState extends State<AlarmPage> {
             ),
           ],
         ),
-        Row(
-          children: [
-            Column(
-              children: [
-                Container(
-                  height: 110,
-                  child: Row(
-                    children: [
-                      Container(
-                        height: 160,
-                        width: 10,
-                        color: const Color(0xff3CAE2B),
-                      )
-                    ],
+        const SizedBox(
+          height: 10,
+        ),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      color: const Color.fromRGBO(60, 174, 43, 1),
+                    ),
+                    padding: const EdgeInsets.all(8),
+                    child: Column(
+                      children: [
+                        Text("Zusagen", style: textStyle),
+                        Text(
+                          widget.operation.operationResponses
+                              .where((element) =>
+                                  element.response ==
+                                  OperationResponseEnum.Coming)
+                              .length
+                              .toString(),
+                          style: textStyle,
+                        ),
+                      ],
+                    ),
                   ),
-                )
-              ],
-            )
-          ],
-        )
+                ],
+              ),
+              _getQualificationInfos(context, widget.operation),
+              GestureDetector(
+                onTap: () {},
+                child: Container(
+                  width: MediaQuery.of(context).size.width * 0.1,
+                  height: 50,
+                  alignment: Alignment.center,
+                  child: const Text(
+                    "arrow-right",
+                    style: TextStyle(
+                        fontFamily: 'Fronius-Symbols', color: Colors.white),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ],
     );
+  }
+
+  _getQualificationInfos(BuildContext context, Operation operation) {
+    Widget qualificationInfos = const Row();
+    Map<Qualification, int> qualificationCounts = {};
+
+    TextStyle textStyle = const TextStyle(
+        color: Colors.white, fontFamily: 'rationaldisplay-book');
+
+    for (var response in operation.operationResponses) {
+      if (response.response == OperationResponseEnum.Coming) {
+        for (var qualification in response.Qualifications) {
+          if (qualificationCounts.containsKey(qualification)) {
+            qualificationCounts[qualification] =
+                qualificationCounts[qualification]! + 1;
+          } else {
+            qualificationCounts[qualification] = 1;
+          }
+        }
+      }
+    }
+
+    qualificationInfos = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: qualificationCounts.entries.map((entry) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 5),
+          child: Container(
+            color: entry.key.color.toColor(),
+            child: Padding(
+              padding: const EdgeInsets.all(11.5),
+              child: Column(
+                children: [
+                  Text(entry.key.name,
+                      style: const TextStyle(color: Colors.white)),
+                  Text(entry.value.toString(), style: textStyle),
+                ],
+              ),
+            ),
+          ),
+        );
+      }).toList(),
+    );
+    return qualificationInfos;
   }
 
   _getResponseButtons(BuildContext context) {
@@ -103,31 +337,36 @@ class _AlarmPageState extends State<AlarmPage> {
     var checkIchonStyle = const TextStyle(
         color: Colors.white, fontFamily: 'Fronius-Symbols', fontSize: 20);
 
-    return Column(children: [
-      Row(
-        children: [
-          Text(
-            'Rückmeldung',
-            style: headingStyle,
-          )
-        ],
-      ),
-      const SizedBox(
-          height: 10), // Add some spacing between the heading and buttons
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          _getResponseButton(
-              textStyle, checkIchonStyle, OperationResponseEnum.Coming),
-          const SizedBox(width: 10),
-          _getResponseButton(
-              textStyle, checkIchonStyle, OperationResponseEnum.Available),
-          const SizedBox(width: 10),
-          _getResponseButton(
-              textStyle, checkIchonStyle, OperationResponseEnum.NotAvailable),
-        ],
-      )
-    ]);
+    return Column(
+      children: [
+        Row(
+          children: [
+            Text(
+              'Rückmeldung',
+              style: headingStyle,
+            )
+          ],
+        ),
+        const SizedBox(
+            height: 10), // Add some spacing between the heading and buttons
+        SizedBox(
+          height: 150,
+          width: MediaQuery.of(context).size.width * 0.9,
+          child: Column(
+            children: [
+              _getResponseButton(
+                  textStyle, checkIchonStyle, OperationResponseEnum.Coming),
+              const SizedBox(height: 10),
+              _getResponseButton(
+                  textStyle, checkIchonStyle, OperationResponseEnum.Available),
+              const SizedBox(height: 10),
+              _getResponseButton(textStyle, checkIchonStyle,
+                  OperationResponseEnum.NotAvailable),
+            ],
+          ),
+        ),
+      ],
+    );
   }
 
   Expanded _getResponseButton(TextStyle textStyle, TextStyle checkIchonStyle,
@@ -154,43 +393,34 @@ class _AlarmPageState extends State<AlarmPage> {
     }
 
     return Expanded(
-      child: SizedBox(
-        height: 75, // Double the height of the button
-        child: ElevatedButton(
-          style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(backgroundColor),
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.zero,
-                ),
-              )),
-          onPressed: () {
-            setState(() {
-              widget.response = responseEnum;
-            });
-          },
-          child: FittedBox(
-            fit: BoxFit.fitWidth,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  buttonText,
-                  style: textStyle,
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Visibility(
-                  visible: widget.response == responseEnum,
-                  child: Text(
-                    'check',
-                    style: checkIchonStyle,
-                  ),
-                )
-              ],
-            ),
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          primary: backgroundColor,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.zero,
           ),
+          minimumSize:
+              const Size.fromHeight(75), // Double the height of the button
+        ),
+        onPressed: () {
+          setState(() {
+            widget.response = responseEnum;
+          });
+        },
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              buttonText,
+              style: textStyle,
+            ),
+            const SizedBox(width: 10),
+            if (widget.response == responseEnum)
+              Text(
+                'check',
+                style: checkIchonStyle,
+              ),
+          ],
         ),
       ),
     );
@@ -231,9 +461,12 @@ class _AlarmPageState extends State<AlarmPage> {
             ),
             Row(
               children: [
-                Text(
-                  '    ${widget.operation.adress}',
-                  style: infoText,
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  child: Text(
+                    '    ${widget.operation.adress}',
+                    style: infoText,
+                  ),
                 )
               ],
             )
@@ -300,7 +533,6 @@ class _AlarmPageState extends State<AlarmPage> {
                   ),
                 ),
                 Expanded(
-                  flex: 7,
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
