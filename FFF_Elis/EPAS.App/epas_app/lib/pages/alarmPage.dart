@@ -11,7 +11,6 @@ import 'package:intl/intl.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:maps_launcher/maps_launcher.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class AlarmPage extends StatefulWidget {
   final Operation operation;
@@ -84,7 +83,7 @@ class _AlarmPageState extends State<AlarmPage> {
                           ),
                           Center(
                             widthFactor: 1,
-                            child: Container(
+                            child: SizedBox(
                               width: MediaQuery.of(context).size.width * 0.8,
                               child: Text(
                                 'Einsatz abgeschlossen. Rückmeldung nicht mehr möglich',
@@ -395,7 +394,7 @@ class _AlarmPageState extends State<AlarmPage> {
     return Expanded(
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          primary: backgroundColor,
+          backgroundColor: backgroundColor,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.zero,
           ),
@@ -461,7 +460,7 @@ class _AlarmPageState extends State<AlarmPage> {
             ),
             Row(
               children: [
-                Container(
+                SizedBox(
                   width: MediaQuery.of(context).size.width * 0.5,
                   child: Text(
                     '    ${widget.operation.adress}',

@@ -1,8 +1,7 @@
-import 'dart:ffi';
-
 import 'package:epas_app/models/availability.dart';
 import 'package:epas_app/models/operation.dart';
 import 'package:epas_app/pages/alarmPage.dart';
+import 'package:epas_app/pages/availability_page.dart';
 import 'package:epas_app/services/operationService.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -286,6 +285,10 @@ class _MyHomePageState extends State<MyHomePage> {
           TextButton(
             onPressed: () {
               // TODO: Implement Availability Settings Page
+              Navigator.push(
+                context,
+                SlideLeftRoute(page: AvailabilityPage()),
+              );
             },
             style: ButtonStyle(
               overlayColor: MaterialStateProperty.all(Colors.transparent),

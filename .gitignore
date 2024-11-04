@@ -396,3 +396,5 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+FFF_Elis/EPAS/Data/app.db-shm
+FFF_Elis/EPAS/Data/app.db-wal
