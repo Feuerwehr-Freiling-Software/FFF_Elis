@@ -1,0 +1,137 @@
+﻿@page "/Account/Login"
+
+@using System.ComponentModel.DataAnnotations
+@using Microsoft.AspNetCore.Authentication
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject ILogger<Login> Logger
+@inject NavigationManager NavigationManager
+@inject IdentityRedirectManager RedirectManager
+
+<PageTitle>Log in</PageTitle>
+
+<div style="padding-left: 2rem; padding-right: 2rem;">
+    <div style="display: flex; flex-direction: row; width: 100%; gap: var(--fro-gap-2); flex-wrap: wrap; justify-content: space-around">
+        <div style="display: flex; flex-direction: column; width: 40%; min-width: 300px; margin-top: 20px;">
+            <!-- Login -->
+            <StatusMessage Message="@errorMessage"/>
+            <EditForm Model="Input" method="post" OnValidSubmit="LoginUser" FormName="login">
+                <DataAnnotationsValidator/>
+                <h2>Anmelden</h2>
+                <ValidationSummary class="validation-error" role="alert"/>
+                <div class="form-floating mb-3">
+                    <div>
+                        <label for="email" class="fro-label">Email</label>
+                    </div>
+                    <div>
+                        <InputText @bind-Value="Input.Email" class="fro-input fro-input--fluid" autocomplete="username" aria-required="true" placeholder="name@beispiel.com"/>
+                    </div>
+                    <div>
+                        <ValidationMessage For="() => Input.Email" class="validation-error"/>
+                    </div>
+                </div>
+                <div class="form-floating mb-3">
+                    <div>
+                        <label for="password" class="fro-label">Passwort</label>
+                    </div>
+                    <div>
+                        <InputText type="password" @bind-Value="Input.Password" class="fro-input fro-input--fluid" autocomplete="current-password" aria-required="true" placeholder="passwort"/>
+                    </div>
+                    <div>
+                        <ValidationMessage For="() => Input.Password" class="validation-error"/>
+                    </div>
+                </div>
+                <div class="checkbox mb-3">
+                    <label class="form-label">
+                        <InputCheckbox @bind-Value="Input.RememberMe" class="darker-border-checkbox form-check-input"/>
+                        Angemeldet bleiben
+                    </label>
+                </div>
+                <div>
+                    <button type="submit" class="fro-button fro-button--fluid fro-button--secondary">Anmelden</button>
+                </div>
+                <div>
+                    <p>
+                        <a class="fro-label" href="Account/ForgotPassword">Passwort vergessen?</a>
+                    </p>
+                    <p>
+                        <a class="fro-label" href="Account/ResendEmailConfirmation">Email bestätigung erneut senden</a>
+                    </p>
+                </div>
+            </EditForm>
+        </div>
+        <div style="display: flex; flex-direction: column; width: 40%; min-width: 300px; margin-top: 20px; ">
+            <!-- Register -->
+            <h2>Noch kein Benutzerkonto?</h2>
+            <a class="fro-button fro-button--secondary" href="@(NavigationManager.GetUriWithQueryParameters("/Account/Register", new Dictionary<string, object?> { ["ReturnUrl"] = ReturnUrl }))">Jetzt registrieren</a>
+        </div>
+        
+    </div>
+</div>
+<div style="padding-left: 2rem; padding-right: 2rem;width: 100%;display: flex; flex-direction: row; margin-top: 20px;justify-content: space-around;">
+    <!-- External Login -->
+    <section style="width: 80%;">
+        <h3>Nutze einen anderen Service zum Anmelden.</h3>
+        <hr/>
+        <ExternalLoginPicker/>
+    </section>
+</div>
+
+@code {
+    private string? errorMessage;
+
+    [CascadingParameter] private HttpContext HttpContext { get; set; } = default!;
+
+    [SupplyParameterFromForm] private InputModel Input { get; set; } = new();
+
+    [SupplyParameterFromQuery] private string? ReturnUrl { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (HttpMethods.IsGet(HttpContext.Request.Method))
+        {
+            // Clear the existing external cookie to ensure a clean login process
+            await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
+        }
+    }
+
+    public async Task LoginUser()
+    {
+        // This doesn't count login failures towards account lockout
+        // To enable password failures to trigger account lockout, set lockoutOnFailure: true
+        var result = await SignInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+        if (result.Succeeded)
+        {
+            Logger.LogInformation("User logged in.");
+            RedirectManager.RedirectTo(ReturnUrl);
+        }
+        else if (result.RequiresTwoFactor)
+        {
+            RedirectManager.RedirectTo(
+                "Account/LoginWith2fa",
+                new() { ["returnUrl"] = ReturnUrl, ["rememberMe"] = Input.RememberMe });
+        }
+        else if (result.IsLockedOut)
+        {
+            Logger.LogWarning("User account locked out.");
+            RedirectManager.RedirectTo("Account/Lockout");
+        }
+        else
+        {
+            errorMessage = "Error: Invalid login attempt.";
+        }
+    }
+
+    private sealed class InputModel
+    {
+        [Required] [EmailAddress] public string Email { get; set; } = "";
+
+        [Required]
+        [DataType(DataType.Password)]
+        public string Password { get; set; } = "";
+
+        [Display(Name = "Remember me?")] public bool RememberMe { get; set; }
+    }
+
+}

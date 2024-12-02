@@ -1,9 +1,11 @@
 import 'package:epas_app/models/availability.dart';
+import 'package:epas_app/services/availabilityService.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class AvailabilityPage extends StatefulWidget {
   AvailabilityPage({super.key});
-  Availability availability = Availability.available;
+  Future<Availability> availability = AvailabilityService.getAvailability();
   bool availabilityPlanActive = false;
 
   @override
@@ -55,52 +57,62 @@ class _AvailabilityPageState extends State<AvailabilityPage> {
               ),
               Row(
                 children: [
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    child: Padding(
-                      padding: EdgeInsets.all(40),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: const Color.fromRGBO(47, 56, 66, 1),
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0)
-                                      .add(EdgeInsets.only(left: 20)),
-                                  child: Text(
-                                    "Verfügbarkeitsplan",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontFamily: 'rationaldisplay-book',
-                                        fontSize: 15),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Text("Verfügbarkeitsplan aktiv"),
-                                Switch(
-                                  value: widget.availabilityPlanActive,
-                                  onChanged: (bool value) {
-                                    setState(
-                                      () {
-                                        widget.availabilityPlanActive = value;
-                                      },
-                                    );
-                                  },
-                                )
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
+                  Visibility(
+                    visible: false,
+                    child: _getAvailabilityPlan(context),
+                  )
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  SizedBox _getAvailabilityPlan(BuildContext context) {
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      child: Padding(
+        padding: EdgeInsets.all(40),
+        child: Container(
+          decoration: BoxDecoration(
+            color: const Color.fromRGBO(47, 56, 66, 1),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0)
+                        .add(EdgeInsets.only(left: 20)),
+                    child: Text(
+                      "Verfügbarkeitsplan",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: 'rationaldisplay-book',
+                          fontSize: 15),
                     ),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    "Verfügbarkeitsplan aktiv",
+                    style: TextStyle(color: Colors.white, fontSize: 13),
+                  ),
+                  Switch(
+                    value: widget.availabilityPlanActive,
+                    onChanged: (bool value) {
+                      setState(
+                        () {
+                          widget.availabilityPlanActive = value;
+                        },
+                      );
+                    },
                   ),
                 ],
               ),
@@ -211,9 +223,12 @@ class _AvailabilityPageState extends State<AvailabilityPage> {
                   const Size.fromHeight(75), // Double the height of the button
             ),
             onPressed: () {
-              setState(() {
-                widget.availability = availability;
-              });
+              setState(
+                () {
+                  AvailabilityService.saveAvailability(availability);
+                  widget.availability = Future.value(availability);
+                },
+              );
             },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -237,40 +252,53 @@ class _AvailabilityPageState extends State<AvailabilityPage> {
   }
 
   Widget _getCurrentAvailability() {
-    Availability availability = widget.availability;
-    Color color = getAvailabilityColor(availability);
-    String availabilityText = getAvailabilityText(availability);
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15), color: color),
-        width: double.infinity,
-        height: 125,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Text(
-                  'Aktuelle Verfügbarkeit',
-                  style: TextStyle(fontSize: 20, color: Colors.white),
-                ),
-              ],
-            ),
-            Row(
+    return FutureBuilder<Availability>(
+      future: widget.availability,
+      builder: (BuildContext context, AsyncSnapshot<Availability> snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return CircularProgressIndicator();
+        } else if (snapshot.hasError) {
+          return Text('Error: ${snapshot.error}');
+        } else if (!snapshot.hasData) {
+          return Text('No data available');
+        }
+
+        Color color = getAvailabilityColor(snapshot.data!);
+        String availabilityText = getAvailabilityText(snapshot.data!);
+
+        return Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15), color: color),
+            width: double.infinity,
+            height: 125,
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  availabilityText,
-                  style: TextStyle(fontSize: 25, color: Colors.white),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Text(
+                      'Aktuelle Verfügbarkeit',
+                      style: TextStyle(fontSize: 20, color: Colors.white),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      availabilityText,
+                      style: TextStyle(fontSize: 25, color: Colors.white),
+                    ),
+                  ],
                 ),
               ],
             ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 

@@ -14,22 +14,10 @@
         </div>
         <div class="fro-header__menu-wrapper">
         </div>
-        <div
-            class="fro-header__search-wrapper fro-input-group fro-input-group--x-small"
-        >
-            <i class="fro-icon">magnifying-glass</i>
-            <input
-                type="search"
-                class="fro-input fro-input--fluid fro-input-group__fro-input"
-                placeholder="Search"
-            />
-            <button
-                class="fro-button fro-button--x-small fro-button--no-min-width fro-button--pill fro-button--icon-only fro-input-group__fro-button"
-            >
-                <i class="fro-icon">xmark</i>
-            </button>
-        </div>
         <div class="fro-header__icon-wrapper">
+        <AuthorizeView>
+            Hello @context.User.Identity?.Name!
+        </AuthorizeView>
             <a href="/visuSettings">
                 <div class="fro-header__icon fro-icon">gear</div>
             </a>

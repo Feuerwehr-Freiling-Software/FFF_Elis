@@ -12,11 +12,12 @@ import 'package:latlong2/latlong.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 
+// ignore: must_be_immutable
 class AlarmPage extends StatefulWidget {
   final Operation operation;
   OperationResponseEnum response = OperationResponseEnum.Read;
 
-  final String username = "Haunschmied.Bastian";
+  final String username = "Haunschmied Bastian";
   AlarmPage({super.key, required this.operation}) {
     final list = operation.operationResponses
         .where((element) => element.username == username);
@@ -218,8 +219,6 @@ class _AlarmPageState extends State<AlarmPage> {
         color: Colors.white, fontFamily: 'rationaldisplay-book', fontSize: 25);
     var textStyle = const TextStyle(
         color: Colors.white, fontFamily: 'rationaldisplay-book', fontSize: 15);
-    var checkIchonStyle = const TextStyle(
-        color: Colors.white, fontFamily: 'Fronius-Symbols', fontSize: 20);
     return Column(
       children: [
         Row(

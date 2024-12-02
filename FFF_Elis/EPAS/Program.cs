@@ -1,17 +1,16 @@
 using Blazored.LocalStorage;
 using EPAS.BusinessLogic.Services;
-using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using EPAS.Components;
-using EPAS.Components.Account;
-using EPAS.Controllers;
+using EPAS.Components.Components.Account;
 using EPAS.Core.Interfaces;
 using EPAS.Core.Models;
 using EPAS.Data;
 using EPAS.Hubs;
 using EPAS.Shared.Services;
 using FFF_Elis.Components.Services;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using MudBlazor;
 using MudBlazor.Services;
 using Nominatim.API.Address;
@@ -19,7 +18,6 @@ using Nominatim.API.Geocoders;
 using Nominatim.API.Interfaces;
 using Nominatim.API.Web;
 using Serilog;
-using Serilog.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -52,9 +50,8 @@ builder.Services.AddMudServices(config =>
 builder.Services.AddMudBlazorDialog();
 
 builder.Services.AddCascadingAuthenticationState();
-builder.Services.AddScoped<IdentityUserAccessor>();
-builder.Services.AddScoped<IdentityRedirectManager>();
-builder.Services.AddScoped<AuthenticationStateProvider, IdentityRevalidatingAuthenticationStateProvider>();
+
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddSignalR(c => c.EnableDetailedErrors = true);
 
@@ -69,23 +66,36 @@ builder.Logging.AddSerilog(logger);
 
 logger.Information("Starting EPAS API");
 
-/*
- * builder.Services.AddAuthentication(options =>
+// authentication
+
+ builder.Services.AddAuthentication(options =>
     {
         options.DefaultScheme = IdentityConstants.ApplicationScheme;
         options.DefaultSignInScheme = IdentityConstants.ExternalScheme;
     })
     .AddIdentityCookies();
- */
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ??
-                       throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+ builder.Services.AddCascadingAuthenticationState();
+ builder.Services.AddScoped<IdentityUserAccessor>();
+ builder.Services.AddScoped<IdentityRedirectManager>();
+ builder.Services.AddScoped<AuthenticationStateProvider, IdentityRevalidatingAuthenticationStateProvider>();
+
+ builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+     .AddEntityFrameworkStores<ApplicationDbContext>()
+     .AddApiEndpoints()
+     .AddSignInManager()
+     .AddDefaultTokenProviders();
+
+ builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
+
+// end authentication
+
+var connectionString = builder.Configuration.GetConnectionString("SQLConnection") ??
+                       throw new InvalidOperationException("Connection string 'SQLConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlite(connectionString));
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+    options.UseSqlServer(connectionString));
 
-builder.Services.AddIdentityApiEndpoints<ApplicationUser>()
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddControllers();
 
@@ -95,7 +105,6 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new() { Title = "EPAS", Version = "v1" });
 });
 
-builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
 
 var app = builder.Build();
 
@@ -114,27 +123,26 @@ else
 }
 
 app.UseRouting();
-// Add additional endpoints required by the Identity /Account Razor components.
-app.MapAdditionalIdentityEndpoints();
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
+
+app.UseAuthentication();
+app.UseAuthorization();
+
 app.UseAntiforgery();
 
 app.MapIdentityApi<ApplicationUser>();
 
-app.UseEndpoints(x =>
-{
-    x.MapRazorComponents<App>()
-        .AddInteractiveServerRenderMode();
-});
-
+app.MapRazorComponents<App>()
+    .AddInteractiveServerRenderMode();
 
 app.MapDefaultControllerRoute();
 
 app.UseStatusCodePagesWithReExecute("/StatusCode/{0}");
 
 app.MapHub<OperationHub>("/operationHub");
+app.MapAdditionalIdentityEndpoints();
 try
 {
     app.Run();

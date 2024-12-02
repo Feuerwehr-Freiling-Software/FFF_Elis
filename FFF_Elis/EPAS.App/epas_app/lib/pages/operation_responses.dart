@@ -2,6 +2,7 @@ import 'package:epas_app/models/Dtos/OperationResponseDto.dart';
 import 'package:epas_app/models/Enums/OperationResponseEnum.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class OperationResponses extends StatelessWidget {
   List<OperationResponseDto> responseList = [];
   OperationResponses(

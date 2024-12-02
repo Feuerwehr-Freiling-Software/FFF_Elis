@@ -1,0 +1,11 @@
+﻿@inject NavigationManager NavigationManager
+
+@namespace EPAS.Components.Components.Account.Shared
+@code {
+
+    protected override void OnInitialized()
+    {
+        NavigationManager.NavigateTo($"Account/Login?returnUrl={Uri.EscapeDataString(NavigationManager.Uri)}", forceLoad: true);
+    }
+
+}

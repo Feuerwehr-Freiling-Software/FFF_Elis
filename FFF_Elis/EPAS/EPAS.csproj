@@ -12,10 +12,13 @@
         <PackageReference Include="Google.Apis.Calendar.v3" Version="1.68.0.3557" />
         <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.8"/>
         <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.8"/>
+        <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.11" />
         <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.10" />
         <PackageReference Include="Microsoft.AspNetCore.SignalR.Client.Core" Version="8.0.10" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.8"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.11" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.8"/>
+        <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
         <PackageReference Include="MudBlazor" Version="7.9.0" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
         <PackageReference Include="Nominatim.API" Version="2.0.0" />

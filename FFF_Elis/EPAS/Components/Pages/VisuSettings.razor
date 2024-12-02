@@ -1,7 +1,8 @@
 ﻿@page "/VisuSettings"
 @using FFF_Elis.Components.BusinessObjects
 @using EPAS.Components.Components
-
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
 <MudGrid Justify="Justify.Center">
     <MudItem>
         <div role="tablist" aria-orientation="horizontal" class="fro-tabs">

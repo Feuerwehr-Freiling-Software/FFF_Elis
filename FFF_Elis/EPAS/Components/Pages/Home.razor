@@ -8,6 +8,8 @@
 @using FFF_Elis.Components.BusinessObjects
 @using EPAS.Components.Components
 @using EPAS.Core.Interfaces
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
 
 @inject ILocalStorageService LocalStorage
 @inject GeocodingService GeocodingService

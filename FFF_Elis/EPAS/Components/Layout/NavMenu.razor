@@ -9,12 +9,33 @@
                 <i class="fro-icon fro-icon--fixed fro-list-item__icon">house</i>
                 <div class="fro-list-item__label">Home</div>
             </a>
-            
-            <a class="fro-list-item" href="/TestingPage">
-                <i class="fro-icon fro-icon--fixed fro-list-item__icon">circle_exclamation</i>
-                <div class="fro-list-item__label">Testing</div>
-            </a>
         </nav>
+        <AuthorizeView>
+            <Authorized>
+                <a class="fro-list-item" href="/Account/Manage">
+                    <i class="fro-icon fro-icon--fixed fro-list-item__icon">user</i>
+                    <div class="fro-list-item__label">@context.User.Identity?.Name</div>
+                </a>
+                <form action="Account/Logout" method="post">
+                    <AntiforgeryToken/>
+                    <input type="hidden" name="ReturnUrl" value="@_currentUrl"/>
+                    <button class="fro-list-item">
+                        <i class="fro-icon fro-icon--fixed fro-list-item__icon">arrow-right-from-bracket</i>
+                        <div class="fro-list-item__label">Logout</div>
+                    </button>
+                </form>
+            </Authorized>
+            <NotAuthorized>
+                <a class="fro-list-item" href="/Account/Register">
+                    <i class="fro-icon fro-icon--fixed fro-list-item__icon">user-plus</i>
+                    <div class="fro-list-item__label">Register</div>
+                </a>
+                <a class="fro-list-item" href="/Account/Login">
+                    <i class="fro-icon fro-icon--fixed fro-list-item__icon">user</i>
+                    <div class="fro-list-item__label">Login</div>
+                </a>
+            </NotAuthorized>
+        </AuthorizeView>
     </div>
 
     <footer class="fro-sidebar__footer">
@@ -92,49 +113,5 @@ public void Dispose()
 {
     NavigationManager.LocationChanged -= OnLocationChanged;
 }
-
-}
-
-
-<!--<MudNavMenu Style="background-color: var(--fro-background); color: var(--fro-text); height: 100%">
-    <NavLink href="" class="nav-item px-3 customNavItem">
-        <i class="fro-icon">house</i>
-    </NavLink>
-    <AuthorizeView>
-        <Authorized>
-            <div class="nav-item px-3 customNavItem">
-                <NavLink class="nav-link" href="Account/Manage">
-                    <i class="fro-icon">user</i>
-                </NavLink>
-            </div>
-            <div class="nav-item px-3 customNavItem">
-                <form action="Account/Logout" method="post">
-                    <AntiforgeryToken/>
-                    <input type="hidden" name="ReturnUrl" value="@_currentUrl"/>
-                    <button type="submit" class="nav-link">
-                        <i class="fro-icon">arrow-right-from-bracket</i>
-                    </button>
-                </form>
-            </div>
-        </Authorized>
-        <NotAuthorized>
-            <div class="nav-item px-3 customNavItem">
-                <NavLink class="nav-link" href="Account/Register">
-                    <i class="fro-icon">user-plus</i>
-                </NavLink>
-            </div>
-            <div class="nav-item px-3 customNavItem">
-                <NavLink class="nav-link" href="Account/Login">
-                    <i class="fro-icon">arrow-right-to-bracket</i>
-                </NavLink>
-            </div>
-        </NotAuthorized>
-    </AuthorizeView>
-</MudNavMenu> -->
-
-@code {
-
-
-
 
 }

@@ -2,6 +2,7 @@ import 'package:epas_app/models/availability.dart';
 import 'package:epas_app/models/operation.dart';
 import 'package:epas_app/pages/alarmPage.dart';
 import 'package:epas_app/pages/availability_page.dart';
+import 'package:epas_app/pages/settings_page.dart';
 import 'package:epas_app/services/operationService.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -284,23 +285,29 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           TextButton(
             onPressed: () {
-              // TODO: Implement Availability Settings Page
               Navigator.push(
                 context,
-                SlideLeftRoute(page: AvailabilityPage()),
+                SlideLeftRoute(
+                  page: AvailabilityPage(),
+                ),
               );
             },
             style: ButtonStyle(
               overlayColor: MaterialStateProperty.all(Colors.transparent),
             ),
-            child: Text("clock",
-                style: TextStyle(
-                    fontFamily: 'Fronius-Symbols',
-                    color: getAvailabilityColor())),
+            child: Text(
+              "clock",
+              style: TextStyle(
+                fontFamily: 'Fronius-Symbols',
+                color: getAvailabilityColor(),
+              ),
+            ),
           ),
-          Text(widget.title,
-              style: const TextStyle(
-                  color: Colors.white, fontFamily: 'rationaldisplay-book')),
+          Text(
+            widget.title,
+            style: const TextStyle(
+                color: Colors.white, fontFamily: 'rationaldisplay-book'),
+          ),
           TextButton(
             onPressed: () {
               // TODO: Implement Settings Page
@@ -308,9 +315,24 @@ class _MyHomePageState extends State<MyHomePage> {
             style: ButtonStyle(
               overlayColor: MaterialStateProperty.all(Colors.transparent),
             ),
-            child: const Text("gear",
+            child: TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  SlideRightRoute(
+                    page: SettingsPage(),
+                  ),
+                );
+              },
+              style: ButtonStyle(
+                overlayColor: MaterialStateProperty.all(Colors.transparent),
+              ),
+              child: const Text(
+                "gear",
                 style: TextStyle(
-                    fontFamily: 'Fronius-Symbols', color: Colors.white)),
+                    fontFamily: 'Fronius-Symbols', color: Colors.white),
+              ),
+            ),
           )
         ],
       ),

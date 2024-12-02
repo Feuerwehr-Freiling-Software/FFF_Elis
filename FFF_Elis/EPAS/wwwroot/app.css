@@ -185,3 +185,9 @@
     background-color: var(--fro-background) !important;
     color: var(--fro-text) !important;
 }
+
+/*Authentication*/
+
+.validation-error{
+    color: var(--fro-error);
+}
