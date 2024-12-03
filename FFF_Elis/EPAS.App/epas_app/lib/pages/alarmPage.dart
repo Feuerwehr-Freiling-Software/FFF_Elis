@@ -207,7 +207,7 @@ class _AlarmPageState extends State<AlarmPage> {
                   ),
                 )
               ],
-            )
+            ),
           ],
         )
       ],
