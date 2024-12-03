@@ -14,45 +14,50 @@
 @inject NavigationManager NavigationManager
 @inject IdentityRedirectManager RedirectManager
 
-<PageTitle>Register</PageTitle>
+<PageTitle>Registrieren</PageTitle>
 
-<h1>Register</h1>
-
-<div class="row">
-    <div class="col-md-4">
-        <StatusMessage Message="@Message"/>
-        <EditForm Model="Input" asp-route-returnUrl="@ReturnUrl" method="post" OnValidSubmit="RegisterUser" FormName="register">
-            <DataAnnotationsValidator/>
-            <h2>Create a new account.</h2>
-            <hr/>
-            <ValidationSummary class="text-danger" role="alert"/>
-            <div class="form-floating mb-3">
-                <InputText @bind-Value="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com"/>
-                <label for="email">Email</label>
-                <ValidationMessage For="() => Input.Email" class="text-danger"/>
-            </div>
-            <div class="form-floating mb-3">
-                <InputText type="password" @bind-Value="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password"/>
-                <label for="password">Password</label>
-                <ValidationMessage For="() => Input.Password" class="text-danger"/>
-            </div>
-            <div class="form-floating mb-3">
-                <InputText type="password" @bind-Value="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password"/>
-                <label for="confirm-password">Confirm Password</label>
-                <ValidationMessage For="() => Input.ConfirmPassword" class="text-danger"/>
-            </div>
-            <button type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
-        </EditForm>
-    </div>
-    <div class="col-md-6 col-md-offset-2">
-        <section>
-            <h3>Use another service to register.</h3>
-            <hr/>
-            <ExternalLoginPicker/>
-        </section>
+<div style="padding-left: 2rem; padding-right: 2rem;">
+    <div style="display: flex; flex-direction: row; width: 100%; gap: var(--fro-gap-2); flex-wrap: wrap; justify-content: space-around">
+        <div style="display: flex; flex-direction: column; width: 45%; min-width: 300px; margin-top: 20px;">
+            <StatusMessage Message="@Message"/>
+            <EditForm Model="Input" asp-route-returnUrl="@ReturnUrl" method="post" OnValidSubmit="RegisterUser" FormName="register">
+                <DataAnnotationsValidator/>
+                <h2>Registrierung</h2>
+                <ValidationSummary class="validation-error" role="alert"/>
+                <div class="form-floating mb-3">
+                    <label class="fro-label" for="email">Email</label>
+                    <InputText @bind-Value="Input.Email" class="fro-input fro-input--fluid" autocomplete="username" aria-required="true" placeholder="name@example.com"/>
+                    <ValidationMessage For="() => Input.Email" class="validation-error"/>
+                </div>
+                <div class="form-floating mb-3">
+                    <label class="fro-label" for="password">Password</label>
+                    <InputText type="password" @bind-Value="Input.Password" class="fro-input fro-input--fluid" autocomplete="new-password" aria-required="true" placeholder="password"/>
+                    <ValidationMessage For="() => Input.Password" class="validation-error"/>
+                </div>
+                <div class="form-floating mb-3">
+                    <label class="fro-label" for="confirm-password">Confirm Password</label>
+                    <InputText type="password" @bind-Value="Input.ConfirmPassword" class="fro-input fro-input--fluid" autocomplete="new-password" aria-required="true" placeholder="password"/>
+                    <ValidationMessage For="() => Input.ConfirmPassword" class="validation-error"/>
+                </div>
+                <button type="submit" class="fro-button fro-button--secondary fro-button--fluid">Registrieren</button>
+            </EditForm>
+        </div>
+        <div style="display: flex; flex-direction: column; width: 40%; min-width: 300px; margin-top: 20px; ">
+            <!-- Register -->
+            <h2>Anmelden</h2>
+            <p>Schon ein Benutzerkonto?</p>
+            <a class="fro-button fro-button--secondary" href="@(NavigationManager.GetUriWithQueryParameters("/Account/Login", new Dictionary<string, object?> { ["ReturnUrl"] = ReturnUrl }))">Jetzt anmelden</a>
+        </div>
     </div>
 </div>
-
+<div style="padding-left: 2rem; padding-right: 2rem;width: 100%;display: flex; flex-direction: row; margin-top: 20px;justify-content: space-around;">
+    <!-- External Login -->
+    <section style="width: 80%;">
+        <h3>Nutze einen anderen Service zum Anmelden.</h3>
+        
+        <ExternalLoginPicker/>
+    </section>
+</div>
 @code {
     private IEnumerable<IdentityError>? identityErrors;
 

@@ -9,7 +9,7 @@
 @inject NavigationManager NavigationManager
 @inject IdentityRedirectManager RedirectManager
 
-<PageTitle>Log in</PageTitle>
+<PageTitle>Anmelden</PageTitle>
 
 <div style="padding-left: 2rem; padding-right: 2rem;">
     <div style="display: flex; flex-direction: row; width: 100%; gap: var(--fro-gap-2); flex-wrap: wrap; justify-content: space-around">
@@ -63,7 +63,8 @@
         </div>
         <div style="display: flex; flex-direction: column; width: 40%; min-width: 300px; margin-top: 20px; ">
             <!-- Register -->
-            <h2>Noch kein Benutzerkonto?</h2>
+            <h2>Registrieren</h2>
+            <p>Noch kein Benutzerkonto?</p>
             <a class="fro-button fro-button--secondary" href="@(NavigationManager.GetUriWithQueryParameters("/Account/Register", new Dictionary<string, object?> { ["ReturnUrl"] = ReturnUrl }))">Jetzt registrieren</a>
         </div>
         
@@ -73,7 +74,7 @@
     <!-- External Login -->
     <section style="width: 80%;">
         <h3>Nutze einen anderen Service zum Anmelden.</h3>
-        <hr/>
+        
         <ExternalLoginPicker/>
     </section>
 </div>
@@ -125,13 +126,16 @@
 
     private sealed class InputModel
     {
-        [Required] [EmailAddress] public string Email { get; set; } = "";
+        [Required] 
+        [EmailAddress]
+        public string Email { get; set; } = "";
 
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; } = "";
 
-        [Display(Name = "Remember me?")] public bool RememberMe { get; set; }
+        [Display(Name = "Angemeldet bleiben?")]
+        public bool RememberMe { get; set; }
     }
 
 }
