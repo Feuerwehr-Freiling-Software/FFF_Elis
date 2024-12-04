@@ -66,6 +66,13 @@ public class OperationService(ApplicationDbContext dbContext, IOriginService ori
 
     public async Task<EpasResult<Operation>> AddOperationAsync(Order order)
     {
+        // check if operation exists in DB
+        var fOperation = await dbContext.Operations.FirstOrDefaultAsync(x => x.Id == order.Operationid);
+        if (fOperation != null)
+        {
+            return new EpasResult<Operation>("Operation already exists", fOperation, EpasResultCode.AlreadyExists);
+        }
+        
         var originId = await dbContext.Origins.FirstOrDefaultAsync(x => x.Id == order.WasOrigin.Tid) ?? await originService.AddOriginAsync(order.WasOrigin);
 
         var program = await dbContext.Programs.FirstOrDefaultAsync(x => x.Name == order.Program) ?? await programService.AddProgramAsync(order);

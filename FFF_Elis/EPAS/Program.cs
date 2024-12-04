@@ -1,3 +1,4 @@
+using System.Text;
 using Blazored.LocalStorage;
 using EPAS.BusinessLogic.Services;
 using EPAS.Components;
@@ -8,15 +9,18 @@ using EPAS.Data;
 using EPAS.Hubs;
 using EPAS.Shared.Services;
 using FFF_Elis.Components.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using MudBlazor;
 using MudBlazor.Services;
 using Nominatim.API.Address;
 using Nominatim.API.Geocoders;
 using Nominatim.API.Interfaces;
 using Nominatim.API.Web;
+using Scalar.AspNetCore;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -68,11 +72,12 @@ logger.Information("Starting EPAS API");
 
 // authentication
 
- builder.Services.AddAuthentication(options =>
+builder.Services.AddAuthentication(options =>
     {
         options.DefaultScheme = IdentityConstants.ApplicationScheme;
         options.DefaultSignInScheme = IdentityConstants.ExternalScheme;
     })
+    .AddBearerToken(IdentityConstants.BearerScheme)
     .AddIdentityCookies();
 
  builder.Services.AddCascadingAuthenticationState();
@@ -112,8 +117,12 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseMigrationsEndPoint();
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwagger(options =>
+    {
+        options.RouteTemplate = "/openapi/{documentName}.json";
+    });
+    
+    app.MapScalarApiReference(o => o.Theme = ScalarTheme.DeepSpace);
 }
 else
 {

@@ -16,7 +16,7 @@
         </div>
         <div class="fro-header__icon-wrapper">
         <AuthorizeView>
-            Hello @context.User.Identity?.Name!
+            <a href="/Account/Manage">@context.User.Identity?.Name!</a>
         </AuthorizeView>
             <a href="/visuSettings">
                 <div class="fro-header__icon fro-icon">gear</div>

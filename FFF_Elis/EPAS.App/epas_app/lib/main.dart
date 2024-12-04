@@ -1,6 +1,7 @@
 import 'package:epas_app/models/availability.dart';
 import 'package:epas_app/models/operation.dart';
 import 'package:epas_app/pages/alarmPage.dart';
+import 'package:epas_app/pages/authentication/login_page.dart';
 import 'package:epas_app/pages/availability_page.dart';
 import 'package:epas_app/pages/settings_page.dart';
 import 'package:epas_app/services/operationService.dart';
@@ -18,11 +19,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'EPAS App',
-      debugShowCheckedModeBanner: false,
-      home: MyHomePage(title: 'Alarmübersicht'),
-    );
+    return MaterialApp(
+        title: 'EPAS App',
+        debugShowCheckedModeBanner: false,
+        // home: MyHomePage(title: 'Alarmübersicht'),
+        home: LoginPage());
   }
 }
 

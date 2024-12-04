@@ -38,10 +38,20 @@ public class OperationController(ILogger<OperationController> logger,IOperationS
     }
 
     [HttpPost]
-    public async Task<IActionResult> AddOperation(WASMessage message)
+    public async Task<IActionResult> AddOperation(WASMessage message, string firebrigade)
     {
-        // var success = await operationService.AddOperationAsync(message.Pdu);
-        logger.LogInformation("Invoked Empty AddOperation Endpoint");
+        var apiKeyValid = apiKeyService.ValidateKey(firebrigade, message.APIKey);
+        if (!apiKeyValid.Result)
+        {
+            return Unauthorized();
+        }
+
+        foreach (var order in message.Pdu.Orderlist.Order)
+        {
+            var success = await operationService.AddOperationAsync(order);
+            logger.LogInformation($"Added operation {order.Operationid} to Firebrigade {firebrigade}");
+            logger.LogInformation($"Add Operation Result: {success.ResultCode} - {success.ErrorText}");
+        }
         return Ok();
     }
 
