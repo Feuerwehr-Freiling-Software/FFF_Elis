@@ -23,19 +23,24 @@ class AuthenticationService {
   }
 
   Future<bool> Login(String email, String password) async {
-    final response = await http.post(
-      Uri.parse('$_baseUrl/login'),
-      headers: {'Content-Type': 'application/json'},
-      body: json.encode({'email': email, 'password': password}),
-    );
+    try {
+      final response = await http.post(
+        Uri.parse('$_baseUrl/login'),
+        headers: {'Content-Type': 'application/json'},
+        body: json.encode({'email': email, 'password': password}),
+      );
 
-    if (response.statusCode == 200) {
-      AccessTokenResponse token = AccessTokenResponse.fromJson(response.body);
-      print('User logged in successfully');
-      return true;
-    } else {
-      print(response.body);
-      print('Failed to login user');
+      if (response.statusCode == 200) {
+        AccessTokenResponse token = AccessTokenResponse.fromJson(response.body);
+        print('User logged in successfully');
+        return true;
+      } else {
+        print(response.body);
+        print('Failed to login user');
+        return false;
+      }
+    } catch (e) {
+      print(e);
       return false;
     }
   }

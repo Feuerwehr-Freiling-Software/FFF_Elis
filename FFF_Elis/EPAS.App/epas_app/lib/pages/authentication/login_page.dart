@@ -57,7 +57,15 @@ class _LoginPageState extends State<LoginPage> {
                     _formKey.currentState!.save();
                     // Perform login or registration logic
                     var res = await _authService.Login(_email, _password);
-                    // TODO: Do something when login fails
+                    if (!res) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          backgroundColor: Color.fromRGBO(222, 64, 25, 1),
+                          content: Text(
+                              'Login fehlgeschlagen. Bitte überprüfen Sie Ihre Anmeldedaten.'),
+                        ),
+                      );
+                    }
                   }
                 },
                 child: Text('Login'),

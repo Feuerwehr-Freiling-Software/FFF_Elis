@@ -82,4 +82,12 @@ public class OperationController(ILogger<OperationController> logger,IOperationS
     {
         return Ok();
     }
+
+    [HttpGet]
+    [Authorize]
+    public async Task<IActionResult> TestAuthorization()
+    {
+        Thread.Sleep(500);
+        return Ok();
+    }
 }
