@@ -1,14 +1,20 @@
 import 'dart:io';
-
 import 'package:epas_app/models/Dtos/OperationResponseDto.dart';
 import 'package:epas_app/models/Enums/OperationResponseEnum.dart';
 import 'package:epas_app/models/Qualifications.dart';
+import 'package:epas_app/services/tokenInterceptor.dart';
 import 'package:http/http.dart' as http;
+import 'package:http_interceptor/http_interceptor.dart';
 import 'dart:convert';
 
 import '../models/operation.dart';
 
-class operation_service {
+class OperationService {
+  static const String baseUrl = "https://localhost:44306/api";
+  Client client = InterceptedClient.build(interceptors: [
+    AuthenticationInterceptor(),
+  ]);
+
   static Future<List<Operation>> fetchOperations() async {
     http.Response response = await http.get(Uri.dataFromString(
         'https://localhost:44306/api/Operation/GetOperationsWithKey?firebrigade=FREILING&apiKey=9945b8c9fd3a184b50ac930a4da4d863'));
@@ -124,5 +130,20 @@ class operation_service {
       14.127480,
     ));
     return mockOperations;
+  }
+
+  Future<bool> TestApiAuthorization() async {
+    try {
+      final response =
+          await client.get("$baseUrl/Operation/TestAuthorization".toUri());
+      if (response.statusCode == 200) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      print(e);
+      return false;
+    }
   }
 }

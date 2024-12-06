@@ -1,4 +1,6 @@
 import 'package:epas_app/services/authentication_service.dart';
+import 'package:epas_app/services/operationService.dart';
+import 'package:epas_app/services/token_service.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -14,6 +16,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     final AuthenticationService _authService = AuthenticationService();
+    final OperationService _operationService = OperationService();
 
     return Scaffold(
       appBar: AppBar(
@@ -65,11 +68,32 @@ class _LoginPageState extends State<LoginPage> {
                               'Login fehlgeschlagen. Bitte überprüfen Sie Ihre Anmeldedaten.'),
                         ),
                       );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          backgroundColor: Color.fromRGBO(222, 64, 25, 1),
+                          content: Text('Login erfolgreich.'),
+                        ),
+                      );
                     }
                   }
                 },
                 child: Text('Login'),
               ),
+              ElevatedButton(
+                onPressed: () async {
+                  var res = await _operationService.TestApiAuthorization();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      backgroundColor: Color.fromRGBO(222, 64, 25, 1),
+                      content: Text(
+                        res.toString(),
+                      ),
+                    ),
+                  );
+                },
+                child: Text("Test API"),
+              )
             ],
           ),
         ),

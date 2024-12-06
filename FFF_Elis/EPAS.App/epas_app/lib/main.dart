@@ -56,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    operations = operation_service.fetchOperations_MOCK();
+    operations = OperationService.fetchOperations_MOCK();
   }
 
   void _incrementCounter() {

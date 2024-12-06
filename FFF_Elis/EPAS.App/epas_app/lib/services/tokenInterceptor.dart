@@ -4,7 +4,6 @@ import 'package:epas_app/services/token_service.dart';
 import 'package:http_interceptor/http_interceptor.dart';
 
 class AuthenticationInterceptor implements InterceptorContract {
-  TokenService tokenService = TokenService();
   @override
   Future<bool> shouldInterceptRequest() {
     return Future.value(true);
@@ -13,12 +12,13 @@ class AuthenticationInterceptor implements InterceptorContract {
   @override
   Future<BaseRequest> interceptRequest({required BaseRequest request}) async {
     try {
-      var token = await tokenService.GetToken();
+      var token = await TokenService.GetToken();
 
       if (token == null) return request;
 
       request.headers[HttpHeaders.contentTypeHeader] = "application/json";
-      request.headers[HttpHeaders.authorizationHeader] = token.accessToken;
+      request.headers[HttpHeaders.authorizationHeader] =
+          "Bearer ${token.accessToken}";
     } catch (e) {
       print(e);
     }

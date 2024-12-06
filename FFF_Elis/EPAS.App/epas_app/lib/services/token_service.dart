@@ -4,9 +4,8 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:epas_app/models/authentication/AccessTokenResponse.dart';
 
 class TokenService {
-  final storage = const FlutterSecureStorage();
-
-  Future<AccessTokenResponse?> GetToken() async {
+  static Future<AccessTokenResponse?> GetToken() async {
+    const storage = FlutterSecureStorage();
     var value = await storage.read(key: 'jwt');
     if (value == null) {
       return null;
@@ -14,7 +13,8 @@ class TokenService {
     return jsonDecode(value);
   }
 
-  Future<void> setToken(AccessTokenResponse token) async {
+  static Future<void> setToken(AccessTokenResponse token) async {
+    const storage = FlutterSecureStorage();
     await storage.write(key: 'jwt', value: jsonEncode(token));
   }
 }

@@ -2,13 +2,16 @@
 using EPAS.BusinessLogic.Services;
 using EPAS.Core.Interfaces;
 using EPAS.Core.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EPAS.Controllers;
 
-[ApiController, AllowAnonymous]
+[ApiController]
 [Route("api/[controller]/[action]")]
+[Authorize(AuthenticationSchemes = "Identity.Bearer")]
 public class OperationController(ILogger<OperationController> logger,IOperationService operationService, IFirebrigadeService firebrigadeService, IAPIKeyService apiKeyService) : Controller
 {
     [HttpGet]
@@ -56,7 +59,6 @@ public class OperationController(ILogger<OperationController> logger,IOperationS
     }
 
     [HttpPut]
-    [Authorize]
     public async Task<IActionResult> UpdateOperation([FromBody] Operation operation, string apiKey)
     {
         var success = await operationService.UpdateOperationAsync(operation, apiKey);
@@ -80,14 +82,14 @@ public class OperationController(ILogger<OperationController> logger,IOperationS
     [HttpGet]
     public async Task<IActionResult> AddOrUpdateOperation(WASMessage message)
     {
+        // TODO: Implement
         return Ok();
     }
 
     [HttpGet]
-    [Authorize]
     public async Task<IActionResult> TestAuthorization()
     {
         Thread.Sleep(500);
-        return Ok();
+        return Ok(true);
     }
 }

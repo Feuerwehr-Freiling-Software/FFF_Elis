@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using MudBlazor;
 using MudBlazor.Services;
 using Nominatim.API.Address;
@@ -80,6 +81,8 @@ builder.Services.AddAuthentication(options =>
     .AddBearerToken(IdentityConstants.BearerScheme)
     .AddIdentityCookies();
 
+builder.Services.AddAuthorization();
+
  builder.Services.AddCascadingAuthenticationState();
  builder.Services.AddScoped<IdentityUserAccessor>();
  builder.Services.AddScoped<IdentityRedirectManager>();
@@ -108,6 +111,28 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new() { Title = "EPAS", Version = "v1" });
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        In = ParameterLocation.Header,
+        Description = "Please enter JWT with Bearer into field",
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        Scheme = "Bearer"
+    });
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            new string[] { }
+        }
+    });
 });
 
 
@@ -121,7 +146,7 @@ if (app.Environment.IsDevelopment())
     {
         options.RouteTemplate = "/openapi/{documentName}.json";
     });
-    
+
     app.MapScalarApiReference(o => o.Theme = ScalarTheme.DeepSpace);
 }
 else
