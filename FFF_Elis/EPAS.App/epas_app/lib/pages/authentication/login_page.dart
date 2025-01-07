@@ -59,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
                     // Perform login or registration logic
-                    var res = await _authService.Login(_email, _password);
+                    var res = await _authService.login(_email, _password);
                     if (!res) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(

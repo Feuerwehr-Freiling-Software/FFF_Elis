@@ -9,15 +9,15 @@
 @inject IdentityRedirectManager RedirectManager
 @inject ILogger<DeletePersonalData> Logger
 
-<PageTitle>Delete Personal Data</PageTitle>
+<PageTitle>Persönliche Daten löschen</PageTitle>
 
 <StatusMessage Message="@message"/>
 
-<h3>Delete Personal Data</h3>
+<h3>Persönliche Daten löschen</h3>
 
 <div class="alert alert-warning" role="alert">
     <p>
-        <strong>Deleting this data will permanently remove your account, and this cannot be recovered.</strong>
+        <strong>Durch das Löschen dieser Daten wird Ihr Konto dauerhaft entfernt und kann nicht wiederhergestellt werden.</strong>
     </p>
 </div>
 
@@ -28,12 +28,14 @@
         @if (requirePassword)
         {
             <div class="form-floating mb-3">
-                <InputText type="password" @bind-Value="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="Please enter your password."/>
-                <label for="password" class="form-label">Password</label>
-                <ValidationMessage For="() => Input.Password" class="text-danger"/>
+                <label for="password" class="form-label">Aktuelles Passwort</label>
+                <div>
+                    <ValidationMessage For="() => Input.Password" class="text-danger"/>
+                    <InputText type="password" @bind-Value="Input.Password" class="fro-input" autocomplete="current-password" aria-required="true" placeholder="Passwort eingeben"/>
+                </div>
             </div>
         }
-        <button class="w-100 btn btn-lg btn-danger" type="submit">Delete data and close my account</button>
+        <button class="fro-button fro-button--primary" type="submit">Daten löschen und mein Konto schließen</button>
     </EditForm>
 </div>
 
@@ -57,7 +59,7 @@
     {
         if (requirePassword && !await UserManager.CheckPasswordAsync(user, Input.Password))
         {
-            message = "Error: Incorrect password.";
+            message = "Error: Falsches Passwort.";
             return;
         }
 

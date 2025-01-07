@@ -3,29 +3,35 @@
 @namespace EPAS.Components.Components.Account.Shared
 @inject SignInManager<ApplicationUser> SignInManager
 
-<ul class="nav nav-pills flex-column">
-    <li class="nav-item">
-        <NavLink class="nav-link" href="Account/Manage" Match="NavLinkMatch.All">Profile</NavLink>
-    </li>
-    <li class="nav-item">
-        <NavLink class="nav-link" href="Account/Manage/Email">Email</NavLink>
-    </li>
-    <li class="nav-item">
-        <NavLink class="nav-link" href="Account/Manage/ChangePassword">Password</NavLink>
-    </li>
-    @if (hasExternalLogins)
+<div class="fro-list">
+    <a href="/Account/Manage" class="fro-list-item">
+        <i class="fro-icon fro-list-item__icon" translate="no">user</i>
+        <div class="fro-list-item__label">Profil</div>
+    </a>
+    <a href="/Account/Manage/Email" class="fro-list-item">
+        <i class="fro-icon fro-list-item__icon" translate="no">envelope</i>
+        <div class="fro-list-item__label">Email</div>
+    </a>
+    <a href="/Account/Manage/ChangePassword" class="fro-list-item">
+        <i class="fro-icon fro-list-item__icon" translate="no">lock_keyhole</i>
+        <div class="fro-list-item__label">Passwort</div>
+    </a>
+@if (hasExternalLogins)
     {
-        <li class="nav-item">
-            <NavLink class="nav-link" href="Account/Manage/ExternalLogins">External logins</NavLink>
-        </li>
+        <a href="/Account/Manage/ExternalLogins" class="fro-list-item">
+            <i class="fro-icon fro-list-item__icon" translate="no">globe</i>
+            <div class="fro-list-item__label">External Logins</div>
+        </a>
     }
-    <li class="nav-item">
-        <NavLink class="nav-link" href="Account/Manage/TwoFactorAuthentication">Two-factor authentication</NavLink>
-    </li>
-    <li class="nav-item">
-        <NavLink class="nav-link" href="Account/Manage/PersonalData">Personal data</NavLink>
-    </li>
-</ul>
+    <a href="/Account/Manage/TwoFactorAuthentication" class="fro-list-item">
+        <i class="fro-icon fro-list-item__icon" translate="no">phone</i>
+        <div class="fro-list-item__label">Two-factor Authentication</div>
+    </a>
+    <a href="/Account/Manage/PersonalData" class="fro-list-item">
+        <i class="fro-icon fro-list-item__icon" translate="no">person</i>
+        <div class="fro-list-item__label">Personal Data</div>
+    </a>
+</div>
 
 @code {
     private bool hasExternalLogins;

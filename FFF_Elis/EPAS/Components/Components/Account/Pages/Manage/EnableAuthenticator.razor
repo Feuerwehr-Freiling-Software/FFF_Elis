@@ -12,7 +12,7 @@
 @inject IdentityRedirectManager RedirectManager
 @inject ILogger<EnableAuthenticator> Logger
 
-<PageTitle>Configure authenticator app</PageTitle>
+<PageTitle>Authentifizierungs-App konfigurieren</PageTitle>
 
 @if (recoveryCodes is not null)
 {
@@ -21,41 +21,42 @@
 else
 {
     <StatusMessage Message="@message"/>
-    <h3>Configure authenticator app</h3>
-    <div>
-        <p>To use an authenticator app go through the following steps:</p>
+    <h3>Authentifizierungs-App konfigurieren</h3>
+    <div style="padding-left: 25px;">
+        <p>Um eine Authentifizierungs-App zu verwenden, führen Sie die folgenden Schritte aus:</p>
         <ol class="list">
             <li>
                 <p>
-                    Download a two-factor authenticator app like Microsoft Authenticator for
-                    <a href="https://go.microsoft.com/fwlink/?Linkid=825072">Android</a> and
-                    <a href="https://go.microsoft.com/fwlink/?Linkid=825073">iOS</a> or
-                    Google Authenticator for
-                    <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&amp;hl=en">Android</a> and
-                    <a href="https://itunes.apple.com/us/app/google-authenticator/id388497605?mt=8">iOS</a>.
+                    Laden Sie eine Zwei-Faktor-Authentifikator-App wie Microsoft Authenticator für
+                    <a href="https://go.microsoft.com/fwlink/?Linkid=825072"><u>Android</u></a> und
+                    <a href="https://go.microsoft.com/fwlink/?Linkid=825073"><u>iOS</u></a> oder
+                    Google Authenticator für
+                    <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&amp;hl=en"><u>Android</u></a> und
+                    <a href="https://itunes.apple.com/us/app/google-authenticator/id388497605?mt=8"><u>iOS</u></a> herunter.
                 </p>
             </li>
             <li>
-                <p>Scan the QR Code or enter this key <kbd>@sharedKey</kbd> into your two factor authenticator app. Spaces and casing do not matter.</p>
-                <div class="alert alert-info">Learn how to <a href="https://go.microsoft.com/fwlink/?Linkid=852423">enable QR code generation</a>.</div>
-                <div></div>
-                <div data-url="@authenticatorUri"></div>
+                <p>Scannen Sie den QR-Code oder geben Sie diesen Schlüssel <kbd>@sharedKey</kbd> in Ihre Zwei-Faktor-Authentifikator-App ein. Leerzeichen und Groß-/Kleinschreibung spielen keine Rolle.</p>
+                <div id="qrCode"></div>
+                <div id="qrCodeData" data-url="@authenticatorUri"></div>
             </li>
             <li>
                 <p>
-                    Once you have scanned the QR code or input the key above, your two factor authentication app will provide you
-                    with a unique code. Enter the code in the confirmation box below.
+                    Sobald Sie den QR-Code gescannt oder den oben genannten Schlüssel eingegeben haben, werden Sie von Ihrer Zwei-Faktor-Authentifizierungs-App benachrichtigt
+                    mit einem eindeutigen Code. Geben Sie den Code in das Bestätigungsfeld unten ein.
                 </p>
                 <div class="row">
                     <div class="col-md-6">
                         <EditForm Model="Input" FormName="send-code" OnValidSubmit="OnValidSubmitAsync" method="post">
                             <DataAnnotationsValidator/>
                             <div class="form-floating mb-3">
-                                <InputText @bind-Value="Input.Code" class="form-control" autocomplete="off" placeholder="Please enter the code."/>
-                                <label for="code" class="control-label form-label">Verification Code</label>
-                                <ValidationMessage For="() => Input.Code" class="text-danger"/>
+                                <label for="code" class="control-label form-label">Verifikationscode</label>
+                                <div>
+                                    <ValidationMessage For="() => Input.Code" class="text-danger"/>
+                                    <InputText @bind-Value="Input.Code" class="fro-input" autocomplete="off" placeholder="Code eingeben"/>
+                                </div>
                             </div>
-                            <button type="submit" class="w-100 btn btn-lg btn-primary">Verify</button>
+                            <button type="submit" class="fro-button fro-button--primary">Verifizieren</button>
                             <ValidationSummary class="text-danger" role="alert"/>
                         </EditForm>
                     </div>
@@ -64,6 +65,9 @@ else
         </ol>
     </div>
 }
+
+<script type="text/javascript" src="/lib/qrcode.js"></script>
+<script type="text/javascript" src="/js/qr.js"></script>
 
 @code {
     private const string AuthenticatorUriFormat = "otpauth://totp/{0}:{1}?secret={2}&issuer={0}&digits=6";
@@ -154,7 +158,7 @@ else
         return string.Format(
             CultureInfo.InvariantCulture,
             AuthenticatorUriFormat,
-            UrlEncoder.Encode("Microsoft.AspNetCore.Identity.UI"),
+            UrlEncoder.Encode("EPAS-Webseite"),
             UrlEncoder.Encode(email),
             unformattedKey);
     }

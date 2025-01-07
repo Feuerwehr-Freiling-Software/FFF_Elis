@@ -23,7 +23,7 @@ class AuthenticationService {
     }
   }
 
-  Future<bool> Login(String email, String password) async {
+  Future<bool> login(String email, String password) async {
     try {
       final response = await http.post(
         Uri.parse('$_baseUrl/login'),

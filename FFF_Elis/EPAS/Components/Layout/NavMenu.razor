@@ -16,6 +16,10 @@
                     <i class="fro-icon fro-icon--fixed fro-list-item__icon">user</i>
                     <div class="fro-list-item__label">@context.User.Identity?.Name</div>
                 </a>
+                <a class="fro-list-item" href="/operationHistory">
+                    <i class="fro-icon fro-icon--fixed fro-list-item__icon">clock</i>
+                    <div class="fro-list-item__label">Einsatzhistorie</div>
+                </a>
                 <form action="Account/Logout" method="post">
                     <AntiforgeryToken/>
                     <input type="hidden" name="ReturnUrl" value="@_currentUrl"/>
