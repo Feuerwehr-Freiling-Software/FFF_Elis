@@ -80,6 +80,8 @@ while (true)
     
     Log.Information("Starting Reading from WAS");
     
+    // TODO: Add Crash Safety
+    
     while (!streamReader.EndOfStream && now.AddSeconds((double) (15 * 4)) > DateTime.Now)
     {
         var tmpString = streamReader.ReadLine();

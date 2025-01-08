@@ -32,6 +32,10 @@
         routeWhileDragging: true
     }).addTo(map);
 
+    function setView (lat, long, zoom) {
+        map.setView([lat, long], zoom);
+    }
+    
     // Function to add route dynamically
     function addRoute(waypoints) {
         try {

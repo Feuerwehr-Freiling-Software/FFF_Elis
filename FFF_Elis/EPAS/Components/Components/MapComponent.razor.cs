@@ -11,6 +11,7 @@ public partial class MapComponent : ComponentBase
     [Inject] public IJSRuntime JS { get; set; }
     [Parameter] public List<Waypoint> Waypoints { get; set; } = new ();
     [Parameter] public List<Vehicle> Fahrzeuge { get; set; } = new ();
+    [Parameter] public Waypoint? ViewPoint { get; set; } = null;
 
     protected override async Task OnParametersSetAsync()
     {
@@ -20,6 +21,11 @@ public partial class MapComponent : ComponentBase
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         await AddRouteAsync(Waypoints);
+
+        if (ViewPoint != null)
+        {
+            await JS.InvokeVoidAsync("setView", ViewPoint.lat, ViewPoint.lon, 15);
+        }
     }
 
     private async Task AddRouteAsync(List<Waypoint> waypoints)

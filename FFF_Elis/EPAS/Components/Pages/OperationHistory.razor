@@ -1,6 +1,10 @@
 ﻿@page "/OperationHistory"
-<h3>OperationHistory</h3>
+@using EPAS.Components.Components.Operation
+<h3>Einsatz-Historie</h3>
 
-@code {
-    
-}
+<div style="display: flex; flex-direction: row">
+    @foreach (var item in Operations)
+    {
+        <HistoryCardComponent Operation="item"/>        
+    }
+</div>

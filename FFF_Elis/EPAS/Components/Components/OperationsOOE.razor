@@ -36,13 +36,13 @@
             <div id="einsatzcard-container" class="einsatzcard-container">
                 @foreach (var item in Einsatz.Einsaetze.Einsatz.Where(x => x.Einsatzart != "SELBST"))
                 {
-                <EinsatzCardComponent Einsatz="item"/>
+                    <EinsatzCardComponent Einsatz="item"/>
                 }
             </div>
             }
             else
             {
-            <p>Kein Einsatz...</p>
+                <p>Kein Einsatz...</p>
             }
         </MudItem>
         <!-- Image -->

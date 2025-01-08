@@ -1,0 +1,11 @@
+﻿@using EPAS.BusinessLogic.Helper
+<div class="fro-card" style="padding: 0; min-width: 500px;" onclick="@(() => OpenOperationHistoryInfo())">
+    <div style="border-left-width: 7px; border-left-color: @ColorHelper.GetColorForOperationName(Operation.OperationName.Name); display: flex; flex-direction: column; border-radius: 5px; padding: var(--fro-gap-2)">
+        <div style="display: flex; flex-direction: row; justify-content: space-between">
+            <div><strong>@Operation.OperationName.Name</strong></div>
+            <div>@Operation.Recieved</div>
+        </div>
+        <div>ALST: @Operation.Level</div>
+        <div>@Operation.Adress</div>
+    </div>
+</div>

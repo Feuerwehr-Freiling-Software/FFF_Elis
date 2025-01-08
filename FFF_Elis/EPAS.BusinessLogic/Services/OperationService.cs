@@ -12,9 +12,27 @@ public class OperationService(ApplicationDbContext dbContext, IOriginService ori
 
     public async Task<Operation?> GetOperationAsync(string id)
     {
-        var res = await dbContext.Operations.Include(x => x.Firebrigades)
-            .Include(operation => operation.OperationResponses).ThenInclude(operationResponse => operationResponse.User)
+        var res = await dbContext.Operations
+            .Include(x => x.Firebrigades)
+            .Include(x => x.OperationName)
+            .Include(operation => operation.OperationResponses)
+            .ThenInclude(operationResponse => operationResponse.User)
             .ThenInclude(applicationUser => applicationUser.Firebrigades).FirstOrDefaultAsync(x => x.Id == id);
+        return res;
+    }
+
+    public async Task<List<Operation>> GetOperationsByKeyAsync(string apiKey)
+    {
+        var res = (await dbContext.Applications
+                .Include(x => x.Firebrigade)
+                .ThenInclude(firebrigade => firebrigade.Operations)
+                .ThenInclude(x => x.OperationResponses)
+                .ThenInclude(x => x.User)
+                .ThenInclude(x => x.Qualifications)
+                .Include(x => x.Firebrigade)
+                .ThenInclude(x => x.Operations)
+                .ThenInclude(x => x.OperationName)
+                .FirstOrDefaultAsync(x => x.ApiKey == apiKey))?.Firebrigade.Operations.ToList() ?? new List<Operation>();
         return res;
     }
 

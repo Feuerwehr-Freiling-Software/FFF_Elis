@@ -1,0 +1,75 @@
+﻿@page "/OperationInfo/{id}"
+@using EPAS.Components.Components
+@using EPAS.Core.Enums
+
+<div class="col">
+    <div class="row">
+        <div class="col" style="width: 100%; justify-content: space-between">
+            <div class="row">
+                <h1>@Operation.OperationName.Name - ALST @Operation.Level</h1>
+            </div>
+            <h6>@Id</h6>
+            <table>
+                <tr>
+                    <td><strong>Alarmierung:</strong></td>
+                    <td>@Operation.Recieved</td>
+                </tr>
+                <tr>
+                    <td><strong>Ausgerückt:</strong></td>
+                    <td>@Operation.WatchOut</td>
+                </tr>
+                <tr>
+                    <td><strong>Eingerückt:</strong></td>
+                    <td>@Operation.Completed</td>
+                </tr>
+                <tr>
+                    <td><strong>Anrufer:</strong></td>
+                    <td>@Operation.Caller.Name</td>
+                </tr>
+                <tr>
+                    <td><strong>Adresse:</strong></td>
+                    <td>@Operation.Adress</td>
+                </tr>
+                <tr>
+                    <td><strong>Info:</strong></td>
+                    <td>@Operation.Info</td>
+                </tr>
+            </table>
+            <div class="row mt-5">
+                <div class="col">
+                    <h5>Alarmierte Feuerwehren:</h5>
+                    @foreach(var wehr in Operation.Firebrigades)
+                    {
+                        <div>@wehr.Name</div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col" style="width: 100%">
+            <MapComponent Waypoints="Waypoints" ViewPoint="Waypoints.FirstOrDefault()"/>
+        </div>
+    </div>
+    <div class="row mt-5" style="justify-content: space-between; width: 40%;">
+        <div class="col">
+            <h5 class="mb-5">Komme</h5>
+            @foreach(var rm in Operation.OperationResponses.Where(x => x.Response == OperationResponseEnum.Coming))
+            {
+                <div>@rm.User</div>
+            }
+        </div>
+        <div class="col">
+            <h5 class="mb-5">Verfügbar</h5>
+            @foreach(var rm in Operation.OperationResponses.Where(x => x.Response == OperationResponseEnum.Available))
+            {
+                <div>@rm.User</div>
+            }
+        </div>
+        <div class="col">
+            <h5 class="mb-5">Komme nicht</h5>
+            @foreach(var rm in Operation.OperationResponses.Where(x => x.Response == OperationResponseEnum.NotAvailable))
+            {
+                <div>@rm.User</div>
+            }
+        </div>
+    </div>
+</div>
