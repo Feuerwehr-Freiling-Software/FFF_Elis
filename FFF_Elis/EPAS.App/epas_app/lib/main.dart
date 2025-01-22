@@ -294,7 +294,7 @@ class _MyHomePageState extends State<MyHomePage> {
               );
             },
             style: ButtonStyle(
-              overlayColor: MaterialStateProperty.all(Colors.transparent),
+              overlayColor: WidgetStateProperty.all(Colors.transparent),
             ),
             child: Text(
               "clock",
@@ -314,7 +314,7 @@ class _MyHomePageState extends State<MyHomePage> {
               // TODO: Implement Settings Page
             },
             style: ButtonStyle(
-              overlayColor: MaterialStateProperty.all(Colors.transparent),
+              overlayColor: WidgetStateProperty.all(Colors.transparent),
             ),
             child: TextButton(
               onPressed: () {
@@ -326,7 +326,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 );
               },
               style: ButtonStyle(
-                overlayColor: MaterialStateProperty.all(Colors.transparent),
+                overlayColor: WidgetStateProperty.all(Colors.transparent),
               ),
               child: const Text(
                 "gear",

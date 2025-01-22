@@ -625,7 +625,7 @@ class _AlarmPageState extends State<AlarmPage> {
               Navigator.pop(context);
             },
             style: ButtonStyle(
-              overlayColor: MaterialStateProperty.all(Colors.transparent),
+              overlayColor: WidgetStateProperty.all(Colors.transparent),
             ),
             child: const Text("arrow-left",
                 style: TextStyle(

@@ -4,6 +4,8 @@ import 'package:epas_app/services/token_service.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -15,8 +17,8 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    final AuthenticationService _authService = AuthenticationService();
-    final OperationService _operationService = OperationService();
+    final AuthenticationService authService = AuthenticationService();
+    final OperationService operationService = OperationService();
 
     return Scaffold(
       appBar: AppBar(
@@ -59,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
                     // Perform login or registration logic
-                    var res = await _authService.login(_email, _password);
+                    var res = await authService.login(_email, _password);
                     if (!res) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
@@ -82,7 +84,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               ElevatedButton(
                 onPressed: () async {
-                  var res = await _operationService.TestApiAuthorization();
+                  var res = await operationService.TestApiAuthorization();
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       backgroundColor: Color.fromRGBO(222, 64, 25, 1),

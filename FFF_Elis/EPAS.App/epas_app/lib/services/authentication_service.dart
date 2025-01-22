@@ -32,7 +32,8 @@ class AuthenticationService {
       );
 
       if (response.statusCode == 200) {
-        AccessTokenResponse token = AccessTokenResponse.fromJson(response.body);
+        AccessTokenResponse token =
+            AccessTokenResponse.fromJson(json.decode(response.body));
         await TokenService.setToken(token);
         print('User logged in successfully');
         return true;

@@ -1,6 +1,6 @@
 ﻿@using EPAS.Core.BusinessObjects
-<div class="fro-card">
-    <div style="border-left: 15px solid @color; margin-bottom: 10px;">
+<div class="fro-card" style="padding: 0">
+    <div style="border-left: 10px solid @color; border-radius: 7px; padding: 5px;">
         <div style="padding-left: 10px;"><strong>@Einsatz.Adresse.Default</strong>@($" ({Einsatz.Bezirk.Text}): {Einsatz.Alarmtext}") </div>
         <div>Alarmiert: </div>
         @foreach(var item in Einsatz.Einheiten.Einheit)
@@ -26,7 +26,7 @@
             color = "#00F";
         }else if(Einsatz.Einsatzart == "TEE")
         {
-            color = "#080";
+            color = "#0080ff";
         }
         else if (Einsatz.Einsatzart == "SONSTIGE")
         {
